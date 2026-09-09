@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | HVAC & Машински Инсталации</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: #121824;
+            --accent-blue: #00d2ff;
+            --accent-metal: #8a9ba8;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Header & Nav */
+        header {
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid var(--accent-metal);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            display: block;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 5px;
+            background: var(--bg-card);
+            padding: 4px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 2px 8px;
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 20px 100px;
+            text-align: center;
+            background: radial-gradient(circle at center, #162238 0%, var(--bg-dark) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-metal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Grid Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        /* Technical Schema Preview */
+        .schema-box {
+            background: #070a10;
+            border: 1px dashed var(--accent-metal);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-item label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .contact-item a, .contact-item p {
+            color: #fff;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-btns {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn-social {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .viber { background: #7360f2; }
+        .whatsapp { background: #25d366; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-box">
+                <div class="logo-icon">W</div>
+                <div>
+                    <span class="logo-text">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
+                    <span class="logo-sub">HVAC & Engineering</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">За Нас</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#systems">Системи</a></li>
+                <li><a href="#contact">Контакт</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn active">MK</button>
+                <button class="lang-btn">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Професионални HVAC & Инженерски Инсталации</h1>
+        <p class="hero-subtitle">
+            Долгогодишно стручно искуство во изведба на топловодни инсталации за Топлификација Скопје, климатизација, вентилација, водовод и канализација за колективни станбени и деловни објекти.
+        </p>
+        <a href="#contact" class="btn-cta">Побарај Понуда & Консултација</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">Сигурност & Докажан Квалитет</h2>
+        <p class="section-desc">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ е специјализирана компанија фокусирана на комплетна изведба, инженерски надзор и оптимизација на машински системи во градежништвото.</p>
+    </section>
+
+    <!-- Detailed Systems Section -->
+    <section id="systems" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <h2 class="section-title">Специјализирани HVAC Системи</h2>
+            <p class="section-desc">Преглед на современите технологии кои ги изведуваме со акцент на енергетска ефикасност и заштеда.</p>
+
+            <div class="cards-grid">
+                <!-- Топлификација -->
+                <div class="card">
+                    <span class="card-icon">🔥</span>
+                    <h3>Топловодни Инсталации</h3>
+                    <p>Изведба и поврзување на топлински подстаници за централно греење (Топлификација Скопје) со оптимална хидраулична регулација.</p>
+                    <span class="badge">Скопје Мрежа</span>
+                    <div class="schema-box">⚙️ [Приказ на Топлинска Подстаница]</div>
+                </div>
+
+                <!-- Геотермални системи -->
+                <div class="card">
+                    <span class="card-icon">🌍</span>
+                    <h3>Геотермални Системи</h3>
+                    <p>Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.</p>
+                    <span class="badge">Заштеда до 75%</span>
+                    <div class="schema-box">🔄 [Шема: Двојна Бушотина / Сонда]</div>
+                </div>
+
+                <!-- Топлински Пумпи -->
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Топлински Пумпи (Воздух-Вода)</h3>
+                    <p>Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.</p>
+                    <span class="badge">Висок COP коефициент</span>
+                    <div class="schema-box">❄️/🔥 [Шема: Воздух-Вода Систем]</div>
+                </div>
+
+                <!-- Климатизација & Вентилација -->
+                <div class="card">
+                    <span class="card-icon">🌬️</span>
+                    <h3>Вентилација & Климатизација</h3>
+                    <p>Професионални VRV/VRF системи, рекуператори за свеж воздух и канали за оптимална микроклима во објектите.</p>
+                    <span class="badge">Чист Воздух & Контрола</span>
+                    <div class="schema-box">🌀 [Шема: Каналска Вентилација]</div>
+                </div>
+
+                <!-- Водовод & Канализација -->
+                <div class="card">
+                    <span class="card-icon">💧</span>
+                    <h3>Водовод & Канализација</h3>
+                    <p>Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.</p>
+                    <span class="badge">Станбено-Деловни Објекти</span>
+                    <div class="schema-box">🚰 [Шема: Хидрантска & ВиК Мрежа]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Контактирајте нè</h2>
+        <p class="section-desc">За консултации, проектирање или изведба на вашите објекти, контактирајте го нашиот инженерски тим.</p>
+
+        <div class="contact-box">
+            <div class="contact-info">
+                <h3>ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</h3>
+                
+                <div class="contact-item">
+                    <label>Локација:</label>
+                    <p>Скопје, Република Северна Македонија</p>
+                </div>
+
+                <div class="contact-item">
+                    <label>Телефон / Viber / WhatsApp:</label>
+                    <a href="tel:+38970374959">+389 70 374 959</a> (070 374 959)
+                </div>
+
+                <div class="contact-item">
+                    <label>Е-пошта:</label>
+                    <a href="mailto:veldervg@icloud.com">veldervg@icloud.com</a>
+                </div>
+
+                <div class="social-btns">
+                    <a href="viber://chat?number=%2B38970374959" class="btn-social viber">Viber</a>
+                    <a href="https://wa.me/38970374959" class="btn-social whatsapp">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
+    </footer>
+
+</body>
+</html>
