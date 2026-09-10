@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Термотехнички инсталации, водовод и канализација</title>
+  
+  <!-- Font Awesome Икони -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Global Styles & Helvetica Neue Font */
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --accent-blue: #2997ff;
+      --accent-cyan: #64ccc5;
+      --text-main: #f5f5f7;
+      --text-muted: #86868b;
+      --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Typography: Italic style for body text */
+    p, .italic-desc {
+      font-style: italic;
+      color: #a1a1a6;
+    }
+
+    h1, h2, h3, h4, strong {
+      font-style: normal;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navigation Bar (Apple Style) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11, 15, 25, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.5rem;
+    }
+
+    /* Logo Button */
+    .logo-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .logo-img {
+      height: 42px;
+      width: auto;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(41, 151, 255, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-btn:hover .logo-img {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+      font-style: normal;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text-main);
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 2px 8px;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    /* SPA Page Sections */
+    .page-view {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      padding-top: 100px;
+      min-height: 85vh;
+    }
+
+    .page-view.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      padding: 80px 20px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #86868b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(41, 151, 255, 0.1);
+      border: 1px solid rgba(41, 151, 255, 0.3);
+      border-radius: 30px;
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      font-style: normal;
+      margin-bottom: 20px;
+    }
+
+    /* Cards Grid */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 30px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(41, 151, 255, 0.4);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      color: var(--accent-blue);
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    /* Schemas & Tables */
+    .subpage-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 20px auto 40px;
+      padding: 0 20px;
+    }
+
+    .subpage-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    .schema-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed var(--accent-blue);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .schema-diagram {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .schema-step {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .schema-step i {
+      color: var(--accent-cyan);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .tech-specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+    }
+
+    .tech-specs-table th, .tech-specs-table td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .tech-specs-table th {
+      background: rgba(255, 255, 255, 0.05);
+      font-style: normal;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 550px;
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      font-size: 1.2rem;
+    }
+
+    .contact-item i {
+      color: var(--accent-blue);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.3rem; }
+      .nav-links { display: none; }
+      .schema-diagram { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <button class="logo-btn" onclick="navigateTo('home')">
+        <img src="image.png" alt="ВЕЛДЕР ВГ" class="logo-img">
+        <span class="logo-text">ВЕЛДЕР ВГ</span>
+      </button>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" onclick="navigateTo('home')" id="nav-home" class="active">Насловна</a></li>
+          <li><a href="#" onclick="navigateTo('heating')" id="nav-heating">Греење & Климатизација</a></li>
+          <li><a href="#" onclick="navigateTo('water')" id="nav-water">Водовод & Канализација</a></li>
+          <li><a href="#" onclick="navigateTo('concepts')" id="nav-concepts">Термотехнички поими</a></li>
+          <li><a href="#" onclick="navigateTo('contact')" id="nav-contact">Контакт</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLanguage('mk')">MK</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('de')">DE</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOME PAGE -->
+  <div id="home" class="page-view active">
+    <section class="hero-section">
+      <div class="hero-badge">
+        <i class="fa-solid fa-award"></i> <span data-key="experience_tag">Повеќе од 20 години професионално искуство</span>
+      </div>
+      <h1 class="hero-title" data-key="hero_title">ВЕЛДЕР ВГ ТРЕЈДИНГ</h1>
+      <p class="hero-subtitle" data-key="hero_intro">
+        Ние сме тим со повеќе од 20 години искуство во изведба на системи за централно греење, климатизациски и вентилациски системи, како и изведба на водовод и канализација во објекти како станбено-деловни згради и други објекти.
+      </p>
+    </section>
+
+    <div class="grid-container">
+      <div class="card" onclick="navigateTo('heating')">
+        <i class="fa-solid fa-temperature-arrow-up card-icon"></i>
+        <h3 data-key="card_heating_title">Централно Греење & Топлински Пумпи</h3>
+        <p data-key="card_heating_desc">Енергетски ефикасни решенија, подно греење и модерни NIBE топлински пумпи.</p>
+      </div>
+
+      <div class="card" onclick="navigateTo('heating')">
+        <i class="fa-solid fa-fan card-icon"></i>
+        <h3 data-key="card_hvac_title">Климатизација & Вентилација</h3>
+        <p data-key="card_hvac_desc">Вентилациски системи со рекуперација на топлина и прецизна климатизација.</p>
+      </div>
+
+      <div class="card" onclick="navigateTo('water')">
+        <i class="fa-solid fa-droplet card-icon"></i>
+        <h3 data-key="card_water_title">Водовод & Мулти-системска дистрибуција</h3>
+        <p data-key="card_water_desc">Изведба на водоводна мрежа (ThermoTech / MultiSystem) за 100% сигурност.</p>
+      </div>
+
+      <div class="card" onclick="navigateTo('water')">
+        <i class="fa-solid fa-pipes-water card-icon"></i>
+        <h3 data-key="card_sewer_title">Канализација & Одводни системи</h3>
+        <p data-key="card_sewer_desc">Професионално поставување на фекална и атмосферска канализација.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEATING PAGE -->
+  <div id="heating" class="page-view">
+    <div class="subpage-header">
+      <h1 data-key="heating_page_title">Греење и Климатизација</h1>
+      <p data-key="heating_page_desc">Специјализирани решенија за централно греење, ладење и вентилација.</p>
+    </div>
+
+    <div style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+      <div class="schema-box">
+        <h3 style="color: var(--accent-blue);"><i class="fa-solid fa-diagram-project"></i> Шема на систем со топлинска пумпа (NIBE)</h3>
+        <div class="schema-diagram">
+          <div class="schema-step">
+            <i class="fa-solid fa-sun"></i>
+            <h4>Надворешна единица</h4>
+            <p>Преземање на енергија од воздухот/земјата</p>
+          </div>
+          <i class="fa-solid fa-arrow-right"></i>
+          <div class="schema-step">
+            <i class="fa-solid fa-gears"></i>
+            <h4>Внатрешен модул</h4>
+            <p>Дистрибуција и контрола на температура</p>
+          </div>
+          <i class="fa-solid fa-arrow-right"></i>
+          <div class="schema-step">
+            <i class="fa-solid fa-house-chimney-window"></i>
+            <h4>Подно греење</h4>
+            <p>Равномерно затоплување во сите простории</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WATER PAGE -->
+  <div id="water" class="page-view">
+    <div class="subpage-header">
+      <h1 data-key="water_page_title">Водовод и Канализација</h1>
+      <p data-key="water_page_desc">Сигурна водоводна мрежа со контролни разводни ормари и модерни одводни системи.</p>
+    </div>
+
+    <div style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+      <div class="schema-box">
+        <h3 style="color: var(--accent-cyan);"><i class="fa-solid fa-network-wired"></i> ThermoTech MultiSystem</h3>
+        <p style="margin-top: 8px;">Концепт на дистрибуција без скриени спојки за максимална безбедност.</p>
+        <div class="schema-diagram">
+          <div class="schema-step">
+            <i class="fa-solid fa-faucet-drip"></i>
+            <h4>Главен довод</h4>
+            <p>Централен приклучок со регулатор</p>
+          </div>
+          <i class="fa-solid fa-chevron-right"></i>
+          <div class="schema-step">
+            <i class="fa-solid fa-box-archive"></i>
+            <h4>Разводен ормар</h4>
+            <p>Индивидуален вод за секоја чешма во заштитно црево</p>
+          </div>
+          <i class="fa-solid fa-chevron-right"></i>
+          <div class="schema-step">
+            <i class="fa-solid fa-shower"></i>
+            <h4>Потрошувачи</h4>
+            <p>Брза замена без оштетување на ѕидовите</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPTS PAGE -->
+  <div id="concepts" class="page-view">
+    <div class="subpage-header">
+      <h1 data-key="concepts_page_title">Термотехнички поими</h1>
+      <p data-key="concepts_page_desc">Водич низ основните термини и енергетски стандарди.</p>
+    </div>
+
+    <div class="grid-container">
+      <div class="card">
+        <h3><i class="fa-solid fa-fire-flame-curved" style="color:#ff6b6b;"></i> COP</h3>
+        <p>Коефициент на ефикасност кај топлинските пумпи. COP 4 значи 4 kWh топлинска енергија за 1 kWh струја.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-arrows-rotate" style="color:#63e6be;"></i> Рекуперација</h3>
+        <p>Преземање на топлината од искористениот воздух и враќање кај свежиот влезен воздух.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div id="contact" class="page-view">
+    <div class="subpage-header">
+      <h1 data-key="contact_page_title">Контакт</h1>
+      <p data-key="contact_page_desc">Стоиме на располагање за сите ваши прашања и понуди.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>ВЕЛДЕР ВГ ТРЕЈДИНГ</h2>
+      <p style="margin-bottom: 25px;">Тим со повеќе од 20 години искуство</p>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:+38970374959" style="font-style: normal; font-weight: 600;">+389 70 374 959</a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:veldervg@icloud.com" style="font-style: normal;">veldervg@icloud.com</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ. Сите права се задржани.</p>
+  </footer>
+
+  <script>
+    // Navigation logic
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      const activeNav = document.getElementById('nav-' + pageId);
+      if(activeNav) activeNav.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Languages
+    const translations = {
+      mk: {
+        experience_tag: "Повеќе од 20 години професионално искуство",
+        hero_title: "ВЕЛДЕР ВГ ТРЕЈДИНГ",
+        hero_intro: "Ние сме тим со повеќе од 20 години искуство во изведба на системи за централно греење, климатизациски и вентилациски системи, како и изведба на водовод и канализација во објекти како станбено-деловни згради и други објекти.",
+        card_heating_title: "Централно Греење & Топлински Пумпи",
+        card_heating_desc: "Енергетски ефикасни решенија, подно греење и модерни NIBE топлински пумпи.",
+        card_hvac_title: "Климатизација & Вентилација",
+        card_hvac_desc: "Вентилациски системи со рекуперација на топлина и прецизна климатизација.",
+        card_water_title: "Водовод & Мулти-системска дистрибуција",
+        card_water_desc: "Изведба на водоводна мрежа (ThermoTech / MultiSystem) за 100% сигурност.",
+        card_sewer_title: "Канализација & Одводни системи",
+        card_sewer_desc: "Професионално поставување на фекална и атмосферска канализација.",
+        heating_page_title: "Греење и Климатизација",
+        heating_page_desc: "Специјализирани решенија за централно греење, ладење и вентилација.",
+        water_page_title: "Водовод и Канализација",
+        water_page_desc: "Сигурна водоводна мрежа со контролни разводни ормари и модерни одводни системи.",
+        concepts_page_title: "Термотехнички поими",
+        concepts_page_desc: "Водич низ основните термини и енергетски стандарди.",
+        contact_page_title: "Контакт",
+        contact_page_desc: "Стоиме на располагање за сите ваши прашања и понуди."
+      },
+      en: {
+        experience_tag: "Over 20 years of experience",
+        hero_title: "VELDER VG TRADING",
+        hero_intro: "We are a team with over 20 years of experience in installing central heating, HVAC systems, as well as plumbing and drainage systems in residential and commercial buildings.",
+        card_heating_title: "Central Heating & Heat Pumps",
+        card_heating_desc: "Energy-efficient solutions and NIBE heat pumps.",
+        card_hvac_title: "Air Conditioning & Ventilation",
+        card_hvac_desc: "Ventilation systems with heat recovery.",
+        card_water_title: "Plumbing & Distribution",
+        card_water_desc: "High-quality ThermoTech MultiSystem installations.",
+        card_sewer_title: "Drainage Systems",
+        card_sewer_desc: "Professional installation of waste and stormwater drainage.",
+        heating_page_title: "Heating & Air Conditioning",
+        heating_page_desc: "Specialized heating, cooling, and ventilation solutions.",
+        water_page_title: "Plumbing & Drainage",
+        water_page_desc: "Safe water supply infrastructure and silent drainage.",
+        concepts_page_title: "Technical Concepts",
+        concepts_page_desc: "Guide to thermotechnical terms and standards.",
+        contact_page_title: "Contact Us",
+        contact_page_desc: "We are at your disposal for questions and offers."
+      },
+      de: {
+        experience_tag: "Über 20 Jahre Erfahrung",
+        hero_title: "VELDER VG TRADING",
+        hero_intro: "Wir sind ein Team mit mehr als 20 Jahren Erfahrung in der Installation von Zentralheizungen, Lüftungen sowie Wasser- und Abwassersystemen.",
+        card_heating_title: "Zentralheizung & Wärmepumpen",
+        card_heating_desc: "Energieeffiziente Lösungen und NIBE Wärmepumpen.",
+        card_hvac_title: "Klima & Lüftung",
+        card_hvac_desc: "Lüftungssysteme mit Wärmerückgewinnung.",
+        card_water_title: "Wasserversorgung",
+        card_water_desc: "Hochwertige ThermoTech MultiSystem Installationen.",
+        card_sewer_title: "Abwassersysteme",
+        card_sewer_desc: "Professionelle Verlegung von Abwasserleitungen.",
+        heating_page_title: "Heizung & Klimatechnik",
+        heating_page_desc: "Spezialisierte Lösungen für Heizung und Lüftung.",
+        water_page_title: "Sanitär & Abwasser",
+        water_page_desc: "Zuverlässige Sanitärinfrastruktur.",
+        concepts_page_title: "Technische Begriffe",
+        concepts_page_desc: "Leitfaden für thermotechnische Begriffe.",
+        contact_page_title: "Kontakt",
+        contact_page_desc: "Wir stehen Ihnen gerne zur Verfügung."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      Object.keys(translations[lang]).forEach(key => {
+        const el = document.querySelector(`[data-key="${key}"]`);
+        if(el) el.innerText = translations[lang][key];
+      });
+    }
+  </script>
+</body>
+</html>
