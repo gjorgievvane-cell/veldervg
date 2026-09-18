@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: #121824;
+            --accent-blue: #00d2ff;
+            --accent-metal: #8a9ba8;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid var(--accent-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 26px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.6);
+            letter-spacing: -1px;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-card);
+            padding: 3px 6px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 3px 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        .hero {
+            padding: 170px 20px 100px;
+            text-align: center;
+            background: radial-gradient(circle at center, #162238 0%, var(--bg-dark) 75%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-metal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 850px;
+            margin: 0 auto 35px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
+            color: #fff;
+            padding: 14px 34px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 210, 255, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.05rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        .schema-box {
+            background: #070a10;
+            border: 1px dashed var(--accent-metal);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+            margin-top: 15px;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .card:hover .schema-box {
+            background: rgba(0, 210, 255, 0.08);
+            border-color: var(--accent-blue);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-blue);
+            border-radius: 12px;
+            max-width: 700px;
+            width: 100%;
+            padding: 35px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.25);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            font-size: 1.7rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            color: var(--text-main);
+            font-size: 0.98rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .svg-container {
+            background: #060911;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .svg-container svg {
+            width: 100%;
+            max-height: 220px;
+        }
+
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-item label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .contact-item a, .contact-item p {
+            color: #fff;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-social {
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .viber {
+            background: rgba(115, 96, 242, 0.15);
+            color: #9d8dfd;
+            border-color: rgba(115, 96, 242, 0.3);
+        }
+
+        .viber:hover {
+            background: #7360f2;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(115, 96, 242, 0.4);
+        }
+
+        .whatsapp {
+            background: rgba(37, 211, 102, 0.15);
+            color: #4ade80;
+            border-color: rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp:hover {
+            background: #25d366;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <header>
+        <div class="nav-container">
+            <a href="#top" class="logo-box">
+                <div class="logo-icon">W</div>
+                <span class="logo-text">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" data-i18n="nav-about">За Нас</a></li>
+                <li><a href="#systems" data-i18n="nav-systems">Системи</a></li>
+                <li><a href="#contact" data-i18n="nav-contact">Контакт</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn active" id="btn-mk">MK</button>
+                <button class="lang-btn" id="btn-en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="hero-title" data-i18n="hero-title">Професионални HVAC & Инженерски Инсталации</h1>
+        <p class="hero-subtitle" data-i18n="hero-subtitle">
+            Долгогодишно стручно искуство во изведба на системи за централно топловодно греење во Скопје (Топлификација), климатизација, вентилација, како и комплетни водоводни и канализациони мрежи за колективни станбени и станбено-деловни објекти.
+        </p>
+        <a href="#contact" class="btn-cta" data-i18n="btn-cta">Побарај Понуда & Консултација</a>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title" data-i18n="about-title">Сигурност & Докажан Квалитет</h2>
+        <p class="section-desc" data-i18n="about-desc">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ е специјализирана компанија фокусирана на комплетна изведба, инженерски надзор и оптимизација на машински системи во градежништвото.</p>
+    </section>
+
+    <section id="systems" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <h2 class="section-title" data-i18n="systems-title">Специјализирани HVAC Системи</h2>
+            <p class="section-desc" data-i18n="systems-desc">Кликнете на било кој систем за да ја отворите неговата графичка шема и принцип на работа.</p>
+
+            <div class="cards-grid">
+                <div class="card" onclick="openSchema('toplifikacija')">
+                    <span class="card-icon">🔥</span>
+                    <h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
+                    <p data-i18n="sys1-desc">Изведба и приклучување на топлински подстаници за централно греење во Скопје со хидраулична регулација и топлотна измена.</p>
+                    <span class="badge" data-i18n="sys1-badge">Скопје Градска Мрежа</span>
+                    <div class="schema-box" data-i18n="schema-btn">🔍 Отвори Графичка Шема</div>
+                </div>
+
+                <div class="card" onclick="openSchema('geothermal')">
+                    <span class="card-icon">🌍</span>
+                    <h3 data-i18n="sys2-title">Геотермални Системи</h3>
+                    <p data-i18n="sys2-desc">Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.</p>
+                    <span class="badge" data-i18n="sys2-badge">Заштеда до 75%</span>
+                    <div class="schema-box" data-i18n="schema-btn">🔍 Отвори Графичка Шема</div>
+                </div>
+
+                <div class="card" onclick="openSchema('heatpumps')">
+                    <span class="card-icon">⚡</span>
+                    <h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
+                    <p data-i18n="sys3-desc">Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.</p>
+                    <span class="badge" data-i18n="sys3-badge">Висок COP коефициент</span>
+                    <div class="schema-box" data-i18n="schema-btn">🔍 Отвори Графичка Шема</div>
+                </div>
+
+                <div class="card" onclick="openSchema('ventilation')">
+                    <span class="card-icon">🌬️</span>
+                    <h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
+                    <p data-i18n="sys4-desc">Професионални VRV/VRF системи, рекуператори за свеж воздух и канали за оптимална микроклима во објектите.</p>
+                    <span class="badge" data-i18n="sys4-badge">Чист Воздух & Контрола</span>
+                    <div class="schema-box" data-i18n="schema-btn">🔍 Отвори Графичка Шема</div>
+                </div>
+
+                <div class="card" onclick="openSchema('plumbing')">
+                    <span class="card-icon">💧</span>
+                    <h3 data-i18n="sys5-title">Водовод & Канализација</h3>
+                    <p data-i18n="sys5-desc">Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.</p>
+                    <span class="badge" data-i18n="sys5-badge">Станбено-Деловни Објекти</span>
+                    <div class="schema-box" data-i18n="schema-btn">🔍 Отвори Графичка Шема</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="schemaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeSchema()">&times;</span>
+            <h3 id="modalTitle" class="modal-title">Техничка Шема</h3>
+            <div id="modalBody" class="modal-body">Опис...</div>
+            
+            <div id="svgContainer" class="svg-container"></div>
+
+            <a href="#contact" class="btn-cta" onclick="closeSchema()" style="width: 100%; text-align: center; box-sizing: border-box; margin-top: 10px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+        </div>
+    </div>
+
+    <section id="contact" class="container">
+        <h2 class="section-title" data-i18n="contact-title">Контактирајте нè</h2>
+        <p class="section-desc" data-i18n="contact-desc">За консултации, проектирање или изведба на вашите објекти, контактирајте го нашиот инженерски тим.</p>
+
+        <div class="contact-box">
+            <div class="contact-info">
+                <h3 data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</h3>
+                
+                <div class="contact-item">
+                    <label data-i18n="lbl-location">Локација:</label>
+                    <p data-i18n="val-location">Скопје, Република Северна Македонија</p>
+                </div>
+
+                <div class="contact-item">
+                    <label data-i18n="lbl-phone">Телефон / Viber / WhatsApp:</label>
+                    <p><a href="tel:+38970374959" id="phone-display">070 374 959</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <label data-i18n="lbl-email">Е-пошта:</label>
+                    <p><a href="mailto:veldervg@icloud.com">veldervg@icloud.com</a></p>
+                </div>
+
+                <div class="social-btns">
+                    <a href="viber://chat?number=%2B38970374959" class="btn-social viber">
+                        <span>💬</span> Viber
+                    </a>
+                    <a href="https://wa.me/38970374959" class="btn-social whatsapp">
+                        <span>🟢</span> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p data-i18n="footer">&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
+    </footer>
+
+    <script>
+        const i18n = {
+            mk: {
+                "nav-about": "За Нас",
+                "nav-systems": "Системи",
+                "nav-contact": "Контакт",
+                "hero-title": "Професионални HVAC & Инженерски Инсталации",
+                "hero-subtitle": "Долгогодишно стручно искуство во изведба на системи за централно топловодно греење во Скопје (Топлификација), климатизација, вентилација, како и комплетни водоводни и канализациони мрежи за колективни станбени и станбено-деловни објекти.",
+                "btn-cta": "Побарај Понуда & Консултација",
+                "about-title": "Сигурност & Докажан Квалитет",
+                "about-desc": "ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ е специјализирана компанија фокусирана на комплетна изведба, инженерски надзор и оптимизација на машински системи во градежништвото.",
+                "systems-title": "Специјализирани HVAC Системи",
+                "systems-desc": "Кликнете на било кој систем за да ја отворите неговата графичка шема и принцип на работа.",
+                "sys1-title": "Централно Топловодно Греење",
+                "sys1-desc": "Изведба и приклучување на топлински подстаници за централно греење во Скопје со хидраулична регулација и топлотна измена.",
+                "sys1-badge": "Скопје Градска Мрежа",
+                "sys2-title": "Геотермални Системи",
+                "sys2-desc": "Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.",
+                "sys2-badge": "Заштеда до 75%",
+                "sys3-title": "Топлински Пумпи (Воздух-Вода)",
+                "sys3-desc": "Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.",
+                "sys3-badge": "Висок COP коефициент",
+                "sys4-title": "Вентилација & Климатизација",
+                "sys4-desc": "Професионални VRV/VRF системи, рекуператори за свеж воздух и канали за оптимална микроклима во објектите.",
+                "sys4-badge": "Чист Воздух & Контрола",
+                "sys5-title": "Водовод & Канализација",
+                "sys5-desc": "Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.",
+                "sys5-badge": "Станбено-Деловни Објекти",
+                "schema-btn": "🔍 Отвори Графичка Шема",
+                "contact-title": "Контактирајте нè",
+                "contact-desc": "За консултации, проектирање или изведба на вашите објекти, контактирајте го нашиот инженерски тим.",
+                "lbl-location": "Локација:",
+                "val-location": "Скопје, Република Северна Македонија",
+                "lbl-phone": "Телефон / Viber / WhatsApp:",
+                "phone-num": "070 374 959",
+                "lbl-email": "Е-пошта:",
+                "modal-cta": "Побарај Понуда за Овој Систем",
+                "company-name": "ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ",
+                "footer": "© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани."
+            },
+            en: {
+                "nav-about": "About Us",
+                "nav-systems": "Systems",
+                "nav-contact": "Contact",
+                "hero-title": "Professional HVAC & Engineering Installations",
+                "hero-subtitle": "Decades of professional expertise in central district heating installations in Skopje, HVAC systems, mechanical ventilation, and complete plumbing networks for residential and commercial buildings.",
+                "btn-cta": "Request Quote & Consultation",
+                "about-title": "Reliability & Proven Quality",
+                "about-desc": "VELDER VG TRADING LLC is a specialized company focused on complete execution, engineering supervision, and optimization of mechanical building systems.",
+                "systems-title": "Specialized HVAC Systems",
+                "systems-desc": "Click on any system card to view its graphic schematic and working principles.",
+                "sys1-title": "Central District Heating",
+                "sys1-desc": "Installation and connection of district heating substations in Skopje with advanced hydraulic regulation and heat exchange.",
+                "sys1-badge": "Skopje District Network",
+                "sys2-title": "Geothermal Systems",
+                "sys2-desc": "Eco-friendly Ground-to-Water and Water-to-Water solutions utilizing stable ground temperatures for heating and cooling.",
+                "sys2-badge": "Up to 75% Energy Savings",
+                "sys3-title": "Heat Pumps (Air-to-Water)",
+                "sys3-desc": "Modern inverter systems for high-efficiency cooling and heating in residential and commercial premises.",
+                "sys3-badge": "High COP Performance",
+                "sys4-title": "Ventilation & Air Conditioning",
+                "sys4-desc": "Professional VRV/VRF systems, heat recovery ventilation (HRV), and ducting for optimal indoor air quality.",
+                "sys4-badge": "Fresh Air & Climate Control",
+                "sys5-title": "Plumbing & Drainage",
+                "sys5-desc": "Full execution of water supply networks and drainage systems for multi-story residential and commercial complexes.",
+                "sys5-badge": "Residential & Commercial",
+                "schema-btn": "🔍 View Schematic Diagram",
+                "contact-title": "Contact Us",
+                "contact-desc": "For consultation, engineering design, or project execution, contact our professional team.",
+                "lbl-location": "Location:",
+                "val-location": "Skopje, Republic of North Macedonia",
+                "lbl-phone": "Phone / Viber / WhatsApp:",
+                "phone-num": "+389 70 374 959",
+                "lbl-email": "E-mail:",
+                "modal-cta": "Request Proposal for This System",
+                "company-name": "VELDER VG TRADING LLC",
+                "footer": "© 2026 VELDER VG TRADING LLC. All rights reserved."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerText = i18n[lang][key];
+                }
+            });
+
+            document.getElementById('phone-display').innerText = i18n[lang]['phone-num'];
+
+            if (lang === 'mk') {
+                document.getElementById('btn-mk').classList.add('active');
+                document.getElementById('btn-en').classList.remove('active');
+            } else {
+                document.getElementById('btn-en').classList.add('active');
+                document.getElementById('btn-mk').classList.remove('active');
+            }
+        }
+
+        document.getElementById('btn-mk').addEventListener('click', function() {
+            setLanguage('mk');
+        });
+
+        document.getElementById('btn-en').addEventListener('click', function() {
+            setLanguage('en');
+        });
+
+        const schemas = {
+            toplifikacija: {
+                title: "🔥 Шема на Подстаница за Централно Топловодно Греење",
+                desc: "Примарен топловоден круг поврзан на централниот систем во Скопје со плочест изменувач на топлина, диференцијален регулатор на притисок и циркулациони пумпи за опремување колективни згради.",
+                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="180" y="50" width="140" height="100" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                    <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ПЛОЧЕСТ</text>
+                    <text x="250" y="115" fill="#00d2ff" font-size="11" text-anchor="middle">ИЗМЕНУВАЧ</text>
+                    <path d="M 20 70 L 180 70" stroke="#ff4d4d" stroke-width="6" fill="none"/>
+                    <path d="M 180 130 L 20 130" stroke="#0072ff" stroke-width="6" fill="none"/>
+                    <text x="90" y="60" fill="#ff4d4d" font-size="10" font-weight="bold">Влез: Градска Мрежа (90°C)</text>
+                    <text x="90" y="150" fill="#0072ff" font-size="10" font-weight="bold">Поврат кон Топлификација</text>
+                    <path d="M 320 70 L 480 70" stroke="#ff8c00" stroke-width="6" fill="none"/>
+                    <path d="M 480 130 L 320 130" stroke="#00d2ff" stroke-width="6" fill="none"/>
+                    <circle cx="400" cy="70" r="16" fill="#00d2ff" stroke="#fff" stroke-width="2"/>
+                    <text x="400" y="74" fill="#000" font-size="10" text-anchor="middle" font-weight="bold">M</text>
+                    <text x="400" y="50" fill="#fff" font-size="10">Циркулациона Пумпа</text>
+                </svg>`
+            },
+            geothermal: {
+                title: "🌍 Шема на Геотермален Систем (Вода-Вода)",
+                desc: "Експлоатација на константната подземна температура од 14°C преку двоен систем бушотини (црпен и повратен бунар) поврзан со топлотна пумпа за максимална заштеда.",
+                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                    <rect x="430" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                    <text x="55" y="195" fill="#00d2ff" font-size="9" text-anchor="middle">Црпен</text>
+                    <text x="445" y="195" fill="#8a9ba8" font-size="9" text-anchor="middle">Повратен</text>
+                    <rect x="180" y="30" width="140" height="80" rx="6" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                    <text x="250" y="75" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ТОПЛОТНА ПУМПА</text>
+                    <path d="M 55 100 L 55 70 L 180 70" stroke="#00d2ff" stroke-width="4" fill="none"/>
+                    <path d="M 320 70 L 445 70 L 445 100" stroke="#8a9ba8" stroke-width="4" fill="none"/>
+                </svg>`
+            },
+            heatpumps: {
+                title: "⚡ Шема на Воздух-Вода Топлинска Пумпа",
+                desc: "Надворешна инвертер единица која ја користи енергијата од надворешниот воздух за греење на подни инсталации, фенкојлери и топла санитарна вода.",
+                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="50" width="100" height="100" rx="8" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
+                    <circle cx="90" cy="100" r="30" fill="none" stroke="#8a9ba8" stroke-width="3"/>
+                    <text x="90" y="104" fill="#00d2ff" font-size="11" text-anchor="middle" font-weight="bold">ВЕНТИЛАТОР</text>
+                    <rect x="280" y="50" width="160" height="100" rx="8" fill="#121e36" stroke="#ff8c00" stroke-width="2"/>
+                    <text x="360" y="95" fill="#fff" font-size="11" text-anchor="middle" font-weight="bold">БУФЕР РЕЗЕРВОАР</text>
+                    <text x="360" y="115" fill="#ff8c00" font-size="10" text-anchor="middle">& Подно Греење</text>
+                    <path d="M 140 80 L 280 80" stroke="#ff4d4d" stroke-width="5" fill="none"/>
+                    <path d="M 280 120 L 140 120" stroke="#0072ff" stroke-width="5" fill="none"/>
+                </svg>`
+            },
+            ventilation: {
+                title: "🌬️ Шема на Рекуперативна Вентилација & VRV",
+                desc: "Систем со високоефикасен рекуператор кој ја задржува топлината од отпадниот воздух и обезбедува постојан свеж воздух за објектот.",
+                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="170" y="40" width="160" height="120" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                    <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">РЕКУПЕРАТОР</text>
+                    <text x="250" y="115" fill="#00d2ff" font-size="10" text-anchor="middle">Заштеда до 85%</text>
+                    <path d="M 20 60 L 170 60" stroke="#00d2ff" stroke-width="4" fill="none"/>
+                    <path d="M 330 60 L 480 60" stroke="#25d366" stroke-width="4" fill="none"/>
+                    <text x="95" y="50" fill="#00d2ff" font-size="9">Свеж Воздух</text>
+                    <text x="405" y="50" fill="#25d366" font-size="9">Кон Простории</text>
+                </svg>`
+            },
+            plumbing: {
+                title: "💧 Шема на ВиК & Хидрантска Мрежа",
+                desc: "Затворени дистрибутивни мрежи за питка вода, засилувачки пумпни станици за притисок на повисоки катови и хидрантски системи за пожарна заштита.",
+                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 40 160 L 160 160 L 160 40 L 460 40" stroke="#00d2ff" stroke-width="6" fill="none"/>
+                    <circle cx="160" cy="120" r="18" fill="#0072ff" stroke="#fff" stroke-width="2"/>
+                    <text x="160" y="124" fill="#fff" font-size="10" text-anchor="middle" font-weight="bold">P</text>
+                    <text x="240" y="110" fill="#8a9ba8" font-size="10">Хидрофор за притисок</text>
+                    <path d="M 300 40 L 300 160" stroke="#ff4d4d" stroke-width="4" fill="none"/>
+                    <text x="310" y="140" fill="#ff4d4d" font-size="10" font-weight="bold">Хидрантска Мрежа</text>
+                </svg>`
+            }
+        };
+
+        function openSchema(type) {
+            const data = schemas[type];
+            if(data) {
+                document.getElementById('modalTitle').innerText = data.title;
+                document.getElementById('modalBody').innerText = data.desc;
+                document.getElementById('svgContainer').innerHTML = data.svg;
+                document.getElementById('schemaModal').style.display = 'flex';
+            }
+        }
+
+        function closeSchema() {
+            document.getElementById('schemaModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('schemaModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
