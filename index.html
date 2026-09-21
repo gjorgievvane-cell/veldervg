@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ | Инженерски инсталации</title>
+    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Инженерски HVAC Системи</title>
     <style>
         :root {
-            /* Blueprint Палета */
             --bg-blueprint: #0A1128;
             --grid-major: rgba(59, 130, 246, 0.18);
             --grid-minor: rgba(59, 130, 246, 0.07);
             
-            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card: rgba(15, 23, 42, 0.85);
             --border-blueprint: rgba(56, 189, 248, 0.3);
             --border-hover: #00E5FF;
             
@@ -27,12 +26,14 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-blueprint);
             color: var(--text-body);
-            
-            /* CSS Blueprint Grid Мрежа (Главни и споредни линии) */
             background-image: 
                 linear-gradient(var(--grid-major) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
@@ -40,48 +41,66 @@
                 linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
             background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
             background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-            
             min-height: 100vh;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Навигација */
+        /* Навигација со оригиналното лого */
         header {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: rgba(10, 17, 40, 0.85);
+            z-index: 1000;
+            background: rgba(10, 17, 40, 0.9);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-blueprint);
-            padding: 18px 5%;
+            padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-title);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
         }
 
-        .logo span {
-            color: var(--accent-cyan);
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            color: #fff;
+            white-space: nowrap;
         }
 
         .lang-switch {
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid var(--border-blueprint);
             color: var(--accent-cyan);
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
         }
 
@@ -91,7 +110,6 @@
             box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
         }
 
-        /* Главна секција (Hero) */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -100,16 +118,16 @@
 
         .hero {
             text-align: center;
-            margin-bottom: 70px;
+            padding: 60px 0;
+            margin-bottom: 40px;
         }
 
         .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
             color: var(--text-title);
             font-weight: 800;
             margin-bottom: 20px;
-            line-height: 1.2;
-            letter-spacing: -0.5px;
+            line-height: 1.25;
         }
 
         .highlight-text {
@@ -118,98 +136,101 @@
         }
 
         .hero p {
-            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
             color: var(--text-body);
-            max-width: 780px;
+            max-width: 850px;
             margin: 0 auto;
+            line-height: 1.8;
         }
 
-        /* Mрежа на картички (Grid Layout) */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        /* Blueprint Картички со Apple-style Scroll анимација */
-        .card {
+        /* Apple-style Vertical Sections Scroll Layout */
+        .system-section {
             background: var(--bg-card);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-blueprint);
-            border-radius: 16px;
-            padding: 32px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
             
-            /* Почетна состојба пред скрол */
+            /* Apple Reveal State */
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.3s ease, 
-                        box-shadow 0.3s ease;
+            transform: translateY(50px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease;
             will-change: opacity, transform;
         }
 
-        /* Состојба кога картичката ќе влезе во екранот */
-        .card.reveal {
+        .system-section.reveal {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Blueprint Hover ефект */
-        .card.reveal:hover {
+        .system-section:hover {
             border-color: var(--border-hover);
-            transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 12px 35px rgba(0, 229, 255, 0.2),
-                        inset 0 0 20px rgba(0, 229, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 229, 255, 0.15);
         }
 
-        .card-number {
-            font-size: 0.8rem;
+        .sys-info .sys-badge {
+            display: inline-block;
             font-family: monospace;
+            font-size: 0.85rem;
             color: var(--accent-cyan);
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-            opacity: 0.8;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            margin-bottom: 15px;
         }
 
-        .card h3 {
-            font-size: 1.4rem;
+        .sys-info h2 {
+            font-size: 1.8rem;
             color: var(--text-title);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-weight: 700;
         }
 
-        .card p {
-            font-size: 0.98rem;
+        .sys-info p {
+            font-size: 1.02rem;
             color: var(--text-body);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* Футер */
+        .blueprint-drawing {
+            background: #060a17;
+            border: 1px stroke var(--border-blueprint);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .blueprint-drawing svg {
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+        }
+
         footer {
             border-top: 1px solid var(--border-blueprint);
             text-align: center;
-            padding: 30px;
-            font-size: 0.85rem;
-            color: rgba(203, 213, 225, 0.6);
-            background: rgba(10, 17, 40, 0.9);
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: var(--text-body);
+            background: rgba(10, 17, 40, 0.95);
         }
 
-        /* Прилагодување за мобилни уреди */
-        @media (max-width: 600px) {
-            header {
-                padding: 14px 4%;
-            }
-            .container {
-                padding-top: 40px;
-            }
-            .cards-grid {
+        @media (max-width: 900px) {
+            .system-section {
                 grid-template-columns: 1fr;
+                padding: 25px;
             }
         }
     </style>
@@ -217,72 +238,127 @@
 <body>
 
     <header>
-        <div class="logo">ВЕЛДЕР ВГ <span>ТРЕЈДИНГ</span></div>
+        <div class="logo-box">
+            <div class="logo-icon">W</div>
+            <span class="logo-text">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
+        </div>
         <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">EN</button>
     </header>
 
     <div class="container">
         <section class="hero">
-            <h1 id="heroTitle">Инженерска прецизност за <span class="highlight-text">современи објекти</span></h1>
-            <p id="heroSubtitle">Професионално проектирање и изведба на системи за централно греење, климатизација, вентилација, водовод и одводнување.</p>
+            <h1 id="heroTitle">Професионални HVAC & <span class="highlight-text">Машински Инсталации</span></h1>
+            <p id="heroSubtitle">Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи за модерни објекти.</p>
         </section>
 
-        <div class="cards-grid">
-            <!-- Картичка 1 -->
-            <div class="card">
-                <div>
-                    <div class="card-number">// SYSTEM_01</div>
-                    <h3 data-mk="Централно греење" data-en="Central Heating">Централно греење</h3>
-                    <p data-mk="Проектирање и монтажа на енергетски ефикасни системи за греење, топлински пумпи и подно греење за станбени и деловни објекти." data-en="Design and installation of energy-efficient heating systems, heat pumps, and underfloor heating for residential and commercial buildings.">
-                        Проектирање и монтажа на енергетски ефикасни системи за греење, топлински пумпи и подно греење за станбени и деловни објекти.
-                    </p>
-                </div>
+        <!-- СЕКЦИЈА 1 -->
+        <section class="system-section">
+            <div class="sys-info">
+                <span class="sys-badge">// SYSTEM_01: ESM NETWORK</span>
+                <h2 data-mk="Централно Топловодно Греење" data-en="Central District Heating">Централно Топловодно Греење</h2>
+                <p data-mk="Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкојлерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје." data-en="Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil systems) and connection substations for ESM Heat Distribution Skopje.">
+                    Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкојлерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.
+                </p>
             </div>
+            <div class="blueprint-drawing">
+                <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="180" y="50" width="140" height="100" rx="8" fill="#121e36" stroke="#00e5ff" stroke-width="2"/>
+                    <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ПЛОЧЕСТ</text>
+                    <text x="250" y="115" fill="#00e5ff" font-size="11" text-anchor="middle">ИЗМЕНУВАЧ</text>
+                    <path d="M 20 70 L 180 70" stroke="#ff4d4d" stroke-width="5" fill="none"/>
+                    <path d="M 180 130 L 20 130" stroke="#0072ff" stroke-width="5" fill="none"/>
+                    <text x="90" y="60" fill="#ff4d4d" font-size="10" font-weight="bold">Влез: ЕСМ Мрежа (90°C)</text>
+                    <text x="90" y="150" fill="#0072ff" font-size="10" font-weight="bold">Поврат кон ЕСМ</text>
+                    <path d="M 320 70 L 480 70" stroke="#ff8c00" stroke-width="5" fill="none"/>
+                    <path d="M 480 130 L 320 130" stroke="#00e5ff" stroke-width="5" fill="none"/>
+                    <circle cx="400" cy="70" r="16" fill="#00e5ff" stroke="#fff" stroke-width="2"/>
+                    <text x="400" y="74" fill="#000" font-size="10" text-anchor="middle" font-weight="bold">M</text>
+                </svg>
+            </div>
+        </section>
+        <!-- СЕКЦИЈА 2 -->
+        <section class="system-section">
+            <div class="sys-info">
+                <span class="sys-badge">// SYSTEM_02: GEOTHERMAL</span>
+                <h2 data-mk="Геотермални Системи" data-en="Geothermal Systems">Геотермални Системи</h2>
+                <p data-mk="Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за високо-ефикасно греење и ладење со заштеда до 75%." data-en="Eco-friendly Ground-to-Water and Water-to-Water solutions utilizing stable ground temperatures for heating and cooling with savings up to 75%.">
+                    Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за високо-ефикасно греење и ладење со заштеда до 75%.
+                </p>
+            </div>
+            <div class="blueprint-drawing">
+                <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                    <rect x="430" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                    <text x="55" y="195" fill="#00e5ff" font-size="9" text-anchor="middle">Црпен</text>
+                    <text x="445" y="195" fill="#8a9ba8" font-size="9" text-anchor="middle">Повратен</text>
+                    <rect x="180" y="30" width="140" height="80" rx="6" fill="#121e36" stroke="#00e5ff" stroke-width="2"/>
+                    <text x="250" y="75" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ТОПЛОТНА ПУМПА</text>
+                    <path d="M 55 100 L 55 70 L 180 70" stroke="#00e5ff" stroke-width="4" fill="none"/>
+                    <path d="M 320 70 L 445 70 L 445 100" stroke="#8a9ba8" stroke-width="4" fill="none"/>
+                </svg>
+            </div>
+        </section>
 
-            <!-- Картичка 2 -->
-            <div class="card">
-                <div>
-                    <div class="card-number">// SYSTEM_02</div>
-                    <h3 data-mk="Климатизација" data-en="Air Conditioning">Климатизација</h3>
-                    <p data-mk="Современи VRF и сплит системи за прецизна контрола на температурата, максимална удобност и оптимизирана потрошувачка на енергија." data-en="Modern VRF and split systems for precise temperature control, maximum comfort, and optimized energy consumption.">
-                        Современи VRF и сплит системи за прецизна контрола на температурата, максимална удобност и оптимизирана потрошувачка на енергија.
-                    </p>
-                </div>
+        <!-- СЕКЦИЈА 3 -->
+        <section class="system-section">
+            <div class="sys-info">
+                <span class="sys-badge">// SYSTEM_03: HEAT PUMPS</span>
+                <h2 data-mk="Топлински Пумпи (Воздух-Вода)" data-en="Heat Pumps (Air-to-Water)">Топлински Пумпи (Воздух-Вода)</h2>
+                <p data-mk="Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини со висок COP коефициент." data-en="Modern inverter systems for high-efficiency cooling and heating in residential and commercial premises with high COP ratios.">
+                    Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини со висок COP коефициент.
+                </p>
             </div>
+            <div class="blueprint-drawing">
+                <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="50" width="100" height="100" rx="8" fill="#1e293b" stroke="#00e5ff" stroke-width="2"/>
+                    <circle cx="90" cy="100" r="30" fill="none" stroke="#8a9ba8" stroke-width="3"/>
+                    <text x="90" y="104" fill="#00e5ff" font-size="11" text-anchor="middle" font-weight="bold">ИНВЕРТЕР</text>
+                    <rect x="280" y="50" width="160" height="100" rx="8" fill="#121e36" stroke="#ff8c00" stroke-width="2"/>
+                    <text x="360" y="95" fill="#fff" font-size="11" text-anchor="middle" font-weight="bold">БУФЕР РЕЗЕРВОАР</text>
+                    <path d="M 140 80 L 280 80" stroke="#ff4d4d" stroke-width="4" fill="none"/>
+                    <path d="M 280 120 L 140 120" stroke="#0072ff" stroke-width="4" fill="none"/>
+                </svg>
+            </div>
+        </section>
 
-            <!-- Картичка 3 -->
-            <div class="card">
-                <div>
-                    <div class="card-number">// SYSTEM_03</div>
-                    <h3 data-mk="Вентилација" data-en="Ventilation">Вентилација</h3>
-                    <p data-mk="Индустриска и резиденцијална вентилација со рекуперација на топлина за свеж воздух и висок квалитет на внатрешниот амбиент." data-en="Industrial and residential ventilation with heat recovery for fresh air and high indoor environmental quality.">
-                        Индустриска и резиденцијална вентилација со рекуперација на топлина за свеж воздух и висок квалитет на внатрешниот амбиент.
-                    </p>
-                </div>
+        <!-- СЕКЦИЈА 4 -->
+        <section class="system-section">
+            <div class="sys-info">
+                <span class="sys-badge">// SYSTEM_04: HVAC & HRV</span>
+                <h2 data-mk="Вентилација & Климатизација" data-en="Ventilation & Air Conditioning">Вентилација & Климатизација</h2>
+                <p data-mk="Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкојлер) за оптимална микроклима." data-en="Professional heat recovery ventilation systems (HRV/ERV), central air conditioning (split/multi-split, VRV/VRF, chiller/fan coil) for optimal indoor air quality.">
+                    Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкојлер) за оптимална микроклима.
+                </p>
             </div>
+            <div class="blueprint-drawing">
+                <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="170" y="40" width="160" height="120" rx="8" fill="#121e36" stroke="#00e5ff" stroke-width="2"/>
+                    <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">РЕКУПЕРАТОР</text>
+                    <text x="250" y="115" fill="#00e5ff" font-size="10" text-anchor="middle">Заштеда до 85%</text>
+                    <path d="M 20 60 L 170 60" stroke="#00e5ff" stroke-width="4" fill="none"/>
+                    <path d="M 330 60 L 480 60" stroke="#25d366" stroke-width="4" fill="none"/>
+                </svg>
+            </div>
+        </section>
 
-            <!-- Картичка 4 -->
-            <div class="card">
-                <div>
-                    <div class="card-number">// SYSTEM_04</div>
-                    <h3 data-mk="Водовод и канализација" data-en="Plumbing & Drainage">Водовод и канализација</h3>
-                    <p data-mk="Комплетни хидротехнички инсталации, водоводни мрежи, одводнување и стандардизирани санитарни решенија." data-en="Complete hydrotechnical installations, water supply networks, drainage systems, and standardized sanitary solutions.">
-                        Комплетни хидротехнички инсталации, водоводни мрежи, одводнување и стандардизирани санитарни решенија.
-                    </p>
-                </div>
+        <!-- СЕКЦИЈА 5 -->
+        <section class="system-section">
+            <div class="sys-info">
+                <span class="sys-badge">// SYSTEM_05: PLUMBING</span>
+                <h2 data-mk="Водовод & Канализација" data-en="Plumbing & Drainage">Водовод & Канализација</h2>
+                <p data-mk="Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради со пумпни станици и хидрантски мрежи." data-en="Full execution of water supply networks and drainage systems for multi-story residential and commercial complexes with booster pumps and hydrant systems.">
+                    Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради со пумпни станици и хидрантски мрежи.
+                </p>
             </div>
-
-            <!-- Картичка 5 -->
-            <div class="card">
-                <div>
-                    <div class="card-number">// SYSTEM_05</div>
-                    <h3 data-mk="Инженерски консалтинг" data-en="Engineering Consulting">Инженерски консалтинг</h3>
-                    <p data-mk="Технички надзор, надгледување на изведба, анализа на енергетска ефикасност и стручно советување за вашите проекти." data-en="Technical supervision, execution oversight, energy efficiency analysis, and expert advice for your engineering projects.">
-                        Технички надзор, надгледување на изведба, анализа на енергетска ефикасност и стручно советување за вашите проекти.
-                    </p>
-                </div>
+            <div class="blueprint-drawing">
+                <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 40 160 L 160 160 L 160 40 L 460 40" stroke="#00e5ff" stroke-width="6" fill="none"/>
+                    <circle cx="160" cy="120" r="18" fill="#0072ff" stroke="#fff" stroke-width="2"/>
+                    <text x="160" y="124" fill="#fff" font-size="10" text-anchor="middle" font-weight="bold">P</text>
+                    <path d="M 300 40 L 300 160" stroke="#ff4d4d" stroke-width="4" fill="none"/>
+                </svg>
             </div>
-        </div>
+        </section>
     </div>
 
     <footer>
@@ -290,66 +366,52 @@
     </footer>
 
     <script>
-        // Apple-style Scroll Animation Observer
+        // Apple-style Vertical Scroll Animation Observer
         document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.card');
+            const sections = document.querySelectorAll('.system-section');
 
             const observerOptions = {
                 root: null,
-                rootMargin: '0px 0px -40px 0px',
-                threshold: 0.12
+                rootMargin: '0px 0px -80px 0px',
+                threshold: 0.15
             };
 
-            const cardObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry, index) => {
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Каскадно каснење за секоја картичка (Apple stagger effect)
-                        setTimeout(() => {
-                            entry.target.classList.add('reveal');
-                        }, index * 110); 
-
+                        entry.target.classList.add('reveal');
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            cards.forEach(card => cardObserver.observe(card));
+            sections.forEach(sec => sectionObserver.observe(sec));
         });
 
-        // Двојазичност (MK / EN Toggle Logic)
+        // Двојазичност (MK / EN)
         let currentLang = 'mk';
 
         const translations = {
             heroTitle: {
-                mk: 'Инженерска прецизност за <span class="highlight-text">станбени и деловни објекти</span>',
-                en: 'Engineering precision for <span class="highlight-text">modern structures</span>'
+                mk: 'Професионални HVAC & <span class="highlight-text">Машински Инсталации</span>',
+                en: 'Professional HVAC & <span class="highlight-text">Mechanical Installations</span>'
             },
             heroSubtitle: {
-                mk: 'Професионално проектирање и изведба на системи за централно греење, климатизација, вентилација, водовод и одводнување.',
-                en: 'Professional design and installation of central heating, air conditioning, ventilation, plumbing, and drainage systems.'
+                mk: 'Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи за модерни објекти.',
+                en: 'Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical building systems.'
             }
         };
 
         function toggleLanguage() {
             currentLang = currentLang === 'mk' ? 'en' : 'mk';
-            
-            // Промена на копчето
             document.getElementById('langBtn').innerText = currentLang === 'mk' ? 'EN' : 'MK';
 
-            // Промена на Hero секцијата
             document.getElementById('heroTitle').innerHTML = translations.heroTitle[currentLang];
             document.getElementById('heroSubtitle').innerText = translations.heroSubtitle[currentLang];
 
-            // Промена на сите картички
-            const titles = document.querySelectorAll('.card h3');
-            const paragraphs = document.querySelectorAll('.card p');
-
-            titles.forEach(el => {
-                el.innerText = el.getAttribute(`data-${currentLang}`);
-            });
-
-            paragraphs.forEach(el => {
-                el.innerText = el.getAttribute(`data-${currentLang}`);
+            document.querySelectorAll('.sys-info h2, .sys-info p').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerText = text;
             });
         }
     </script>
