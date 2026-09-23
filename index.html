@@ -6,15 +6,15 @@
     <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
     <style>
         :root {
-            --bg-dark: #000000;
-            --bg-card: rgba(18, 24, 36, 0.75);
+            --bg-dark: #050811;
+            --bg-card: rgba(15, 23, 42, 0.65);
             --accent-blue: #00d2ff;
-            --accent-glow: rgba(0, 210, 255, 0.35);
+            --accent-glow: rgba(0, 210, 255, 0.45);
             --accent-metal: #8a9ba8;
-            --text-main: #f5f5f7;
-            --text-muted: #86868b;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --nav-height: 52px;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --nav-height: 56px;
         }
 
         * {
@@ -37,7 +37,7 @@
 
         /* --- APPLE STYLE NAV --- */
         header {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(5, 8, 17, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: fixed;
@@ -61,29 +61,29 @@
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .logo-icon {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, #00d2ff, #0055ff);
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 16px;
+            font-size: 18px;
             color: #fff;
-            box-shadow: 0 0 12px var(--accent-glow);
+            box-shadow: 0 0 14px var(--accent-glow);
         }
 
         .logo-text {
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.95rem;
             letter-spacing: -0.2px;
-            color: #f5f5f7;
+            color: #f8fafc;
         }
 
         .nav-links {
@@ -96,7 +96,7 @@
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 400;
             transition: color 0.3s ease;
         }
@@ -109,7 +109,7 @@
             display: flex;
             gap: 2px;
             background: rgba(255, 255, 255, 0.08);
-            padding: 2px;
+            padding: 3px;
             border-radius: 20px;
         }
 
@@ -117,142 +117,147 @@
             background: none;
             border: none;
             color: var(--text-muted);
-            padding: 2px 8px;
+            padding: 2px 10px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             border-radius: 12px;
             transition: all 0.3s ease;
         }
 
         .lang-btn.active {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.22);
             color: #fff;
         }
 
-        /* --- HERO SECTION WITH Apple Gradient & Glow --- */
+        /* --- HERO SECTION (НАМАЛЕН ФОНТ & ПУН ТЕКСТ) --- */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 60px;
+            padding: 130px 20px 80px;
             position: relative;
-            background: radial-gradient(circle at 50% 30%, rgba(0, 210, 255, 0.12) 0%, transparent 60%);
+            background: radial-gradient(circle at 50% 30%, rgba(0, 210, 255, 0.1) 0%, transparent 65%);
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2rem, 3.8vw, 3.2rem);
             font-weight: 700;
-            line-height: 1.08;
+            line-height: 1.15;
             letter-spacing: -0.015em;
-            max-width: 900px;
+            max-width: 860px;
             margin-bottom: 24px;
-            background: linear-gradient(180deg, #ffffff 0%, #86868b 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-size: clamp(0.98rem, 1.4vw, 1.15rem);
             color: var(--text-muted);
-            max-width: 780px;
+            max-width: 880px;
             margin-bottom: 40px;
-            font-weight: 400;
-            line-height: 1.47;
-            letter-spacing: -0.01em;
+            font-weight: 300;
+            line-height: 1.7;
+            letter-spacing: -0.005em;
         }
 
         .btn-cta {
             display: inline-block;
-            background: #0071e3;
+            background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
             color: #fff;
-            padding: 12px 26px;
+            padding: 12px 30px;
             border-radius: 980px;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-            box-shadow: 0 4px 20px rgba(0, 113, 227, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .btn-cta:hover {
-            background: #0077ed;
             transform: scale(1.03);
-            box-shadow: 0 6px 28px rgba(0, 113, 227, 0.6);
+            box-shadow: 0 6px 28px rgba(0, 210, 255, 0.5);
         }
 
-        /* --- SCROLL REVEAL SECTIONS (APPLE STORYTELLING) --- */
-        .story-section {
-            min-height: 100vh;
+        /* --- VERTICAL STACKED SYSTEMS (CARD UNDER CARD WITH FOCUS GLOW) --- */
+        .systems-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 60px 20px 120px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
-            position: relative;
+            flex-direction: column;
+            gap: 50px;
         }
 
-        .story-container {
-            max-width: 1100px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .story-container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .story-content h3 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
-        }
-
-        .story-content p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-
-        .story-card {
+        .system-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 30px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            transition: border-color 0.4s ease, transform 0.4s ease;
+            padding: 42px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            opacity: 0.35;
+            transform: scale(0.96);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .story-card:hover {
-            border-color: rgba(0, 210, 255, 0.4);
-            transform: translateY(-4px);
+        /* ЦЕНТРАЛЕН ФОКУС И ОСВЕТЛУВАЊЕ НА РАМКАТА */
+        .system-card.in-focus {
+            opacity: 1;
+            transform: scale(1);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 35px var(--accent-glow), 0 20px 40px rgba(0, 0, 0, 0.6);
         }
 
         .badge-pill {
             display: inline-block;
             background: rgba(0, 210, 255, 0.1);
             color: var(--accent-blue);
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 210, 255, 0.25);
         }
 
-        /* --- INTERACTIVE MODAL (GLASSMORPHISM) --- */
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            line-height: 1;
+        }
+
+        .system-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: #fff;
+        }
+
+        .system-card p {
+            font-size: 1.02rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 26px;
+            font-weight: 300;
+        }
+
+        /* --- MODAL FOR SCHEMATICS & DRAWINGS --- */
         .modal {
             display: none;
             position: fixed;
@@ -260,7 +265,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.88);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             z-index: 2000;
@@ -277,15 +282,16 @@
         }
 
         .modal-content {
-            background: rgba(22, 28, 38, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-blue);
             border-radius: 28px;
-            max-width: 680px;
+            max-width: 720px;
             width: 100%;
             padding: 40px;
             position: relative;
             transform: scale(0.95);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.3);
         }
 
         .modal.show .modal-content {
@@ -296,7 +302,7 @@
             position: absolute;
             top: 20px;
             right: 24px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-muted);
             cursor: pointer;
             width: 32px;
@@ -315,7 +321,7 @@
         }
 
         .svg-container {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(5, 8, 17, 0.9);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 24px;
@@ -324,14 +330,15 @@
 
         /* --- CONTACT & FOOTER --- */
         .contact-section {
-            padding: 120px 20px 80px;
+            padding: 100px 20px 80px;
             text-align: center;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, #080c14 100%);
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #03050a 100%);
+            border-top: 1px solid var(--border-color);
         }
 
         .contact-box {
-            max-width: 600px;
-            margin: 40px auto 0;
+            max-width: 580px;
+            margin: 36px auto 0;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 28px;
@@ -347,7 +354,7 @@
         }
 
         .btn-social {
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 980px;
             text-decoration: none;
             font-size: 0.85rem;
@@ -355,23 +362,24 @@
             transition: all 0.3s ease;
         }
 
-        .viber { background: rgba(115, 96, 242, 0.2); color: #a294ff; border: 1px solid rgba(115, 96, 242, 0.4); }
-        .viber:hover { background: #7360f2; color: #fff; }
+        .viber { background: rgba(115, 96, 242, 0.15); color: #a294ff; border: 1px solid rgba(115, 96, 242, 0.3); }
+        .viber:hover { background: #7360f2; color: #fff; box-shadow: 0 0 15px rgba(115, 96, 242, 0.4); }
 
-        .whatsapp { background: rgba(37, 211, 102, 0.2); color: #52ea8a; border: 1px solid rgba(37, 211, 102, 0.4); }
-        .whatsapp:hover { background: #25d366; color: #fff; }
+        .whatsapp { background: rgba(37, 211, 102, 0.15); color: #52ea8a; border: 1px solid rgba(37, 211, 102, 0.3); }
+        .whatsapp:hover { background: #25d366; color: #fff; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             font-size: 0.8rem;
         }
 
-        @media (max-width: 850px) {
-            .story-container { grid-template-columns: 1fr; gap: 30px; }
+        @media (max-width: 768px) {
             .nav-links { display: none; }
+            .system-card { padding: 28px; }
+            .hero-title { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -395,109 +403,81 @@
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- HERO SECTION -->
+    <section class="hero" id="about">
         <h1 class="hero-title" data-i18n="hero-title">Професионални HVAC & Машински Инсталации за Модерни Објекти</h1>
-        <p class="hero-subtitle" data-i18n="hero-subtitle">Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи за современи објекти.</p>
+        <p class="hero-subtitle" data-i18n="hero-subtitle">
+            Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.
+        </p>
         <a href="#contact" class="btn-cta" data-i18n="btn-cta">Побарај Понуда & Консултација</a>
     </section>
 
-    <!-- STORY SECTIONS (SCROLL REVEAL) -->
-    <div id="systems">
+    <!-- STACKED SUBPAGES (CARD UNDER CARD WITH CENTER GLOW) -->
+    <section id="systems" class="systems-wrapper">
         
-        <!-- SYSTEM 1 -->
-        <section class="story-section">
-            <div class="story-container">
-                <div class="story-content">
-                    <span class="badge-pill" data-i18n="sys1-badge">ЕСМ Градска Мрежа</span>
-                    <h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
-                    <p data-i18n="sys1-desc">Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.</p>
-                    <button class="btn-cta" onclick="openSchema('toplifikacija')">Види Шема</button>
-                </div>
-                <div class="story-card" onclick="openSchema('toplifikacija')">
-                    <div style="font-size: 3rem; margin-bottom: 10px;">🔥</div>
-                    <h4>Подстаници & Дистрибуција</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Високоефикасни топлински изменувачи и автоматска регулација.</p>
-                </div>
+        <!-- SUBPAGE 1 -->
+        <div class="system-card" onclick="openSchema('toplifikacija')">
+            <span class="badge-pill" data-i18n="sys1-badge">ЕСМ Градска Мрежа</span>
+            <div class="card-header-flex">
+                <span class="card-icon">🔥</span>
+                <h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
             </div>
-        </section>
+            <p data-i18n="sys1-desc">Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкојлерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.</p>
+            <button class="btn-cta" data-i18n="btn-details">Отвори Техничка Шема & Детали</button>
+        </div>
 
-        <!-- SYSTEM 2 -->
-        <section class="story-section">
-            <div class="story-container">
-                <div class="story-card" onclick="openSchema('geothermal')">
-                    <div style="font-size: 3rem; margin-bottom: 10px;">🌍</div>
-                    <h4>Енергија од Земјата</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Константна температура преку целата година за максимална заштеда.</p>
-                </div>
-                <div class="story-content">
-                    <span class="badge-pill" data-i18n="sys2-badge">Заштеда до 75%</span>
-                    <h3 data-i18n="sys2-title">Геотермални Системи</h3>
-                    <p data-i18n="sys2-desc">Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.</p>
-                    <button class="btn-cta" onclick="openSchema('geothermal')">Види Шема</button>
-                </div>
+        <!-- SUBPAGE 2 -->
+        <div class="system-card" onclick="openSchema('geothermal')">
+            <span class="badge-pill" data-i18n="sys2-badge">Заштеда до 75%</span>
+            <div class="card-header-flex">
+                <span class="card-icon">🌍</span>
+                <h3 data-i18n="sys2-title">Геотермални Системи</h3>
             </div>
-        </section>
+            <p data-i18n="sys2-desc">Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.</p>
+            <button class="btn-cta" data-i18n="btn-details">Отвори Техничка Шема & Детали</button>
+        </div>
 
-        <!-- SYSTEM 3 -->
-        <section class="story-section">
-            <div class="story-container">
-                <div class="story-content">
-                    <span class="badge-pill" data-i18n="sys3-badge">Висок COP коефициент</span>
-                    <h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
-                    <p data-i18n="sys3-desc">Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.</p>
-                    <button class="btn-cta" onclick="openSchema('heatpumps')">Види Шема</button>
-                </div>
-                <div class="story-card" onclick="openSchema('heatpumps')">
-                    <div style="font-size: 3rem; margin-bottom: 10px;">⚡</div>
-                    <h4>Инвертер Технологија</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Оптимална потрошувачка на електрична енергија при екстремни услови.</p>
-                </div>
+        <!-- SUBPAGE 3 -->
+        <div class="system-card" onclick="openSchema('heatpumps')">
+            <span class="badge-pill" data-i18n="sys3-badge">Висок COP коефициент</span>
+            <div class="card-header-flex">
+                <span class="card-icon">⚡</span>
+                <h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
             </div>
-        </section>
+            <p data-i18n="sys3-desc">Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.</p>
+            <button class="btn-cta" data-i18n="btn-details">Отвори Техничка Шема & Детали</button>
+        </div>
 
-        <!-- SYSTEM 4 -->
-        <section class="story-section">
-            <div class="story-container">
-                <div class="story-card" onclick="openSchema('ventilation')">
-                    <div style="font-size: 3rem; margin-bottom: 10px;">🌬️</div>
-                    <h4>Рекуперација на Топлина</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Континуиран свеж воздух без губење на топлината од просторијата.</p>
-                </div>
-                <div class="story-content">
-                    <span class="badge-pill" data-i18n="sys4-badge">Чист Воздух & Контрола</span>
-                    <h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
-                    <p data-i18n="sys4-desc">Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали.</p>
-                    <button class="btn-cta" onclick="openSchema('ventilation')">Види Шема</button>
-                </div>
+        <!-- SUBPAGE 4 -->
+        <div class="system-card" onclick="openSchema('ventilation')">
+            <span class="badge-pill" data-i18n="sys4-badge">Чист Воздух & Контрола</span>
+            <div class="card-header-flex">
+                <span class="card-icon">🌬️</span>
+                <h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
             </div>
-        </section>
+            <p data-i18n="sys4-desc">Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкојлер системи) и воздуховодни канали за оптимална микроклима.</p>
+            <button class="btn-cta" data-i18n="btn-details">Отвори Техничка Шема & Детали</button>
+        </div>
 
-        <!-- SYSTEM 5 -->
-        <section class="story-section">
-            <div class="story-container">
-                <div class="story-content">
-                    <span class="badge-pill" data-i18n="sys5-badge">Станбено-Деловни Објекти</span>
-                    <h3 data-i18n="sys5-title">Водовод & Канализација</h3>
-                    <p data-i18n="sys5-desc">Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.</p>
-                    <button class="btn-cta" onclick="openSchema('plumbing')">Види Шема</button>
-                </div>
-                <div class="story-card" onclick="openSchema('plumbing')">
-                    <div style="font-size: 3rem; margin-bottom: 10px;">💧</div>
-                    <h4>ВиК Инсталации</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Затворени дистрибутивни мрежи и засилувачки пумпни станици.</p>
-                </div>
+        <!-- SUBPAGE 5 -->
+        <div class="system-card" onclick="openSchema('plumbing')">
+            <span class="badge-pill" data-i18n="sys5-badge">Станбено-Деловни Објекти</span>
+            <div class="card-header-flex">
+                <span class="card-icon">💧</span>
+                <h3 data-i18n="sys5-title">Водовод & Канализација</h3>
             </div>
-        </section>
+            <p data-i18n="sys5-desc">Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.</p>
+            <button class="btn-cta" data-i18n="btn-details">Отвори Техничка Шема & Детали</button>
+        </div>
 
-    </div>
+    </section>
 
-    <!-- MODAL -->
+    <!-- MODAL FOR DRAWINGS & SCHEMATICS -->
     <div id="schemaModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeSchema()">&times;</span>
-            <h3 id="modalTitle" style="font-size: 1.5rem; margin-bottom: 10px;">Техничка Шема</h3>
-            <p id="modalBody" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;"></p>
+            <h3 id="modalTitle" style="font-size: 1.5rem; color: #fff; margin-bottom: 12px;">Техничка Шема</h3>
+            <p id="modalBody" style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6;"></p>
             <div id="svgContainer" class="svg-container"></div>
             <a href="#contact" class="btn-cta" onclick="closeSchema()" style="display: block; text-align: center;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
         </div>
@@ -505,18 +485,18 @@
 
     <!-- CONTACT SECTION -->
     <section id="contact" class="contact-section">
-        <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 12px;" data-i18n="contact-title">Контактирајте нè</h2>
+        <h2 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; color: #fff;" data-i18n="contact-title">Контактирајте нè</h2>
         <p style="color: var(--text-muted);" data-i18n="contact-desc">За консултации, проектирање или изведба на вашите објекти, контактирајте го нашиот инженерски тим.</p>
 
         <div class="contact-box">
-            <h3 style="font-size: 1.3rem; margin-bottom: 20px;" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</h3>
+            <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 20px;" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</h3>
             <p style="color: var(--text-muted); margin-bottom: 8px;" data-i18n="val-location">Скопје, Република Северна Македонија</p>
-            <p style="margin-bottom: 8px;"><a href="tel:+38970374959" id="phone-display" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">070 374 959</a></p>
-            <p style="margin-bottom: 20px;"><a href="mailto:veldervg@icloud.com" style="color: #fff; text-decoration: none;">veldervg@icloud.com</a></p>
+            <p style="margin-bottom: 8px;"><a href="tel:+38970374959" id="phone-display" style="color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1.1rem;">070 374 959</a></p>
+            <p style="margin-bottom: 24px;"><a href="mailto:veldervg@icloud.com" style="color: #fff; text-decoration: none;">veldervg@icloud.com</a></p>
 
             <div class="social-btns">
-                <a href="viber://chat?number=%2B38970374959" class="btn-social viber">Viber</a>
-                <a href="https://wa.me/38970374959" class="btn-social whatsapp">WhatsApp</a>
+                <a href="viber://chat?number=%2B38970374959" class="btn-social viber">💬 Viber</a>
+                <a href="https://wa.me/38970374959" class="btn-social whatsapp">🟢 WhatsApp</a>
             </div>
         </div>
     </section>
@@ -526,17 +506,18 @@
     </footer>
 
     <script>
-        // i18n
+        // TRANSLATIONS
         const i18n = {
             mk: {
                 "nav-about": "За Нас",
                 "nav-systems": "Системи",
                 "nav-contact": "Контакт",
                 "hero-title": "Професионални HVAC & Машински Инсталации за Модерни Објекти",
-                "hero-subtitle": "Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкојлерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкојлер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
+                "hero-subtitle": "Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
                 "btn-cta": "Побарај Понуда & Консултација",
+                "btn-details": "Отвори Техничка Шема & Детали",
                 "sys1-title": "Централно Топловодно Греење",
-                "sys1-desc": "Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.",
+                "sys1-desc": "Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкојлерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.",
                 "sys1-badge": "ЕСМ Градска Мрежа",
                 "sys2-title": "Геотермални Системи",
                 "sys2-desc": "Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.",
@@ -545,7 +526,7 @@
                 "sys3-desc": "Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.",
                 "sys3-badge": "Висок COP коефициент",
                 "sys4-title": "Вентилација & Климатизација",
-                "sys4-desc": "Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали за оптимална микроклима.",
+                "sys4-desc": "Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкојлер системи) и воздуховодни канали за оптимална микроклима.",
                 "sys4-badge": "Чист Воздух & Контрола",
                 "sys5-title": "Водовод & Канализација",
                 "sys5-desc": "Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.",
@@ -565,6 +546,7 @@
                 "hero-title": "Professional HVAC & Mechanical Building Installations",
                 "hero-subtitle": "Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems: central hydronic heating installations (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), heat recovery ventilation, and full plumbing networks for residential and commercial complexes.",
                 "btn-cta": "Request Quote & Consultation",
+                "btn-details": "Open Technical Schematic & Details",
                 "sys1-title": "Central District Heating",
                 "sys1-desc": "Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil systems) and connection substations for ESM Heat Distribution Skopje.",
                 "sys1-badge": "ESM District Network",
@@ -608,7 +590,7 @@
         document.getElementById('btn-mk').addEventListener('click', () => setLanguage('mk'));
         document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
 
-        // SCHEMAS
+        // SCHEMATICS DATA
         const schemas = {
             toplifikacija: {
                 title: "🔥 Шема на Подстаница за Централно Топловодно Греење",
@@ -677,8 +659,7 @@
                 document.getElementById('modalTitle').innerText = data.title;
                 document.getElementById('modalBody').innerText = data.desc;
                 document.getElementById('svgContainer').innerHTML = data.svg;
-                const modal = document.getElementById('schemaModal');
-                modal.classList.add('show');
+                document.getElementById('schemaModal').classList.add('show');
             }
         }
 
@@ -691,17 +672,23 @@
             if (e.target === modal) closeSchema();
         }
 
-        // APPLE SCROLL OBSERVER (TRANSITIONS)
-        const observer = new IntersectionObserver((entries) => {
+        // INTERSECTION OBSERVER FOR CENTER SCREEN FOCUS
+        const focusObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('in-focus');
+                } else {
+                    entry.target.classList.remove('in-focus');
                 }
             });
-        }, { threshold: 0.25 });
+        }, {
+            root: null,
+            rootMargin: "-30% 0px -30% 0px", // Активира осветлување кога картичката е во средишниот 40% од екранот
+            threshold: 0.2
+        });
 
-        document.querySelectorAll('.story-container').forEach(el => {
-            observer.observe(el);
+        document.querySelectorAll('.system-card').forEach(card => {
+            focusObserver.observe(card);
         });
     </script>
 </body>
