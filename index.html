@@ -1,526 +1,347 @@
 <!DOCTYPE html>
 <html lang="mk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Инженерски инсталации</title>
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: rgba(18, 24, 36, 0.75);
+            --accent-blue: #00d2ff;
+            --accent-metal: #8a9ba8;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --border-hover: rgba(0, 210, 255, 0.4);
+            
+            --grid-major: rgba(0, 210, 255, 0.12);
+            --grid-minor: rgba(0, 210, 255, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+
+            background-image: 
+                linear-gradient(var(--grid-major) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+                linear-gradient(var(--grid-minor) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 14, 23, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        .lang-switch {
+            background: rgba(0, 210, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--accent-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lang-switch:hover {
+            background: var(--accent-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
+            border-color: var(--accent-blue);
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 60px 20px 100px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-text {
+            color: var(--accent-blue);
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.25);
+        }
+
+        .hero p {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(0, 210, 255, 0.15),
+                        inset 0 0 15px rgba(0, 210, 255, 0.03);
+        }
+
+        .card-number {
+            font-size: 0.8rem;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease, 
+                        box-shadow 0.3s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 30px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(10, 14, 23, 0.9);
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 14px 4%;
+            }
+            .container {
+                padding-top: 40px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Навигација -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">
-        <span class="logo-bold">VELDER</span>
-        <span class="logo-sub">VG TRADING</span>
-      </a>
-      
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="#hero" class="nav-link active" data-mk="Почетна" data-en="Home">Почетна</a></li>
-        <li><a href="#hvac" class="nav-link" data-mk="HVAC" data-en="HVAC">HVAC</a></li>
-        <li><a href="#plumbing" class="nav-link" data-mk="Водовод и Канализација" data-en="Plumbing & Drainage">Водовод и Канализација</a></li>
-        <li><a href="#contact" class="nav-link nav-btn" data-mk="Контакт" data-en="Contact">Контакт</a></li>
-      </ul>
+    <header>
+        <div class="logo">ВЕЛДЕР ВГ <span>ТРЕЈДИНГ</span></div>
+        <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">EN</button>
+    </header>
 
-      <div class="lang-switch">
-        <button id="lang-toggle" class="lang-btn">MK / EN</button>
-      </div>
-
-      <div class="hamburger" id="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Секција 1: Hero / Почетна -->
-  <section id="hero" class="hero-section">
-    <div class="hero-content">
-      <h1 data-mk="Инженеринг и инсталации за совршен комфор" data-en="Engineering and Installations for Perfect Comfort">Инженеринг и инсталации за совршен комфор</h1>
-      <p data-mk="ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ Скопје – Професионално проектирање, изведба и одржување на термотехнички и водоводни системи." data-en="VELDER VG TRADING DOOEL Skopje – Professional design, execution, and maintenance of HVAC and plumbing systems.">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ Скопје – Професионално проектирање, изведба и одржување на термотехнички и водоводни системи.</p>
-      <div class="hero-buttons">
-        <a href="#hvac" class="btn btn-primary" data-mk="Истражи услуги" data-en="Explore Services">Истражи услуги</a>
-        <a href="#contact" class="btn btn-secondary" data-mk="Контактирај нè" data-en="Contact Us">Контактирај нè</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Секција 2: HVAC (Греење, Вентилација и Климатизација) -->
-  <section id="hvac" class="content-section">
     <div class="container">
-      <div class="section-header">
-        <h2 data-mk="HVAC Системи (Греење, Вентилација, Климатизација)" data-en="HVAC Systems (Heating, Ventilation, AC)">HVAC Системи (Греење, Вентилација, Климатизација)</h2>
-        <p data-mk="Комплетни термотехнички решенија за енергетска ефикасност и идеален комфор." data-en="Complete HVAC solutions for energy efficiency and optimal comfort.">Комплетни термотехнички решенија за енергетска ефикасност и идеален комфор.</p>
-      </div>
+        <section class="hero reveal">
+            <h1 id="heroTitle">Инженерска прецизност за <span class="highlight-text">станбени и деловни објекти</span></h1>
+            <p id="heroSubtitle">Професионално проектирање и изведба на системи за централно греење, климатизација, вентилација, водовод и одводнување.</p>
+        </section>
 
-      <div class="cards-grid">
-        <div class="card">
-          <div class="card-icon">🔥</div>
-          <h3 data-mk="Централно и подно греење" data-en="Central & Underfloor Heating">Централно и подно греење</h3>
-          <p data-mk="Дизајн и инсталација на системи за подно греење и радијаторско греење со рамномерна дистрибуција на топлината и висока заштеда на енергија." data-en="Design and installation of underfloor and radiator heating systems with even heat distribution and high energy efficiency.">Дизајн и инсталација на системи за подно греење и радијаторско греење со рамномерна дистрибуција на топлината и висока заштеда на енергија.</p>
-        </div>
+        <div class="cards-grid">
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_01</div>
+                    <h3 data-mk="Централно греење" data-en="Central Heating">Централно греење</h3>
+                    <p data-mk="Проектирање и монтажа на енергетски ефикасни системи за греење, топлински пумпи и подно греење за станбени и деловни објекти." 
+                       data-en="Design and installation of energy-efficient heating systems, heat pumps, and underfloor heating for residential and commercial buildings.">
+                        Проектирање и монтажа на енергетски ефикасни системи за греење, топлински пумпи и подно греење за станбени и деловни објекти.
+                    </p>
+                </div>
+            </div>
 
-        <div class="card">
-          <div class="card-icon">❄️</div>
-          <h3 data-mk="Топлински пумпи и климатизација" data-en="Heat Pumps & Air Conditioning">Топлински пумпи и климатизација</h3>
-          <p data-mk="Имплементација на современи инвертер системи, чилери и VRF/VRV системи за ефикасно ладење и греење во текот на целата година." data-en="Implementation of modern inverter systems, chillers, and VRF/VRV systems for efficient cooling and heating throughout the entire year.">Имплементација на современи инвертер системи, чилери и VRF/VRV системи за ефикасно ладење и греење во текот на целата година.</p>
-        </div>
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_02</div>
+                    <h3 data-mk="Климатизација" data-en="Air Conditioning">Климатизација</h3>
+                    <p data-mk="Современи VRF и сплит системи за прецизна контрола на температурата, максимална удобност и оптимизирана потрошувачка на енергија." 
+                       data-en="Modern VRF and split systems for precise temperature control, maximum comfort, and optimized energy consumption.">
+                        Современи VRF и сплит системи за прецизна контрола на температурата, максимална удобност и оптимизирана потрошувачка на енергија.
+                    </p>
+                </div>
+            </div>
 
-        <div class="card">
-          <div class="card-icon">🌬️</div>
-          <h3 data-mk="Вентилација и рекуперација" data-en="Ventilation & Heat Recovery">Вентилација и рекуперација</h3>
-          <p data-mk="Системи за принудна вентилација со рекуперација на топлина, за обезбедување свеж воздух и оптимален квалитет на микроклимата во просторот." data-en="Forced ventilation systems with heat recovery to ensure fresh air and optimal indoor microclimate quality.">Системи за принудна вентилација со рекуперација на топлина, за обезбедување свеж воздух и оптимален квалитет на микроклимата во просторот.</p>
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_03</div>
+                    <h3 data-mk="Вентилација" data-en="Ventilation">Вентилација</h3>
+                    <p data-mk="Индустриска и резиденцијална вентилација со рекуперација на топлина за свеж воздух и висок квалитет на внатрешниот амбиент." 
+                       data-en="Industrial and residential ventilation with heat recovery for fresh air and high indoor environmental quality.">
+                        Индустриска и резиденцијална вентилација со рекуперација на топлина за свеж воздух и висок квалитет на внатрешниот амбиент.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_04</div>
+                    <h3 data-mk="Водовод и канализација" data-en="Plumbing & Drainage">Водовод и канализација</h3>
+                    <p data-mk="Комплетни хидротехнички инсталации, водоводни мрежи, одводнување и стандардизирани санитарни решенија." 
+                       data-en="Complete hydrotechnical installations, water supply networks, drainage systems, and standardized sanitary solutions.">
+                        Комплетни хидротехнички инсталации, водоводни мрежи, одводнување и стандардизирани санитарни решенија.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_05</div>
+                    <h3 data-mk="Инженерски консалтинг" data-en="Engineering Consulting">Инженерски консалтинг</h3>
+                    <p data-mk="Технички надзор, надгледување на изведба, анализа на енергетска ефикасност и стручно советување за вашите проекти." 
+                       data-en="Technical supervision, execution oversight, energy efficiency analysis, and expert advice for your engineering projects.">
+                        Технички надзор, надгледување на изведба, анализа на енергетска ефикасност и стручно советување за вашите проекти.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Секција 3: Водовод и Канализација -->
-  <section id="plumbing" class="content-section alt-bg">
-    <div class="container">
-      <div class="section-header">
-        <h2 data-mk="Водоводни и Канализациони Инсталации" data-en="Plumbing & Drainage Installations">Водоводни и Канализациони Инсталации</h2>
-        <p data-mk="Сигурност, долготрајност и квалитет во секоја капка." data-en="Reliability, durability, and quality in every drop.">Сигурност, долготрајност и квалитет во секоја капка.</p>
-      </div>
+    <footer>
+        <p id="footerText">&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
+    </footer>
 
-      <div class="cards-grid">
-        <div class="card">
-          <div class="card-icon">🚰</div>
-          <h3 data-mk="Водоводни мрежи" data-en="Water Supply Networks">Водоводни мрежи</h3>
-          <p data-mk="Комплетна изведба на внатрешни и надворешни водоводни инсталации со современи материјали од врвен квалитет (PPR, PEX, бакар)." data-en="Complete execution of internal and external water supply networks using high-quality modern materials (PPR, PEX, copper).">Комплетна изведба на внатрешни и надворешни водоводни инсталации со современи материјали од врвен квалитет (PPR, PEX, бакар).</p>
-        </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll('.reveal');
 
-        <div class="card">
-          <div class="card-icon">🚽</div>
-          <h3 data-mk="Канализациски системи" data-en="Drainage Systems">Канализациски системи</h3>
-          <p data-mk="Проектирање и монтажа на бешумни канализациски мрежи, дренажни системи и одводнување на атмосферски води." data-en="Design and installation of low-noise drainage networks, drainage systems, and stormwater management.">Проектирање и монтажа на бешумни канализациски мрежи, дренажни системи и одводнување на атмосферски води.</p>
-        </div>
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -40px 0px',
+                threshold: 0.12
+            };
 
-        <div class="card">
-          <div class="card-icon">🛠️</div>
-          <h3 data-mk="Санитарна опрема" data-en="Sanitary Equipment">Санитарна опрема</h3>
-          <p data-mk="Професионална монтажа на вградени елементи, квалитетни арматури, филтри за вода и системи за зголемување на притисокот." data-en="Professional installation of concealed elements, quality fittings, water filters, and pressure booster systems.">Професионална монтажа на вградени елементи, квалитетни арматури, филтри за вода и системи за зголемување на притисокот.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('active');
+                        }, index * 100);
 
-  <!-- Секција 4: Контакт -->
-  <section id="contact" class="content-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 data-mk="Контактирајте нè" data-en="Contact Us">Контактирајте нè</h2>
-        <p data-mk="Стоиме на располагање за сите ваши прашања и консултации." data-en="We are at your disposal for all questions and consultations.">Стоиме на располагање за сите ваши прашања и консултации.</p>
-      </div>
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-      <div class="contact-box">
-        <div class="contact-info">
-          <h3>ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</h3>
-          <p>📍 Скопје, Северна Македонија</p>
-          <p>📞 <strong>Телефон:</strong> <a href="tel:+38970374959" class="contact-link">+389 70 374 959</a></p>
-          <p>✉️ <strong>Е-пошта:</strong> contact@velder.mk</p>
-          <p>🕒 <strong>Работно време:</strong> Понеделник - Петок (08:00 - 16:00)</p>
-        </div>
-      </div>
-    </div>
-  </section>
+            reveals.forEach(el => revealObserver.observe(el));
+        });
 
-  <!-- Футер -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
-    </div>
-  </footer>
+        let currentLang = 'mk';
 
-  <script src="script.js"></script>
+        const translations = {
+            heroTitle: {
+                mk: 'Инженерска прецизност за <span class="highlight-text">станбени и деловни објекти</span>',
+                en: 'Engineering precision for <span class="highlight-text">residential & commercial structures</span>'
+            },
+            heroSubtitle: {
+                mk: 'Професионално проектирање и изведба на системи за централно греење, климатизација, вентилација, водовод и одводнување.',
+                en: 'Professional design and installation of central heating, air conditioning, ventilation, plumbing, and drainage systems.'
+            },
+            footerText: {
+                mk: '&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.',
+                en: '&copy; 2026 VELDER VG TRADING DOOEL. All rights reserved.'
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'mk' ? 'en' : 'mk';
+            const langBtn = document.getElementById('langBtn');
+            
+            document.getElementById('heroTitle').innerHTML = translations.heroTitle[currentLang];
+            document.getElementById('heroSubtitle').innerText = translations.heroSubtitle[currentLang];
+            document.getElementById('footerText').innerHTML = translations.footerText[currentLang];
+
+            const translatableElements = document.querySelectorAll('[data-mk]');
+            translatableElements.forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
+
+            langBtn.innerText = currentLang === 'mk' ? 'EN' : 'MK';
+            document.documentElement.lang = currentLang;
+        }
+    </script>
 </body>
 </html>
-/* Базни подесувања */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  color: #1d1d1f;
-  background-color: #fbfbfd;
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Навигација */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-.nav-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-}
-
-.logo-bold {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #000;
-  letter-spacing: -0.5px;
-}
-
-.logo-sub {
-  font-size: 0.65rem;
-  color: #6e6e73;
-  letter-spacing: 1px;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 25px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #1d1d1f;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: #0071e3;
-}
-
-.nav-btn {
-  background: #0071e3;
-  color: #fff !important;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: background 0.3s ease;
-}
-
-.nav-btn:hover {
-  background: #005bb5;
-}
-
-.lang-btn {
-  background: transparent;
-  border: 1px solid #d2d2d7;
-  padding: 5px 10px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-  background: #1d1d1f;
-  color: #fff;
-  border-color: #1d1d1f;
-}
-
-.hamburger {
-  display: none;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.bar {
-  width: 22px;
-  height: 2px;
-  background-color: #1d1d1f;
-  border-radius: 2px;
-}
-
-/* Hero Секција */
-.hero-section {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 20px;
-  background: linear-gradient(180deg, #f2f2f7 0%, #fbfbfd 100%);
-}
-
-.hero-content {
-  max-width: 800px;
-}
-
-.hero-section h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -1px;
-  margin-bottom: 20px;
-  line-height: 1.15;
-}
-
-.hero-section p {
-  font-size: 1.25rem;
-  color: #6e6e73;
-  margin-bottom: 30px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.btn {
-  text-decoration: none;
-  padding: 12px 26px;
-  border-radius: 22px;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-primary {
-  background: #0071e3;
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background: #005bb5;
-}
-
-.btn-secondary {
-  background: #e8e8ed;
-  color: #1d1d1f;
-}
-
-.btn-secondary:hover {
-  background: #d2d2d7;
-}
-
-/* Содржински секции */
-.content-section {
-  padding: 100px 0;
-}
-
-.alt-bg {
-  background-color: #f2f2f7;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-header h2 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  margin-bottom: 10px;
-}
-
-.section-header p {
-  color: #6e6e73;
-  font-size: 1.1rem;
-}
-
-/* Картички (Grid) */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: #ffffff;
-  padding: 35px 25px;
-  border-radius: 18px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-}
-
-.card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.card h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.card p {
-  color: #6e6e73;
-  font-size: 0.95rem;
-}
-
-/* Контакт кутија */
-.contact-box {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact-info h3 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-}
-
-.contact-info p {
-  margin-bottom: 12px;
-  color: #1d1d1f;
-  font-size: 1rem;
-}
-
-.contact-link {
-  color: #0071e3;
-  text-decoration: none;
-}
-
-.contact-link:hover {
-  text-decoration: underline;
-}
-
-/* Футер */
-footer {
-  padding: 30px 0;
-  border-top: 1px solid #d2d2d7;
-  text-align: center;
-  color: #86868b;
-  font-size: 0.85rem;
-}
-
-/* Респонзивност за мобилни */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 60px;
-    gap: 0;
-    flex-direction: column;
-    background-color: #ffffff;
-    width: 100%;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
-    padding: 20px 0;
-  }
-
-  .nav-menu.active {
-    left: 0;
-  }
-
-  .nav-menu li {
-    margin: 15px 0;
-  }
-
-  .hero-section h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-}
-document.addEventListener('DOMContentLoaded', () => {
-
-  // 1. Мобилно мени (Hamburger)
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
-
-  if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-    }));
-  }
-
-  // 2. Активен линк при скролање
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  // 3. Превод MK / EN
-  const langToggleBtn = document.getElementById('lang-toggle');
-  let currentLang = 'mk';
-
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      currentLang = currentLang === 'mk' ? 'en' : 'mk';
-      
-      const elementsToTranslate = document.querySelectorAll('[data-mk]');
-      elementsToTranslate.forEach(element => {
-        if (currentLang === 'en') {
-          element.textContent = element.getAttribute('data-en');
-        } else {
-          element.textContent = element.getAttribute('data-mk');
-        }
-      });
-    });
-  }
-
-});
