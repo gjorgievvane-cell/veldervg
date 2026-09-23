@@ -1,429 +1,347 @@
-:root {
-    --bg-dark: #0a0e17;
-    --bg-card: #121824;
-    --accent-blue: #00d2ff;
-    --accent-metal: #8a9ba8;
-    --text-main: #e2e8f0;
-    --text-muted: #94a3b8;
-    --border-color: rgba(255, 255, 255, 0.12);
-}
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Инженерски инсталации</title>
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: rgba(18, 24, 36, 0.75);
+            --accent-blue: #00d2ff;
+            --accent-metal: #8a9ba8;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --border-hover: rgba(0, 210, 255, 0.4);
+            
+            --grid-major: rgba(0, 210, 255, 0.12);
+            --grid-minor: rgba(0, 210, 255, 0.04);
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
 
-html {
-    scroll-behavior: smooth;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
 
-/* Apple-Style Scroll & Transition Анимации */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-}
+            background-image: 
+                linear-gradient(var(--grid-major) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+                linear-gradient(var(--grid-minor) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+        }
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 14, 23, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.cards-grid .card:nth-child(1) { transition-delay: 0.1s; }
-.cards-grid .card:nth-child(2) { transition-delay: 0.2s; }
-.cards-grid .card:nth-child(3) { transition-delay: 0.3s; }
-.cards-grid .card:nth-child(4) { transition-delay: 0.4s; }
-.cards-grid .card:nth-child(5) { transition-delay: 0.5s; }
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
 
-header {
-    background: rgba(10, 14, 23, 0.95);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-}
+        .logo span {
+            color: var(--accent-blue);
+        }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-}
+        .lang-switch {
+            background: rgba(0, 210, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--accent-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-.logo-box {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    cursor: pointer;
-}
+        .lang-switch:hover {
+            background: var(--accent-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
+            border-color: var(--accent-blue);
+        }
 
-.logo-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(145deg, #1e293b, #0f172a);
-    border: 2px solid var(--accent-blue);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 26px;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.6);
-    letter-spacing: -1px;
-    flex-shrink: 0;
-}
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 60px 20px 100px 20px;
+        }
 
-.logo-text {
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: 0.5px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    line-height: 1;
-    white-space: nowrap;
-}
+        .hero {
+            text-align: center;
+            margin-bottom: 70px;
+        }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
-    align-items: center;
-    list-style: none;
-}
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
 
-.nav-links a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s;
-}
+        .highlight-text {
+            color: var(--accent-blue);
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.25);
+        }
 
-.nav-links a:hover {
-    color: var(--accent-blue);
-}
+        .hero p {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto;
+        }
 
-.lang-switch {
-    display: flex;
-    gap: 4px;
-    background: var(--bg-card);
-    padding: 3px 6px;
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-}
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
 
-.lang-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    padding: 3px 10px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.8rem;
-    border-radius: 12px;
-    transition: 0.3s;
-}
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-.lang-btn.active {
-    background: var(--accent-blue);
-    color: #000;
-}
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(0, 210, 255, 0.15),
+                        inset 0 0 15px rgba(0, 210, 255, 0.03);
+        }
 
-.hero {
-    padding: 170px 20px 100px;
-    text-align: center;
-    background: radial-gradient(circle at center, #162238 0%, var(--bg-dark) 75%);
-    border-bottom: 1px solid var(--border-color);
-}
+        .card-number {
+            font-size: 0.8rem;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
 
-.hero-title {
-    font-size: 2.8rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #ffffff 0%, var(--accent-metal) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
-}
+        .card h3 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
 
-.hero-subtitle {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 850px;
-    margin: 0 auto 35px;
-    font-weight: 300;
-    line-height: 1.8;
-}
+        .card p {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
 
-.btn-cta {
-    display: inline-block;
-    background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
-    color: #fff;
-    padding: 14px 34px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 20px rgba(0, 210, 255, 0.35);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease, 
+                        box-shadow 0.3s ease;
+            will-change: opacity, transform;
+        }
 
-.btn-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0, 210, 255, 0.5);
-}
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 20px;
-}
+        footer {
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 30px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(10, 14, 23, 0.9);
+        }
 
-.section-title {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    color: #fff;
-    font-weight: 700;
-}
+        @media (max-width: 600px) {
+            header {
+                padding: 14px 4%;
+            }
+            .container {
+                padding-top: 40px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
 
-.section-desc {
-    text-align: center;
-    color: var(--text-muted);
-    margin-bottom: 50px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.05rem;
-}
+    <header>
+        <div class="logo">ВЕЛДЕР ВГ <span>ТРЕЈДИНГ</span></div>
+        <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">EN</button>
+    </header>
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-}
+    <div class="container">
+        <section class="hero reveal">
+            <h1 id="heroTitle">Инженерска прецизност за <span class="highlight-text">станбени и деловни објекти</span></h1>
+            <p id="heroSubtitle">Професионално проектирање и изведба на системи за централно греење, климатизација, вентилација, водовод и одводнување.</p>
+        </section>
 
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 30px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-}
+        <div class="cards-grid">
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_01</div>
+                    <h3 data-mk="Централно греење" data-en="Central Heating">Централно греење</h3>
+                    <p data-mk="Проектирање и монтажа на енергетски ефикасни системи за греење, топлински пумпи и подно греење за станбени и деловни објекти." 
+                       data-en="Design and installation of energy-efficient heating systems, heat pumps, and underfloor heating for residential and commercial buildings.">
+                        Проектирање и монтажа на енергетски ефикасни системи за греење, топлински пумпи и подно греење за станбени и деловни објекти.
+                    </p>
+                </div>
+            </div>
 
-.card:hover {
-    border-color: var(--accent-blue);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.2);
-}
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_02</div>
+                    <h3 data-mk="Климатизација" data-en="Air Conditioning">Климатизација</h3>
+                    <p data-mk="Современи VRF и сплит системи за прецизна контрола на температурата, максимална удобност и оптимизирана потрошувачка на енергија." 
+                       data-en="Modern VRF and split systems for precise temperature control, maximum comfort, and optimized energy consumption.">
+                        Современи VRF и сплит системи за прецизна контрола на температурата, максимална удобност и оптимизирана потрошувачка на енергија.
+                    </p>
+                </div>
+            </div>
 
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    display: block;
-}
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_03</div>
+                    <h3 data-mk="Вентилација" data-en="Ventilation">Вентилација</h3>
+                    <p data-mk="Индустриска и резиденцијална вентилација со рекуперација на топлина за свеж воздух и висок квалитет на внатрешниот амбиент." 
+                       data-en="Industrial and residential ventilation with heat recovery for fresh air and high indoor environmental quality.">
+                        Индустриска и резиденцијална вентилација со рекуперација на топлина за свеж воздух и висок квалитет на внатрешниот амбиент.
+                    </p>
+                </div>
+            </div>
 
-.card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 12px;
-    color: #fff;
-    font-weight: 700;
-}
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_04</div>
+                    <h3 data-mk="Водовод и канализација" data-en="Plumbing & Drainage">Водовод и канализација</h3>
+                    <p data-mk="Комплетни хидротехнички инсталации, водоводни мрежи, одводнување и стандардизирани санитарни решенија." 
+                       data-en="Complete hydrotechnical installations, water supply networks, drainage systems, and standardized sanitary solutions.">
+                        Комплетни хидротехнички инсталации, водоводни мрежи, одводнување и стандардизирани санитарни решенија.
+                    </p>
+                </div>
+            </div>
 
-.card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-}
+            <div class="card reveal">
+                <div>
+                    <div class="card-number">// SYSTEM_05</div>
+                    <h3 data-mk="Инженерски консалтинг" data-en="Engineering Consulting">Инженерски консалтинг</h3>
+                    <p data-mk="Технички надзор, надгледување на изведба, анализа на енергетска ефикасност и стручно советување за вашите проекти." 
+                       data-en="Technical supervision, execution oversight, energy efficiency analysis, and expert advice for your engineering projects.">
+                        Технички надзор, надгледување на изведба, анализа на енергетска ефикасност и стручно советување за вашите проекти.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.badge {
-    display: inline-block;
-    background: rgba(0, 210, 255, 0.1);
-    color: var(--accent-blue);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: 1px solid rgba(0, 210, 255, 0.2);
-}
+    <footer>
+        <p id="footerText">&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
+    </footer>
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(8px);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll('.reveal');
 
-.modal-content {
-    background: var(--bg-card);
-    border: 1px solid var(--accent-blue);
-    border-radius: 12px;
-    max-width: 700px;
-    width: 100%;
-    padding: 35px;
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0, 210, 255, 0.25);
-    max-height: 90vh;
-    overflow-y: auto;
-}
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -40px 0px',
+                threshold: 0.12
+            };
 
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 1.8rem;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: color 0.2s;
-}
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('active');
+                        }, index * 100);
 
-.close-modal:hover {
-    color: #fff;
-}
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-.modal-title {
-    font-size: 1.7rem;
-    color: #fff;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
+            reveals.forEach(el => revealObserver.observe(el));
+        });
 
-.modal-body {
-    color: var(--text-main);
-    font-size: 0.98rem;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
+        let currentLang = 'mk';
 
-.svg-container {
-    background: #060911;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        const translations = {
+            heroTitle: {
+                mk: 'Инженерска прецизност за <span class="highlight-text">станбени и деловни објекти</span>',
+                en: 'Engineering precision for <span class="highlight-text">residential & commercial structures</span>'
+            },
+            heroSubtitle: {
+                mk: 'Професионално проектирање и изведба на системи за централно греење, климатизација, вентилација, водовод и одводнување.',
+                en: 'Professional design and installation of central heating, air conditioning, ventilation, plumbing, and drainage systems.'
+            },
+            footerText: {
+                mk: '&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.',
+                en: '&copy; 2026 VELDER VG TRADING DOOEL. All rights reserved.'
+            }
+        };
 
-.svg-container svg {
-    width: 100%;
-    max-height: 220px;
-}
+        function toggleLanguage() {
+            currentLang = currentLang === 'mk' ? 'en' : 'mk';
+            const langBtn = document.getElementById('langBtn');
+            
+            document.getElementById('heroTitle').innerHTML = translations.heroTitle[currentLang];
+            document.getElementById('heroSubtitle').innerText = translations.heroSubtitle[currentLang];
+            document.getElementById('footerText').innerHTML = translations.footerText[currentLang];
 
-.contact-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 40px;
-}
+            const translatableElements = document.querySelectorAll('[data-mk]');
+            translatableElements.forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
 
-.contact-info h3 {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.contact-item {
-    margin-bottom: 20px;
-}
-
-.contact-item label {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 5px;
-}
-
-.contact-item a, .contact-item p {
-    color: #fff;
-    font-size: 1.1rem;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.social-btns {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.btn-social {
-    padding: 6px 14px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.viber {
-    background: rgba(115, 96, 242, 0.15);
-    color: #9d8dfd;
-    border-color: rgba(115, 96, 242, 0.3);
-}
-
-.viber:hover {
-    background: #7360f2;
-    color: #fff;
-    box-shadow: 0 0 12px rgba(115, 96, 242, 0.4);
-}
-
-.whatsapp {
-    background: rgba(37, 211, 102, 0.15);
-    color: #4ade80;
-    border-color: rgba(37, 211, 102, 0.3);
-}
-
-.whatsapp:hover {
-    background: #25d366;
-    color: #fff;
-    box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid var(--border-color);
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-    .hero-title { font-size: 2.1rem; }
-    .nav-links { display: none; }
-}
+            langBtn.innerText = currentLang === 'mk' ? 'EN' : 'MK';
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>
