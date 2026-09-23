@@ -7,13 +7,13 @@
     <style>
         :root {
             --bg-dark: #050811;
-            --bg-card: rgba(15, 23, 42, 0.65);
+            --bg-card: rgba(15, 23, 42, 0.75);
             --accent-blue: #00d2ff;
             --accent-glow: rgba(0, 210, 255, 0.25);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --nav-height: 64px;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --nav-height: 70px;
         }
 
         * {
@@ -35,14 +35,14 @@
             line-height: 1.6;
         }
 
-        /* Навигација во Apple стил */
+        /* Навигација */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: var(--nav-height);
-            background: rgba(5, 8, 17, 0.8);
+            background: rgba(5, 8, 17, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
@@ -55,7 +55,7 @@
 
         .logo {
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             letter-spacing: -0.5px;
             color: var(--text-main);
         }
@@ -63,8 +63,8 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-left: 24px;
-            font-size: 0.9rem;
+            margin-left: 28px;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
@@ -72,108 +72,137 @@
             color: var(--accent-blue);
         }
 
-        /* Главен контејнер */
+        /* Hero секција */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: calc(var(--nav-height) + 40px) 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* Главен контејнер со картички (Bento Grid) */
         .container {
-            max-width: 1000px;
-            margin: calc(var(--nav-height) + 60px) auto 80px auto;
+            max-width: 1100px;
+            margin: 0 auto 100px auto;
             padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
         }
 
-        /* Секции во Apple Grid / Card стил */
-        section {
+        /* Apple-стил картички за подстраниците */
+        .system-card {
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 48px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+            border-radius: 24px;
+            padding: 56px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        section:hover {
+        .system-card:hover {
             border-color: var(--accent-glow);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0, 210, 255, 0.1);
         }
 
-        h2 {
-            font-size: 2rem;
+        .system-card h2 {
+            font-size: 2.2rem;
             font-weight: 600;
             letter-spacing: -0.5px;
             margin-bottom: 20px;
             color: var(--text-main);
         }
 
-        p {
+        .system-card > p {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 24px;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
         }
 
-        h4 {
-            font-size: 1.2rem;
+        .system-card h4 {
+            font-size: 1.25rem;
             font-weight: 500;
             color: var(--accent-blue);
             margin: 32px 0 16px 0;
             letter-spacing: -0.3px;
         }
 
-        ul {
+        .system-card ul {
             list-style: none;
             padding-left: 0;
         }
 
-        li {
+        .system-card li {
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
+            padding-left: 22px;
+            margin-bottom: 14px;
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
-        li::before {
+        .system-card li::before {
             content: "•";
             position: absolute;
             left: 0;
             color: var(--accent-blue);
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        li strong {
+        .system-card li strong {
             color: var(--text-main);
             font-weight: 500;
         }
 
-        li ul {
-            margin-top: 8px;
-            margin-bottom: 8px;
-            padding-left: 16px;
+        .system-card li ul {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-left: 18px;
         }
 
-        li ul li {
+        .system-card li ul li {
             margin-bottom: 8px;
+            font-size: 1rem;
         }
 
         /* Футер */
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 50px 0;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 24px;
-            }
-            h2 {
-                font-size: 1.5rem;
-            }
-            nav {
-                display: none;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .system-card { padding: 28px; }
+            .system-card h2 { font-size: 1.6rem; }
+            nav { display: none; }
         }
     </style>
 </head>
@@ -183,18 +212,25 @@
     <header>
         <div class="logo">ВЕЛДЕР ВГ ТРЕЈДИНГ</div>
         <nav>
-            <a href="#toplovodno-greele">Греење</a>
-            <a href="#geotermalni-sistemi">Геотермални</a>
+            <a href="#toplovodno">Греење</a>
+            <a href="#geotermalni">Геотермални</a>
             <a href="#toplinski-pumpi">Топлински Пумпи</a>
-            <a href="#ventilacija-i-klimatizacija">Вентилација</a>
-            <a href="#vodovod-i-kanalizacija">ВиК</a>
+            <a href="#ventilacija">Вентилација</a>
+            <a href="#vodovod">ВиК</a>
         </nav>
     </header>
 
+    <!-- Hero Секција -->
+    <section class="hero">
+        <h1>Професионални HVAC & Машински Инсталации</h1>
+        <p>Врвна инженерска изведба за модерни станбени, деловни и индустриски објекти со беспрекорна прецизност.</p>
+    </section>
+
+    <!-- Главен сет на картички (Подстраници во Apple скрол стил) -->
     <div class="container">
 
-        <!-- ПОДСТРАНИЦА 1: Централно Топловодно Греење & Приклучни Подстаници -->
-        <section id="toplovodno-greele">
+        <!-- КАРТИЧКА 1 -->
+        <section id="toplovodno" class="system-card">
             <h2>Централно Топловодно Греење & Приклучни Подстаници</h2>
             <p>Централните топловодни системи и топлинските подстаници претставуваат клучна инфраструктура за сигурно, рамномерно и економично снабдување со топлинска енергија во станбени, деловни и јавни објекти.</p>
             
@@ -212,8 +248,8 @@
             </ul>
         </section>
 
-        <!-- ПОДСТРАНИЦА 2: Геотермални Системи -->
-        <section id="geotermalni-sistemi">
+        <!-- КАРТИЧКА 2 -->
+        <section id="geotermalni" class="system-card">
             <h2>Геотермални Системи</h2>
             <p>Геотермалните системи ја користат стабилната температура на земјиштето или подземните води како обновлив извор на енергија за врвно греење, ладење и подготовка на топла санитарна вода (ТСВ).</p>
 
@@ -231,8 +267,8 @@
             </ul>
         </section>
 
-        <!-- ПОДСТРАНИЦА 3: Топлински Пумпи Воздух-Вода -->
-        <section id="toplinski-pumpi">
+        <!-- КАРТИЧКА 3 -->
+        <section id="toplinski-pumpi" class="system-card">
             <h2>Топлински Пумпи Воздух-Вода</h2>
             <p>Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
 
@@ -250,8 +286,8 @@
             </ul>
         </section>
 
-        <!-- ПОДСТРАНИЦА 4: Вентилација & Климатизација -->
-        <section id="ventilacija-i-klimatizacija">
+        <!-- КАРТИЧКА 4 -->
+        <section id="ventilacija" class="system-card">
             <h2>Вентилација & Климатизација</h2>
             <p>Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
 
@@ -275,8 +311,8 @@
             </ul>
         </section>
 
-        <!-- ПОДСТРАНИЦА 5: Водовод & Канализација (ВиК) -->
-        <section id="vodovod-i-kanalizacija">
+        <!-- КАРТИЧКА 5 -->
+        <section id="vodovod" class="system-card">
             <h2>Водовод & Канализација (ВиК)</h2>
             <p>Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
 
