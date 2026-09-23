@@ -1,138 +1,547 @@
 <!DOCTYPE html>
 <html lang="mk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body id="top">
+<body>
 
-    <header>
-        <div class="nav-container">
-            <a href="#top" class="logo-box">
-                <div class="logo-icon">W</div>
-                <span class="logo-text">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#about" data-i18n="nav-about">За Нас</a></li>
-                <li><a href="#systems" data-i18n="nav-systems">Системи</a></li>
-                <li><a href="#contact" data-i18n="nav-contact">Контакт</a></li>
-            </ul>
-            <div class="lang-switch">
-                <button class="lang-btn active" id="btn-mk">MK</button>
-                <button class="lang-btn" id="btn-en">EN</button>
-            </div>
-        </div>
-    </header>
+  <!-- Навигација -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bold">VELDER</span>
+        <span class="logo-sub">VG TRADING</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#hero" class="nav-link active">Почетна</a></li>
+        <li><a href="#heating" class="nav-link">Греење и Ладење</a></li>
+        <li><a href="#plumbing" class="nav-link">Водовод и Канализација</a></li>
+        <li><a href="#maintenance" class="nav-link">Сервис и Одржување</a></li>
+        <li><a href="#contact" class="nav-link nav-btn">Контакт</a></li>
+      </ul>
 
-    <section class="hero reveal">
-        <h1 class="hero-title" data-i18n="hero-title">Професионални HVAC & Машински Инсталации за Модерни Објекти</h1>
-        <p class="hero-subtitle" data-i18n="hero-subtitle">
-            Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкојлерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкојлер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.
-        </p>
-        <a href="#contact" class="btn-cta" data-i18n="btn-cta">Побарај Понуда & Консултација</a>
-    </section>
+      <div class="lang-switch">
+        <button id="lang-toggle" class="lang-btn">MK / EN</button>
+      </div>
 
-    <section id="about" class="container reveal">
-        <h2 class="section-title" data-i18n="about-title">Сигурност & Докажан Квалитет</h2>
-        <p class="section-desc" data-i18n="about-desc">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ е специјализирана компанија фокусирана на комплетна изведба, инженерски надзор и оптимизација на машински системи во градежништвото.</p>
-    </section>
-
-    <section id="systems" class="reveal" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-        <div class="container">
-            <h2 class="section-title" data-i18n="systems-title">Специјализирани HVAC Системи</h2>
-
-            <div class="cards-grid">
-                <div class="card reveal" onclick="openSchema('toplifikacija')">
-                    <span class="card-icon">🔥</span>
-                    <h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
-                    <p data-i18n="sys1-desc">Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкојлерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.</p>
-                    <span class="badge" data-i18n="sys1-badge">ЕСМ Градска Мрежа</span>
-                </div>
-
-                <div class="card reveal" onclick="openSchema('geothermal')">
-                    <span class="card-icon">🌍</span>
-                    <h3 data-i18n="sys2-title">Геотермални Системи</h3>
-                    <p data-i18n="sys2-desc">Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.</p>
-                    <span class="badge" data-i18n="sys2-badge">Заштеда до 75%</span>
-                </div>
-
-                <div class="card reveal" onclick="openSchema('heatpumps')">
-                    <span class="card-icon">⚡</span>
-                    <h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
-                    <p data-i18n="sys3-desc">Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.</p>
-                    <span class="badge" data-i18n="sys3-badge">Висок COP коефициент</span>
-                </div>
-
-                <div class="card reveal" onclick="openSchema('ventilation')">
-                    <span class="card-icon">🌬️</span>
-                    <h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
-                    <p data-i18n="sys4-desc">Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкојлер системи) и воздуховодни канали за оптимална микроклима.</p>
-                    <span class="badge" data-i18n="sys4-badge">Чист Воздух & Контрола</span>
-                </div>
-
-                <div class="card reveal" onclick="openSchema('plumbing')">
-                    <span class="card-icon">💧</span>
-                    <h3 data-i18n="sys5-title">Водовод & Канализација</h3>
-                    <p data-i18n="sys5-desc">Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.</p>
-                    <span class="badge" data-i18n="sys5-badge">Станбено-Деловни Објекти</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="schemaModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeSchema()">&times;</span>
-            <h3 id="modalTitle" class="modal-title">Техничка Шема</h3>
-            <div id="modalBody" class="modal-body">Опис...</div>
-            
-            <div id="svgContainer" class="svg-container"></div>
-
-            <a href="#contact" class="btn-cta" onclick="closeSchema()" style="width: 100%; text-align: center; box-sizing: border-box; margin-top: 10px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
-        </div>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
     </div>
+  </nav>
 
-    <section id="contact" class="container reveal">
-        <h2 class="section-title" data-i18n="contact-title">Контактирајте нè</h2>
-        <p class="section-desc" data-i18n="contact-desc">За консултации, проектирање или изведба на вашите објекти, контактирајте го нашиот инженерски тим.</p>
+  <!-- Секција 1: Hero / Почетна -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <h1 data-mk="Инженеринг и инсталации за совршен комфор" data-en="Engineering and Installations for Perfect Comfort">Инженеринг и инсталации за совршен комфор</h1>
+      <p data-mk="ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ Скопје – Професионално проектирање, изведба и одржување на термотехнички и водоводни системи." data-en="VELDER VG TRADING DOOEL Skopje – Professional design, execution, and maintenance of HVAC and plumbing systems.">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ Скопје – Професионално проектирање, изведба и одржување на термотехнички и водоводни системи.</p>
+      <div class="hero-buttons">
+        <a href="#heating" class="btn btn-primary" data-mk="Истражи услуги" data-en="Explore Services">Истражи услуги</a>
+        <a href="#contact" class="btn btn-secondary" data-mk="Контактирај нè" data-en="Contact Us">Контактирај нè</a>
+      </div>
+    </div>
+  </section>
 
-        <div class="contact-box">
-            <div class="contact-info">
-                <h3 data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</h3>
-                
-                <div class="contact-item">
-                    <label data-i18n="lbl-location">Локација:</label>
-                    <p data-i18n="val-location">Скопје, Република Северна Македонија</p>
-                </div>
+  <!-- Секција 2: Греење и Ладење -->
+  <section id="heating" class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-mk="Системи за Греење и Ладење" data-en="Heating & Cooling Systems">Системи за Греење и Ладење</h2>
+        <p data-mk="Енергетски ефикасни решенија за станбени и деловни објекти." data-en="Energy-efficient solutions for residential and commercial buildings.">Енергетски ефикасни решенија за станбени и деловни објекти.</p>
+      </div>
 
-                <div class="contact-item">
-                    <label data-i18n="lbl-phone">Телефон / Viber / WhatsApp:</label>
-                    <p><a href="tel:+38970374959" id="phone-display">070 374 959</a></p>
-                </div>
-
-                <div class="contact-item">
-                    <label data-i18n="lbl-email">Е-пошта:</label>
-                    <p><a href="mailto:veldervg@icloud.com">veldervg@icloud.com</a></p>
-                </div>
-
-                <div class="social-btns">
-                    <a href="viber://chat?number=%2B38970374959" class="btn-social viber">
-                        <span>💬</span> Viber
-                    </a>
-                    <a href="https://wa.me/38970374959" class="btn-social whatsapp">
-                        <span>🟢</span> WhatsApp
-                    </a>
-                </div>
-            </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🔥</div>
+          <h3 data-mk="Централно и подно греење" data-en="Central & Underfloor Heating">Централно и подно греење</h3>
+          <p data-mk="Дизајн и инсталација на системи за подно греење и радијаторско греење со рамномерна дистрибуција на топлината и висока заштеда на енергија." data-en="Design and installation of underfloor and radiator heating systems with even heat distribution and high energy efficiency.">Дизајн и инсталација на системи за подно греење и радијаторско греење со рамномерна дистрибуција на топлината и висока заштеда на енергија.</p>
         </div>
-    </section>
 
-    <footer>
-        <p data-i18n="footer">&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
-    </footer>
+        <div class="card">
+          <div class="card-icon">❄️</div>
+          <h3 data-mk="Топлински пумпи и климатизација" data-en="Heat Pumps & Air Conditioning">Топлински пумпи и климатизација</h3>
+          <p data-mk="Имплементација на современи инвертер системи, чилери и VRF/VRV системи за ефикасно ладење и греење во текот на целата година." data-en="Implementation of modern inverter systems, chillers, and VRF/VRV systems for efficient cooling and heating throughout the entire year.">Имплементација на современи инвертер системи, чилери и VRF/VRV системи за ефикасно ладење и греење во текот на целата година.</p>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="card">
+          <div class="card-icon">🌬️</div>
+          <h3 data-mk="Вентилација и рекуперација" data-en="Ventilation & Heat Recovery">Вентилација и рекуперација</h3>
+          <p data-mk="Системи за принудна вентилација со рекуперација на топлина, за обезбедување свеж воздух и оптимален квалитет на микроклимата во просторот." data-en="Forced ventilation systems with heat recovery to ensure fresh air and optimal indoor microclimate quality.">Системи за принудна вентилација со рекуперација на топлина, за обезбедување свеж воздух и оптимален квалитет на микроклимата во просторот.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секција 3: Водовод и Канализација -->
+  <section id="plumbing" class="content-section alt-bg">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-mk="Водоводни и Канализациони Инсталации" data-en="Plumbing & Drainage Installations">Водоводни и Канализациони Инсталации</h2>
+        <p data-mk="Сигурност, долготрајност и квалитет во секоја капка." data-en="Reliability, durability, and quality in every drop.">Сигурност, долготрајност и квалитет во секоја капка.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🚰</div>
+          <h3 data-mk="Водоводни мрежи" data-en="Water Supply Networks">Водоводни мрежи</h3>
+          <p data-mk="Комплетна изведба на внатрешни и надворешни водоводни инсталации со современи материјали од врвен квалитет (PPR, PEX, бакар)." data-en="Complete execution of internal and external water supply networks using high-quality modern materials (PPR, PEX, copper).">Комплетна изведба на внатрешни и надворешни водоводни инсталации со современи материјали од врвен квалитет (PPR, PEX, бакар).</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🚽</div>
+          <h3 data-mk="Канализациски системи" data-en="Drainage Systems">Канализациски системи</h3>
+          <p data-mk="Проектирање и монтажа на бешумни канализациски мрежи, дренажни системи и одводнување на атмосферски води." data-en="Design and installation of low-noise drainage networks, drainage systems, and stormwater management.">Проектирање и монтажа на бешумни канализациски мрежи, дренажни системи и одводнување на атмосферски води.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <h3 data-mk="Санитарна опрема" data-en="Sanitary Equipment">Санитарна опрема</h3>
+          <p data-mk="Професионална монтажа на вградени елементи, квалитетни арматури, филтри за вода и системи за зголемување на притисокот." data-en="Professional installation of concealed elements, quality fittings, water filters, and pressure booster systems.">Професионална монтажа на вградени елементи, квалитетни арматури, филтри за вода и системи за зголемување на притисокот.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секција 4: Сервис и Одржување -->
+  <section id="maintenance" class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-mk="Технички Сервис и Одржување" data-en="Technical Service & Maintenance">Технички Сервис и Одржување</h2>
+        <p data-mk="Превентивна грижа и брза интервенција за вашите системи." data-en="Preventive care and fast interventions for your systems.">Превентивна грижа и брза интервенција за вашите системи.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <h3 data-mk="Редовна дијагностика" data-en="Regular Diagnostics">Редовна дијагностика</h3>
+          <p data-mk="Проверка на притисок, чистење филтри, мерење на параметри и превентивен преглед на сите видови грејни и ладилни тела." data-en="Pressure checks, filter cleaning, parameter measurements, and preventive inspections of all heating and cooling units.">Проверка на притисок, чистење филтри, мерење на параметри и превентивен преглед на сите видови грејни и ладилни тела.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3 data-mk="Брзи интервенции" data-en="Emergency Repairs">Брзи интервенции</h3>
+          <p data-mk="Лоцирање и отстранување дефекти, замена на оштетени вентили, пумпи и компресори во најкраток можен рок." data-en="Fault location and troubleshooting, replacement of damaged valves, pumps, and compressors in the shortest possible time.">Лоцирање и отстранување дефекти, замена на оштетени вентили, пумпи и компресори во најкраток можен рок.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <h3 data-mk="Сезонска подготовка" data-en="Seasonal Preparation">Сезонска подготовка</h3>
+          <p data-mk="Подготовка на сите системи за летна или зимска сезона, оптимизација на контролерите и подобрување на енергетската ефикасност." data-en="System preparation for summer or winter seasons, controller optimization, and enhancement of energy efficiency.">Подготовка на сите системи за летна или зимска сезона, оптимизација на контролерите и подобрување на енергетската ефикасност.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секција 5: Контакт -->
+  <section id="contact" class="content-section alt-bg">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-mk="Контактирајте нè" data-en="Contact Us">Контактирајте нè</h2>
+        <p data-mk="Стоиме на располагање за сите ваши прашања и консултации." data-en="We are at your disposal for all questions and consultations.">Стоиме на располагање за сите ваши прашања и консултации.</p>
+      </div>
+
+      <div class="contact-box">
+        <div class="contact-info">
+          <h3>ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</h3>
+          <p>📍 Скопје, Северна Македонија</p>
+          <p>📞 <strong>Телефон:</strong> +389 70 123 456</p>
+          <p>✉️ <strong>Е-пошта:</strong> contact@velder.mk</p>
+          <p>🕒 <strong>Работно време:</strong> Понедјелник - Петок (08:00 - 16:00)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+/* Базни подесувања */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #1d1d1f;
+  background-color: #fbfbfd;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Навигација */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-bold {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #000;
+  letter-spacing: -0.5px;
+}
+
+.logo-sub {
+  font-size: 0.65rem;
+  color: #6e6e73;
+  letter-spacing: 1px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #1d1d1f;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #0071e3;
+}
+
+.nav-btn {
+  background: #0071e3;
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #005bb5;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid #d2d2d7;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: #1d1d1f;
+  color: #fff;
+  border-color: #1d1d1f;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background-color: #1d1d1f;
+  border-radius: 2px;
+}
+
+/* Hero Секција */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  background: linear-gradient(180deg, #f2f2f7 0%, #fbfbfd 100%);
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  color: #6e6e73;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 12px 26px;
+  border-radius: 22px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #0071e3;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #005bb5;
+}
+
+.btn-secondary {
+  background: #e8e8ed;
+  color: #1d1d1f;
+}
+
+.btn-secondary:hover {
+  background: #d2d2d7;
+}
+
+/* Содржински секции */
+.content-section {
+  padding: 100px 0;
+}
+
+.alt-bg {
+  background-color: #f2f2f7;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  color: #6e6e73;
+  font-size: 1.1rem;
+}
+
+/* Картички (Grid) */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 35px 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #6e6e73;
+  font-size: 0.95rem;
+}
+
+/* Контакт кутија */
+.contact-box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 12px;
+  color: #1d1d1f;
+  font-size: 1rem;
+}
+
+/* Футер */
+footer {
+  padding: 30px 0;
+  border-top: 1px solid #d2d2d7;
+  text-align: center;
+  color: #86868b;
+  font-size: 0.85rem;
+}
+
+/* Респонзивност за мобилни */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 60px;
+    gap: 0;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    padding: 20px 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-menu li {
+    margin: 15px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. Мобилно мени (Hamburger)
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+  }));
+
+  // 2. Активен линк при скролање
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // 3. Промена на јазик (MK / EN)
+  const langToggleBtn = document.getElementById('lang-toggle');
+  let currentLang = 'mk';
+
+  langToggleBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'mk' ? 'en' : 'mk';
+    
+    const elementsToTranslate = document.querySelectorAll('[data-mk]');
+    elementsToTranslate.forEach(element => {
+      if (currentLang === 'en') {
+        element.textContent = element.getAttribute('data-en');
+      } else {
+        element.textContent = element.getAttribute('data-mk');
+      }
+    });
+  });
+
+});
+
+
