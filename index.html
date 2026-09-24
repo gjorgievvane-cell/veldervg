@@ -244,21 +244,23 @@
             font-weight: 300;
         }
 
-        /* --- TRUE FULL-SCREEN FLUID OVERLAY --- */
+        /* --- MODAL FOR SCHEMATICS & DETAILED TEXT --- */
         .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(5, 8, 17, 0.97);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             z-index: 2000;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.3s ease;
         }
 
         .modal.show {
@@ -266,89 +268,84 @@
             opacity: 1;
         }
 
-        .modal-header-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .modal-content {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-blue);
+            border-radius: 28px;
+            max-width: 760px;
             width: 100%;
-            height: 70px;
-            background: rgba(5, 8, 17, 0.9);
-            backdrop-filter: blur(20px);
+            max-height: 85vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-            border-bottom: 1px solid var(--border-color);
-            z-index: 2020;
+            flex-direction: column;
+            padding: 40px;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.3);
         }
 
-        .modal-header-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent-blue);
-        }
-
-        .modal-header-actions {
-            display: flex;
-            gap: 16px;
-            align-items: center;
+        .modal.show .modal-content {
+            transform: scale(1);
         }
 
         .close-modal {
-            font-size: 1.8rem;
-            color: var(--text-main);
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 1.4rem;
+            color: var(--text-muted);
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
+            z-index: 10;
         }
 
         .close-modal:hover {
             background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.05);
+            color: #fff;
         }
 
-        .modal-content-fluid {
-            width: 100%;
-            height: 100%;
-            padding: 100px 8vw 60px 8vw; /* Fluid side margins for perfect reading flow */
+        .modal-scrollable-body {
             overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 24px;
+            flex-grow: 1;
             scrollbar-width: thin;
             scrollbar-color: var(--accent-blue) rgba(255, 255, 255, 0.05);
         }
 
-        .modal-content-fluid::-webkit-scrollbar {
+        .modal-scrollable-body::-webkit-scrollbar {
             width: 6px;
         }
 
-        .modal-content-fluid::-webkit-scrollbar-thumb {
+        .modal-scrollable-body::-webkit-scrollbar-thumb {
             background-color: var(--accent-blue);
             border-radius: 10px;
         }
 
-        .modal-main-title {
-            font-size: clamp(2.2rem, 4vw, 3.5rem);
-            color: #fff;
-            margin-bottom: 40px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
+        .svg-container {
+            background: rgba(5, 8, 17, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
         }
 
         .modal-text-content {
             color: var(--text-muted);
-            font-size: 1.18rem;
-            line-height: 1.95;
+            font-size: 0.98rem;
+            line-height: 1.7;
             font-weight: 300;
         }
 
         .modal-text-content p {
-            margin-bottom: 28px;
+            margin-bottom: 16px;
         }
 
         .modal-text-content strong {
@@ -357,12 +354,12 @@
         }
 
         .modal-text-content ul {
-            margin-left: 30px;
-            margin-bottom: 28px;
+            margin-left: 20px;
+            margin-bottom: 16px;
         }
 
         .modal-text-content li {
-            margin-bottom: 14px;
+            margin-bottom: 8px;
         }
 
         /* --- CONTACT SECTION --- */
@@ -489,8 +486,6 @@
             .hero-title { font-size: 2.2rem; }
             .contact-divider { display: none; }
             .contact-details-grid { flex-direction: column; gap: 12px; }
-            .modal-content-fluid { padding: 90px 20px 40px 20px; }
-            .modal-header-bar { padding: 0 20px; }
         }
     </style>
 </head>
@@ -523,11 +518,11 @@
         <a href="#contact" class="btn-cta" data-i18n="btn-cta">Побарај Понуда & Консултација</a>
     </section>
 
-    <!-- STACKED SYSTEMS -->
+    <!-- STACKED SUBPAGES -->
     <section id="systems" class="systems-wrapper">
         
-        <!-- SYSTEM 1 -->
-        <div class="system-card" onclick="openModal('toplifikacija')">
+        <!-- SUBPAGE 1 -->
+        <div class="system-card" onclick="openSchema('toplifikacija')">
             <div class="card-header-flex">
                 <span class="card-icon">🔥</span>
                 <h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
@@ -536,8 +531,8 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SYSTEM 2 -->
-        <div class="system-card" onclick="openModal('geothermal')">
+        <!-- SUBPAGE 2 -->
+        <div class="system-card" onclick="openSchema('geothermal')">
             <div class="card-header-flex">
                 <span class="card-icon">🌍</span>
                 <h3 data-i18n="sys2-title">Геотермални Системи</h3>
@@ -546,8 +541,8 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SYSTEM 3 -->
-        <div class="system-card" onclick="openModal('heatpumps')">
+        <!-- SUBPAGE 3 -->
+        <div class="system-card" onclick="openSchema('heatpumps')">
             <div class="card-header-flex">
                 <span class="card-icon">⚡</span>
                 <h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
@@ -556,8 +551,8 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SYSTEM 4 -->
-        <div class="system-card" onclick="openModal('ventilation')">
+        <!-- SUBPAGE 4 -->
+        <div class="system-card" onclick="openSchema('ventilation')">
             <div class="card-header-flex">
                 <span class="card-icon">🌬️</span>
                 <h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
@@ -566,8 +561,8 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SYSTEM 5 -->
-        <div class="system-card" onclick="openModal('plumbing')">
+        <!-- SUBPAGE 5 -->
+        <div class="system-card" onclick="openSchema('plumbing')">
             <div class="card-header-flex">
                 <span class="card-icon">💧</span>
                 <h3 data-i18n="sys5-title">Водовод & Канализација</h3>
@@ -578,18 +573,16 @@
 
     </section>
 
-    <!-- TRUE FULL-SCREEN FLUID OVERLAY -->
-    <div id="infoModal" class="modal">
-        <div class="modal-header-bar">
-            <span class="modal-header-title" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</span>
-            <div class="modal-header-actions">
-                <a href="#contact" class="btn-cta" onclick="closeModal()" data-i18n="modal-cta" style="padding: 8px 20px; font-size: 0.8rem;">Побарај Понуда</a>
-                <span class="close-modal" onclick="closeModal()">&times;</span>
+    <!-- MODAL FOR DRAWINGS & DETAILED TEXT -->
+    <div id="schemaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeSchema()">&times;</span>
+            <div class="modal-scrollable-body">
+                <h3 id="modalTitle" style="font-size: 1.6rem; color: #fff; margin-bottom: 16px;" data-i18n-modal="title">Техничка Шема</h3>
+                <div id="svgContainer" class="svg-container"></div>
+                <div id="modalBody" class="modal-text-content"></div>
             </div>
-        </div>
-        <div class="modal-content-fluid">
-            <h1 id="modalTitle" class="modal-main-title"></h1>
-            <div id="modalBody" class="modal-text-content"></div>
+            <a href="#contact" class="btn-cta" onclick="closeSchema()" style="display: block; text-align: center; margin-top: 10px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
         </div>
     </div>
 
@@ -644,9 +637,133 @@
                 "contact-desc": "За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.",
                 "val-location": "Скопје, Македонија",
                 "phone-num": "070 374 959",
-                "modal-cta": "Побарај Понуда",
+                "modal-cta": "Побарај Понуда за Овој Систем",
                 "company-name": "ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ",
-                "footer": "© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани."
+                "footer": "© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.",
+                
+                // Modal content MK
+                schemas: {
+                    toplifikacija: {
+                        title: "🔥 Централно Топловодно Греење",
+                        desc: `
+                            <p>Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).</p>
+                            <p><strong>Клучни Сегменти & Изведба:</strong></p>
+                            <ul>
+                                <li><strong>Приклучни Подстаници (ЕСМ Дистрибуција):</strong> Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.</li>
+                                <li><strong>Површински Грејни Системи:</strong> Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.</li>
+                                <li><strong>Радијаторско Греење:</strong> Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.</li>
+                                <li><strong>Фенкоилерски Системи:</strong> Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="180" y="50" width="140" height="100" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ПЛОЧЕСТ</text>
+                            <text x="250" y="115" fill="#00d2ff" font-size="11" text-anchor="middle">ИЗМЕНУВАЧ</text>
+                            <path d="M 20 70 L 180 70" stroke="#ff4d4d" stroke-width="6" fill="none"/>
+                            <path d="M 180 130 L 20 130" stroke="#0072ff" stroke-width="6" fill="none"/>
+                            <path d="M 320 70 L 480 70" stroke="#ff8c00" stroke-width="6" fill="none"/>
+                            <path d="M 480 130 L 320 130" stroke="#00d2ff" stroke-width="6" fill="none"/>
+                            <circle cx="400" cy="70" r="16" fill="#00d2ff" stroke="#fff" stroke-width="2"/>
+                            <text x="400" y="74" fill="#000" font-size="10" text-anchor="middle" font-weight="bold">M</text>
+                        </svg>`
+                    },
+                    geothermal: {
+                        title: "🌍 Геотермални Системи",
+                        desc: `
+                            <p>Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).</p>
+                            <p>Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).</p>
+                            <p><strong>Клучни Изведбени Решенија:</strong></p>
+                            <ul>
+                                <li><strong>Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):</strong> Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.</li>
+                                <li><strong>Системи „Вода-Вода“ (Бунарски системи):</strong> Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.</li>
+                                <li><strong>Интегрирано Греење, Ладење & ТСВ:</strong> Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                            <rect x="430" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                            <rect x="180" y="30" width="140" height="80" rx="6" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="250" y="75" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ТОПЛОТНА ПУМПА</text>
+                            <path d="M 55 100 L 55 70 L 180 70" stroke="#00d2ff" stroke-width="4" fill="none"/>
+                            <path d="M 320 70 L 445 70 L 445 100" stroke="#8a9ba8" stroke-width="4" fill="none"/>
+                        </svg>`
+                    },
+                    heatpumps: {
+                        title: "⚡ Топлински Пумпи (Воздух-Вода)",
+                        desc: `
+                            <p>Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
+                            <p><strong>Принцип на Работа & Ефикасност:</strong> Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:</p>
+                            <ul>
+                                <li><strong>COP (Коефициент на ефикасност при греење):</strong> Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.</li>
+                                <li><strong>EER / SEER:</strong> Индикатори за висока енергетска ефикасност при ладење во летниот период.</li>
+                            </ul>
+                            <p><strong>Главни Предности:</strong></p>
+                            <ul>
+                                <li><strong>Енергетска Заштеда:</strong> Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).</li>
+                                <li><strong>Мултифункционалност:</strong> Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.</li>
+                                <li><strong>Еколошка Одржливост:</strong> Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="50" width="100" height="100" rx="8" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
+                            <circle cx="90" cy="100" r="30" fill="none" stroke="#8a9ba8" stroke-width="3"/>
+                            <rect x="280" y="50" width="160" height="100" rx="8" fill="#121e36" stroke="#ff8c00" stroke-width="2"/>
+                            <text x="360" y="95" fill="#fff" font-size="11" text-anchor="middle" font-weight="bold">БУФЕР РЕЗЕРВОАР</text>
+                            <path d="M 140 80 L 280 80" stroke="#ff4d4d" stroke-width="5" fill="none"/>
+                            <path d="M 280 120 L 140 120" stroke="#0072ff" stroke-width="5" fill="none"/>
+                        </svg>`
+                    },
+                    ventilation: {
+                        title: "🌬️ Вентилација & Климатизација",
+                        desc: `
+                            <p>Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
+                            <p><strong>Основни Компоненти & Категории:</strong></p>
+                            <p><strong>Вентилациски Системи:</strong></p>
+                            <ul>
+                                <li><strong>Принудна (механичка) вентилација:</strong> Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).</li>
+                                <li><strong>Локална и индустриска вентилација:</strong> Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).</li>
+                                <li><strong>Противпожарна вентилација:</strong> Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.</li>
+                            </ul>
+                            <p><strong>Системи за Климатизација:</strong></p>
+                            <ul>
+                                <li><strong>Сплит и мулти-сплит системи:</strong> Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.</li>
+                                <li><strong>VRF / VRV системи:</strong> Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.</li>
+                                <li><strong>Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):</strong> Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.</li>
+                                <li><strong>Канална климатизација:</strong> Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="170" y="40" width="160" height="120" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">РЕКУПЕРАТОР</text>
+                            <path d="M 20 60 L 170 60" stroke="#00d2ff" stroke-width="4" fill="none"/>
+                            <path d="M 330 60 L 480 60" stroke="#25d366" stroke-width="4" fill="none"/>
+                        </svg>`
+                    },
+                    plumbing: {
+                        title: "💧 Водовод & Канализација (ВиК)",
+                        desc: `
+                            <p>Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
+                            <p><strong>Основни Системи & Инсталации:</strong></p>
+                            <ul>
+                                <li><strong>Внатрешна водоводна мрежа:</strong> Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.</li>
+                                <li><strong>Канализациони системи:</strong> Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).</li>
+                                <li><strong>Хидрантски противпожарни мрежи:</strong> Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.</li>
+                                <li><strong>Хидрофорни постројки и пумпни станици:</strong> Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.</li>
+                            </ul>
+                            <p><strong>Изведбени Стандарди & Квалитет:</strong></p>
+                            <ul>
+                                <li>Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.</li>
+                                <li>Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 40 160 L 160 160 L 160 40 L 460 40" stroke="#00d2ff" stroke-width="6" fill="none"/>
+                            <circle cx="160" cy="120" r="18" fill="#0072ff" stroke="#fff" stroke-width="2"/>
+                            <text x="160" y="124" fill="#fff" font-size="10" text-anchor="middle" font-weight="bold">P</text>
+                            <path d="M 300 40 L 300 160" stroke="#ff4d4d" stroke-width="4" fill="none"/>
+                        </svg>`
+                    }
+                }
             },
             en: {
                 "nav-about": "About Us",
@@ -670,18 +787,146 @@
                 "contact-desc": "For consultation, engineering design, or complete execution of mechanical installations, reach out to our engineering team.",
                 "val-location": "Skopje, Macedonia",
                 "phone-num": "+389 70 374 959",
-                "modal-cta": "Request Quote",
+                "modal-cta": "Request Proposal for This System",
                 "company-name": "VELDER VG TRADING LLC",
-                "footer": "© 2026 VELDER VG TRADING LLC. All rights reserved."
+                "footer": "© 2026 VELDER VG TRADING LLC. All rights reserved.",
+
+                // Modal content EN
+                schemas: {
+                    toplifikacija: {
+                        title: "🔥 Central District Heating",
+                        desc: `
+                            <p>Central hydronic heating is one of the most widespread, reliable, and efficient systems for heating residential, commercial, and industrial buildings. Its core operation is based on the circulation of a fluid (water) heated in a central heat source (boiler, heat pump, or municipal district heating plant) and distributed via a piping network to surface heating elements (underfloor, wall, or ceiling heating) or conventional emitters (radiators and fan coils).</p>
+                            <p><strong>Key Segments & Execution:</strong></p>
+                            <ul>
+                                <li><strong>Connection Substations (ESM Heat Distribution):</strong> Execution of primary and secondary circuits featuring high-efficiency compact plate heat exchangers, automatic differential pressure and flow regulators, weather-compensated microprocessor control, and frequency-controlled circulation pumps.</li>
+                                <li><strong>Surface Heating Systems:</strong> Low-temperature underfloor, wall, and ceiling heating built with premium PEX-Al-PEX and PE-RT pipes, ensuring maximum thermal comfort, even temperature distribution, and high energy efficiency.</li>
+                                <li><strong>Radiator Heating:</strong> Two-pipe distribution networks equipped with thermostatic radiator valves for precise individual zone control in every room.</li>
+                                <li><strong>Fan Coil Systems:</strong> Two-pipe and four-pipe fan coil installations for fast and dynamic indoor climate regulation in modern residential and commercial buildings.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="180" y="50" width="140" height="100" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">PLATE</text>
+                            <text x="250" y="115" fill="#00d2ff" font-size="11" text-anchor="middle">EXCHANGER</text>
+                            <path d="M 20 70 L 180 70" stroke="#ff4d4d" stroke-width="6" fill="none"/>
+                            <path d="M 180 130 L 20 130" stroke="#0072ff" stroke-width="6" fill="none"/>
+                            <path d="M 320 70 L 480 70" stroke="#ff8c00" stroke-width="6" fill="none"/>
+                            <path d="M 480 130 L 320 130" stroke="#00d2ff" stroke-width="6" fill="none"/>
+                            <circle cx="400" cy="70" r="16" fill="#00d2ff" stroke="#fff" stroke-width="2"/>
+                            <text x="400" y="74" fill="#000" font-size="10" text-anchor="middle" font-weight="bold">M</text>
+                        </svg>`
+                    },
+                    geothermal: {
+                        title: "🌍 Geothermal Systems",
+                        desc: `
+                            <p>Geothermal systems represent one of the most efficient and eco-friendly solutions for heating, cooling, and domestic hot water (DHW) preparation. Their primary advantage lies in utilizing the stable temperature of the ground or groundwater, which remains nearly constant throughout the year at certain depths (between 10°C and 12°C at depths exceeding 10–15 meters).</p>
+                            <p>These systems operate on the principle of geothermal heat pumps (water-to-water or ground-to-water), utilizing a thermodynamic cycle to transfer thermal energy with minimal electricity consumption (driving the compressor and circulation pumps).</p>
+                            <p><strong>Key Engineering Solutions:</strong></p>
+                            <ul>
+                                <li><strong>Ground-to-Water Systems (Vertical Probes / Horizontal Collectors):</strong> Installation of deep geothermal probes or horizontal collector networks absorbing thermal energy from the soil via a glycol solution.</li>
+                                <li><strong>Water-to-Water Systems (Well Systems):</strong> Utilizing well water as a direct and exceptionally rich energy source, offering top-tier performance coefficients (COP) and high seasonal efficiency.</li>
+                                <li><strong>Integrated Heating, Cooling & DHW:</strong> Flexible solutions with free-cooling capabilities, further reducing operational costs during the summer season.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                            <rect x="430" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
+                            <rect x="180" y="30" width="140" height="80" rx="6" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="250" y="75" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">HEAT PUMP</text>
+                            <path d="M 55 100 L 55 70 L 180 70" stroke="#00d2ff" stroke-width="4" fill="none"/>
+                            <path d="M 320 70 L 445 70 L 445 100" stroke="#8a9ba8" stroke-width="4" fill="none"/>
+                        </svg>`
+                    },
+                    heatpumps: {
+                        title: "⚡ Heat Pumps (Air-to-Water)",
+                        desc: `
+                            <p>Air-to-water heat pumps are among the most widespread and economical systems for heating, cooling, and domestic hot water (DHW) preparation. Rather than burning fuel to generate heat, they extract thermal energy from ambient outdoor air and transfer it indoors, achieving high efficiency even during cold winter conditions.</p>
+                            <p><strong>Operation Principle & Efficiency:</strong> The system operates on a proven thermodynamic cycle utilizing refrigerant fluid and an inverter compressor:</p>
+                            <ul>
+                                <li><strong>COP (Coefficient of Performance for Heating):</strong> Indicates the ratio between consumed electrical energy and delivered thermal energy. With high seasonal performance reaching up to 5.0 and above, for every 1 kWh of electricity consumed, the pump delivers multiple times more thermal energy.</li>
+                                <li><strong>EER / SEER:</strong> Indicators of high energy efficiency during summer cooling modes.</li>
+                            </ul>
+                            <p><strong>Key Advantages:</strong></p>
+                            <ul>
+                                <li><strong>Energy Savings:</strong> Dramatically reduced heating and cooling utility costs (up to 70% compared to conventional systems).</li>
+                                <li><strong>Multifunctionality:</strong> An integrated all-in-one solution for heating, cooling, and DHW year-round.</li>
+                                <li><strong>Environmental Sustainability:</strong> Zero local greenhouse gas emissions with full integration capability alongside photovoltaic solar systems.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="50" width="100" height="100" rx="8" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
+                            <circle cx="90" cy="100" r="30" fill="none" stroke="#8a9ba8" stroke-width="3"/>
+                            <rect x="280" y="50" width="160" height="100" rx="8" fill="#121e36" stroke="#ff8c00" stroke-width="2"/>
+                            <text x="360" y="95" fill="#fff" font-size="11" text-anchor="middle" font-weight="bold">BUFFER TANK</text>
+                            <path d="M 140 80 L 280 80" stroke="#ff4d4d" stroke-width="5" fill="none"/>
+                            <path d="M 280 120 L 140 120" stroke="#0072ff" stroke-width="5" fill="none"/>
+                        </svg>`
+                    },
+                    ventilation: {
+                        title: "🌬️ Ventilation & Air Conditioning",
+                        desc: `
+                            <p>Engineering ventilation and air conditioning systems are crucial for ensuring optimal indoor air quality, microclimatic stability, and energy efficiency across all building types.</p>
+                            <p><strong>Core Components & Categories:</strong></p>
+                            <p><strong>Ventilation Systems:</strong></p>
+                            <ul>
+                                <li><strong>Mechanical Forced Ventilation:</strong> Supply and exhaust air systems equipped with air handling units, heat recovery units (high-efficiency thermal exchangers), and multi-stage filtration (G4, F7, HEPA classes).</li>
+                                <li><strong>Local & Industrial Ventilation:</strong> Effective extraction of pollutants, steam, and grease (professional kitchen hoods, exhaust systems for laboratories and industrial facilities).</li>
+                                <li><strong>Smoke & Fire Ventilation:</strong> Smoke and heat exhaust ventilation systems (SHEVS) and stairwell pressurization for safe emergency evacuation.</li>
+                            </ul>
+                            <p><strong>Air Conditioning Systems:</strong></p>
+                            <ul>
+                                <li><strong>Split and Multi-Split Systems:</strong> Flexible solutions ideal for smaller apartments, offices, and individual rooms with high energy ratings.</li>
+                                <li><strong>VRF / VRV Systems:</strong> Centralized inverter systems with variable refrigerant flow, perfectly suited for commercial buildings, hotels, and large residential complexes.</li>
+                                <li><strong>Chillers and Heat Pumps (Air-to-Water / Water-to-Water):</strong> Central chilled and hot water production systems supplying fan coil units and air handling units.</li>
+                                <li><strong>Ducted Air Conditioning:</strong> Integrated conditioned air distribution through insulated ductwork featuring anemostats, grilles, and diffusers for uniform airflow and premium indoor comfort.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="170" y="40" width="160" height="120" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
+                            <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">HEAT RECOVERY</text>
+                            <path d="M 20 60 L 170 60" stroke="#00d2ff" stroke-width="4" fill="none"/>
+                            <path d="M 330 60 L 480 60" stroke="#25d366" stroke-width="4" fill="none"/>
+                        </svg>`
+                    },
+                    plumbing: {
+                        title: "💧 Plumbing & Drainage",
+                        desc: `
+                            <p>Plumbing and drainage infrastructure represents a complex hydraulic network designed for the continuous supply of safe pressurized sanitary water and the secure collection, drainage, and treatment of wastewater and stormwater.</p>
+                            <p><strong>Core Systems & Installations:</strong></p>
+                            <ul>
+                                <li><strong>Internal Water Supply Networks:</strong> Engineering and execution of sanitary water supply and distribution systems utilizing trusted, high-quality materials (PPR, multilayer pipes, galvanized and stainless steel) resistant to pressure and corrosion.</li>
+                                <li><strong>Drainage & Sewerage Systems:</strong> Efficient gravity or forced collection and discharge of sewage and stormwater utilizing certified plastic piping systems (PVC, acoustically insulated PP systems, and robust HDPE piping networks).</li>
+                                <li><strong>Fire Hydrant Networks:</strong> Installation of internal and external fire hydrant systems complete with dedicated booster pump sets to guarantee reliable pressure and flow during emergency scenarios.</li>
+                                <li><strong>Hydrophore Booster Sets & Pumping Stations:</strong> Automated systems maintaining stable water pressure across all building floors, regardless of height or consumption capacity.</li>
+                            </ul>
+                            <p><strong>Execution Standards & Quality:</strong></p>
+                            <ul>
+                                <li>Complete installation of sanitary fixtures, pressure mains, and inspection manholes.</li>
+                                <li>Implementation of rigorous hydrostatic pressure and leak-tightness testing prior to commissioning.</li>
+                            </ul>
+                        `,
+                        svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 40 160 L 160 160 L 160 40 L 460 40" stroke="#00d2ff" stroke-width="6" fill="none"/>
+                            <circle cx="160" cy="120" r="18" fill="#0072ff" stroke="#fff" stroke-width="2"/>
+                            <text x="160" y="124" fill="#fff" font-size="10" text-anchor="middle" font-weight="bold">P</text>
+                            <path d="M 300 40 L 300 160" stroke="#ff4d4d" stroke-width="4" fill="none"/>
+                        </svg>`
+                    }
+                }
             }
         };
 
+        let currentLang = 'mk';
+
         function setLanguage(lang) {
+            currentLang = lang;
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (i18n[lang][key]) el.innerText = i18n[lang][key];
             });
             document.getElementById('phone-display').innerText = i18n[lang]['phone-num'];
+            
             if (lang === 'mk') {
                 document.getElementById('btn-mk').classList.add('active');
                 document.getElementById('btn-en').classList.remove('active');
@@ -689,117 +934,38 @@
                 document.getElementById('btn-en').classList.add('active');
                 document.getElementById('btn-mk').classList.remove('active');
             }
+
+            // If modal is open, refresh its content in the newly selected language
+            const modal = document.getElementById('schemaModal');
+            if (modal.classList.contains('show') && window.activeSchemaType) {
+                openSchema(window.activeSchemaType);
+            }
         }
 
         document.getElementById('btn-mk').addEventListener('click', () => setLanguage('mk'));
         document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
 
-        // DETAILED SYSTEM CONTENTS
-        const systemDetails = {
-            toplifikacija: {
-                title: "🔥 Централно Топловодно Греење",
-                desc: `
-                    <p>Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).</p>
-                    <p><strong>Клучни Сегменти & Изведба:</strong></p>
-                    <ul>
-                        <li><strong>Приклучни Подстаници (ЕСМ Дистрибуција):</strong> Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.</li>
-                        <li><strong>Површински Грејни Системи:</strong> Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.</li>
-                        <li><strong>Радијаторско Греење:</strong> Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.</li>
-                        <li><strong>Фенкоилерски Системи:</strong> Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.</li>
-                    </ul>
-                `
-            },
-            geothermal: {
-                title: "🌍 Геотермални Системи",
-                desc: `
-                    <p>Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).</p>
-                    <p>Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).</p>
-                    <p><strong>Клучни Изведбени Решенија:</strong></p>
-                    <ul>
-                        <li><strong>Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):</strong> Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.</li>
-                        <li><strong>Системи „Вода-Вода“ (Бунарски системи):</strong> Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.</li>
-                        <li><strong>Интегрирано Греење, Ладење & ТСВ:</strong> Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.</li>
-                    </ul>
-                `
-            },
-            heatpumps: {
-                title: "⚡ Топлински Пумпи (Воздух-Вода)",
-                desc: `
-                    <p>Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
-                    <p><strong>Принцип на Работа & Ефикасност:</strong> Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:</p>
-                    <ul>
-                        <li><strong>COP (Коефициент на ефикасност при греење):</strong> Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.</li>
-                        <li><strong>EER / SEER:</strong> Индикатори за висока енергетска ефикасност при ладење во летниот период.</li>
-                    </ul>
-                    <p><strong>Главни Предности:</strong></p>
-                    <ul>
-                        <li><strong>Енергетска Заштеда:</strong> Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).</li>
-                        <li><strong>Мултифункционалност:</strong> Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.</li>
-                        <li><strong>Еколошка Одржливост:</strong> Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.</li>
-                    </ul>
-                `
-            },
-            ventilation: {
-                title: "🌬️ Вентилација & Климатизација",
-                desc: `
-                    <p>Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
-                    <p><strong>Основни Компоненти & Категории:</strong></p>
-                    <p><strong>Вентилациски Системи:</strong></p>
-                    <ul>
-                        <li><strong>Принудна (механичка) вентилација:</strong> Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).</li>
-                        <li><strong>Локална и индустриска вентилација:</strong> Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).</li>
-                        <li><strong>Противпожарна вентилација:</strong> Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.</li>
-                    </ul>
-                    <p><strong>Системи за Климатизација:</strong></p>
-                    <ul>
-                        <li><strong>Сплит и мулти-сплит системи:</strong> Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.</li>
-                        <li><strong>VRF / VRV системи:</strong> Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.</li>
-                        <li><strong>Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):</strong> Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.</li>
-                        <li><strong>Канална климатизација:</strong> Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.</li>
-                    </ul>
-                `
-            },
-            plumbing: {
-                title: "💧 Водовод & Канализација (ВиК)",
-                desc: `
-                    <p>Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
-                    <p><strong>Основни Системи & Инсталации:</strong></p>
-                    <ul>
-                        <li><strong>Внатрешна водоводна мрежа:</strong> Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.</li>
-                        <li><strong>Канализациони системи:</strong> Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).</li>
-                        <li><strong>Хидрантски противпожарни мрежи:</strong> Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.</li>
-                        <li><strong>Хидрофорни постројки и пумпни станици:</strong> Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.</li>
-                    </ul>
-                    <p><strong>Изведбени Стандарди & Квалитет:</strong></p>
-                    <ul>
-                        <li>Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.</li>
-                        <li>Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација.</li>
-                    </ul>
-                `
-            }
-        };
-
-        function openModal(systemKey) {
-            const data = systemDetails[systemKey];
+        function openSchema(type) {
+            window.activeSchemaType = type;
+            const data = i18n[currentLang].schemas[type];
             if(data) {
                 document.getElementById('modalTitle').innerText = data.title;
                 document.getElementById('modalBody').innerHTML = data.desc;
-                const modal = document.getElementById('infoModal');
+                document.getElementById('svgContainer').innerHTML = data.svg;
+                const modal = document.getElementById('schemaModal');
                 modal.classList.add('show');
-                document.body.style.overflow = 'hidden';
-                modal.querySelector('.modal-content-fluid').scrollTop = 0;
+                modal.querySelector('.modal-scrollable-body').scrollTop = 0;
             }
         }
 
-        function closeModal() {
-            const modal = document.getElementById('infoModal');
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto';
+        function closeSchema() {
+            document.getElementById('schemaModal').classList.remove('show');
+            window.activeSchemaType = null;
         }
 
         window.onclick = function(e) {
-            const modal = document.getElementById('infoModal');
-            if (e.target === modal) closeModal();
+            const modal = document.getElementById('schemaModal');
+            if (e.target === modal) closeSchema();
         }
 
         // INTERSECTION OBSERVER FOR CENTER SCREEN FOCUS
