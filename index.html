@@ -323,7 +323,7 @@
             gap: 20px;
         }
 
-        /* --- CONTACT SECTION (REFINED SMALLER FONT) --- */
+        /* --- CONTACT SECTION --- */
         .contact-section {
             padding: 90px 20px 100px;
             text-align: center;
@@ -436,6 +436,65 @@
             transform: translateY(-2px);
         }
 
+        /* --- COOKIE BANNER (APPLE STYLE) --- */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: 680px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 18px 24px;
+            border-radius: 16px;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        #cookie-banner.hidden {
+            transform: translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cookie-text {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .cookie-text strong {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .btn-cookie {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 980px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-cookie:hover {
+            background: var(--accent-blue);
+            color: #050811;
+        }
+
         footer {
             text-align: center;
             padding: 24px 20px;
@@ -452,6 +511,7 @@
             .contact-divider { display: none; }
             .contact-details-grid { flex-direction: column; gap: 10px; }
             .page-cta-box { flex-direction: column; align-items: stretch; text-align: center; }
+            #cookie-banner { flex-direction: column; align-items: stretch; text-align: center; }
         }
     </style>
 </head>
@@ -692,6 +752,12 @@
         </div>
     </div>
 
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner">
+        <p class="cookie-text" data-i18n="cookie-text">Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.</p>
+        <button class="btn-cookie" id="cookie-accept-btn" data-i18n="cookie-btn">Се согласувам</button>
+    </div>
+
     <footer>
         <p data-i18n="footer">&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
     </footer>
@@ -726,6 +792,8 @@
                 "footer": "© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.",
                 "back-home": "Назад кон почеток",
                 "page-cta-text": "Заинтересирани сте за понуда?",
+                "cookie-text": "Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.",
+                "cookie-btn": "Се согласувам",
                 
                 "topli-title": "🔥 Централно Топловодно Греење",
                 "topli-p1": "Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).",
@@ -828,6 +896,8 @@
                 "footer": "© 2026 VELDER VG TRADING LLC. All rights reserved.",
                 "back-home": "Back to Home",
                 "page-cta-text": "Interested in a quote?",
+                "cookie-text": "This website uses minimal technical cookies to enhance user experience and language preference.",
+                "cookie-btn": "Accept",
 
                 "topli-title": "🔥 Central District Heating",
                 "topli-p1": "Central district heating is one of the most widespread, safest, and efficient systems for heating residential, commercial, and industrial facilities. Its core operation is based on the circulation of a fluid (water) heated in a centralized source (boiler, heat pump, or municipal district heating plant) and distributed through a piping network to surface heating elements (underfloor, wall, or ceiling heating) or conventional emitters (radiators and fan coil units).",
@@ -937,6 +1007,19 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
+
+        // Cookie Banner Logic
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAcceptBtn = document.getElementById('cookie-accept-btn');
+
+        if (localStorage.getItem('velder_cookies_accepted') === 'true') {
+            cookieBanner.classList.add('hidden');
+        }
+
+        cookieAcceptBtn.addEventListener('click', () => {
+            localStorage.setItem('velder_cookies_accepted', 'true');
+            cookieBanner.classList.add('hidden');
+        });
 
         const focusObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
