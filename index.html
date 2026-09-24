@@ -515,7 +515,7 @@
     <section id="systems" class="systems-wrapper">
         
         <!-- SYSTEM 1 -->
-        <div class="system-card" onclick="openSchema('toplifikacija')">
+        <div class="system-card" onclick="openModal('toplifikacija')">
             <div class="card-header-flex">
                 <span class="card-icon">🔥</span>
                 <h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
@@ -525,7 +525,7 @@
         </div>
 
         <!-- SYSTEM 2 -->
-        <div class="system-card" onclick="openSchema('geothermal')">
+        <div class="system-card" onclick="openModal('geothermal')">
             <div class="card-header-flex">
                 <span class="card-icon">🌍</span>
                 <h3 data-i18n="sys2-title">Геотермални Системи</h3>
@@ -535,7 +535,7 @@
         </div>
 
         <!-- SYSTEM 3 -->
-        <div class="system-card" onclick="openSchema('heatpumps')">
+        <div class="system-card" onclick="openModal('heatpumps')">
             <div class="card-header-flex">
                 <span class="card-icon">⚡</span>
                 <h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
@@ -545,7 +545,7 @@
         </div>
 
         <!-- SYSTEM 4 -->
-        <div class="system-card" onclick="openSchema('ventilation')">
+        <div class="system-card" onclick="openModal('ventilation')">
             <div class="card-header-flex">
                 <span class="card-icon">🌬️</span>
                 <h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
@@ -555,7 +555,7 @@
         </div>
 
         <!-- SYSTEM 5 -->
-        <div class="system-card" onclick="openSchema('plumbing')">
+        <div class="system-card" onclick="openModal('plumbing')">
             <div class="card-header-flex">
                 <span class="card-icon">💧</span>
                 <h3 data-i18n="sys5-title">Водовод & Канализација</h3>
@@ -567,14 +567,14 @@
     </section>
 
     <!-- FLUID MODAL FOR DETAILED TEXT -->
-    <div id="schemaModal" class="modal">
+    <div id="infoModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeSchema()">&times;</span>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
             <div class="modal-scrollable-body">
                 <h3 id="modalTitle" style="font-size: 1.8rem; color: #fff; margin-bottom: 24px; font-weight: 700; letter-spacing: -0.01em;"></h3>
                 <div id="modalBody" class="modal-text-content"></div>
             </div>
-            <a href="#contact" class="btn-cta" onclick="closeSchema()" style="display: block; text-align: center; margin-top: 15px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+            <a href="#contact" class="btn-cta" onclick="closeModal()" style="display: block; text-align: center; margin-top: 15px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
         </div>
     </div>
 
@@ -679,8 +679,8 @@
         document.getElementById('btn-mk').addEventListener('click', () => setLanguage('mk'));
         document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
 
-        // DETAILED TEXT DATA (WITHOUT SCHEMAS)
-        const schemas = {
+        // DETAILED SYSTEM CONTENTS
+        const systemDetails = {
             toplifikacija: {
                 title: "🔥 Централно Топловодно Греење",
                 desc: `
@@ -764,24 +764,24 @@
             }
         };
 
-        function openSchema(type) {
-            const data = schemas[type];
+        function openModal(systemKey) {
+            const data = systemDetails[systemKey];
             if(data) {
                 document.getElementById('modalTitle').innerText = data.title;
                 document.getElementById('modalBody').innerHTML = data.desc;
-                const modal = document.getElementById('schemaModal');
+                const modal = document.getElementById('infoModal');
                 modal.classList.add('show');
                 modal.querySelector('.modal-scrollable-body').scrollTop = 0;
             }
         }
 
-        function closeSchema() {
-            document.getElementById('schemaModal').classList.remove('show');
+        function closeModal() {
+            document.getElementById('infoModal').classList.remove('show');
         }
 
         window.onclick = function(e) {
-            const modal = document.getElementById('schemaModal');
-            if (e.target === modal) closeSchema();
+            const modal = document.getElementById('infoModal');
+            if (e.target === modal) closeModal();
         }
 
         // INTERSECTION OBSERVER FOR CENTER SCREEN FOCUS
