@@ -254,7 +254,7 @@
             font-weight: 300;
         }
 
-        /* --- DETAILED SUBPAGE VIEW (CLEAN & UNBOXED) --- */
+        /* --- DETAILED SUBPAGE VIEW --- */
         .page-container {
             max-width: 860px;
             margin: 0 auto;
@@ -457,7 +457,7 @@
         <div class="nav-container">
             <a href="#top" onclick="showView('home')" class="logo-box">
                 <div class="logo-icon">W</div>
-                <span class="logo-text">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
+                <span class="logo-text" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#about" onclick="showView('home')"><span data-i18n="nav-about">За Нас</span></a></li>
@@ -550,7 +550,7 @@
         </section>
     </div>
 
-    <!-- DEDICATED SUBPAGES (UNBOXED TEXT) -->
+    <!-- DEDICATED SUBPAGES -->
 
     <!-- SUBPAGE: ТОПЛИФИКАЦИЈА -->
     <div id="view-toplifikacija" class="view-section">
@@ -558,14 +558,14 @@
             <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
             <h1 class="page-title" data-i18n="topli-title">🔥 Централно Топловодно Греење</h1>
             
-            <div class="page-text-content" data-i18n="topli-desc">
-                <p>Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).</p>
-                <p><strong>Клучни Сегменти & Изведба:</strong></p>
+            <div class="page-text-content">
+                <p data-i18n="topli-p1">Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).</p>
+                <p><strong data-i18n="topli-strong1">Клучни Сегменти & Изведба:</strong></p>
                 <ul>
-                    <li><strong>Приклучни Подстаници (ЕСМ Дистрибуција):</strong> Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.</li>
-                    <li><strong>Површински Грејни Системи:</strong> Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.</li>
-                    <li><strong>Радијаторско Греење:</strong> Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.</li>
-                    <li><strong>Фенкоилерски Системи:</strong> Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.</li>
+                    <li><strong data-i18n="topli-li1-title">Приклучни Подстаници (ЕСМ Дистрибуција):</strong> <span data-i18n="topli-li1-desc">Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.</span></li>
+                    <li><strong data-i18n="topli-li2-title">Површински Грејни Системи:</strong> <span data-i18n="topli-li2-desc">Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.</span></li>
+                    <li><strong data-i18n="topli-li3-title">Радијаторско Греење:</strong> <span data-i18n="topli-li3-desc">Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.</span></li>
+                    <li><strong data-i18n="topli-li4-title">Фенкоилерски Системи:</strong> <span data-i18n="topli-li4-desc">Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.</span></li>
                 </ul>
             </div>
 
@@ -582,14 +582,14 @@
             <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
             <h1 class="page-title" data-i18n="geo-title">🌍 Геотермални Системи</h1>
             
-            <div class="page-text-content" data-i18n="geo-desc">
-                <p>Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).</p>
-                <p>Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).</p>
-                <p><strong>Клучни Изведбени Решенија:</strong></p>
+            <div class="page-text-content">
+                <p data-i18n="geo-p1">Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).</p>
+                <p data-i18n="geo-p2">Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).</p>
+                <p><strong data-i18n="geo-strong1">Клучни Изведбени Решенија:</strong></p>
                 <ul>
-                    <li><strong>Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):</strong> Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.</li>
-                    <li><strong>Системи „Вода-Вода“ (Бунарски системи):</strong> Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.</li>
-                    <li><strong>Интегрирано Греење, Ладење & ТСВ:</strong> Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.</li>
+                    <li><strong data-i18n="geo-li1-title">Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):</strong> <span data-i18n="geo-li1-desc">Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.</span></li>
+                    <li><strong data-i18n="geo-li2-title">Системи „Вода-Вода“ (Бунарски системи):</strong> <span data-i18n="geo-li2-desc">Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.</span></li>
+                    <li><strong data-i18n="geo-li3-title">Интегрирано Греење, Ладење & ТСВ:</strong> <span data-i18n="geo-li3-desc">Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.</span></li>
                 </ul>
             </div>
 
@@ -606,18 +606,18 @@
             <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
             <h1 class="page-title" data-i18n="hp-title">⚡ Топлински Пумпи (Воздух-Вода)</h1>
             
-            <div class="page-text-content" data-i18n="hp-desc">
-                <p>Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
-                <p><strong>Принцип на Работа & Ефикасност:</strong> Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:</p>
+            <div class="page-text-content">
+                <p data-i18n="hp-p1">Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
+                <p><strong data-i18n="hp-strong1">Принцип на Работа & Ефикасност:</strong> <span data-i18n="hp-p2">Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:</span></p>
                 <ul>
-                    <li><strong>COP (Коефициент на ефикасност при греење):</strong> Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.</li>
-                    <li><strong>EER / SEER:</strong> Индикатори за висока енергетска ефикасност при ладење во летниот период.</li>
+                    <li><strong data-i18n="hp-li1-title">COP (Коефициент на ефикасност при греење):</strong> <span data-i18n="hp-li1-desc">Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.</span></li>
+                    <li><strong data-i18n="hp-li2-title">EER / SEER:</strong> <span data-i18n="hp-li2-desc">Индикатори за висока енергетска ефикасност при ладење во летниот период.</span></li>
                 </ul>
-                <p><strong>Главни Предности:</strong></p>
+                <p><strong data-i18n="hp-strong2">Главни Предности:</strong></p>
                 <ul>
-                    <li><strong>Енергетска Заштеда:</strong> Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).</li>
-                    <li><strong>Мултифункционалност:</strong> Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.</li>
-                    <li><strong>Еколошка Одржливост:</strong> Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.</li>
+                    <li><strong data-i18n="hp-li3-title">Енергетска Заштеда:</strong> <span data-i18n="hp-li3-desc">Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).</span></li>
+                    <li><strong data-i18n="hp-li4-title">Мултифункционалност:</strong> <span data-i18n="hp-li4-desc">Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.</span></li>
+                    <li><strong data-i18n="hp-li5-title">Еколошка Одржливост:</strong> <span data-i18n="hp-li5-desc">Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.</span></li>
                 </ul>
             </div>
 
@@ -634,21 +634,21 @@
             <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
             <h1 class="page-title" data-i18n="vent-title">🌬️ Вентилација & Климатизација</h1>
             
-            <div class="page-text-content" data-i18n="vent-desc">
-                <p>Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
-                <p><strong>Основни Компоненти & Категории:</strong></p>
-                <p><strong>Вентилациски Системи:</strong></p>
+            <div class="page-text-content">
+                <p data-i18n="vent-p1">Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
+                <p><strong data-i18n="vent-strong1">Основни Компоненти & Категории:</strong></p>
+                <p><strong data-i18n="vent-strong2">Вентилациски Системи:</strong></p>
                 <ul>
-                    <li><strong>Принудна (механичка) вентилација:</strong> Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).</li>
-                    <li><strong>Локална и индустриска вентилација:</strong> Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).</li>
-                    <li><strong>Противпожарна вентилација:</strong> Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.</li>
+                    <li><strong data-i18n="vent-li1-title">Принудна (механичка) вентилација:</strong> <span data-i18n="vent-li1-desc">Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).</span></li>
+                    <li><strong data-i18n="vent-li2-title">Локална и индустриска вентилација:</strong> <span data-i18n="vent-li2-desc">Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).</span></li>
+                    <li><strong data-i18n="vent-li3-title">Противпожарна вентилација:</strong> <span data-i18n="vent-li3-desc">Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.</span></li>
                 </ul>
-                <p><strong>Системи за Климатизација:</strong></p>
+                <p><strong data-i18n="vent-strong3">Системи за Климатизација:</strong></p>
                 <ul>
-                    <li><strong>Сплит и мулти-сплит системи:</strong> Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.</li>
-                    <li><strong>VRF / VRV системи:</strong> Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.</li>
-                    <li><strong>Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):</strong> Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.</li>
-                    <li><strong>Канална климатизација:</strong> Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.</li>
+                    <li><strong data-i18n="vent-li4-title">Сплит и мулти-сплит системи:</strong> <span data-i18n="vent-li4-desc">Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.</span></li>
+                    <li><strong data-i18n="vent-li5-title">VRF / VRV системи:</strong> <span data-i18n="vent-li5-desc">Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.</span></li>
+                    <li><strong data-i18n="vent-li6-title">Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):</strong> <span data-i18n="vent-li6-desc">Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.</span></li>
+                    <li><strong data-i18n="vent-li7-title">Канална климатизација:</strong> <span data-i18n="vent-li7-desc">Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.</span></li>
                 </ul>
             </div>
 
@@ -665,19 +665,19 @@
             <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
             <h1 class="page-title" data-i18n="plumb-title">💧 Водовод & Канализација (ВиК)</h1>
             
-            <div class="page-text-content" data-i18n="plumb-desc">
-                <p>Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
-                <p><strong>Основни Системи & Инсталации:</strong></p>
+            <div class="page-text-content">
+                <p data-i18n="plumb-p1">Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
+                <p><strong data-i18n="plumb-strong1">Основни Системи & Инсталации:</strong></p>
                 <ul>
-                    <li><strong>Внатрешна водоводна мрежа:</strong> Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.</li>
-                    <li><strong>Канализациони системи:</strong> Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).</li>
-                    <li><strong>Хидрантски противпожарни мрежи:</strong> Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.</li>
-                    <li><strong>Хидрофорни постројки и пумпни станици:</strong> Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.</li>
+                    <li><strong data-i18n="plumb-li1-title">Внатрешна водоводна мрежа:</strong> <span data-i18n="plumb-li1-desc">Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.</span></li>
+                    <li><strong data-i18n="plumb-li2-title">Канализациони системи:</strong> <span data-i18n="plumb-li2-desc">Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).</span></li>
+                    <li><strong data-i18n="plumb-li3-title">Хидрантски противпожарни мрежи:</strong> <span data-i18n="plumb-li3-desc">Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.</span></li>
+                    <li><strong data-i18n="plumb-li4-title">Хидрофорни постројки и пумпни станици:</strong> <span data-i18n="plumb-li4-desc">Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.</span></li>
                 </ul>
-                <p><strong>Изведбени Стандарди & Квалитет:</strong></p>
+                <p><strong data-i18n="plumb-strong2">Изведбени Стандарди & Квалитет:</strong></p>
                 <ul>
-                    <li>Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.</li>
-                    <li>Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација.</li>
+                    <li><span data-i18n="plumb-li5">Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.</span></li>
+                    <li><span data-i18n="plumb-li6">Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација.</span></li>
                 </ul>
             </div>
 
@@ -718,16 +718,84 @@
                 "val-location": "Скопје, Македонија",
                 "phone-num": "070 374 959",
                 "modal-cta": "Побарај Понуда за Овој Систем",
-                "company-name": "ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ",
+                "company-name": "ВЕЛДЕР ВГ ТРЕЈДИНГ",
                 "footer": "© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.",
                 "back-home": "Назад кон почеток",
                 "page-cta-text": "Заинтеретирани сте за изведба на овој систем?",
                 
                 "topli-title": "🔥 Централно Топловодно Греење",
+                "topli-p1": "Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).",
+                "topli-strong1": "Клучни Сегменти & Изведба:",
+                "topli-li1-title": "Приклучни Подстаници (ЕСМ Дистрибуција):",
+                "topli-li1-desc": "Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.",
+                "topli-li2-title": "Површински Грејни Системи:",
+                "topli-li2-desc": "Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.",
+                "topli-li3-title": "Радијаторско Греење:",
+                "topli-li3-desc": "Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.",
+                "topli-li4-title": "Фенкоилерски Системи:",
+                "topli-li4-desc": "Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.",
+
                 "geo-title": "🌍 Геотермални Системи",
+                "geo-p1": "Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).",
+                "geo-p2": "Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).",
+                "geo-strong1": "Клучни Изведбени Решенија:",
+                "geo-li1-title": "Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):",
+                "geo-li1-desc": "Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.",
+                "geo-li2-title": "Системи „Вода-Вода“ (Бунарски системи):",
+                "geo-li2-desc": "Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.",
+                "geo-li3-title": "Интегрирано Греење, Ладење & ТСВ:",
+                "geo-li3-desc": "Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.",
+
                 "hp-title": "⚡ Топлински Пумпи (Воздух-Вода)",
+                "hp-p1": "Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.",
+                "hp-strong1": "Принцип на Работа & Ефикасност:",
+                "hp-p2": "Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:",
+                "hp-li1-title": "COP (Коефициент на ефикасност при греење):",
+                "hp-li1-desc": "Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.",
+                "hp-li2-title": "EER / SEER:",
+                "hp-li2-desc": "Индикатори за висока енергетска ефикасност при ладење во летниот период.",
+                "hp-strong2": "Главни Предности:",
+                "hp-li3-title": "Енергетска Заштеда:",
+                "hp-li3-desc": "Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).",
+                "hp-li4-title": "Мултифункционалност:",
+                "hp-li4-desc": "Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.",
+                "hp-li5-title": "Еколошка Одржливост:",
+                "hp-li5-desc": "Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.",
+
                 "vent-title": "🌬️ Вентилација & Климатизација",
-                "plumb-title": "💧 Водовод & Канализација (ВиК)"
+                "vent-p1": "Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.",
+                "vent-strong1": "Основни Компоненти & Категории:",
+                "vent-strong2": "Вентилациски Системи:",
+                "vent-li1-title": "Принудна (механичка) вентилација:",
+                "vent-li1-desc": "Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).",
+                "vent-li2-title": "Локална и индустриска вентилација:",
+                "vent-li2-desc": "Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).",
+                "vent-li3-title": "Противпожарна вентилација:",
+                "vent-li3-desc": "Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.",
+                "vent-strong3": "Системи за Климатизација:",
+                "vent-li4-title": "Сплит и мулти-сплит системи:",
+                "vent-li4-desc": "Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.",
+                "vent-li5-title": "VRF / VRV системи:",
+                "vent-li5-desc": "Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.",
+                "vent-li6-title": "Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):",
+                "vent-li6-desc": "Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.",
+                "vent-li7-title": "Канална климатизација:",
+                "vent-li7-desc": "Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.",
+
+                "plumb-title": "💧 Водовод & Канализација (ВиК)",
+                "plumb-p1": "Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.",
+                "plumb-strong1": "Основни Системи & Инсталации:",
+                "plumb-li1-title": "Внатрешна водоводна мрежа:",
+                "plumb-li1-desc": "Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.",
+                "plumb-li2-title": "Канализациони системи:",
+                "plumb-li2-desc": "Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).",
+                "plumb-li3-title": "Хидрантски противпожарни мрежи:",
+                "plumb-li3-desc": "Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.",
+                "plumb-li4-title": "Хидрофорни постројки и пумпни станици:",
+                "plumb-li4-desc": "Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.",
+                "plumb-strong2": "Изведбени Стандарди & Квалитет:",
+                "plumb-li5": "Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.",
+                "plumb-li6": "Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација."
             },
             en: {
                 "nav-about": "About Us",
@@ -752,16 +820,84 @@
                 "val-location": "Skopje, Macedonia",
                 "phone-num": "+389 70 374 959",
                 "modal-cta": "Request Proposal for This System",
-                "company-name": "VELDER VG TRADING LLC",
+                "company-name": "VELDER VG TRADING",
                 "footer": "© 2026 VELDER VG TRADING LLC. All rights reserved.",
                 "back-home": "Back to Home",
                 "page-cta-text": "Interested in executing this system?",
 
                 "topli-title": "🔥 Central District Heating",
+                "topli-p1": "Central district heating is one of the most widespread, safest, and efficient systems for heating residential, commercial, and industrial facilities. Its core operation is based on the circulation of a fluid (water) heated in a centralized source (boiler, heat pump, or municipal district heating plant) and distributed through a piping network to surface heating elements (underfloor, wall, or ceiling heating) or conventional emitters (radiators and fan coil units).",
+                "topli-strong1": "Key Segments & Execution:",
+                "topli-li1-title": "Connection Substations (ESM Distribution):",
+                "topli-li1-desc": "Execution of primary and secondary loops featuring high-efficiency compact plate heat exchangers, automatic differential pressure and flow regulators, outdoor-temperature-compensated microprocessor control, and frequency-controlled circulation pumps.",
+                "topli-li2-title": "Surface Heating Systems:",
+                "topli-li2-desc": "Low-temperature underfloor, wall, and ceiling heating executed with high-quality PEX-Al-PEX and PE-RT pipes, ensuring maximum thermal comfort, even temperature distribution, and high energy efficiency.",
+                "topli-li3-title": "Radiator Heating:",
+                "topli-li3-desc": "Two-pipe distribution networks equipped with thermostatic radiator valves for precise individual zone control in every room.",
+                "topli-li4-title": "Fan Coil Unit Systems:",
+                "topli-li4-desc": "Two-pipe and four-pipe fan coil installations for fast and dynamic microclimate regulation in modern residential and commercial spaces.",
+
                 "geo-title": "🌍 Geothermal Systems",
+                "geo-p1": "Geothermal systems represent one of the most efficient and eco-friendly solutions for heating, cooling, and domestic hot water (DHW) preparation. Their primary advantage lies in utilizing the stable temperature of the ground or groundwater, which remains nearly constant year-round at specific depths (between 10°C and 12°C at depths exceeding 10–15 meters).",
+                "geo-p2": "These systems operate on the thermodynamic cycle of geothermal heat pumps (water-to-water or ground-to-water), transferring thermal energy with minimal electricity consumption (powering the compressor and circulation pumps).",
+                "geo-strong1": "Key Execution Solutions:",
+                "geo-li1-title": "Ground-to-Water Systems (Vertical Probes / Horizontal Collectors):",
+                "geo-li1-desc": "Installation of deep geothermal probes or horizontal collector networks that absorb geothermal energy from the ground via a glycol solution.",
+                "geo-li2-title": "Water-to-Water Systems (Well Systems):",
+                "geo-li2-desc": "Utilization of well water as a direct and exceptionally rich energy source, offering top-tier performance (COP) and high seasonal efficiency.",
+                "geo-li3-title": "Integrated Heating, Cooling & DHW:",
+                "geo-li3-desc": "Flexible solutions featuring free-cooling capabilities that further reduce operational costs during the summer season.",
+
                 "hp-title": "⚡ Heat Pumps (Air-to-Water)",
+                "hp-p1": "Air-to-water heat pumps are among the most prevalent and economical systems for heating, cooling, and domestic hot water (DHW) preparation. They do not produce heat by burning fuel; instead, they transfer thermal energy from outside air into the building, achieving high efficiency even at low winter temperatures.",
+                "hp-strong1": "Operating Principle & Efficiency:",
+                "hp-p2": "The system operates on a proven thermodynamic cycle utilizing a refrigerant and an inverter compressor:",
+                "hp-li1-title": "COP (Coefficient of Performance for Heating):",
+                "hp-li1-desc": "Indicates the ratio between electrical energy input and thermal energy output. With high seasonal performance reaching up to 5.0 and above, for every 1 kWh of electricity consumed, the pump delivers a multiplied quantity of heat energy.",
+                "hp-li2-title": "EER / SEER:",
+                "hp-li2-desc": "Indicators of high energy efficiency during cooling in the summer period.",
+                "hp-strong2": "Main Advantages:",
+                "hp-li3-title": "Energy Savings:",
+                "hp-li3-desc": "Drastically reduced heating and cooling costs (up to 70% compared to conventional systems).",
+                "hp-li4-title": "Multifunctionality:",
+                "hp-li4-desc": "An integrated solution for year-round heating, cooling, and DHW preparation.",
+                "hp-li5-title": "Eco-Friendly Sustainability:",
+                "hp-li5-desc": "Zero local harmful gas emissions with full integration capabilities for photovoltaic systems.",
+
                 "vent-title": "🌬️ Ventilation & Air Conditioning",
-                "plumb-title": "💧 Plumbing & Drainage"
+                "vent-p1": "Engineering systems for ventilation and air conditioning are crucial for ensuring optimal indoor air quality, microclimatic stability, and energy efficiency across all types of buildings.",
+                "vent-strong1": "Core Components & Categories:",
+                "vent-strong2": "Ventilation Systems:",
+                "vent-li1-title": "Forced (Mechanical) Ventilation:",
+                "vent-li1-desc": "Supply and exhaust air systems equipped with air handling units, heat recovery units (high-efficiency heat exchangers), and multi-stage filtration (G4, F7, HEPA classes).",
+                "vent-li2-title": "Local & Industrial Ventilation:",
+                "vent-li2-desc": "Effective extraction of pollutants, steam, and grease (professional kitchen hoods, exhaust systems in laboratories and industrial plants).",
+                "vent-li3-title": "Smoke & Fire Ventilation:",
+                "vent-li3-desc": "Smoke and heat exhaust ventilation systems (SHEVS) and maintenance of protective positive pressure in evacuation stairwells.",
+                "vent-strong3": "Air Conditioning Systems:",
+                "vent-li4-title": "Split & Multi-Split Systems:",
+                "vent-li4-desc": "Flexible solutions ideal for smaller apartments, offices, and individual rooms with high energy efficiency ratings.",
+                "vent-li5-title": "VRF / VRV Systems:",
+                "vent-li5-desc": "Centralized inverter systems with variable refrigerant flow, perfectly suited for office buildings, hotels, and larger residential developments.",
+                "vent-li6-title": "Chillers & Heat Pumps (Air-to-Water / Water-to-Water):",
+                "vent-li6-desc": "Central systems generating chilled and hot water to supply fan coil units and air handling units.",
+                "vent-li7-title": "Ducted Air Conditioning:",
+                "vent-li7-desc": "Integrated distribution of conditioned air through insulated ductwork with anemostats, grilles, and diffusers for uniform airflow and supreme indoor comfort.",
+
+                "plumb-title": "💧 Plumbing & Drainage",
+                "plumb-p1": "Water supply and drainage systems constitute a complex hydraulic infrastructure designed for continuous delivery of safe sanitary water under pressure and the safe collection and treatment of wastewater and stormwater.",
+                "plumb-strong1": "Core Systems & Installations:",
+                "plumb-li1-title": "Internal Water Supply Network:",
+                "plumb-li1-desc": "Design and execution of sanitary water supply and distribution systems utilizing proven, high-quality materials (PPR, multilayer pipes, galvanized and stainless steel) resistant to pressure and corrosion.",
+                "plumb-li2-title": "Drainage Systems:",
+                "plumb-li2-desc": "Efficient collection and gravity- or force-driven removal of wastewater and stormwater using certified plastic pipe systems (PVC, acoustically insulated PP systems, and robust HDPE piping networks).",
+                "plumb-li3-title": "Fire Hydrant Networks:",
+                "plumb-li3-desc": "Execution of internal and external fire hydrant installations equipped with appropriate booster pump sets for reliable pressure and flow during emergencies.",
+                "plumb-li4-title": "Booster Stations & Pump Units:",
+                "plumb-li4-desc": "Automated systems ensuring stable water pressure across all floors of a building, regardless of height and capacity.",
+                "plumb-strong2": "Execution Standards & Quality:",
+                "plumb-li5": "Complete assembly of sanitary fittings, pressure pipelines, and installation shafts.",
+                "plumb-li6": "Application of rigorous hydraulic pressure and leak-tightness testing prior to commissioning."
             }
         };
 
