@@ -244,7 +244,7 @@
             font-weight: 300;
         }
 
-        /* --- MODAL FOR SCHEMATICS & DETAILED TEXT --- */
+        /* --- FLUID MODAL FOR DETAILED TEXT --- */
         .modal {
             display: none;
             position: fixed;
@@ -258,7 +258,7 @@
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -271,17 +271,17 @@
         .modal-content {
             background: rgba(15, 23, 42, 0.95);
             border: 1px solid var(--accent-blue);
-            border-radius: 28px;
-            max-width: 760px;
+            border-radius: 32px;
+            max-width: 900px;
             width: 100%;
-            max-height: 85vh;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
-            padding: 40px;
+            padding: 50px;
             position: relative;
             transform: scale(0.95);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 0 50px rgba(0, 210, 255, 0.3);
+            box-shadow: 0 0 60px rgba(0, 210, 255, 0.25);
         }
 
         .modal.show .modal-content {
@@ -290,15 +290,15 @@
 
         .close-modal {
             position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 1.4rem;
+            top: 24px;
+            right: 28px;
+            font-size: 1.5rem;
             color: var(--text-muted);
             cursor: pointer;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -307,14 +307,14 @@
         }
 
         .close-modal:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.22);
             color: #fff;
         }
 
         .modal-scrollable-body {
             overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 24px;
+            padding-right: 16px;
+            margin-bottom: 30px;
             flex-grow: 1;
             scrollbar-width: thin;
             scrollbar-color: var(--accent-blue) rgba(255, 255, 255, 0.05);
@@ -329,23 +329,15 @@
             border-radius: 10px;
         }
 
-        .svg-container {
-            background: rgba(5, 8, 17, 0.9);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            margin: 20px 0;
-        }
-
         .modal-text-content {
             color: var(--text-muted);
-            font-size: 0.98rem;
-            line-height: 1.7;
+            font-size: 1.08rem;
+            line-height: 1.8;
             font-weight: 300;
         }
 
         .modal-text-content p {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .modal-text-content strong {
@@ -354,12 +346,12 @@
         }
 
         .modal-text-content ul {
-            margin-left: 20px;
-            margin-bottom: 16px;
+            margin-left: 24px;
+            margin-bottom: 20px;
         }
 
         .modal-text-content li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         /* --- CONTACT SECTION --- */
@@ -486,6 +478,7 @@
             .hero-title { font-size: 2.2rem; }
             .contact-divider { display: none; }
             .contact-details-grid { flex-direction: column; gap: 12px; }
+            .modal-content { padding: 25px; }
         }
     </style>
 </head>
@@ -518,10 +511,10 @@
         <a href="#contact" class="btn-cta" data-i18n="btn-cta">Побарај Понуда & Консултација</a>
     </section>
 
-    <!-- STACKED SUBPAGES -->
+    <!-- STACKED SYSTEMS -->
     <section id="systems" class="systems-wrapper">
         
-        <!-- SUBPAGE 1 -->
+        <!-- SYSTEM 1 -->
         <div class="system-card" onclick="openSchema('toplifikacija')">
             <div class="card-header-flex">
                 <span class="card-icon">🔥</span>
@@ -531,7 +524,7 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SUBPAGE 2 -->
+        <!-- SYSTEM 2 -->
         <div class="system-card" onclick="openSchema('geothermal')">
             <div class="card-header-flex">
                 <span class="card-icon">🌍</span>
@@ -541,7 +534,7 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SUBPAGE 3 -->
+        <!-- SYSTEM 3 -->
         <div class="system-card" onclick="openSchema('heatpumps')">
             <div class="card-header-flex">
                 <span class="card-icon">⚡</span>
@@ -551,7 +544,7 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SUBPAGE 4 -->
+        <!-- SYSTEM 4 -->
         <div class="system-card" onclick="openSchema('ventilation')">
             <div class="card-header-flex">
                 <span class="card-icon">🌬️</span>
@@ -561,7 +554,7 @@
             <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
         </div>
 
-        <!-- SUBPAGE 5 -->
+        <!-- SYSTEM 5 -->
         <div class="system-card" onclick="openSchema('plumbing')">
             <div class="card-header-flex">
                 <span class="card-icon">💧</span>
@@ -573,16 +566,15 @@
 
     </section>
 
-    <!-- MODAL FOR DRAWINGS & DETAILED TEXT -->
+    <!-- FLUID MODAL FOR DETAILED TEXT -->
     <div id="schemaModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeSchema()">&times;</span>
             <div class="modal-scrollable-body">
-                <h3 id="modalTitle" style="font-size: 1.6rem; color: #fff; margin-bottom: 16px;">Техничка Шема</h3>
-                <div id="svgContainer" class="svg-container"></div>
+                <h3 id="modalTitle" style="font-size: 1.8rem; color: #fff; margin-bottom: 24px; font-weight: 700; letter-spacing: -0.01em;"></h3>
                 <div id="modalBody" class="modal-text-content"></div>
             </div>
-            <a href="#contact" class="btn-cta" onclick="closeSchema()" style="display: block; text-align: center; margin-top: 10px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+            <a href="#contact" class="btn-cta" onclick="closeSchema()" style="display: block; text-align: center; margin-top: 15px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
         </div>
     </div>
 
@@ -687,7 +679,7 @@
         document.getElementById('btn-mk').addEventListener('click', () => setLanguage('mk'));
         document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
 
-        // SCHEMATICS & DETAILED TEXT DATA
+        // DETAILED TEXT DATA (WITHOUT SCHEMAS)
         const schemas = {
             toplifikacija: {
                 title: "🔥 Централно Топловодно Греење",
@@ -700,18 +692,7 @@
                         <li><strong>Радијаторско Греење:</strong> Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.</li>
                         <li><strong>Фенкоилерски Системи:</strong> Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.</li>
                     </ul>
-                `,
-                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="180" y="50" width="140" height="100" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
-                    <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ПЛОЧЕСТ</text>
-                    <text x="250" y="115" fill="#00d2ff" font-size="11" text-anchor="middle">ИЗМЕНУВАЧ</text>
-                    <path d="M 20 70 L 180 70" stroke="#ff4d4d" stroke-width="6" fill="none"/>
-                    <path d="M 180 130 L 20 130" stroke="#0072ff" stroke-width="6" fill="none"/>
-                    <path d="M 320 70 L 480 70" stroke="#ff8c00" stroke-width="6" fill="none"/>
-                    <path d="M 480 130 L 320 130" stroke="#00d2ff" stroke-width="6" fill="none"/>
-                    <circle cx="400" cy="70" r="16" fill="#00d2ff" stroke="#fff" stroke-width="2"/>
-                    <text x="400" y="74" fill="#000" font-size="10" text-anchor="middle" font-weight="bold">M</text>
-                </svg>`
+                `
             },
             geothermal: {
                 title: "🌍 Геотермални Системи",
@@ -724,15 +705,7 @@
                         <li><strong>Системи „Вода-Вода“ (Бунарски системи):</strong> Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.</li>
                         <li><strong>Интегрирано Греење, Ладење & ТСВ:</strong> Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.</li>
                     </ul>
-                `,
-                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="40" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
-                    <rect x="430" y="100" width="30" height="90" fill="#1e293b" stroke="#8a9ba8" stroke-width="2"/>
-                    <rect x="180" y="30" width="140" height="80" rx="6" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
-                    <text x="250" y="75" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">ТОПЛОТНА ПУМПА</text>
-                    <path d="M 55 100 L 55 70 L 180 70" stroke="#00d2ff" stroke-width="4" fill="none"/>
-                    <path d="M 320 70 L 445 70 L 445 100" stroke="#8a9ba8" stroke-width="4" fill="none"/>
-                </svg>`
+                `
             },
             heatpumps: {
                 title: "⚡ Топлински Пумпи (Воздух-Вода)",
@@ -749,15 +722,7 @@
                         <li><strong>Мултифункционалност:</strong> Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.</li>
                         <li><strong>Еколошка Одржливост:</strong> Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.</li>
                     </ul>
-                `,
-                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="40" y="50" width="100" height="100" rx="8" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
-                    <circle cx="90" cy="100" r="30" fill="none" stroke="#8a9ba8" stroke-width="3"/>
-                    <rect x="280" y="50" width="160" height="100" rx="8" fill="#121e36" stroke="#ff8c00" stroke-width="2"/>
-                    <text x="360" y="95" fill="#fff" font-size="11" text-anchor="middle" font-weight="bold">БУФЕР РЕЗЕРВОАР</text>
-                    <path d="M 140 80 L 280 80" stroke="#ff4d4d" stroke-width="5" fill="none"/>
-                    <path d="M 280 120 L 140 120" stroke="#0072ff" stroke-width="5" fill="none"/>
-                </svg>`
+                `
             },
             ventilation: {
                 title: "🌬️ Вентилација & Климатизација",
@@ -777,13 +742,7 @@
                         <li><strong>Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):</strong> Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.</li>
                         <li><strong>Канална климатизација:</strong> Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.</li>
                     </ul>
-                `,
-                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="170" y="40" width="160" height="120" rx="8" fill="#121e36" stroke="#00d2ff" stroke-width="2"/>
-                    <text x="250" y="95" fill="#fff" font-size="12" text-anchor="middle" font-weight="bold">РЕКУПЕРАТОР</text>
-                    <path d="M 20 60 L 170 60" stroke="#00d2ff" stroke-width="4" fill="none"/>
-                    <path d="M 330 60 L 480 60" stroke="#25d366" stroke-width="4" fill="none"/>
-                </svg>`
+                `
             },
             plumbing: {
                 title: "💧 Водовод & Канализација (ВиК)",
@@ -801,13 +760,7 @@
                         <li>Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.</li>
                         <li>Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација.</li>
                     </ul>
-                `,
-                svg: `<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 40 160 L 160 160 L 160 40 L 460 40" stroke="#00d2ff" stroke-width="6" fill="none"/>
-                    <circle cx="160" cy="120" r="18" fill="#0072ff" stroke="#fff" stroke-width="2"/>
-                    <text x="160" y="124" fill="#fff" font-size="10" text-anchor="middle" font-weight="bold">P</text>
-                    <path d="M 300 40 L 300 160" stroke="#ff4d4d" stroke-width="4" fill="none"/>
-                </svg>`
+                `
             }
         };
 
@@ -816,7 +769,6 @@
             if(data) {
                 document.getElementById('modalTitle').innerText = data.title;
                 document.getElementById('modalBody').innerHTML = data.desc;
-                document.getElementById('svgContainer').innerHTML = data.svg;
                 const modal = document.getElementById('schemaModal');
                 modal.classList.add('show');
                 modal.querySelector('.modal-scrollable-body').scrollTop = 0;
