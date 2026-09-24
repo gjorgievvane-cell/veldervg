@@ -319,7 +319,7 @@
             font-weight: 300;
         }
 
-        /* --- DETAILED SUBPAGE VIEW (AUTOCAD HUD STYLE со новите анимации) --- */
+        /* --- DETAILED SUBPAGE VIEW (AUTOCAD HUD STYLE) --- */
         .page-container {
             max-width: 900px;
             margin: 0 auto;
@@ -345,16 +345,19 @@
             max-width: 100%;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(56, 189, 248, 0.05);
             position: relative;
             overflow: hidden;
         }
 
-        .card::before {
-            content: "LAYER: CAD-MCH-01 // SCALE 1:1";
+        /* Класа за рестартирање на анимацијата при секое кликнување */
+        .animate-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .cad-badge {
             position: absolute;
             top: 20px;
             right: 25px;
@@ -363,6 +366,10 @@
             color: var(--accent-blue);
             letter-spacing: 0.1em;
             opacity: 0.7;
+            background: rgba(3, 7, 18, 0.6);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(56, 189, 248, 0.15);
         }
 
         .layer-text {
@@ -420,7 +427,6 @@
             gap: 20px;
         }
 
-        /* Дефиниција на анимациите */
         @keyframes slideUpFade {
             to {
                 opacity: 1;
@@ -739,14 +745,14 @@
         </section>
     </div>
 
-    <!-- DEDICATED SUBPAGES WITH CAD HUD EFFECT & SLIDEUPFADE -->
+    <!-- DEDICATED SUBPAGES WITH DYNAMIC RE-TRIGGERED ANIMATIONS -->
 
     <!-- SUBPAGE: ТОПЛИФИКАЦИЈА -->
-    <div id="view-toplifikacija" class="view-section">
+    <div id="view-toplifikacija" class="view-section" data-layer="LAYER: CAD-MCH-01 // SCALE 1:1">
         <div class="page-container">
             <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="card">
-                <div class="layer-text">LAYER: CAD-MCH-01 // SCALE 1:1</div>
+            <div class="card animate-card">
+                <div class="cad-badge">LAYER: CAD-MCH-01 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="topli-title">🔥 Централно Топловодно Греење</h1>
                 <div class="page-text-content">
                     <p data-i18n="topli-p1">Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).</p>
@@ -767,11 +773,11 @@
     </div>
 
     <!-- SUBPAGE: ГЕОТЕРМАЛНИ СИСТЕМИ -->
-    <div id="view-geothermal" class="view-section">
+    <div id="view-geothermal" class="view-section" data-layer="LAYER: CAD-MCH-02 // SCALE 1:1">
         <div class="page-container">
             <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="card">
-                <div class="layer-text">LAYER: CAD-MCH-02 // SCALE 1:1</div>
+            <div class="card animate-card">
+                <div class="cad-badge">LAYER: CAD-MCH-02 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="geo-title">🌍 Геотермални Системи</h1>
                 <div class="page-text-content">
                     <p data-i18n="geo-p1">Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).</p>
@@ -792,11 +798,11 @@
     </div>
 
     <!-- SUBPAGE: ТОПЛИНСКИ ПУМПИ -->
-    <div id="view-heatpumps" class="view-section">
+    <div id="view-heatpumps" class="view-section" data-layer="LAYER: CAD-MCH-03 // SCALE 1:1">
         <div class="page-container">
             <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="card">
-                <div class="layer-text">LAYER: CAD-MCH-03 // SCALE 1:1</div>
+            <div class="card animate-card">
+                <div class="cad-badge">LAYER: CAD-MCH-03 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="hp-title">⚡ Топлински Пумпи (Воздух-Вода)</h1>
                 <div class="page-text-content">
                     <p data-i18n="hp-p1">Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
@@ -821,11 +827,11 @@
     </div>
 
     <!-- SUBPAGE: ВЕНТИЛАЦИЈА И КЛИМАТИЗАЦИЈА -->
-    <div id="view-ventilation" class="view-section">
+    <div id="view-ventilation" class="view-section" data-layer="LAYER: CAD-MCH-04 // SCALE 1:1">
         <div class="page-container">
             <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="card">
-                <div class="layer-text">LAYER: CAD-MCH-04 // SCALE 1:1</div>
+            <div class="card animate-card">
+                <div class="cad-badge">LAYER: CAD-MCH-04 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="vent-title">🌬️ Вентилација & Климатизација</h1>
                 <div class="page-text-content">
                     <p data-i18n="vent-p1">Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
@@ -853,11 +859,11 @@
     </div>
 
     <!-- SUBPAGE: ВОДОВОД И КАНАЛИЗАЦИЈА -->
-    <div id="view-plumbing" class="view-section">
+    <div id="view-plumbing" class="view-section" data-layer="LAYER: CAD-MCH-05 // SCALE 1:1">
         <div class="page-container">
             <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="card">
-                <div class="layer-text">LAYER: CAD-MCH-05 // SCALE 1:1</div>
+            <div class="card animate-card">
+                <div class="cad-badge">LAYER: CAD-MCH-05 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="plumb-title">💧 Водовод & Канализација (ВиК)</h1>
                 <div class="page-text-content">
                     <p data-i18n="plumb-p1">Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
@@ -1142,6 +1148,14 @@
                     cadBg.classList.remove('active-cad');
                 } else {
                     cadBg.classList.add('active-cad');
+                    
+                    // Рестартирање на анимацијата и чистење на преклопувањата
+                    const card = target.querySelector('.animate-card');
+                    if (card) {
+                        card.style.animation = 'none';
+                        card.offsetHeight; // Trigger reflow
+                        card.style.animation = null; 
+                    }
                 }
             }
         }
@@ -1160,7 +1174,6 @@
         });
 
         const focusObserver = new IntersectionObserver((entries) => {
-            entries.endswith = false;
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-focus');
