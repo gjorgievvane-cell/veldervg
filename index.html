@@ -323,9 +323,9 @@
             gap: 20px;
         }
 
-        /* --- CONTACT SECTION --- */
+        /* --- CONTACT SECTION (REFINED SMALLER FONT) --- */
         .contact-section {
-            padding: 100px 20px 110px;
+            padding: 90px 20px 100px;
             text-align: center;
             background: radial-gradient(circle at 50% 100%, rgba(0, 210, 255, 0.08) 0%, transparent 70%);
             border-top: 1px solid var(--border-color);
@@ -337,43 +337,46 @@
         }
 
         .contact-company {
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--accent-blue);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .contact-headline {
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-size: clamp(1.4rem, 2.4vw, 1.9rem);
             font-weight: 700;
-            letter-spacing: -0.015em;
+            letter-spacing: -0.01em;
             color: #fff;
-            margin-bottom: 16px;
-            line-height: 1.2;
+            margin-bottom: 12px;
+            line-height: 1.25;
         }
 
         .contact-lead {
-            font-size: 1.1rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
             font-weight: 300;
             line-height: 1.6;
-            margin-bottom: 36px;
+            margin-bottom: 28px;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-details-grid {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 36px;
+            margin-bottom: 28px;
         }
 
         .contact-link {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 500;
             color: #fff;
             text-decoration: none;
             transition: color 0.3s ease;
@@ -384,8 +387,8 @@
         }
 
         .contact-divider {
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
             background: var(--text-muted);
             opacity: 0.5;
@@ -394,19 +397,19 @@
         .social-btns {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .btn-social {
-            padding: 12px 28px;
+            padding: 9px 22px;
             border-radius: 980px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 600;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .viber { 
@@ -435,10 +438,11 @@
 
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 24px 20px;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.73rem;
+            letter-spacing: -0.01em;
         }
 
         @media (max-width: 768px) {
@@ -446,7 +450,7 @@
             .system-card { padding: 28px; }
             .hero-title { font-size: 2.2rem; }
             .contact-divider { display: none; }
-            .contact-details-grid { flex-direction: column; gap: 12px; }
+            .contact-details-grid { flex-direction: column; gap: 10px; }
             .page-cta-box { flex-direction: column; align-items: stretch; text-align: center; }
         }
     </style>
@@ -539,7 +543,7 @@
                     <span class="contact-divider"></span>
                     <a href="mailto:veldervg@icloud.com" class="contact-link">veldervg@icloud.com</a>
                     <span class="contact-divider"></span>
-                    <span style="color: var(--text-muted); font-size: 1.05rem;" data-i18n="val-location">Скопје, Македонија</span>
+                    <span style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="val-location">Скопје, Македонија</span>
                 </div>
 
                 <div class="social-btns">
