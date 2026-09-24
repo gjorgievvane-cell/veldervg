@@ -244,7 +244,7 @@
             font-weight: 300;
         }
 
-        /* --- FLUID MODAL FOR DETAILED TEXT --- */
+        /* --- TRUE FLUID OVERLAY FOR DETAILED TEXT --- */
         .modal {
             display: none;
             position: fixed;
@@ -252,15 +252,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(5, 8, 17, 0.95);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
+            flex-direction: column;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
         .modal.show {
@@ -269,52 +267,49 @@
         }
 
         .modal-content {
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid var(--accent-blue);
-            border-radius: 32px;
-            max-width: 900px;
             width: 100%;
-            max-height: 90vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            padding: 50px;
+            padding: calc(var(--nav-height) + 40px) 40px 50px;
+            max-width: 1100px;
+            margin: 0 auto;
             position: relative;
-            transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 0 60px rgba(0, 210, 255, 0.25);
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .modal.show .modal-content {
-            transform: scale(1);
+            transform: translateY(0);
         }
 
         .close-modal {
-            position: absolute;
-            top: 24px;
-            right: 28px;
-            font-size: 1.5rem;
-            color: var(--text-muted);
+            position: fixed;
+            top: calc(var(--nav-height) + 20px);
+            right: 40px;
+            font-size: 1.8rem;
+            color: var(--text-main);
             cursor: pointer;
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
-            z-index: 10;
+            z-index: 2010;
         }
 
         .close-modal:hover {
-            background: rgba(255, 255, 255, 0.22);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
         }
 
         .modal-scrollable-body {
             overflow-y: auto;
-            padding-right: 16px;
-            margin-bottom: 30px;
+            padding-right: 20px;
+            margin-bottom: 40px;
             flex-grow: 1;
             scrollbar-width: thin;
             scrollbar-color: var(--accent-blue) rgba(255, 255, 255, 0.05);
@@ -331,13 +326,13 @@
 
         .modal-text-content {
             color: var(--text-muted);
-            font-size: 1.08rem;
-            line-height: 1.8;
+            font-size: 1.15rem;
+            line-height: 1.9;
             font-weight: 300;
         }
 
         .modal-text-content p {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .modal-text-content strong {
@@ -346,12 +341,19 @@
         }
 
         .modal-text-content ul {
-            margin-left: 24px;
-            margin-bottom: 20px;
+            margin-left: 28px;
+            margin-bottom: 24px;
         }
 
         .modal-text-content li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .modal-footer-action {
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-start;
         }
 
         /* --- CONTACT SECTION --- */
@@ -478,7 +480,8 @@
             .hero-title { font-size: 2.2rem; }
             .contact-divider { display: none; }
             .contact-details-grid { flex-direction: column; gap: 12px; }
-            .modal-content { padding: 25px; }
+            .modal-content { padding: 80px 20px 30px; }
+            .close-modal { top: 70px; right: 20px; }
         }
     </style>
 </head>
@@ -566,15 +569,17 @@
 
     </section>
 
-    <!-- FLUID MODAL FOR DETAILED TEXT -->
+    <!-- TRUE FLUID OVERLAY FOR DETAILED TEXT -->
     <div id="infoModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
             <div class="modal-scrollable-body">
-                <h3 id="modalTitle" style="font-size: 1.8rem; color: #fff; margin-bottom: 24px; font-weight: 700; letter-spacing: -0.01em;"></h3>
+                <h3 id="modalTitle" style="font-size: clamp(2rem, 3.2vw, 2.6rem); color: #fff; margin-bottom: 30px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2;"></h3>
                 <div id="modalBody" class="modal-text-content"></div>
             </div>
-            <a href="#contact" class="btn-cta" onclick="closeModal()" style="display: block; text-align: center; margin-top: 15px;" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+            <div class="modal-footer-action">
+                <a href="#contact" class="btn-cta" onclick="closeModal()" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+            </div>
         </div>
     </div>
 
@@ -771,12 +776,15 @@
                 document.getElementById('modalBody').innerHTML = data.desc;
                 const modal = document.getElementById('infoModal');
                 modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
                 modal.querySelector('.modal-scrollable-body').scrollTop = 0;
             }
         }
 
         function closeModal() {
-            document.getElementById('infoModal').classList.remove('show');
+            const modal = document.getElementById('infoModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
         }
 
         window.onclick = function(e) {
