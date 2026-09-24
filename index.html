@@ -7,13 +7,13 @@
     <style>
         :root {
             --bg-dark: #030712;
-            --bg-card: rgba(10, 15, 30, 0.75);
-            --accent-blue: #00d2ff;
-            --accent-glow: rgba(0, 210, 255, 0.5);
-            --cad-line: rgba(0, 210, 255, 0.14);
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --accent-blue: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --cad-line: rgba(56, 189, 248, 0.14);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(0, 210, 255, 0.18);
+            --border-color: rgba(56, 189, 248, 0.2);
             --nav-height: 56px;
         }
 
@@ -21,7 +21,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -34,6 +34,10 @@
         body {
             overflow-x: hidden;
             position: relative;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         /* --- AUTOCAD DIAGONAL INFINITY BACKGROUND ANIMATION --- */
@@ -55,7 +59,6 @@
             opacity: 1;
         }
 
-        /* Diagonal moving grid layer */
         .cad-grid-layer {
             position: absolute;
             top: -50%;
@@ -63,26 +66,21 @@
             width: 200%;
             height: 200%;
             background-image: 
-                linear-gradient(rgba(0, 210, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 210, 255, 0.08) 1px, transparent 1px);
+                linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
             background-size: 60px 60px;
             transform: rotate(-25deg);
             animation: moveGridDiagonal 35s linear infinite;
         }
 
         @keyframes moveGridDiagonal {
-            0% {
-                transform: rotate(-25deg) translate(0, 0);
-            }
-            100% {
-                transform: rotate(-25deg) translate(120px, 120px);
-            }
+            0% { transform: rotate(-25deg) translate(0, 0); }
+            100% { transform: rotate(-25deg) translate(120px, 120px); }
         }
 
-        /* Floating technical CAD vector drawings & blueprints */
         .cad-vector {
             position: absolute;
-            color: rgba(0, 210, 255, 0.18);
+            color: rgba(56, 189, 248, 0.18);
             font-family: monospace;
             font-size: 0.85rem;
             white-space: nowrap;
@@ -90,16 +88,10 @@
         }
 
         @keyframes floatVector {
-            0% {
-                transform: translate(-100px, 100vh) rotate(-15deg);
-                opacity: 0;
-            }
+            0% { transform: translate(-100px, 100vh) rotate(-15deg); opacity: 0; }
             20% { opacity: 0.7; }
             80% { opacity: 0.7; }
-            100% {
-                transform: translate(calc(100vw + 200px), -200px) rotate(-15deg);
-                opacity: 0;
-            }
+            100% { transform: translate(calc(100vw + 200px), -200px) rotate(-15deg); opacity: 0; }
         }
 
         /* --- APPLE STYLE NAV --- */
@@ -136,7 +128,7 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, #00d2ff, #0055ff);
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -223,7 +215,7 @@
             text-align: center;
             padding: 130px 20px 80px;
             position: relative;
-            background: radial-gradient(circle at 50% 30%, rgba(0, 210, 255, 0.1) 0%, transparent 65%);
+            background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 65%);
         }
 
         .hero-title {
@@ -250,7 +242,7 @@
 
         .btn-cta {
             display: inline-block;
-            background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
             color: #fff;
             padding: 12px 30px;
             border-radius: 980px;
@@ -258,14 +250,14 @@
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
             border: none;
             cursor: pointer;
         }
 
         .btn-cta:hover {
             transform: scale(1.03);
-            box-shadow: 0 6px 28px rgba(0, 210, 255, 0.5);
+            box-shadow: 0 6px 28px rgba(56, 189, 248, 0.5);
         }
 
         /* --- VERTICAL STACKED SYSTEMS (HOME) --- */
@@ -280,7 +272,7 @@
 
         .system-card {
             background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 42px;
             backdrop-filter: blur(16px);
@@ -327,31 +319,45 @@
             font-weight: 300;
         }
 
-        /* --- DETAILED SUBPAGE VIEW (AUTOCAD HUD STYLE) --- */
+        /* --- DETAILED SUBPAGE VIEW (AUTOCAD HUD STYLE со новите анимации) --- */
         .page-container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px 100px;
         }
 
-        .cad-hud-box {
-            background: rgba(5, 12, 28, 0.85);
+        .back-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 15px;
+            display: inline-block;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 0.2s;
+            cursor: pointer;
+        }
+
+        .card {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 45px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(0, 210, 255, 0.05);
+            max-width: 100%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(56, 189, 248, 0.05);
             position: relative;
             overflow: hidden;
         }
 
-        /* Technical corner markers for CAD look */
-        .cad-hud-box::before {
+        .card::before {
             content: "LAYER: CAD-MCH-01 // SCALE 1:1";
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 20px;
+            right: 25px;
             font-family: monospace;
             font-size: 0.68rem;
             color: var(--accent-blue);
@@ -359,21 +365,13 @@
             opacity: 0.7;
         }
 
-        .back-nav {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .layer-text {
             color: var(--accent-blue);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            transition: opacity 0.2s;
-            cursor: pointer;
-        }
-
-        .back-nav:hover {
-            opacity: 0.8;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            font-family: monospace;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
         .page-title {
@@ -390,6 +388,7 @@
             font-size: 1.04rem;
             line-height: 1.85;
             font-weight: 300;
+            margin-top: 20px;
         }
 
         .page-text-content p {
@@ -413,7 +412,7 @@
         .page-cta-box {
             margin-top: 50px;
             padding-top: 25px;
-            border-top: 1px solid rgba(0, 210, 255, 0.15);
+            border-top: 1px solid rgba(56, 189, 248, 0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -421,11 +420,25 @@
             gap: 20px;
         }
 
+        /* Дефиниција на анимациите */
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
         /* --- CONTACT SECTION --- */
         .contact-section {
             padding: 90px 20px 100px;
             text-align: center;
-            background: radial-gradient(circle at 50% 100%, rgba(0, 210, 255, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
             z-index: 2;
@@ -614,7 +627,7 @@
             .contact-details-grid { flex-direction: column; gap: 10px; }
             .page-cta-box { flex-direction: column; align-items: stretch; text-align: center; }
             #cookie-banner { flex-direction: column; align-items: stretch; text-align: center; }
-            .cad-hud-box { padding: 25px; }
+            .card { padding: 25px; }
         }
     </style>
 </head>
@@ -726,13 +739,14 @@
         </section>
     </div>
 
-    <!-- DEDICATED SUBPAGES WITH CAD HUD EFFECT -->
+    <!-- DEDICATED SUBPAGES WITH CAD HUD EFFECT & SLIDEUPFADE -->
 
     <!-- SUBPAGE: ТОПЛИФИКАЦИЈА -->
     <div id="view-toplifikacija" class="view-section">
         <div class="page-container">
-            <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="cad-hud-box">
+            <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
+            <div class="card">
+                <div class="layer-text">LAYER: CAD-MCH-01 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="topli-title">🔥 Централно Топловодно Греење</h1>
                 <div class="page-text-content">
                     <p data-i18n="topli-p1">Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).</p>
@@ -755,8 +769,9 @@
     <!-- SUBPAGE: ГЕОТЕРМАЛНИ СИСТЕМИ -->
     <div id="view-geothermal" class="view-section">
         <div class="page-container">
-            <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="cad-hud-box">
+            <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
+            <div class="card">
+                <div class="layer-text">LAYER: CAD-MCH-02 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="geo-title">🌍 Геотермални Системи</h1>
                 <div class="page-text-content">
                     <p data-i18n="geo-p1">Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).</p>
@@ -779,8 +794,9 @@
     <!-- SUBPAGE: ТОПЛИНСКИ ПУМПИ -->
     <div id="view-heatpumps" class="view-section">
         <div class="page-container">
-            <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="cad-hud-box">
+            <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
+            <div class="card">
+                <div class="layer-text">LAYER: CAD-MCH-03 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="hp-title">⚡ Топлински Пумпи (Воздух-Вода)</h1>
                 <div class="page-text-content">
                     <p data-i18n="hp-p1">Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
@@ -807,8 +823,9 @@
     <!-- SUBPAGE: ВЕНТИЛАЦИЈА И КЛИМАТИЗАЦИЈА -->
     <div id="view-ventilation" class="view-section">
         <div class="page-container">
-            <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="cad-hud-box">
+            <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
+            <div class="card">
+                <div class="layer-text">LAYER: CAD-MCH-04 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="vent-title">🌬️ Вентилација & Климатизација</h1>
                 <div class="page-text-content">
                     <p data-i18n="vent-p1">Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
@@ -838,15 +855,16 @@
     <!-- SUBPAGE: ВОДОВОД И КАНАЛИЗАЦИЈА -->
     <div id="view-plumbing" class="view-section">
         <div class="page-container">
-            <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-            <div class="cad-hud-box">
+            <a class="back-link" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
+            <div class="card">
+                <div class="layer-text">LAYER: CAD-MCH-05 // SCALE 1:1</div>
                 <h1 class="page-title" data-i18n="plumb-title">💧 Водовод & Канализација (ВиК)</h1>
                 <div class="page-text-content">
                     <p data-i18n="plumb-p1">Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
                     <p><strong data-i18n="plumb-strong1">Основни Системи & Инсталации:</strong></p>
                     <ul>
                         <li><strong data-i18n="plumb-li1-title">Внатрешна водоводна мрежа:</strong> <span data-i18n="plumb-li1-desc">Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.</span></li>
-                        <li><strong data-i18n="plumb-li2-title">Канализациони системи:</strong> <span data-i18n="plumb-li2-desc">Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).</span></li>
+                        <li><strong data-i18n="plumb-li2-title">Канализациони системи:</strong> <span data-i18n="plumb-li2-desc">Ефективно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).</span></li>
                         <li><strong data-i18n="plumb-li3-title">Хидрантски противпожарни мрежи:</strong> <span data-i18n="plumb-li3-desc">Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.</span></li>
                         <li><strong data-i18n="plumb-li4-title">Хидрофорни постројки и пумпни станици:</strong> <span data-i18n="plumb-li4-desc">Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.</span></li>
                     </ul>
@@ -1120,7 +1138,6 @@
                 target.classList.add('active-view');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                // Toggle CAD background animation only on subpages for maximum wow effect
                 if (viewId === 'home') {
                     cadBg.classList.remove('active-cad');
                 } else {
@@ -1138,12 +1155,12 @@
         }
 
         cookieAcceptBtn.addEventListener('click', () => {
-            localStorage.getItem('velder_cookies_accepted', 'true');
             localStorage.setItem('velder_cookies_accepted', 'true');
             cookieBanner.classList.add('hidden');
         });
 
         const focusObserver = new IntersectionObserver((entries) => {
+            entries.endswith = false;
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-focus');
