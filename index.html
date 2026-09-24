@@ -1,1165 +1,773 @@
 <!DOCTYPE html>
 <html lang="mk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
-    <style>
-        :root {
-            --bg-dark: #030712;
-            --bg-card: rgba(10, 15, 30, 0.75);
-            --accent-blue: #00d2ff;
-            --accent-glow: rgba(0, 210, 255, 0.45);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(0, 210, 255, 0.15);
-            --nav-height: 56px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
-        /* --- APPLE STYLE NAV --- */
-        header {
-            background: rgba(3, 7, 18, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            height: var(--nav-height);
-        }
-
-        .nav-container {
-            max-width: 1024px;
-            height: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 22px;
-        }
-
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #00d2ff, #0055ff);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 18px;
-            color: #fff;
-            box-shadow: 0 0 14px var(--accent-glow);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: -0.2px;
-            color: #f8fafc;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            align-items: center;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .lang-switch {
-            display: flex;
-            gap: 2px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 3px;
-            border-radius: 20px;
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            padding: 2px 10px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.75rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn.active {
-            background: rgba(255, 255, 255, 0.22);
-            color: #fff;
-        }
-
-        /* --- VIEWS CONTROLLER (SPA ROUTING) --- */
-        .view-section {
-            display: none;
-            min-height: 100vh;
-            padding-top: calc(var(--nav-height) + 40px);
-            position: relative;
-        }
-
-        .view-section.active-view {
-            display: block;
-        }
-
-        /* --- AUTOCAD BLUEPRINT BACKGROUND CANVAS --- */
-        .cad-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.45;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 130px 20px 80px;
-            position: relative;
-        }
-
-        .hero-title {
-            font-size: clamp(2rem, 3.8vw, 3.2rem);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.015em;
-            max-width: 860px;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(0.98rem, 1.4vw, 1.15rem);
-            color: var(--text-muted);
-            max-width: 880px;
-            margin-bottom: 40px;
-            font-weight: 300;
-            line-height: 1.7;
-            letter-spacing: -0.005em;
-        }
-
-        .btn-cta {
-            display: inline-block;
-            background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
-            color: #fff;
-            padding: 12px 30px;
-            border-radius: 980px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-cta:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 28px rgba(0, 210, 255, 0.5);
-        }
-
-        /* --- VERTICAL STACKED SYSTEMS (HOME) --- */
-        .systems-wrapper {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 60px 20px 100px;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .system-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 42px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            opacity: 0.35;
-            transform: scale(0.96);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .system-card.in-focus {
-            opacity: 1;
-            transform: scale(1);
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 35px var(--accent-glow), 0 20px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .card-header-flex {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .card-icon {
-            font-size: 2.2rem;
-            line-height: 1;
-        }
-
-        .system-card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            color: #fff;
-        }
-
-        .system-card p {
-            font-size: 1.02rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 26px;
-            font-weight: 300;
-        }
-
-        /* --- DETAILED SUBPAGE VIEW --- */
-        .page-container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 40px 20px 100px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .subpage-card-glass {
-            background: rgba(5, 10, 25, 0.85);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 28px;
-            padding: 50px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 210, 255, 0.05);
-        }
-
-        .back-nav {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            transition: opacity 0.2s;
-            cursor: pointer;
-        }
-
-        .back-nav:hover {
-            opacity: 0.8;
-        }
-
-        .page-title {
-            font-size: clamp(2rem, 3.2vw, 2.8rem);
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 30px;
-            letter-spacing: -0.015em;
-            line-height: 1.2;
-        }
-
-        .page-text-content {
-            color: var(--text-muted);
-            font-size: 1.08rem;
-            line-height: 1.85;
-            font-weight: 300;
-        }
-
-        .page-text-content p {
-            margin-bottom: 24px;
-        }
-
-        .page-text-content strong {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .page-text-content ul {
-            margin-left: 24px;
-            margin-bottom: 24px;
-        }
-
-        .page-text-content li {
-            margin-bottom: 12px;
-        }
-
-        .page-cta-box {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        /* --- CONTACT SECTION --- */
-        .contact-section {
-            padding: 90px 20px 100px;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-container {
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
-        .contact-company {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent-blue);
-            margin-bottom: 10px;
-        }
-
-        .contact-headline {
-            font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            color: #fff;
-            margin-bottom: 12px;
-            line-height: 1.25;
-        }
-
-        .contact-lead {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 28px;
-            max-width: 620px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-details-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 28px;
-        }
-
-        .contact-link {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-link:hover {
-            color: var(--accent-blue);
-        }
-
-        .contact-divider {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--text-muted);
-            opacity: 0.5;
-        }
-
-        .social-btns {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .btn-social {
-            padding: 9px 22px;
-            border-radius: 980px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .viber { 
-            background: rgba(115, 96, 242, 0.12); 
-            color: #a294ff; 
-            border: 1px solid rgba(115, 96, 242, 0.3); 
-        }
-        .viber:hover { 
-            background: #7360f2; 
-            color: #fff; 
-            box-shadow: 0 0 20px rgba(115, 96, 242, 0.4); 
-            transform: translateY(-2px);
-        }
-
-        .whatsapp { 
-            background: rgba(37, 211, 102, 0.12); 
-            color: #52ea8a; 
-            border: 1px solid rgba(37, 211, 102, 0.3); 
-        }
-        .whatsapp:hover { 
-            background: #25d366; 
-            color: #fff; 
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); 
-            transform: translateY(-2px);
-        }
-
-        /* --- COOKIE BANNER --- */
-        #cookie-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: 680px;
-            margin: 0 auto;
-            background: rgba(10, 15, 30, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            padding: 18px 24px;
-            border-radius: 16px;
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-
-        #cookie-banner.hidden {
-            transform: translateY(100px);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .cookie-text {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-weight: 300;
-        }
-
-        .cookie-text strong {
-            color: #fff;
-            font-weight: 500;
-        }
-
-        .btn-cookie {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 980px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .btn-cookie:hover {
-            background: var(--accent-blue);
-            color: #030712;
-        }
-
-        footer {
-            text-align: center;
-            padding: 24px 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.73rem;
-            letter-spacing: -0.01em;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .system-card { padding: 28px; }
-            .hero-title { font-size: 2.2rem; }
-            .contact-divider { display: none; }
-            .contact-details-grid { flex-direction: column; gap: 10px; }
-            .page-cta-box { flex-direction: column; align-items: stretch; text-align: center; }
-            #cookie-banner { flex-direction: column; align-items: stretch; text-align: center; }
-            .subpage-card-glass { padding: 24px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
+<style>
+:root {
+--bg-dark: #050811;
+--bg-card: rgba(15, 23, 42, 0.65);
+--accent-blue: #00d2ff;
+--accent-glow: rgba(0, 210, 255, 0.45);
+--text-main: #f8fafc;
+--text-muted: #94a3b8;
+--border-color: rgba(255, 255, 255, 0.08);
+--nav-height: 56px;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+-webkit-font-smoothing: antialiased;
+}
+html {
+scroll-behavior: smooth;
+background-color: var(--bg-dark);
+color: var(--text-main);
+}
+body {
+overflow-x: hidden;
+}
+/* --- APPLE STYLE NAV --- */
+header {
+background: rgba(5, 8, 17, 0.8);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+height: var(--nav-height);
+}
+.nav-container {
+max-width: 1024px;
+height: 100%;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 22px;
+}
+.logo-box {
+display: flex;
+align-items: center;
+gap: 12px;
+text-decoration: none;
+}
+.logo-icon {
+width: 32px;
+height: 32px;
+background: linear-gradient(135deg, #00d2ff, #0055ff);
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 900;
+font-size: 18px;
+color: #fff;
+box-shadow: 0 0 14px var(--accent-glow);
+}
+.logo-text {
+font-weight: 700;
+font-size: 0.95rem;
+letter-spacing: -0.2px;
+color: #f8fafc;
+}
+.nav-links {
+display: flex;
+gap: 28px;
+align-items: center;
+list-style: none;
+}
+.nav-links a {
+color: var(--text-muted);
+text-decoration: none;
+font-size: 0.85rem;
+font-weight: 400;
+transition: color 0.3s ease;
+}
+.nav-links a:hover {
+color: #fff;
+}
+.lang-switch {
+display: flex;
+gap: 2px;
+background: rgba(255, 255, 255, 0.08);
+padding: 3px;
+border-radius: 20px;
+}
+.lang-btn {
+background: none;
+border: none;
+color: var(--text-muted);
+padding: 2px 10px;
+cursor: pointer;
+font-weight: 600;
+font-size: 0.75rem;
+border-radius: 12px;
+transition: all 0.3s ease;
+}
+.lang-btn.active {
+background: rgba(255, 255, 255, 0.22);
+color: #fff;
+}
+/* --- VIEWS CONTROLLER (SPA ROUTING) --- */
+.view-section {
+display: none;
+min-height: 100vh;
+padding-top: calc(var(--nav-height) + 40px);
+}
+.view-section.active-view {
+display: block;
+}
+/* --- HERO SECTION --- */
+.hero {
+min-height: 90vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 130px 20px 80px;
+position: relative;
+background: radial-gradient(circle at 50% 30%, rgba(0, 210, 255, 0.1) 0%, transparent 65%);
+}
+.hero-title {
+font-size: clamp(2rem, 3.8vw, 3.2rem);
+font-weight: 700;
+line-height: 1.15;
+letter-spacing: -0.015em;
+max-width: 860px;
+margin-bottom: 24px;
+background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+font-size: clamp(0.98rem, 1.4vw, 1.15rem);
+color: var(--text-muted);
+max-width: 880px;
+margin-bottom: 40px;
+font-weight: 300;
+line-height: 1.7;
+letter-spacing: -0.005em;
+}
+.btn-cta {
+display: inline-block;
+background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
+color: #fff;
+padding: 12px 30px;
+border-radius: 980px;
+text-decoration: none;
+font-weight: 600;
+font-size: 0.9rem;
+transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+box-shadow: 0 4px 20px rgba(0, 210, 255, 0.3);
+border: none;
+cursor: pointer;
+}
+.btn-cta:hover {
+transform: scale(1.03);
+box-shadow: 0 6px 28px rgba(0, 210, 255, 0.5);
+}
+/* --- STACKED SYSTEMS (HOME) --- */
+.systems-wrapper {
+max-width: 820px;
+margin: 0 auto;
+padding: 60px 20px 100px;
+display: flex;
+flex-direction: column;
+gap: 40px;
+}
+.system-card {
+background: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 24px;
+padding: 42px;
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+transition: all 0.4s ease;
+cursor: pointer;
+position: relative;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.system-card:hover {
+border-color: var(--accent-blue);
+box-shadow: 0 0 35px var(--accent-glow), 0 20px 40px rgba(0, 0, 0, 0.6);
+transform: translateY(-4px);
+}
+.card-header-flex {
+display: flex;
+align-items: center;
+gap: 16px;
+margin-bottom: 16px;
+}
+.card-icon {
+font-size: 2.2rem;
+line-height: 1;
+}
+.system-card h3 {
+font-size: 1.6rem;
+font-weight: 700;
+letter-spacing: -0.01em;
+color: #fff;
+}
+.system-card p {
+font-size: 1.02rem;
+color: var(--text-muted);
+line-height: 1.6;
+margin-bottom: 26px;
+font-weight: 300;
+}
+/* --- DETAILED SUBPAGE VIEW --- */
+.page-container {
+max-width: 860px;
+margin: 0 auto;
+padding: 40px 20px 100px;
+}
+.back-nav {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+color: var(--accent-blue);
+text-decoration: none;
+font-size: 0.9rem;
+font-weight: 600;
+margin-bottom: 30px;
+cursor: pointer;
+}
+.back-nav:hover {
+opacity: 0.8;
+}
+.page-title {
+font-size: clamp(2rem, 3.2vw, 2.8rem);
+font-weight: 700;
+color: #fff;
+margin-bottom: 30px;
+letter-spacing: -0.015em;
+line-height: 1.2;
+}
+.page-text-content {
+color: var(--text-muted);
+font-size: 1.08rem;
+line-height: 1.85;
+font-weight: 300;
+}
+.page-text-content p {
+margin-bottom: 24px;
+}
+.page-text-content strong {
+color: #fff;
+font-weight: 600;
+}
+.page-text-content ul {
+margin-left: 24px;
+margin-bottom: 24px;
+}
+.page-text-content li {
+margin-bottom: 12px;
+}
+.page-cta-box {
+margin-top: 60px;
+padding-top: 30px;
+border-top: 1px solid var(--border-color);
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 20px;
+}
+/* --- CONTACT SECTION --- */
+.contact-section {
+padding: 90px 20px 100px;
+text-align: center;
+background: radial-gradient(circle at 50% 100%, rgba(0, 210, 255, 0.08) 0%, transparent 70%);
+border-top: 1px solid var(--border-color);
+}
+.contact-container {
+max-width: 760px;
+margin: 0 auto;
+}
+.contact-company {
+font-size: 0.85rem;
+font-weight: 700;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--accent-blue);
+margin-bottom: 10px;
+}
+.contact-headline {
+font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+font-weight: 700;
+letter-spacing: -0.01em;
+color: #fff;
+margin-bottom: 12px;
+line-height: 1.25;
+}
+.contact-lead {
+font-size: 0.92rem;
+color: var(--text-muted);
+font-weight: 300;
+line-height: 1.6;
+margin-bottom: 28px;
+max-width: 620px;
+margin-left: auto;
+margin-right: auto;
+}
+.contact-details-grid {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 20px;
+flex-wrap: wrap;
+margin-bottom: 28px;
+}
+.contact-link {
+font-size: 0.95rem;
+font-weight: 500;
+color: #fff;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+.contact-link:hover {
+color: var(--accent-blue);
+}
+.contact-divider {
+width: 4px;
+height: 4px;
+border-radius: 50%;
+background: var(--text-muted);
+opacity: 0.5;
+}
+.social-btns {
+display: flex;
+justify-content: center;
+gap: 12px;
+}
+.btn-social {
+padding: 9px 22px;
+border-radius: 980px;
+text-decoration: none;
+font-size: 0.8rem;
+font-weight: 600;
+transition: all 0.3s ease;
+display: inline-flex;
+align-items: center;
+gap: 6px;
+}
+.viber {
+background: rgba(115, 96, 242, 0.12);
+color: #a294ff;
+border: 1px solid rgba(115, 96, 242, 0.3);
+}
+.viber:hover {
+background: #7360f2;
+color: #fff;
+box-shadow: 0 0 20px rgba(115, 96, 242, 0.4);
+transform: translateY(-2px);
+}
+.whatsapp {
+background: rgba(37, 211, 102, 0.12);
+color: #52ea8a;
+border: 1px solid rgba(37, 211, 102, 0.3);
+}
+.whatsapp:hover {
+background: #25d366;
+color: #fff;
+box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+transform: translateY(-2px);
+}
+/* --- COOKIE BANNER --- */
+#cookie-banner {
+position: fixed;
+bottom: 20px;
+left: 20px;
+right: 20px;
+max-width: 680px;
+margin: 0 auto;
+background: rgba(15, 23, 42, 0.85);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 0.12);
+padding: 18px 24px;
+border-radius: 16px;
+z-index: 2000;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+transition: transform 0.4s ease, opacity 0.4s ease;
+}
+#cookie-banner.hidden {
+transform: translateY(100px);
+opacity: 0;
+pointer-events: none;
+}
+.cookie-text {
+font-size: 0.82rem;
+color: var(--text-muted);
+line-height: 1.5;
+font-weight: 300;
+}
+.cookie-text strong {
+color: #fff;
+font-weight: 500;
+}
+.btn-cookie {
+background: rgba(255, 255, 255, 0.15);
+color: #fff;
+border: none;
+padding: 8px 18px;
+border-radius: 980px;
+font-size: 0.78rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+white-space: nowrap;
+}
+.btn-cookie:hover {
+background: var(--accent-blue);
+color: #050811;
+}
+footer {
+text-align: center;
+padding: 24px 20px;
+border-top: 1px solid var(--border-color);
+color: var(--text-muted);
+font-size: 0.73rem;
+letter-spacing: -0.01em;
+}
+@media (max-width: 768px) {
+.nav-links { display: none; }
+.system-card { padding: 28px; }
+.hero-title { font-size: 2.2rem; }
+.contact-divider { display: none; }
+.contact-details-grid { flex-direction: column; gap: 10px; }
+.page-cta-box { flex-direction: column; align-items: stretch; text-align: center; }
+#cookie-banner { flex-direction: column; align-items: stretch; text-align: center; }
+}
+</style>
 </head>
 <body id="top">
-
-    <header>
-        <div class="nav-container">
-            <a href="#top" onclick="showView('home')" class="logo-box">
-                <div class="logo-icon">W</div>
-                <span class="logo-text" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#about" onclick="showView('home')"><span data-i18n="nav-about">За Нас</span></a></li>
-                <li><a href="#systems" onclick="showView('home')"><span data-i18n="nav-systems">Системи</span></a></li>
-                <li><a href="#contact" onclick="showView('home')"><span data-i18n="nav-contact">Контакт</span></a></li>
-            </ul>
-            <div class="lang-switch">
-                <button class="lang-btn active" id="btn-mk">MK</button>
-                <button class="lang-btn" id="btn-en">EN</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- MAIN VIEW (HOME) -->
-    <div id="view-home" class="view-section active-view">
-        <section class="hero" id="about">
-            <h1 class="hero-title" data-i18n="hero-title">Професионални HVAC & Машински Инсталации за Модерни Објекти</h1>
-            <p class="hero-subtitle" data-i18n="hero-subtitle">
-                Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.
-            </p>
-            <a href="#contact" class="btn-cta" data-i18n="btn-cta">Побарај Понуда & Консултација</a>
-        </section>
-
-        <section id="systems" class="systems-wrapper">
-            <div class="system-card" onclick="showView('toplifikacija')">
-                <div class="card-header-flex">
-                    <span class="card-icon">🔥</span>
-                    <h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
-                </div>
-                <p data-i18n="sys1-desc">Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.</p>
-                <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
-            </div>
-
-            <div class="system-card" onclick="showView('geothermal')">
-                <div class="card-header-flex">
-                    <span class="card-icon">🌍</span>
-                    <h3 data-i18n="sys2-title">Геотермални Системи</h3>
-                </div>
-                <p data-i18n="sys2-desc">Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.</p>
-                <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
-            </div>
-
-            <div class="system-card" onclick="showView('heatpumps')">
-                <div class="card-header-flex">
-                    <span class="card-icon">⚡</span>
-                    <h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
-                </div>
-                <p data-i18n="sys3-desc">Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.</p>
-                <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
-            </div>
-
-            <div class="system-card" onclick="showView('ventilation')">
-                <div class="card-header-flex">
-                    <span class="card-icon">🌬️</span>
-                    <h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
-                </div>
-                <p data-i18n="sys4-desc">Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали за оптимална микроклима.</p>
-                <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
-            </div>
-
-            <div class="system-card" onclick="showView('plumbing')">
-                <div class="card-header-flex">
-                    <span class="card-icon">💧</span>
-                    <h3 data-i18n="sys5-title">Водовод & Канализација</h3>
-                </div>
-                <p data-i18n="sys5-desc">Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.</p>
-                <button class="btn-cta" data-i18n="btn-details">Повеќе</button>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="contact-container">
-                <p class="contact-company" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</p>
-                <h2 class="contact-headline" data-i18n="contact-title">Подготвени за соработка на вашиот следен проект?</h2>
-                <p class="contact-lead" data-i18n="contact-desc">За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.</p>
-
-                <div class="contact-details-grid">
-                    <a href="tel:+38970374959" id="phone-display" class="contact-link">070 374 959</a>
-                    <span class="contact-divider"></span>
-                    <a href="mailto:veldervg@icloud.com" class="contact-link">veldervg@icloud.com</a>
-                    <span class="contact-divider"></span>
-                    <span style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="val-location">Скопје, Македонија</span>
-                </div>
-
-                <div class="social-btns">
-                    <a href="viber://chat?number=%2B38970374959" class="btn-social viber">💬 Viber</a>
-                    <a href="https://wa.me/38970374959" class="btn-social whatsapp">🟢 WhatsApp</a>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- DEDICATED SUBPAGES WITH CAD BLUEPRINT ANIMATED BACKGROUNDS -->
-
-    <!-- SUBPAGE: ТОПЛИФИКАЦИЈА -->
-    <div id="view-toplifikacija" class="view-section">
-        <canvas class="cad-canvas" id="canvas-toplifikacija"></canvas>
-        <div class="page-container">
-            <div class="subpage-card-glass">
-                <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-                <h1 class="page-title" data-i18n="topli-title">🔥 Централно Топловодно Греење</h1>
-                
-                <div class="page-text-content">
-                    <p data-i18n="topli-p1">Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).</p>
-                    <p><strong data-i18n="topli-strong1">Клучни Сегменти & Изведба:</strong></p>
-                    <ul>
-                        <li><strong data-i18n="topli-li1-title">Приклучни Подстаници (ЕСМ Дистрибуција):</strong> <span data-i18n="topli-li1-desc">Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.</span></li>
-                        <li><strong data-i18n="topli-li2-title">Површински Грејни Системи:</strong> <span data-i18n="topli-li2-desc">Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.</span></li>
-                        <li><strong data-i18n="topli-li3-title">Радијаторско Греење:</strong> <span data-i18n="topli-li3-desc">Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.</span></li>
-                        <li><strong data-i18n="topli-li4-title">Фенкоилерски Системи:</strong> <span data-i18n="topli-li4-desc">Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.</span></li>
-                    </ul>
-                </div>
-
-                <div class="page-cta-box">
-                    <span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
-                    <a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SUBPAGE: ГЕОТЕРМАЛНИ СИСТЕМИ -->
-    <div id="view-geothermal" class="view-section">
-        <canvas class="cad-canvas" id="canvas-geothermal"></canvas>
-        <div class="page-container">
-            <div class="subpage-card-glass">
-                <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-                <h1 class="page-title" data-i18n="geo-title">🌍 Геотермални Системи</h1>
-                
-                <div class="page-text-content">
-                    <p data-i18n="geo-p1">Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).</p>
-                    <p data-i18n="geo-p2">Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).</p>
-                    <p><strong data-i18n="geo-strong1">Клучни Изведбени Решенија:</strong></p>
-                    <ul>
-                        <li><strong data-i18n="geo-li1-title">Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):</strong> <span data-i18n="geo-li1-desc">Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.</span></li>
-                        <li><strong data-i18n="geo-li2-title">Системи „Вода-Вода“ (Бунарски системи):</strong> <span data-i18n="geo-li2-desc">Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.</span></li>
-                        <li><strong data-i18n="geo-li3-title">Интегрирано Греење, Ладење & ТСВ:</strong> <span data-i18n="geo-li3-desc">Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.</span></li>
-                    </ul>
-                </div>
-
-                <div class="page-cta-box">
-                    <span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
-                    <a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SUBPAGE: ТОПЛИНСКИ ПУМПИ -->
-    <div id="view-heatpumps" class="view-section">
-        <canvas class="cad-canvas" id="canvas-heatpumps"></canvas>
-        <div class="page-container">
-            <div class="subpage-card-glass">
-                <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-                <h1 class="page-title" data-i18n="hp-title">⚡ Топлински Пумпи (Воздух-Вода)</h1>
-                
-                <div class="page-text-content">
-                    <p data-i18n="hp-p1">Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.</p>
-                    <p><strong data-i18n="hp-strong1">Принцип на Работа & Ефикасност:</strong> <span data-i18n="hp-p2">Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:</span></p>
-                    <ul>
-                        <li><strong data-i18n="hp-li1-title">COP (Коефициент на ефикасност при греење):</strong> <span data-i18n="hp-li1-desc">Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.</span></li>
-                        <li><strong data-i18n="hp-li2-title">EER / SEER:</strong> <span data-i18n="hp-li2-desc">Индикатори за висока енергетска ефикасност при ладење во летниот период.</span></li>
-                    </ul>
-                    <p><strong data-i18n="hp-strong2">Главни Предности:</strong></p>
-                    <ul>
-                        <li><strong data-i18n="hp-li3-title">Енергетска Заштеда:</strong> <span data-i18n="hp-li3-desc">Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).</span></li>
-                        <li><strong data-i18n="hp-li4-title">Мултифункционалност:</strong> <span data-i18n="hp-li4-desc">Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.</span></li>
-                        <li><strong data-i18n="hp-li5-title">Еколошка Одржливост:</strong> <span data-i18n="hp-li5-desc">Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.</span></li>
-                    </ul>
-                </div>
-
-                <div class="page-cta-box">
-                    <span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
-                    <a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SUBPAGE: ВЕНТИЛАЦИЈА И КЛИМАТИЗАЦИЈА -->
-    <div id="view-ventilation" class="view-section">
-        <canvas class="cad-canvas" id="canvas-ventilation"></canvas>
-        <div class="page-container">
-            <div class="subpage-card-glass">
-                <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-                <h1 class="page-title" data-i18n="vent-title">🌬️ Вентилација & Климатизација</h1>
-                
-                <div class="page-text-content">
-                    <p data-i18n="vent-p1">Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.</p>
-                    <p><strong data-i18n="vent-strong1">Основни Компоненти & Категории:</strong></p>
-                    <p><strong data-i18n="vent-strong2">Вентилациски Системи:</strong></p>
-                    <ul>
-                        <li><strong data-i18n="vent-li1-title">Принудна (механичка) вентилација:</strong> <span data-i18n="vent-li1-desc">Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).</span></li>
-                        <li><strong data-i18n="vent-li2-title">Локална и индустриска вентилација:</strong> <span data-i18n="vent-li2-desc">Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).</span></li>
-                        <li><strong data-i18n="vent-li3-title">Противпожарна вентилација:</strong> <span data-i18n="vent-li3-desc">Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.</span></li>
-                    </ul>
-                    <p><strong data-i18n="vent-strong3">Системи за Климатизација:</strong></p>
-                    <ul>
-                        <li><strong data-i18n="vent-li4-title">Сплит и мулти-сплит системи:</strong> <span data-i18n="vent-li4-desc">Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.</span></li>
-                        <li><strong data-i18n="vent-li5-title">VRF / VRV системи:</strong> <span data-i18n="vent-li5-desc">Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.</span></li>
-                        <li><strong data-i18n="vent-li6-title">Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):</strong> <span data-i18n="vent-li6-desc">Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.</span></li>
-                        <li><strong data-i18n="vent-li7-title">Канална климатизација:</strong> <span data-i18n="vent-li7-desc">Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.</span></li>
-                    </ul>
-                </div>
-
-                <div class="page-cta-box">
-                    <span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
-                    <a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SUBPAGE: ВОДОВОД И КАНАЛИЗАЦИЈА -->
-    <div id="view-plumbing" class="view-section">
-        <canvas class="cad-canvas" id="canvas-plumbing"></canvas>
-        <div class="page-container">
-            <div class="subpage-card-glass">
-                <a class="back-nav" onclick="showView('home')">&larr; <span data-i18n="back-home">Назад кон почеток</span></a>
-                <h1 class="page-title" data-i18n="plumb-title">💧 Водовод & Канализација (ВиК)</h1>
-                
-                <div class="page-text-content">
-                    <p data-i18n="plumb-p1">Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.</p>
-                    <p><strong data-i18n="plumb-strong1">Основни Системи & Инсталации:</strong></p>
-                    <ul>
-                        <li><strong data-i18n="plumb-li1-title">Внатрешна водоводна мрежа:</strong> <span data-i18n="plumb-li1-desc">Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.</span></li>
-                        <li><strong data-i18n="plumb-li2-title">Канализациони системи:</strong> <span data-i18n="plumb-li2-desc">Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).</span></li>
-                        <li><strong data-i18n="plumb-li3-title">Хидрантски противпожарни мрежи:</strong> <span data-i18n="plumb-li3-desc">Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.</span></li>
-                        <li><strong data-i18n="plumb-li4-title">Хидрофорни постројки и пумпни станици:</strong> <span data-i18n="plumb-li4-desc">Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.</span></li>
-                    </ul>
-                    <p><strong data-i18n="plumb-strong2">Изведбени Стандарди & Квалитет:</strong></p>
-                    <ul>
-                        <li><span data-i18n="plumb-li5">Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.</span></li>
-                        <li><span data-i18n="plumb-li6">Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација.</span></li>
-                    </ul>
-                </div>
-
-                <div class="page-cta-box">
-                    <span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
-                    <a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- COOKIE BANNER -->
-    <div id="cookie-banner">
-        <p class="cookie-text" data-i18n="cookie-text">Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.</p>
-        <button class="btn-cookie" id="cookie-accept-btn" data-i18n="cookie-btn">Се согласувам</button>
-    </div>
-
-    <footer>
-        <p data-i18n="footer">&copy; 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
-    </footer>
-
-    <script>
-        // TRANSLATIONS
-        const i18n = {
-            mk: {
-                "nav-about": "За Нас",
-                "nav-systems": "Системи",
-                "nav-contact": "Контакт",
-                "hero-title": "Професионални HVAC & Машински Инсталации за Модерни Објекти",
-                "hero-subtitle": "Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
-                "btn-cta": "Побарај Понуда & Консултација",
-                "btn-details": "Повеќе",
-                "sys1-title": "Централно Топловодно Греење",
-                "sys1-desc": "Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.",
-                "sys2-title": "Геотермални Системи",
-                "sys2-desc": "Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.",
-                "sys3-title": "Топлински Пумпи (Воздух-Вода)",
-                "sys3-desc": "Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.",
-                "sys4-title": "Вентилација & Климатизација",
-                "sys4-desc": "Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали за оптимална микроклима.",
-                "sys5-title": "Водовод & Канализација",
-                "sys5-desc": "Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.",
-                "contact-title": "Подготвени за соработка на вашиот следен проект?",
-                "contact-desc": "За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.",
-                "val-location": "Скопје, Македонија",
-                "phone-num": "070 374 959",
-                "modal-cta": "Побарај Понуда за Овој Систем",
-                "company-name": "ВЕЛДЕР ВГ ТРЕЈДИНГ",
-                "footer": "© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.",
-                "back-home": "Назад кон почеток",
-                "page-cta-text": "Заинтересирани сте за понуда?",
-                "cookie-text": "Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.",
-                "cookie-btn": "Се согласувам",
-                
-                "topli-title": "🔥 Централно Топловодно Греење",
-                "topli-p1": "Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).",
-                "topli-strong1": "Клучни Сегменти & Изведба:",
-                "topli-li1-title": "Приклучни Подстаници (ЕСМ Дистрибуција):",
-                "topli-li1-desc": "Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.",
-                "topli-li2-title": "Површински Грејни Системи:",
-                "topli-li2-desc": "Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.",
-                "topli-li3-title": "Радијаторско Греење:",
-                "topli-li3-desc": "Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.",
-                "topli-li4-title": "Фенкоилерски Системи:",
-                "topli-li4-desc": "Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.",
-
-                "geo-title": "🌍 Геотермални Системи",
-                "geo-p1": "Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).",
-                "geo-p2": "Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).",
-                "geo-strong1": "Клучни Изведбени Решенија:",
-                "geo-li1-title": "Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):",
-                "geo-li1-desc": "Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.",
-                "geo-li2-title": "Системи „Вода-Вода“ (Бунарски системи):",
-                "geo-li2-desc": "Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.",
-                "geo-li3-title": "Интегрирано Греење, Ладење & ТСВ:",
-                "geo-li3-desc": "Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.",
-
-                "hp-title": "⚡ Топлински Пумпи (Воздух-Вода)",
-                "hp-p1": "Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.",
-                "hp-strong1": "Принцип на Работа & Ефикасност:",
-                "hp-p2": "Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:",
-                "hp-li1-title": "COP (Коефициент на ефикасност при греење):",
-                "hp-li1-desc": "Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.",
-                "hp-li2-title": "EER / SEER:",
-                "hp-li2-desc": "Индикатори за висока енергетска ефикасност при ладење во летниот период.",
-                "hp-strong2": "Главни Предности:",
-                "hp-li3-title": "Енергетска Заштеда:",
-                "hp-li3-desc": "Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).",
-                "hp-li4-title": "Мултифункционалност:",
-                "hp-li4-desc": "Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.",
-                "hp-li5-title": "Еколошка Одржливост:",
-                "hp-li5-desc": "Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.",
-
-                "vent-title": "🌬️ Вентилација & Климатизација",
-                "vent-p1": "Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.",
-                "vent-strong1": "Основни Компоненти & Категории:",
-                "vent-strong2": "Вентилациски Системи:",
-                "vent-li1-title": "Принудна (механичка) вентилација:",
-                "vent-li1-desc": "Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).",
-                "vent-li2-title": "Локална и индустриска вентилација:",
-                "vent-li2-desc": "Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).",
-                "vent-li3-title": "Противпожарна вентилација:",
-                "vent-li3-desc": "Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.",
-                "vent-strong3": "Системи за Климатизација:",
-                "vent-li4-title": "Сплит и мулти-сплит системи:",
-                "vent-li4-desc": "Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.",
-                "vent-li5-title": "VRF / VRV системи:",
-                "vent-li5-desc": "Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.",
-                "vent-li6-title": "Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):",
-                "vent-li6-desc": "Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.",
-                "vent-li7-title": "Канална климатизација:",
-                "vent-li7-desc": "Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.",
-
-                "plumb-title": "💧 Водовод & Канализација (ВиК)",
-                "plumb-p1": "Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.",
-                "plumb-strong1": "Основни Системи & Инсталации:",
-                "plumb-li1-title": "Внатрешна водоводна мрежа:",
-                "plumb-li1-desc": "Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.",
-                "plumb-li2-title": "Канализациони системи:",
-                "plumb-li2-desc": "Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).",
-                "plumb-li3-title": "Хидрантски противпожарни мрежи:",
-                "plumb-li3-desc": "Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.",
-                "plumb-li4-title": "Хидрофорни постројки и пумпни станици:",
-                "plumb-li4-desc": "Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.",
-                "plumb-strong2": "Изведбени Стандарди & Квалитет:",
-                "plumb-li5": "Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.",
-                "plumb-li6": "Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација."
-            },
-            en: {
-                "nav-about": "About Us",
-                "nav-systems": "Systems",
-                "nav-contact": "Contact",
-                "hero-title": "Professional HVAC & Mechanical Building Installations",
-                "hero-subtitle": "Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems: central hydronic heating installations (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), heat recovery ventilation, and full plumbing networks for residential and commercial complexes.",
-                "btn-cta": "Request Quote & Consultation",
-                "btn-details": "More",
-                "sys1-title": "Central District Heating",
-                "sys1-desc": "Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil systems) and connection substations for ESM Heat Distribution Skopje.",
-                "sys2-title": "Geothermal Systems",
-                "sys2-desc": "Eco-friendly Ground-to-Water and Water-to-Water solutions utilizing stable ground temperatures for heating and cooling.",
-                "sys3-title": "Heat Pumps (Air-to-Water)",
-                "sys3-desc": "Modern inverter systems for high-efficiency cooling and heating in residential and commercial premises.",
-                "sys4-title": "Ventilation & Air Conditioning",
-                "sys4-desc": "Professional heat recovery ventilation systems (HRV/ERV), central air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), and ducting for optimal indoor air quality.",
-                "sys5-title": "Plumbing & Drainage",
-                "sys5-desc": "Full execution of water supply networks and drainage systems for multi-story residential and commercial complexes.",
-                "contact-title": "Ready to collaborate on your next project?",
-                "contact-desc": "For consultation, engineering design, or complete execution of mechanical installations, reach out to our engineering team.",
-                "val-location": "Skopje, Macedonia",
-                "phone-num": "+389 70 374 959",
-                "modal-cta": "Request Proposal for This System",
-                "company-name": "VELDER VG TRADING",
-                "footer": "© 2026 VELDER VG TRADING LLC. All rights reserved.",
-                "back-home": "Back to Home",
-                "page-cta-text": "Interested in a quote?",
-                "cookie-text": "This website uses minimal technical cookies to enhance user experience and language preference.",
-                "cookie-btn": "Accept",
-
-                "topli-title": "🔥 Central District Heating",
-                "topli-p1": "Central district heating is one of the most widespread, safest, and efficient systems for heating residential, commercial, and industrial facilities. Its core operation is based on the circulation of a fluid (water) heated in a centralized source (boiler, heat pump, or municipal district heating plant) and distributed through a piping network to surface heating elements (underfloor, wall, or ceiling heating) or conventional emitters (radiators and fan coil units).",
-                "topli-strong1": "Key Segments & Execution:",
-                "topli-li1-title": "Connection Substations (ESM Distribution):",
-                "topli-li1-desc": "Execution of primary and secondary loops featuring high-efficiency compact plate heat exchangers, automatic differential pressure and flow regulators, outdoor-temperature-compensated microprocessor control, and frequency-controlled circulation pumps.",
-                "topli-li2-title": "Surface Heating Systems:",
-                "topli-li2-desc": "Low-temperature underfloor, wall, and ceiling heating executed with high-quality PEX-Al-PEX and PE-RT pipes, ensuring maximum thermal comfort, even temperature distribution, and high energy efficiency.",
-                "topli-li3-title": "Radiator Heating:",
-                "topli-li3-desc": "Two-pipe distribution networks equipped with thermostatic radiator valves for precise individual zone control in every room.",
-                "topli-li4-title": "Fan Coil Unit Systems:",
-                "topli-li4-desc": "Two-pipe and four-pipe fan coil installations for fast and dynamic microclimate regulation in modern residential and commercial spaces.",
-
-                "geo-title": "🌍 Geothermal Systems",
-                "geo-p1": "Geothermal systems represent one of the most efficient and eco-friendly solutions for heating, cooling, and domestic hot water (DHW) preparation. Their primary advantage lies in utilizing the stable temperature of the ground or groundwater, which remains nearly constant year-round at specific depths (between 10°C and 12°C at depths exceeding 10–15 meters).",
-                "geo-p2": "These systems operate on the thermodynamic cycle of geothermal heat pumps (water-to-water or ground-to-water), transferring thermal energy with minimal electricity consumption (powering the compressor and circulation pumps).",
-                "geo-strong1": "Key Execution Solutions:",
-                "geo-li1-title": "Ground-to-Water Systems (Vertical Probes / Horizontal Collectors):",
-                "geo-li1-desc": "Installation of deep geothermal probes or horizontal collector networks that absorb geothermal energy from the ground via a glycol solution.",
-                "geo-li2-title": "Water-to-Water Systems (Well Systems):",
-                "geo-li2-desc": "Utilization of well water as a direct and exceptionally rich energy source, offering top-tier performance (COP) and high seasonal efficiency.",
-                "geo-li3-title": "Integrated Heating, Cooling & DHW:",
-                "geo-li3-desc": "Flexible solutions featuring free-cooling capabilities that further reduce operational costs during the summer season.",
-
-                "hp-title": "⚡ Heat Pumps (Air-to-Water)",
-                "hp-p1": "Air-to-water heat pumps are among the most prevalent and economical systems for heating, cooling, and domestic hot water (DHW) preparation. They do not produce heat by burning fuel; instead, they transfer thermal energy from outside air into the building, achieving high efficiency even at low winter temperatures.",
-                "hp-strong1": "Operating Principle & Efficiency:",
-                "hp-p2": "The system operates on a proven thermodynamic cycle utilizing a refrigerant and an inverter compressor:",
-                "hp-li1-title": "COP (Coefficient of Performance for Heating):",
-                "hp-li1-desc": "Indicates the ratio between electrical energy input and thermal energy output. With high seasonal performance reaching up to 5.0 and above, for every 1 kWh of electricity consumed, the pump delivers a multiplied quantity of heat energy.",
-                "hp-li2-title": "EER / SEER:",
-                "hp-li2-desc": "Indicators of high energy efficiency during cooling in the summer period.",
-                "hp-strong2": "Main Advantages:",
-                "hp-li3-title": "Energy Savings:",
-                "hp-li3-desc": "Drastically reduced heating and cooling costs (up to 70% compared to conventional systems).",
-                "hp-li4-title": "Multifunctionality:",
-                "hp-li4-desc": "An integrated solution for year-round heating, cooling, and DHW preparation.",
-                "hp-li5-title": "Eco-Friendly Sustainability:",
-                "hp-li5-desc": "Zero local harmful gas emissions with full integration capabilities for photovoltaic systems.",
-
-                "vent-title": "🌬️ Ventilation & Air Conditioning",
-                "vent-p1": "Engineering systems for ventilation and air conditioning are crucial for ensuring optimal indoor air quality, microclimatic stability, and energy efficiency across all types of buildings.",
-                "vent-strong1": "Core Components & Categories:",
-                "vent-strong2": "Ventilation Systems:",
-                "vent-li1-title": "Forced (Mechanical) Ventilation:",
-                "vent-li1-desc": "Supply and exhaust air systems equipped with air handling units, heat recovery units (high-efficiency heat exchangers), and multi-stage filtration (G4, F7, HEPA classes).",
-                "vent-li2-title": "Local & Industrial Ventilation:",
-                "vent-li2-desc": "Effective extraction of pollutants, steam, and grease (professional kitchen hoods, exhaust systems in laboratories and industrial plants).",
-                "vent-li3-title": "Smoke & Fire Ventilation:",
-                "vent-li3-desc": "Smoke and heat exhaust ventilation systems (SHEVS) and maintenance of protective positive pressure in evacuation stairwells.",
-                "vent-strong3": "Air Conditioning Systems:",
-                "vent-li4-title": "Split & Multi-Split Systems:",
-                "vent-li4-desc": "Flexible solutions ideal for smaller apartments, offices, and individual rooms with high energy efficiency ratings.",
-                "vent-li5-title": "VRF / VRV Systems:",
-                "vent-li5-desc": "Centralized inverter systems with variable refrigerant flow, perfectly suited for office buildings, hotels, and larger residential developments.",
-                "vent-li6-title": "Chillers & Heat Pumps (Air-to-Water / Water-to-Water):",
-                "vent-li6-desc": "Central systems generating chilled and hot water to supply fan coil units and air handling units.",
-                "vent-li7-title": "Ducted Air Conditioning:",
-                "vent-li7-desc": "Integrated distribution of conditioned air through insulated ductwork with anemostats, grilles, and diffusers for uniform airflow and supreme indoor comfort.",
-
-                "plumb-title": "💧 Plumbing & Drainage",
-                "plumb-p1": "Water supply and drainage systems constitute a complex hydraulic infrastructure designed for continuous delivery of safe sanitary water under pressure and the safe collection and treatment of wastewater and stormwater.",
-                "plumb-strong1": "Core Systems & Installations:",
-                "plumb-li1-title": "Internal Water Supply Network:",
-                "plumb-li1-desc": "Design and execution of sanitary water supply and distribution systems utilizing proven, high-quality materials (PPR, multilayer pipes, galvanized and stainless steel) resistant to pressure and corrosion.",
-                "plumb-li2-title": "Drainage Systems:",
-                "plumb-li2-desc": "Efficient collection and gravity- or force-driven removal of wastewater and stormwater using certified plastic pipe systems (PVC, acoustically insulated PP systems, and robust HDPE piping networks).",
-                "plumb-li3-title": "Fire Hydrant Networks:",
-                "plumb-li3-desc": "Execution of internal and external fire hydrant installations equipped with appropriate booster pump sets for reliable pressure and flow during emergencies.",
-                "plumb-li4-title": "Booster Stations & Pump Units:",
-                "plumb-li4-desc": "Automated systems ensuring stable water pressure across all floors of a building, regardless of height and capacity.",
-                "plumb-strong2": "Execution Standards & Quality:",
-                "plumb-li5": "Complete assembly of sanitary fittings, pressure pipelines, and installation shafts.",
-                "plumb-li6": "Application of rigorous hydraulic pressure and leak-tightness testing prior to commissioning."
-            }
-        };
-
-        let currentLang = 'mk';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key]) el.innerText = i18n[lang][key];
-            });
-            document.getElementById('phone-display').innerText = i18n[lang]['phone-num'];
-            
-            if (lang === 'mk') {
-                document.getElementById('btn-mk').classList.add('active');
-                document.getElementById('btn-en').classList.remove('active');
-            } else {
-                document.getElementById('btn-en').classList.add('active');
-                document.getElementById('btn-mk').classList.remove('active');
-            }
-        }
-
-        document.getElementById('btn-mk').addEventListener('click', () => setLanguage('mk'));
-        document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
-
-        function showView(viewId) {
-            document.querySelectorAll('.view-section').forEach(sec => {
-                sec.classList.remove('active-view');
-            });
-            const target = document.getElementById('view-' + viewId);
-            if (target) {
-                target.classList.add('active-view');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        // --- AUTOCAD PERSPECTIVE BLUEPRINT ANIMATION ENGINE ---
-        function initCadCanvas(canvasId) {
-            const canvas = document.getElementById(canvasId);
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            
-            let width, height;
-            function resize() {
-                width = canvas.width = canvas.parentElement.offsetWidth;
-                height = canvas.height = canvas.parentElement.offsetHeight;
-            }
-            resize();
-            window.addEventListener('resize', resize);
-
-            let offset = 0;
-            const vanishingPoint = { x: width * 0.5, y: height * 0.3 };
-
-            function draw() {
-                ctx.clearRect(0, 0, width, height);
-                
-                // Draw AutoCAD blueprint grid lines with infinite perspective
-                ctx.strokeStyle = 'rgba(0, 210, 255, 0.15)';
-                ctx.lineWidth = 1;
-
-                // Diagonal / Oblique infinite grid lines radiating from center
-                const cols = 20;
-                const spacing = width / cols;
-                offset = (offset + 0.3) % spacing;
-
-                // Horizontal moving depth lines
-                for (let y = vanishingPoint.y; y < height; y += (y - vanishingPoint.y) * 0.08 + 4) {
-                    let adjustedY = y + offset;
-                    if (adjustedY > height) adjustedY = vanishingPoint.y + (adjustedY - height);
-                    ctx.beginPath();
-                    ctx.moveTo(0, adjustedY);
-                    ctx.lineTo(width, adjustedY);
-                    ctx.stroke();
-                }
-
-                // Perspective converging lines (going into infinity)
-                for (let x = 0; x <= width; x += spacing * 1.5) {
-                    ctx.beginPath();
-                    ctx.moveTo(vanishingPoint.x, vanishingPoint.y);
-                    ctx.lineTo(x, height);
-                    ctx.stroke();
-                }
-
-                // Floating CAD technical crosshairs and dimension markers
-                ctx.fillStyle = 'rgba(0, 210, 255, 0.35)';
-                ctx.font = '10px monospace';
-                ctx.fillText("CAD_REF // VELDER_VG_ENGINEERING_AXIS", 30, 40);
-                ctx.fillText("X: " + (offset * 10).toFixed(1) + "mm  Y: 0.00mm  Z: INFINITY", 30, 60);
-
-                // Crosshair cursor effect moving slowly
-                let cx = vanishingPoint.x + Math.sin(Date.now() * 0.001) * 200;
-                let cy = vanishingPoint.y + 150 + Math.cos(Date.now() * 0.0015) * 80;
-                
-                ctx.strokeStyle = 'rgba(0, 210, 255, 0.4)';
-                ctx.beginPath();
-                ctx.arc(cx, cy, 15, 0, Math.PI * 2);
-                ctx.stroke();
-                
-                ctx.beginPath();
-                ctx.moveTo(cx - 22, cy); ctx.lineTo(cx + 22, cy);
-                ctx.moveTo(cx, cy - 22); ctx.lineTo(cx, cy + 22);
-                ctx.stroke();
-
-                requestAnimationFrame(draw);
-            }
-            draw();
-        }
-
-        // Initialize CAD animation on all subpages
-        ['canvas-toplifikacija', 'canvas-geothermal', 'canvas-heatpumps', 'canvas-ventilation', 'canvas-plumbing'].forEach(id => {
-            initCadCanvas(id);
-        });
-
-        // Cookie Banner Logic
-        const cookieBanner = document.getElementById('cookie-banner');
-        const cookieAcceptBtn = document.getElementById('cookie-accept-btn');
-
-        if (localStorage.getItem('velder_cookies_accepted') === 'true') {
-            cookieBanner.classList.add('hidden');
-        }
-
-        cookieAcceptBtn.addEventListener('click', () => {
-            localStorage.setItem('velder_cookies_accepted', 'true');
-            cookieBanner.classList.add('hidden');
-        });
-
-        const focusObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-focus');
-                } else {
-                    entry.target.classList.remove('in-focus');
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: "-30% 0px -30% 0px",
-            threshold: 0.2
-        });
-
-        document.querySelectorAll('.system-card').forEach(card => {
-            focusObserver.observe(card);
-        });
-    </script>
+<header>
+<div class="nav-container">
+<a href="#top" onclick="showView('home')" class="logo-box">
+<div class="logo-icon">W</div>
+<span class="logo-text" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ</span>
+</a>
+<ul class="nav-links">
+<li><a href="#about" onclick="showView('home')"><span data-i18n="nav-about">За Нас</span></a></li>
+<li><a href="#systems" onclick="showView('home')"><span data-i18n="nav-systems">Системи</span></a></li>
+<li><a href="#contact" onclick="showView('home')"><span data-i18n="nav-contact">Контакт</span></a></li>
+</ul>
+<div class="lang-switch">
+<button class="lang-btn active" id="btn-mk">MK</button>
+<button class="lang-btn" id="btn-en">EN</button>
+</div>
+</div>
+</header>
+<!-- MAIN VIEW (HOME) -->
+<div id="view-home" class="view-section active-view">
+<section class="hero" id="about">
+<h1 class="hero-title" data-i18n="hero-title">Професионални HVAC & Машински Инсталации за Модерни Објекти</h1>
+<p class="hero-subtitle" data-i18n="hero-subtitle">
+Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.
+</p>
+<a href="#contact" class="btn-cta" data-i18n="btn-cta">Побарај Понуда & Консултација</a>
+</section>
+<section id="systems" class="systems-wrapper">
+<div class="system-card" onclick="showView('toplifikacija')">
+<div class="card-header-flex">
+<span class="card-icon">🔥</span>
+<h3 data-i18n="sys1-title">Централно Топловодно Греење</h3>
+</div>
+<p data-i18n="sys1-desc">Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.</p>
+<button class="btn-cta" data-i18n="btn-details">Повеќе</button>
+</div>
+<div class="system-card" onclick="showView('geothermal')">
+<div class="card-header-flex">
+<span class="card-icon">🌍</span>
+<h3 data-i18n="sys2-title">Геотермални Системи</h3>
+</div>
+<p data-i18n="sys2-desc">Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење, ладење и подготовка на топла санитарна вода (ТСВ).</p>
+<button class="btn-cta" data-i18n="btn-details">Повеќе</button>
+</div>
+<div class="system-card" onclick="showView('heatpumps')">
+<div class="card-header-flex">
+<span class="card-icon">⚡</span>
+<h3 data-i18n="sys3-title">Топлински Пумпи (Воздух-Вода)</h3>
+</div>
+<p data-i18n="sys3-desc">Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.</p>
+<button class="btn-cta" data-i18n="btn-details">Повеќе</button>
+</div>
+<div class="system-card" onclick="showView('ventilation')">
+<div class="card-header-flex">
+<span class="card-icon">🌬️</span>
+<h3 data-i18n="sys4-title">Вентилација & Климатизација</h3>
+</div>
+<p data-i18n="sys4-desc">Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали за оптимална микроклима.</p>
+<button class="btn-cta" data-i18n="btn-details">Повеќе</button>
+</div>
+<div class="system-card" onclick="showView('plumbing')">
+<div class="card-header-flex">
+<span class="card-icon">💧</span>
+<h3 data-i18n="sys5-title">Водовод & Канализација</h3>
+</div>
+<p data-i18n="sys5-desc">Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.</p>
+<button class="btn-cta" data-i18n="btn-details">Повеќе</button>
+</div>
+</section>
+<section id="contact" class="contact-section">
+<div class="contact-container">
+<p class="contact-company" data-i18n="company-name">ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ</p>
+<h2 class="contact-headline" data-i18n="contact-title">Подготвени за соработка на вашиот следен проект?</h2>
+<p class="contact-lead" data-i18n="contact-desc">За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.</p>
+<div class="contact-details-grid">
+<a href="tel:+38970374959" id="phone-display" class="contact-link">070 374 959</a>
+<span class="contact-divider"></span>
+<a href="mailto:veldervg@icloud.com" class="contact-link">veldervg@icloud.com</a>
+<span class="contact-divider"></span>
+<span style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="val-location">Скопје, Македонија</span>
+</div>
+<div class="social-btns">
+<a href="viber://chat?number=%2B38970374959" class="btn-social viber">💬 Viber</a>
+<a href="https://wa.me/38970374959" class="btn-social whatsapp">🟢 WhatsApp</a>
+</div>
+</div>
+</section>
+</div>
+<!-- SUBPAGE: TOPLIFIKACIJA -->
+<div id="view-toplifikacija" class="view-section">
+<div class="page-container">
+<a class="back-nav" onclick="showView('home')">← <span data-i18n="back-home">Назад кон почеток</span></a>
+<h1 class="page-title" data-i18n="topli-title">🔥 Централно Топловодно Греење</h1>
+<div class="page-text-content">
+<p data-i18n="topli-p1">Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Нашата компанија нуди целокупна инженерска изведба со врвни материјали и прецизна монтажа.</p>
+<p><strong data-i18n="topli-strong1">Клучни Сегменти & Изведба:</strong></p>
+<ul>
+<li><strong data-i18n="topli-li1-title">Приклучни Подстаници (ЕСМ Дистрибуција):</strong> <span data-i18n="topli-li1-desc">Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, сигурносна арматура, циркулациони пумпи и современи мерно-регулациони уреди кои гарантираат точна испорака и контрола на топлинската енергија.</span></li>
+<li><strong data-i18n="topli-li2-title">Површински Грејни Системи:</strong> <span data-i18n="topli-li2-desc">Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки со висока механичка отпорност и долговечност.</span></li>
+<li><strong data-i18n="topli-li3-title">Радијаторско и Фенкоилерско Греење:</strong> <span data-i18n="topli-li3-desc">Проектирање и монтажа на панелни радијатори, алуминиумски секциони радијатори и вентил-конлектори (фенкојлери) за брза дистрибуција на топлината.</span></li>
+</ul>
+</div>
+<div class="page-cta-box">
+<span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
+<a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+</div>
+</div>
+</div>
+<!-- SUBPAGE: GEOTHERMAL -->
+<div id="view-geothermal" class="view-section">
+<div class="page-container">
+<a class="back-nav" onclick="showView('home')">← <span data-i18n="back-home">Назад кон почеток</span></a>
+<h1 class="page-title" data-i18n="geo-title">🌍 Геотермални Системи</h1>
+<div class="page-text-content">
+<p data-i18n="geo-p1">Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие ја користат стабилната температура на земјиштето или подземните води како извор на енергија.</p>
+<p><strong data-i18n="geo-strong1">Видови геотермални системи:</strong></p>
+<ul>
+<li><strong data-i18n="geo-li1-title">Системи Земја-Вода (Вертикални/Хоризонтални сонди):</strong> <span data-i18n="geo-li1-desc">Инсталација на затворени сондарни коси или хоризонтални колектори кои апсорбираат геотермална енергија од земјиштето.</span></li>
+<li><strong data-i18n="geo-li2-title">Системи Вода-Вода:</strong> <span data-i18n="geo-li2-desc">Користење на бунари за подземна вода како директен медиум за размена на топлина со висок COP (Coefficient of Performance) фактор.</span></li>
+</ul>
+</div>
+<div class="page-cta-box">
+<span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
+<a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+</div>
+</div>
+</div>
+<!-- SUBPAGE: HEAT PUMPS -->
+<div id="view-heatpumps" class="view-section">
+<div class="page-container">
+<a class="back-nav" onclick="showView('home')">← <span data-i18n="back-home">Назад кон почеток</span></a>
+<h1 class="page-title" data-i18n="hp-title">⚡ Топлински Пумпи (Воздух-Вода)</h1>
+<div class="page-text-content">
+<p data-i18n="hp-p1">Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ) во современ амбиент.</p>
+<p><strong data-i18n="hp-strong1">Предности и Карактеристики:</strong></p>
+<ul>
+<li><strong data-i18n="hp-li1-title">Висока Енергетска Ефикасност:</strong> <span data-i18n="hp-li1-desc">Произведуваат повеќекратно повеќе топлинска енергија во однос на потрошената електрична енергија.</span></li>
+<li><strong data-i18n="hp-li2-title">Флексибилност:</strong> <span data-i18n="hp-li2-desc">Идеални за комбинирање со подно греење, нискотемпературни радијатори и фенкојлери.</span></li>
+</ul>
+</div>
+<div class="page-cta-box">
+<span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
+<a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+</div>
+</div>
+</div>
+<!-- SUBPAGE: VENTILATION -->
+<div id="view-ventilation" class="view-section">
+<div class="page-container">
+<a class="back-nav" onclick="showView('home')">← <span data-i18n="back-home">Назад кон почеток</span></a>
+<h1 class="page-title" data-i18n="vent-title">🌬️ Вентилација & Климатизација</h1>
+<div class="page-text-content">
+<p data-i18n="vent-p1">Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот во затворени простории, отстранување на миризби, влага и штетни честички.</p>
+<p><strong data-i18n="vent-strong1">Наши решенија:</strong></p>
+<ul>
+<li><strong data-i18n="vent-li1-title">Рекуперација на топлина (HRV/ERV):</strong> <span data-i18n="vent-li1-desc">Системи со рекуператори кои ја зачувуваат енергијата од издувниот воздух при свежо проветрување.</span></li>
+<li><strong data-i18n="vent-li2-title">Централни Климатизерски Системи:</strong> <span data-i18n="vent-li2-desc">VRV/VRF системи и чилер-фенкоилер конфигурации за деловни и станбени објекти.</span></li>
+</ul>
+</div>
+<div class="page-cta-box">
+<span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
+<a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+</div>
+</div>
+</div>
+<!-- SUBPAGE: PLUMBING -->
+<div id="view-plumbing" class="view-section">
+<div class="page-container">
+<a class="back-nav" onclick="showView('home')">← <span data-i18n="back-home">Назад кон почеток</span></a>
+<h1 class="page-title" data-i18n="plumb-title">💧 Водовод & Канализација (ВиК)</h1>
+<div class="page-text-content">
+<p data-i18n="plumb-p1">Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано и сигурно снабдување со чиста вода и безбедно одведување на отпадните води.</p>
+<p><strong data-i18n="plumb-strong1">Области на дејствување:</strong></p>
+<ul>
+<li><strong data-i18n="plumb-li1-title">Инсталации за притисна вода:</strong> <span data-i18n="plumb-li1-desc">Изведба со сертифицирани PPR, PE и метални цевни мрежи со врвен квалитет.</span></li>
+<li><strong data-i18n="plumb-li2-title">Канализациони мрежи:</strong> <span data-i18n="plumb-li2-desc">Бесшумни PVC/PP канализациони водови за отпадни и атмосферски води.</span></li>
+</ul>
+</div>
+<div class="page-cta-box">
+<span style="color: var(--text-muted); font-weight: 300;" data-i18n="page-cta-text">Заинтересирани сте за понуда?</span>
+<a href="#contact" onclick="showView('home'); location.hash='#contact';" class="btn-cta" data-i18n="modal-cta">Побарај Понуда за Овој Систем</a>
+</div>
+</div>
+</div>
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+<p class="cookie-text" data-i18n="cookie-text">Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.</p>
+<button class="btn-cookie" id="cookie-accept-btn" data-i18n="cookie-btn">Се согласувам</button>
+</div>
+<footer>
+<p data-i18n="footer">© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.</p>
+</footer>
+<script>
+const i18n = {
+mk: {
+"nav-about": "За Нас", "nav-systems": "Системи", "nav-contact": "Контакт",
+"hero-title": "Професионални HVAC & Машински Инсталации за Модерни Објекти",
+"hero-subtitle": "Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
+"btn-cta": "Побарај Понуда & Консултација", "btn-details": "Повеќе",
+"sys1-title": "Централно Топловодно Греење", "sys1-desc": "Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.",
+"sys2-title": "Геотермални Системи", "sys2-desc": "Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење, ладење и подготовка на топла санитарна вода (ТСВ).",
+"sys3-title": "Топлински Пумпи (Воздух-Вода)", "sys3-desc": "Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.",
+"sys4-title": "Вентилација & Климатизација", "sys4-desc": "Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали за оптимална микроклима.",
+"sys5-title": "Водовод & Канализација", "sys5-desc": "Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.",
+"contact-title": "Подготвени за соработка на вашиот следен проект?",
+"contact-desc": "За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.",
+"val-location": "Скопје, Македонија", "phone-num": "070 374 959",
+"modal-cta": "Побарај Понуда за Овој Систем", "company-name": "ВЕЛДЕР ВГ ТРЕЈДИНГ",
+"footer": "© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.",
+"back-home": "Назад кон почеток", "page-cta-text": "Заинтересирани сте за понуда?",
+"cookie-text": "Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.", "cookie-btn": "Се согласувам",
+"topli-title": "🔥 Централно Топловодно Греење",
+"topli-p1": "Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Нашата компанија нуди целокупна инженерска изведба со врвни материјали и прецизна монтажа.",
+"topli-strong1": "Клучни Сегменти & Изведба:",
+"topli-li1-title": "Приклучни Подстаници (ЕСМ Дистрибуција):", "topli-li1-desc": "Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, сигурносна арматура, циркулациони пумпи и современи мерно-регулациони уреди кои гарантираат точна испорака и контрола на топлинската енергија.",
+"topli-li2-title": "Површински Грејни Системи:", "topli-li2-desc": "Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки со висока механичка отпорност и долговечност.",
+"topli-li3-title": "Радијаторско и Фенкоилерско Греење:", "topli-li3-desc": "Проектирање и монтажа на панелни радијатори, алуминиумски секциони радијатори и вентил-конлектори (фенкојлери) за брза дистрибуција на топлината.",
+"geo-title": "🌍 Геотермални Системи",
+"geo-p1": "Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие ја користат стабилната температура на земјиштето или подземните води како извор на енергија.",
+"geo-strong1": "Видови геотермални системи:",
+"geo-li1-title": "Системи Земја-Вода (Вертикални/Хоризонтални сонди):", "geo-li1-desc": "Инсталација на затворени сондарни коси или хоризонтални колектори кои апсорбираат геотермална енергија од земјиштето.",
+"geo-li2-title": "Системи Вода-Вода:", "geo-li2-desc": "Користење на бунари за подземна вода како директен медиум за размена на топлина со висок COP (Coefficient of Performance) фактор.",
+"hp-title": "⚡ Топлински Пумпи (Воздух-Вода)",
+"hp-p1": "Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ) во современ амбиент.",
+"hp-strong1": "Предности и Карактеристики:",
+"hp-li1-title": "Висока Енергетска Ефикасност:", "hp-li1-desc": "Произведуваат повеќекратно повеќе топлинска енергија во однос на потрошената електрична енергија.",
+"hp-li2-title": "Флексибилност:", "hp-li2-desc": "Идеални за комбинирање со подно греење, нискотемпературни радијатори и фенкојлери.",
+"vent-title": "🌬️ Вентилација & Климатизација",
+"vent-p1": "Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот во затворени простории, отстранување на миризби, влага и штетни честички.",
+"vent-strong1": "Наши решенија:",
+"vent-li1-title": "Рекуперација на топлина (HRV/ERV):", "vent-li1-desc": "Системи со рекуператори кои ја зачувуваат енергијата од издувниот воздух при свежо проветрување.",
+"vent-li2-title": "Централни Климатизерски Системи:", "vent-li2-desc": "VRV/VRF системи и чилер-фенкоилер конфигурации за деловни и станбени објекти.",
+"plumb-title": "💧 Водовод & Канализација (ВиК)",
+"plumb-p1": "Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано и сигурно снабдување со чиста вода и безбедно одведување на отпадните води.",
+"plumb-strong1": "Области на дејствување:",
+"plumb-li1-title": "Инсталации за притисна вода:", "plumb-li1-desc": "Изведба со сертифицирани PPR, PE и метални цевни мрежи со врвен квалитет.",
+"plumb-li2-title": "Канализациони мрежи:", "plumb-li2-desc": "Бесшумни PVC/PP канализациони водови за отпадни и атмосферски води."
+},
+en: {
+"nav-about": "About Us", "nav-systems": "Systems", "nav-contact": "Contact",
+"hero-title": "Professional HVAC & Mechanical Building Installations",
+"hero-subtitle": "Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems: central district heating, connection substations for ESM Skopje, geothermal and inverter heat pumps, modern AC systems (split, multi-split, VRV/VRF, chiller-fan coil units), heat recovery ventilation, and complete plumbing networks.",
+"btn-cta": "Request Quote & Consultation", "btn-details": "More",
+"sys1-title": "Central District Heating", "sys1-desc": "Installation of central hydronic heating (radiator, underfloor, wall, ceiling, fan-coil) and connection substations for ESM Skopje.",
+"sys2-title": "Geothermal Systems", "sys2-desc": "Eco-friendly Ground-to-Water and Water-to-Water solutions utilizing stable underground temperatures for heating, cooling, and DHW.",
+"sys3-title": "Heat Pumps (Air-to-Water)", "sys3-desc": "Modern inverter systems for high-efficiency cooling and heating across large residential and commercial surfaces.",
+"sys4-title": "Ventilation & Air Conditioning", "sys4-desc": "Professional heat recovery ventilation (HRV/ERV), central air conditioning (VRV/VRF, chillers), and ductwork.",
+"sys5-title": "Plumbing & Drainage", "sys5-desc": "Full execution of water supply and drainage networks for new collective residential and commercial buildings.",
+"contact-title": "Ready to collaborate on your next project?",
+"contact-desc": "For consulting, engineering design, or complete execution of mechanical installations, reach out to our team.",
+"val-location": "Skopje, Macedonia", "phone-num": "+389 70 374 959",
+"modal-cta": "Request Proposal for This System", "company-name": "VELDER VG TRADING",
+"footer": "© 2026 VELDER VG TRADING LLC. All rights reserved.",
+"back-home": "Back to Home", "page-cta-text": "Interested in a quote?",
+"cookie-text": "This website uses minimal technical cookies for language preference and user experience.", "cookie-btn": "Accept",
+"topli-title": "🔥 Central District Heating",
+"topli-p1": "Central district heating is one of the safest and most efficient heating solutions for residential, commercial, and industrial facilities. Our company provides full engineering execution with top-tier materials.",
+"topli-strong1": "Key Segments & Execution:",
+"topli-li1-title": "Connection Substations (ESM Distribution):", "topli-li1-desc": "Primary and secondary circuit execution with high-efficiency plate heat exchangers, safety valves, and circulation pumps.",
+"topli-li2-title": "Surface Heating Systems:", "topli-li2-desc": "Low-temperature underfloor, wall, and ceiling heating using top-quality PEX-Al-PEX and PE-RT pipes.",
+"topli-li3-title": "Radiator & Fan-Coil Heating:", "topli-li3-desc": "Design and installation of panel radiators, sectional aluminum radiators, and fan coils.",
+"geo-title": "🌍 Geothermal Systems",
+"geo-p1": "Geothermal systems are among the most efficient eco-friendly solutions for heating, cooling, and domestic hot water preparation by using stable ground or water temperatures.",
+"geo-strong1": "Types of geothermal systems:",
+"geo-li1-title": "Ground-to-Water (Vertical/Horizontal probes):", "geo-li1-desc": "Installation of closed-loop vertical borehole or horizontal ground collector loops.",
+"geo-li2-title": "Water-to-Water Systems:", "geo-li2-desc": "Utilization of groundwater wells as a direct heat exchange medium with a high COP factor.",
+"hp-title": "⚡ Heat Pumps (Air-to-Water)",
+"hp-p1": "Air-to-water heat pumps are economic and widespread systems for heating, cooling, and DHW preparation in modern settings.",
+"hp-strong1": "Advantages and Features:",
+"hp-li1-title": "High Energy Efficiency:", "hp-li1-desc": "Generate multiple units of thermal energy relative to electric power consumed.",
+"hp-li2-title": "Flexibility:", "hp-li2-desc": "Ideal for pairing with underfloor heating, low-temperature radiators, and fan coils.",
+"vent-title": "🌬️ Ventilation & Air Conditioning",
+"vent-p1": "Engineering ventilation and AC systems are vital for indoor air quality, humidity control, and pollutant removal.",
+"vent-strong1": "Our solutions:",
+"vent-li1-title": "Heat Recovery Ventilation (HRV/ERV):", "vent-li1-desc": "Systems featuring recovery cores that conserve thermal energy during fresh air exchanges.",
+"vent-li2-title": "Central Air Conditioning:", "vent-li2-desc": "VRV/VRF systems and chiller-fan coil configurations for commercial spaces.",
+"plumb-title": "💧 Plumbing & Drainage (WaS)",
+"plumb-p1": "Plumbing and drainage comprise complex hydraulic infrastructure designed for continuous, safe clean water supply and wastewater discharge.",
+"plumb-strong1": "Fields of action:",
+"plumb-li1-title": "Pressurized Water Networks:", "plumb-li1-desc": "Execution using certified PPR, PE, and premium metal piping networks.",
+"plumb-li2-title": "Drainage Networks:", "plumb-li2-desc": "Soundproof PVC/PP drainage lines for sewage and rainwater."
+}
+};
+function setLanguage(lang) {
+document.querySelectorAll('[data-i18n]').forEach(el => {
+const key = el.getAttribute('data-i18n');
+if (i18n[lang] && i18n[lang][key]) el.innerText = i18n[lang][key];
+});
+const phoneEl = document.getElementById('phone-display');
+if(phoneEl) phoneEl.innerText = i18n[lang]['phone-num'];
+if (lang === 'mk') {
+document.getElementById('btn-mk').classList.add('active');
+document.getElementById('btn-en').classList.remove('active');
+} else {
+document.getElementById('btn-en').classList.add('active');
+document.getElementById('btn-mk').classList.remove('active');
+}
+}
+document.getElementById('btn-mk').addEventListener('click', () => setLanguage('mk'));
+document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
+function showView(viewId) {
+document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active-view'));
+const target = document.getElementById('view-' + viewId);
+if (target) {
+target.classList.add('active-view');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+}
+const cookieBanner = document.getElementById('cookie-banner');
+if (localStorage.getItem('velder_cookies_accepted') === 'true') {
+cookieBanner.classList.add('hidden');
+}
+document.getElementById('cookie-accept-btn').addEventListener('click', () => {
+localStorage.setItem('velder_cookies_accepted', 'true');
+cookieBanner.classList.add('hidden');
+});
+</script>
 </body>
 </html>
