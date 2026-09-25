@@ -129,18 +129,13 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* КОСМИЧКИ ЅВЕЗДИ-ЛОГОА СО РАНДОМ РАСПОРЕД ЗА "ЗА НАС" */
+/* ЦЕЛОСНО РАНДОМ ЅВЕЗДИ-ЛОГОА ЗА "ЗА НАС" */
 .about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
-.star-brand{position:absolute;opacity:0;transform:scale(0.8);transition:opacity 0.6s ease, transform 0.6s ease;animation: starTwinkle ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(0,210,255,0.4))}
+.star-brand{position:absolute;opacity:0.1;transform:scale(0.85);transition:opacity 0.8s ease, transform 0.8s ease;filter:drop-shadow(0 0 8px rgba(0,210,255,0.4))}
 .star-brand svg{height:28px;width:auto;fill:#fff}
 
-@keyframes starTwinkle {
-  0%, 100% { opacity: 0.1; transform: scale(0.85); }
-  50% { opacity: 0.6; transform: scale(1.15); }
-}
-
 @media (max-width:768px){.blueprint{opacity:.35}}
-@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.star-brand{animation:none}}
+@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}}
 
 /* LARGE SCREENS */
 @media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
@@ -603,27 +598,26 @@ function buildPages() {
       }
     }
 
-    // Случаен (random) распоред на ѕвездите-логоа за "За Нас" со рамномерен широк опсег
+    // Сосема различни, разфрлани позиции, времетраења и независни коефициенти за рандом појавување
     let starsHtml = '';
     if (id === 'about') {
       starsHtml = '<div class="about-stars-bg" aria-hidden="true">';
       
-      // Дефинирани случајни координати (top, left), времетраења и задоцнувања за секое од 10-те логоа
-      const randomStarConfigs = [
-        { top: '8%',  left: '6%',  delay: '0.1s', duration: '4.2s' },
-        { top: '15%', left: '74%', delay: '1.8s', duration: '5.5s' },
-        { top: '26%', left: '32%', delay: '3.1s', duration: '3.8s' },
-        { top: '35%', left: '82%', delay: '0.9s', duration: '4.6s' },
-        { top: '48%', left: '10%', delay: '2.3s', duration: '5.1s' },
-        { top: '58%', left: '68%', delay: '1.4s', duration: '4.0s' },
-        { top: '70%', left: '22%', delay: '3.7s', duration: '4.9s' },
-        { top: '80%', left: '85%', delay: '0.5s', duration: '3.6s' },
-        { top: '90%', left: '42%', delay: '2.0s', duration: '5.3s' },
-        { top: '40%', left: '50%', delay: '1.1s', duration: '4.4s' }
+      const distinctConfigs = [
+        { top: '6%',  left: '8%',  factor: 0.12, scale: 0.8 },
+        { top: '18%', left: '78%', factor: 0.35, scale: 1.1 },
+        { top: '28%', left: '25%', factor: 0.22, scale: 0.9 },
+        { top: '42%', left: '84%', factor: 0.55, scale: 1.0 },
+        { top: '52%', left: '12%', factor: 0.70, scale: 1.15 },
+        { top: '64%', left: '70%', factor: 0.45, scale: 0.85 },
+        { top: '75%', left: '28%', factor: 0.82, scale: 1.05 },
+        { top: '85%', left: '82%', factor: 0.28, scale: 0.95 },
+        { top: '92%', left: '46%', factor: 0.90, scale: 1.1 },
+        { top: '36%', left: '48%', factor: 0.60, scale: 0.9 }
       ];
 
-      randomStarConfigs.forEach((cfg, idx) => {
-        starsHtml += `<div class="star-brand" style="top: ${cfg.top}; left: ${cfg.left}; animation-delay: ${cfg.delay}; animation-duration: ${cfg.duration};">${brandSvgs[idx]}</div>`;
+      distinctConfigs.forEach((cfg, idx) => {
+        starsHtml += `<div class="star-brand" data-factor="${cfg.factor}" data-base-scale="${cfg.scale}" style="top: ${cfg.top}; left: ${cfg.left};">${brandSvgs[idx]}</div>`;
       });
       starsHtml += '</div>';
     }
@@ -699,7 +693,7 @@ document.addEventListener('mousemove', (e) => {
   });
 });
 
-// Динамично прикажување/скривање на рандом логоата според скролањето во "За Нас"
+/* ПОЛНОЦЕННО НЕЗАВИСНО РАНДОМ ПОЈАВУВАЊЕ ПРИ СКРОЛАЊЕ */
 window.addEventListener('scroll', () => {
   const aboutView = document.getElementById('view-about');
   if (!aboutView || !aboutView.classList.contains('active-view')) return;
@@ -710,17 +704,20 @@ window.addEventListener('scroll', () => {
   if (rect.top < window.innerHeight && rect.bottom > 0) {
     const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
     
-    stars.forEach((star, i) => {
-      // Различна фаза за секоја рандом ѕвезда за да се парат/појавуваат постепено низ целото скролање
-      const threshold = (i * 0.07) + 0.08;
-      const distance = Math.abs(progress - threshold);
+    stars.forEach(star => {
+      const factor = parseFloat(star.dataset.factor);
+      const baseScale = parseFloat(star.dataset.baseScale);
       
-      if (distance < 0.32) {
-        const opacityFactor = 1 - (distance / 0.32);
-        star.style.opacity = (opacityFactor * 0.65).toFixed(2);
-        star.style.transform = `scale(${0.8 + (opacityFactor * 0.3)})`;
+      // Секое лого си пресметува лична дистанца од својот случаен праг
+      const distance = Math.abs(progress - factor);
+      
+      if (distance < 0.28) {
+        const intensity = 1 - (distance / 0.28);
+        star.style.opacity = (0.05 + (intensity * 0.65)).toFixed(2);
+        star.style.transform = `scale(${baseScale + (intensity * 0.2)})`;
       } else {
-        star.style.opacity = '0.04';
+        star.style.opacity = '0.05';
+        star.style.transform = `scale(${baseScale})`;
       }
     });
   }
