@@ -129,33 +129,25 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ДИНАМИЧНИ И МИГРИРАЧКИ ЛОГОА ПО СЕКОЈ ДЕЛ ОД ЕКРАНОТ */
+/* ТЕЛЕПОРТИРАЧКИ ПОЈАВУВАЊА НА РАЗЛИЧНИ МЕСТА */
 .about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
 .star-brand{
   position:absolute;
-  top:var(--startY);
-  left:var(--startX);
-  animation: wanderAndPulse var(--dur) ease-in-out var(--del) infinite alternate;
+  top:var(--randY);
+  left:var(--randX);
+  animation: flashInPlace 5s ease-in-out var(--randDelay) infinite;
   filter:drop-shadow(0 0 10px rgba(0,210,255,0.3));
 }
 .star-brand svg{height:28px;width:auto;fill:#fff}
 
-@keyframes wanderAndPulse {
-  0% {
-    transform: translate(0, 0) scale(calc(var(--sc) * 0.85));
-    opacity: var(--op-min);
+@keyframes flashInPlace {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.85);
   }
-  33% {
-    transform: translate(var(--moveX1), var(--moveY1)) scale(calc(var(--sc) * 1.15));
-    opacity: var(--op-max);
-  }
-  66% {
-    transform: translate(var(--moveX2), var(--moveY2)) scale(calc(var(--sc) * 0.95));
-    opacity: calc(var(--op-max) * 0.7);
-  }
-  100% {
-    transform: translate(var(--moveX3), var(--moveY3)) scale(calc(var(--sc) * 1.05));
-    opacity: var(--op-min);
+  20%, 75% {
+    opacity: var(--randOp);
+    transform: scale(1);
   }
 }
 
@@ -623,26 +615,12 @@ function buildPages() {
       }
     }
 
-    /* МИГРИРАЧКИ РАНДОМ ПОЗИЦИИ И ПАТЕКИ НА ДВИЖЕЊЕ ЗА СЕКОЕ ЛОГО ВО "ЗА НАС" */
+    /* ДИНАМИЧНИ ТЕЛЕПОРТИРАЧКИ ПОЈАВУВАЊА НА РАЗЛИЧНИ МЕСТА ВО "ЗА НАС" */
     let starsHtml = '';
     if (id === 'about') {
-      starsHtml = '<div class="about-stars-bg" aria-hidden="true">';
-      
-      const distinctConfigs = [
-        { startY: '8%',  startX: '6%',  moveX1: '250px', moveY1: '180px', moveX2: '-120px', moveY2: '320px', moveX3: '100px', moveY3: '80px',  dur: '11s', del: '0.2s', opMin: '0.03', opMax: '0.32', sc: '0.75' },
-        { startY: '12%', startX: '75%', moveX1: '-220px',moveY1: '240px', moveX2: '-380px', moveY2: '80px',  moveX3: '-150px',moveY3: '350px', dur: '14s', del: '1.5s', opMin: '0.07', opMax: '0.45', sc: '1.05' },
-        { startY: '25%', startX: '40%', moveX1: '180px', moveY1: '-120px',moveX2: '-200px', moveY2: '150px', moveX3: '50px',  moveY3: '-80px',  dur: '12s', del: '2.8s', opMin: '0.04', opMax: '0.38', sc: '0.85' },
-        { startY: '40%', startX: '82%', moveX1: '-300px',moveY1: '100px', moveX2: '-150px', moveY2: '-180px',moveX3: '-250px',moveY3: '120px', dur: '16s', del: '0.8s', opMin: '0.05', opMax: '0.42', sc: '0.95' },
-        { startY: '50%', startX: '15%', moveX1: '320px', moveY1: '-150px',moveX2: '180px',  moveY2: '200px', moveX3: '280px', moveY3: '-50px',  dur: '13s', del: '3.2s', opMin: '0.09', opMax: '0.55', sc: '1.10' },
-        { startY: '65%', startX: '60%', moveX1: '-180px',moveY1: '140px', moveX2: '-320px', moveY2: '-100px',moveX3: '-100px',moveY3: '80px',  dur: '10s', del: '1.1s', opMin: '0.04', opMax: '0.28', sc: '0.80' },
-        { startY: '75%', startX: '20%', moveX1: '240px', moveY1: '-180px',moveX2: '400px',  moveY2: '-50px',  moveX3: '150px', moveY3: '-220px',dur: '15s', del: '2.4s', opMin: '0.06', opMax: '0.50', sc: '1.00' },
-        { startY: '82%', startX: '85%', moveX1: '-250px',moveY1: '-200px',moveX2: '-100px', moveY2: '-320px',moveX3: '-300px',moveY3: '-150px',dur: '12s', del: '0.5s', opMin: '0.05', opMax: '0.35', sc: '0.90' },
-        { startY: '30%', startX: '25%', moveX1: '150px', moveY1: '300px', moveX2: '350px',  moveY2: '120px',  moveX3: '220px', moveY3: '250px',  dur: '17s', del: '4.0s', opMin: '0.08', opMax: '0.48', sc: '1.15' },
-        { startY: '20%', startX: '55%', moveX1: '-120px',moveY1: '-100px',moveX2: '150px',  moveY2: '-250px', moveX3: '-80px',  moveY3: '-150px',dur: '13s', del: '2.1s', opMin: '0.05', opMax: '0.38', sc: '0.85' }
-      ];
-
-      distinctConfigs.forEach((cfg, idx) => {
-        starsHtml += `<div class="star-brand" style="--startY: ${cfg.startY}; --startX: ${cfg.startX}; --moveX1: ${cfg.moveX1}; --moveY1: ${cfg.moveY1}; --moveX2: ${cfg.moveX2}; --moveY2: ${cfg.moveY2}; --moveX3: ${cfg.moveX3}; --moveY3: ${cfg.moveY3}; --dur: ${cfg.dur}; --del: ${cfg.del}; --op-min: ${cfg.opMin}; --op-max: ${cfg.opMax}; --sc: ${cfg.sc};">${brandSvgs[idx]}</div>`;
+      starsHtml = '<div class="about-stars-bg" aria-hidden="true" id="teleport-container">';
+      brandSvgs.forEach((svgContent, idx) => {
+        starsHtml += `<div class="star-brand" id="brand-item-${idx}" style="--randDelay: ${idx * 0.7}s; --randOp: 0.35;">${svgContent}</div>`;
       });
       starsHtml += '</div>';
     }
@@ -718,6 +696,30 @@ document.addEventListener('mousemove', (e) => {
   });
 });
 
+/* ТЕЛЕПОРТАЦИЈА НА СЕКОЕ НОВО ПОЈАВУВАЊЕ НА СЛУЧАЈНИ МЕСТА */
+function initTeleportingBrands() {
+  const container = document.getElementById('teleport-container');
+  if (!container) return;
+  const items = container.querySelectorAll('.star-brand');
+  
+  items.forEach(el => {
+    function randomizePosition() {
+      // Генерација на случајни координати ширум екранот (избегнувајќи ги крајните рабови за да не се сечат)
+      const randomX = Math.floor(Math.random() * 75) + 8; // од 8% до 83%
+      const randomY = Math.floor(Math.random() * 75) + 12; // од 12% до 87%
+      const randomOpacity = (Math.random() * 0.25 + 0.15).toFixed(2); // видливост меѓу 15% и 40%
+      
+      el.style.setProperty('--randX', randomX + '%');
+      el.style.setProperty('--randY', randomY + '%');
+      el.style.setProperty('--randOp', randomOpacity);
+    }
+
+    randomizePosition();
+    // Секогаш кога логот ќе заврши циклус на појавување/снемување (на секои 5 секунди), добива ново рандом место
+    setInterval(randomizePosition, 5000);
+  });
+}
+
 const cookieBanner = document.getElementById('cookie-banner');
 try { if (localStorage.getItem('velder_cookies_accepted') === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
 document.getElementById('cookie-accept-btn').addEventListener('click', () => {
@@ -731,6 +733,8 @@ const focusObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
 
 buildPages();
+initTeleportingBrands();
+
 let startLang = 'mk';
 try { startLang = localStorage.getItem('velder_lang') || 'mk'; } catch (e) {}
 setLanguage(startLang);
