@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050811">
 <meta name="color-scheme" content="dark">
-<meta name="description" content="Централно топловодно греење, геотермални и воздух-вода топлински пумпи, климатизација, вентилација и ВиК инсталации во Скопје.">
+<meta name="description" content="Централно топловодно греење, геотермални и воздух-вода топлински пумпи, климатизација, вентилација и ВиК инсталации во Скопје со опрема од светски брендови како Vaillant, IMI Hydronics, Valsir, Toshiba, Carrier и Herz.">
 <meta property="og:title" content="ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации">
-<meta property="og:description" content="Професионални HVAC & машински инсталации за модерни објекти.">
+<meta property="og:description" content="Професионални HVAC & машински инсталации изведени со светски признати брендови.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230072ff'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EW%3C/text%3E%3C/svg%3E">
 <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
@@ -52,6 +52,20 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .hero-subtitle{font-size:clamp(.95rem,1.6vw,1.15rem);color:var(--text-muted);max-width:880px;margin-bottom:40px;font-weight:300;line-height:1.7}
 .btn-cta{display:inline-block;background:linear-gradient(135deg,#00d2ff 0%,#0072ff 100%);color:#fff;padding:13px 30px;min-height:44px;border-radius:980px;text-decoration:none;font-weight:600;font-size:.9rem;text-align:center;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,210,255,.3);border:none;cursor:pointer}
 .btn-cta:hover{transform:scale(1.03);box-shadow:0 6px 28px rgba(0,210,255,.5)}
+
+/* BRANDS SLIDER / SHOWCASE */
+.brands-section{padding:50px 0 70px;overflow:hidden;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);background:rgba(255,255,255,.01)}
+.brands-title-wrap{text-align:center;margin-bottom:30px;padding:0 20px}
+.brands-title{font-size:clamp(.8rem,1.5vw,.95rem);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+.brands-slider{display:flex;width:100%;overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.brands-track{display:flex;gap:24px;width:max-content;animation:scrollBrands 35s linear infinite}
+.brands-track:hover{animation-play-state:paused}
+@keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.brand-card{flex:none;background:var(--bg-card);border:1px solid var(--border-color);border-radius:18px;padding:20px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:180px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:all .3s}
+.brand-card:hover{border-color:var(--accent-blue);box-shadow:0 0 20px var(--accent-glow);transform:translateY(-3px)}
+.brand-name{font-size:1.15rem;font-weight:800;letter-spacing:-.01em;color:#fff;margin-bottom:4px}
+.brand-desc{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
 
 /* SYSTEM CARDS */
 .systems-wrapper{max-width:820px;margin:0 auto;padding:60px 20px 100px;display:flex;flex-direction:column;gap:50px}
@@ -183,6 +197,27 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
       <a href="#contact" class="btn-cta" data-i18n="btn-cta"></a>
     </section>
 
+    <!-- СЛАЈДЕР / СЕКЦИЈА ЗА СВЕТСКИ БРЕНДОВИ -->
+    <section class="brands-section">
+      <div class="brands-title-wrap">
+        <h2 class="brands-title" data-i18n="brands-heading"></h2>
+      </div>
+      <div class="brands-slider" aria-label="Партнерски брендови">
+        <div class="brands-track" id="brands-track">
+          <!-- Брзо дуплирање преку скрипта за бескрајна анимација -->
+          <div class="brand-card"><span class="brand-name">Vaillant</span><span class="brand-desc" data-i18n="brand-heating"></span></div>
+          <div class="brand-card"><span class="brand-name">IMI Hydronics</span><span class="brand-desc" data-i18n="brand-valves"></span></div>
+          <div class="brand-card"><span class="brand-name">Valsir</span><span class="brand-desc" data-i18n="brand-plumbing"></span></div>
+          <div class="brand-card"><span class="brand-name">AUX</span><span class="brand-desc" data-i18n="brand-ac"></span></div>
+          <div class="brand-card"><span class="brand-name">Midea</span><span class="brand-desc" data-i18n="brand-ac"></span></div>
+          <div class="brand-card"><span class="brand-name">MDV</span><span class="brand-desc" data-i18n="brand-ac"></span></div>
+          <div class="brand-card"><span class="brand-name">Toshiba</span><span class="brand-desc" data-i18n="brand-hvac"></span></div>
+          <div class="brand-card"><span class="brand-name">Carrier</span><span class="brand-desc" data-i18n="brand-chiller"></span></div>
+          <div class="brand-card"><span class="brand-name">Herz</span><span class="brand-desc" data-i18n="brand-valves"></span></div>
+        </div>
+      </div>
+    </section>
+
     <section id="systems" class="systems-wrapper">
       <a class="system-card" href="#toplifikacija">
         <div class="card-header-flex"><span class="card-icon" aria-hidden="true">🔥</span><h3 data-i18n="sys1-title"></h3></div>
@@ -247,18 +282,25 @@ const i18n = {
 mk: {
 "nav-about":"За Нас","nav-systems":"Системи","nav-contact":"Контакт",
 "hero-title":"Професионални HVAC & Машински Инсталации за Модерни Објекти",
-"hero-subtitle":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
+"hero-subtitle":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи со опрема и материјали од светски признати производители и брендови (Vaillant, IMI Hydronics, Valsir, AUX, Midea, MDV, Toshiba, Carrier, Herz): од централно топловодно греење и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, климатизација и вентилација, до комплетни ВиК мрежи.",
 "btn-cta":"Побарај Понуда & Консултација","btn-details":"Повеќе",
+"brands-heading":"Изведуваме со опрема од светски признати брендови",
+"brand-heating":"Греење & Бојлери",
+"brand-valves":"Хидраулични Регулирања",
+"brand-plumbing":"ВиК & Цевни Системи",
+"brand-ac":"Климатизација",
+"brand-hvac":"HVAC Системи",
+"brand-chiller":"Чилери & Клима Комори",
 "sys1-title":"Централно Топловодно Греење",
 "sys1-desc":"Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.",
 "sys2-title":"Геотермални Системи",
-"sys2-desc":"Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.",
+"sys2-desc":"Еколошки решенија Земја-Вода и Вода-Вода со опрема од светски брендови за максимална сезонска ефикасност.",
 "sys3-title":"Топлински Пумпи (Воздух-Вода)",
-"sys3-desc":"Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.",
+"sys3-desc":"Современи инвертер системи за високо-ефикасно ладење и греење со водечки светски производители.",
 "sys4-title":"Вентилација & Климатизација",
-"sys4-desc":"Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали за оптимална микроклима.",
+"sys4-desc":"Професионални системи за вентилација со рекуперација (HRV/ERV) и климатизација (VRV/VRF, чилери) со врвна опрема.",
 "sys5-title":"Водовод & Канализација",
-"sys5-desc":"Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.",
+"sys5-desc":"Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради користејќи проверени материјали.",
 "contact-title":"Подготвени за соработка на вашиот следен проект?",
 "contact-desc":"За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.",
 "val-location":"Скопје, Македонија","phone-num":"070 374 959",
@@ -271,97 +313,105 @@ mk: {
 "page-title":"ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации",
 
 "about-title":"За Нас",
-"about-p1":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
+"about-p1":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи со опрема и материјали од светски признати производители и брендови, како Vaillant, IMI Hydronics, Valsir, AUX, Midea, MDV, Toshiba, Carrier и Herz.",
+"about-p2":"Нашата специјалност ги опфаќа сите фази: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
 
 "topli-title":"🔥 Централно Топловодно Греење",
-"topli-p1":"Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).",
+"topli-p1":"Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Користиме врвна опрема од реномирани брендови како Vaillant, Herz и IMI Hydronics за прецизна хидраулична рамнотежа и контрола.",
 "topli-strong1":"Клучни Сегменти & Изведба:",
 "topli-li1-title":"Приклучни Подстаници (ЕСМ Дистрибуција):",
-"topli-li1-desc":"Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.",
+"topli-li1-desc":"Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи, автоматски диференцијални регулатори и опрема од светски производители.",
 "topli-li2-title":"Површински Грејни Системи:",
-"topli-li2-desc":"Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.",
+"topli-li2-desc":"Нискотемпературно подно, ѕидно и таванско греење изведено со материјали од сертифицирани европски брендови.",
 "topli-li3-title":"Радијаторско Греење:",
-"topli-li3-desc":"Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.",
+"topli-li3-desc":"Двоцевни дистрибутивни мрежи со термостатски вентили за прецизна поединечна зонска контрола.",
 "topli-li4-title":"Фенкоилерски Системи:",
-"topli-li4-desc":"Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.",
+"topli-li4-desc":"Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата.",
 
 "geo-title":"🌍 Геотермални Системи",
-"geo-p1":"Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).",
-"geo-p2":"Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).",
+"geo-p1":"Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода, со користење на најсовремени топлински пумпи од водечки светски брендови.",
+"geo-p2":"Системите работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода) со врвни перформанси (COP) и минимална потрошувачка.",
 "geo-strong1":"Клучни Изведбени Решенија:",
-"geo-li1-title":"Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):",
-"geo-li1-desc":"Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.",
-"geo-li2-title":"Системи „Вода-Вода“ (Бунарски системи):",
-"geo-li2-desc":"Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.",
+"geo-li1-title":"Системи „Земја-Вода“:",
+"geo-li1-desc":"Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи.",
+"geo-li2-title":"Системи „Вода-Вода“:",
+"geo-li2-desc":"Искористување на бунарска вода како директен извор на енергија со висока сезонска ефикасност.",
 "geo-li3-title":"Интегрирано Греење, Ладење & ТСВ:",
-"geo-li3-desc":"Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.",
+"geo-li3-desc":"Флексибилни решенија со можност за слободно ладење (free-cooling).",
 
 "hp-title":"⚡ Топлински Пумпи (Воздух-Вода)",
-"hp-p1":"Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.",
+"hp-p1":"Топлинските пумпи воздух-вода од брендови како Toshiba, Vaillant, Midea и Carrier се економични системи за греење, ладење и подготовка на топла вода кои обезбедуваат високи перформанси и при ниски надворешни температури.",
 "hp-strong1":"Принцип на Работа & Ефикасност:",
-"hp-p2":"Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:",
+"hp-p2":"Системот работи на проверен термодинамички циклус со инвертерски компресори:",
 "hp-li1-title":"COP (Коефициент на ефикасност при греење):",
-"hp-li1-desc":"Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.",
+"hp-li1-desc":"Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе.",
 "hp-li2-title":"EER / SEER:",
 "hp-li2-desc":"Индикатори за висока енергетска ефикасност при ладење во летниот период.",
 "hp-strong2":"Главни Предности:",
 "hp-li3-title":"Енергетска Заштеда:",
-"hp-li3-desc":"Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).",
+"hp-li3-desc":"Драстично намалени трошоци за греење и ладење (до 70%).",
 "hp-li4-title":"Мултифункционалност:",
-"hp-li4-desc":"Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.",
+"hp-li4-desc":"Интегрирано решение во текот на целата година.",
 "hp-li5-title":"Еколошка Одржливост:",
-"hp-li5-desc":"Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.",
+"hp-li5-desc":"Работа без локални емисии на штетни гасови.",
 
 "vent-title":"🌬️ Вентилација & Климатизација",
-"vent-p1":"Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.",
+"vent-p1":"Инженерските системи за вентилација и климатизација со брендови како AUX, Midea, MDV, Toshiba и Carrier обезбедуваат врвен квалитет на воздухот и микроклиматска стабилност.",
 "vent-strong1":"Основни Компоненти & Категории:",
 "vent-strong2":"Вентилациски Системи:",
-"vent-li1-title":"Принудна (механичка) вентилација:",
-"vent-li1-desc":"Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).",
+"vent-li1-title":"Принудна механичка вентилација:",
+"vent-li1-desc":"Системи за довод и одвод со рекуператори за враќање на топлината.",
 "vent-li2-title":"Локална и индустриска вентилација:",
-"vent-li2-desc":"Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).",
+"vent-li2-desc":"Ефективно одведување на загадувачи и маснотии.",
 "vent-li3-title":"Противпожарна вентилација:",
-"vent-li3-desc":"Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.",
+"vent-li3-desc":"Системи за одведување чад и топлина (SHEVS).",
 "vent-strong3":"Системи за Климатизација:",
 "vent-li4-title":"Сплит и мулти-сплит системи:",
-"vent-li4-desc":"Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.",
+"vent-li4-desc":"Флексибилни решенија за помали станови и канцеларии.",
 "vent-li5-title":"VRF / VRV системи:",
-"vent-li5-desc":"Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.",
-"vent-li6-title":"Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):",
-"vent-li6-desc":"Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.",
+"vent-li5-desc":"Централизирани инвертерски системи за деловни згради и хотели.",
+"vent-li6-title":"Чилери и топлински пумпи:",
+"vent-li6-desc":"Централни системи со подготовка на ладна и топла вода.",
 "vent-li7-title":"Канална климатизација:",
-"vent-li7-desc":"Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.",
+"vent-li7-desc":"Интегрирана дистрибуција на климатизираниот воздух.",
 
 "plumb-title":"💧 Водовод & Канализација (ВиК)",
-"plumb-p1":"Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.",
+"plumb-p1":"Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура изведена со сертифицирани материјали од врвни брендови како Valsir за сигурна и долготрајна експлоатација.",
 "plumb-strong1":"Основни Системи & Инсталации:",
 "plumb-li1-title":"Внатрешна водоводна мрежа:",
-"plumb-li1-desc":"Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.",
+"plumb-li1-desc":"Проектирање и изведба со квалитетни материјали отпорни на притисок и корозија.",
 "plumb-li2-title":"Канализациони системи:",
-"plumb-li2-desc":"Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).",
+"plumb-li2-desc":"Ефикасно одведување со примена на акустично изолирани PP системи и HDPE мрежи (Valsir).",
 "plumb-li3-title":"Хидрантски противпожарни мрежи:",
-"plumb-li3-desc":"Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.",
+"plumb-li3-desc":"Сигурна противпожарна заштита со соодветни хидрофорни агрегати.",
 "plumb-li4-title":"Хидрофорни постројки и пумпни станици:",
-"plumb-li4-desc":"Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.",
+"plumb-li4-desc":"Автоматизирани системи за стабилен притисок во сите катови.",
 "plumb-strong2":"Изведбени Стандарди & Квалитет:",
-"plumb-li5":"Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.",
-"plumb-li6":"Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација."
+"plumb-li5":"Комплетна монтажа на санитарна арматура и потисни цевоводи.",
+"plumb-li6":"Примена на строги хидраулични испитувања за притисок и непропустливост."
 },
 en: {
 "nav-about":"About Us","nav-systems":"Systems","nav-contact":"Contact",
 "hero-title":"Professional HVAC & Mechanical Building Installations",
-"hero-subtitle":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems: central hydronic heating installations (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), heat recovery ventilation, and full plumbing networks for residential and commercial complexes.",
+"hero-subtitle":"Backed by long-standing engineering expertise, we deliver end-to-end execution of mechanical systems using equipment and materials from world-renowned manufacturers and brands (Vaillant, IMI Hydronics, Valsir, AUX, Midea, MDV, Toshiba, Carrier, Herz): central heating and ESM Skopje substations, geothermal and inverter heat pumps, air conditioning and ventilation, and full plumbing networks.",
 "btn-cta":"Request Quote & Consultation","btn-details":"More",
+"brands-heading":"Executed with Equipment from World-Renowned Brands",
+"brand-heating":"Heating & Boilers",
+"brand-valves":"Hydraulic Balancing",
+"brand-plumbing":"Plumbing & Piping",
+"brand-ac":"Air Conditioning",
+"brand-hvac":"HVAC Systems",
+"brand-chiller":"Chillers & AHU",
 "sys1-title":"Central District Heating",
-"sys1-desc":"Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil systems) and connection substations for ESM Heat Distribution Skopje.",
+"sys1-desc":"Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje.",
 "sys2-title":"Geothermal Systems",
-"sys2-desc":"Eco-friendly Ground-to-Water and Water-to-Water solutions utilizing stable ground temperatures for heating and cooling.",
+"sys2-desc":"Eco-friendly Ground-to-Water and Water-to-Water solutions using world-class equipment for maximum seasonal efficiency.",
 "sys3-title":"Heat Pumps (Air-to-Water)",
-"sys3-desc":"Modern inverter systems for high-efficiency cooling and heating in residential and commercial premises.",
+"sys3-desc":"Modern inverter systems for high-efficiency cooling and heating featuring leading global manufacturers.",
 "sys4-title":"Ventilation & Air Conditioning",
-"sys4-desc":"Professional heat recovery ventilation systems (HRV/ERV), central air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), and ducting for optimal indoor air quality.",
+"sys4-desc":"Professional heat recovery ventilation systems (HRV/ERV) and air conditioning (VRV/VRF, chillers) with top-tier equipment.",
 "sys5-title":"Plumbing & Drainage",
-"sys5-desc":"Full execution of water supply networks and drainage systems for multi-story residential and commercial complexes.",
+"sys5-desc":"Full execution of water supply networks and drainage systems for residential and commercial complexes using certified materials.",
 "contact-title":"Ready to collaborate on your next project?",
 "contact-desc":"For consultation, engineering design, or complete execution of mechanical installations, reach out to our engineering team.",
 "val-location":"Skopje, Macedonia","phone-num":"+389 70 374 959",
@@ -374,81 +424,82 @@ en: {
 "page-title":"VELDER VG TRADING | Central Heating & Mechanical Installations",
 
 "about-title":"About Us",
-"about-p1":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems: central hydronic heating installations (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), heat recovery ventilation, and full plumbing networks for residential and commercial complexes.",
+"about-p1":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems using equipment and materials from world-renowned manufacturers and brands, such as Vaillant, IMI Hydronics, Valsir, AUX, Midea, MDV, Toshiba, Carrier, and Herz.",
+"about-p2":"Our scope covers all phases: from central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil units) and ESM Heat Distribution Skopje substations, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chillers) and heat recovery ventilation, to full plumbing networks for residential and commercial complexes.",
 
 "topli-title":"🔥 Central District Heating",
-"topli-p1":"Central district heating is one of the most widespread, safest, and efficient systems for heating residential, commercial, and industrial facilities. Its core operation is based on the circulation of a fluid (water) heated in a centralized source (boiler, heat pump, or municipal district heating plant) and distributed through a piping network to surface heating elements (underfloor, wall, or ceiling heating) or conventional emitters (radiators and fan coil units).",
+"topli-p1":"Central district heating is one of the safest and most efficient heating systems. We use premium equipment from renowned brands such as Vaillant, Herz, and IMI Hydronics to ensure precise hydraulic balancing and control.",
 "topli-strong1":"Key Segments & Execution:",
 "topli-li1-title":"Connection Substations (ESM Distribution):",
-"topli-li1-desc":"Execution of primary and secondary loops featuring high-efficiency compact plate heat exchangers, automatic differential pressure and flow regulators, outdoor-temperature-compensated microprocessor control, and frequency-controlled circulation pumps.",
+"topli-li1-desc":"Primary and secondary loops featuring compact plate heat exchangers, automatic differential pressure regulators, and top-tier equipment.",
 "topli-li2-title":"Surface Heating Systems:",
-"topli-li2-desc":"Low-temperature underfloor, wall, and ceiling heating executed with high-quality PEX-Al-PEX and PE-RT pipes, ensuring maximum thermal comfort, even temperature distribution, and high energy efficiency.",
+"topli-li2-desc":"Low-temperature underfloor, wall, and ceiling heating executed with certified European brand materials.",
 "topli-li3-title":"Radiator Heating:",
-"topli-li3-desc":"Two-pipe distribution networks equipped with thermostatic radiator valves for precise individual zone control in every room.",
+"topli-li3-desc":"Two-pipe distribution networks with thermostatic radiator valves for individual zone control.",
 "topli-li4-title":"Fan Coil Unit Systems:",
-"topli-li4-desc":"Two-pipe and four-pipe fan coil installations for fast and dynamic microclimate regulation in modern residential and commercial spaces.",
+"topli-li4-desc":"Two-pipe and four-pipe fan coil installations for dynamic microclimate regulation.",
 
 "geo-title":"🌍 Geothermal Systems",
-"geo-p1":"Geothermal systems represent one of the most efficient and eco-friendly solutions for heating, cooling, and domestic hot water (DHW) preparation. Their primary advantage lies in utilizing the stable temperature of the ground or groundwater, which remains nearly constant year-round at specific depths (between 10°C and 12°C at depths exceeding 10–15 meters).",
-"geo-p2":"These systems operate on the thermodynamic cycle of geothermal heat pumps (water-to-water or ground-to-water), transferring thermal energy with minimal electricity consumption (powering the compressor and circulation pumps).",
+"geo-p1":"Geothermal systems represent highly efficient solutions for heating, cooling, and DHW preparation, utilizing advanced heat pumps from leading global brands.",
+"geo-p2":"These systems operate via geothermal heat pumps (water-to-water or ground-to-water) with exceptional COP performance and minimal power consumption.",
 "geo-strong1":"Key Execution Solutions:",
-"geo-li1-title":"Ground-to-Water Systems (Vertical Probes / Horizontal Collectors):",
-"geo-li1-desc":"Installation of deep geothermal probes or horizontal collector networks that absorb geothermal energy from the ground via a glycol solution.",
-"geo-li2-title":"Water-to-Water Systems (Well Systems):",
-"geo-li2-desc":"Utilization of well water as a direct and exceptionally rich energy source, offering top-tier performance (COP) and high seasonal efficiency.",
+"geo-li1-title":"Ground-to-Water Systems:",
+"geo-li1-desc":"Installation of deep geothermal probes or horizontal collector networks.",
+"geo-li2-title":"Water-to-Water Systems:",
+"geo-li2-desc":"Utilization of well water as a direct, high-efficiency energy source.",
 "geo-li3-title":"Integrated Heating, Cooling & DHW:",
-"geo-li3-desc":"Flexible solutions featuring free-cooling capabilities that further reduce operational costs during the summer season.",
+"geo-li3-desc":"Flexible solutions featuring free-cooling capabilities.",
 
 "hp-title":"⚡ Heat Pumps (Air-to-Water)",
-"hp-p1":"Air-to-water heat pumps are among the most prevalent and economical systems for heating, cooling, and domestic hot water (DHW) preparation. They do not produce heat by burning fuel; instead, they transfer thermal energy from outside air into the building, achieving high efficiency even at low winter temperatures.",
+"hp-p1":"Air-to-water heat pumps from brands like Toshiba, Vaillant, Midea, and Carrier offer economical heating, cooling, and DHW preparation, achieving high efficiency even at low ambient temperatures.",
 "hp-strong1":"Operating Principle & Efficiency:",
-"hp-p2":"The system operates on a proven thermodynamic cycle utilizing a refrigerant and an inverter compressor:",
-"hp-li1-title":"COP (Coefficient of Performance for Heating):",
-"hp-li1-desc":"Indicates the ratio between electrical energy input and thermal energy output. With high seasonal performance reaching up to 5.0 and above, for every 1 kWh of electricity consumed, the pump delivers a multiplied quantity of heat energy.",
+"hp-p2":"Operating on a proven thermodynamic cycle with inverter compressors:",
+"hp-li1-title":"COP (Coefficient of Performance):",
+"hp-li1-desc":"High seasonal performance reaching up to 5.0 and above.",
 "hp-li2-title":"EER / SEER:",
-"hp-li2-desc":"Indicators of high energy efficiency during cooling in the summer period.",
+"hp-li2-desc":"High energy efficiency indicators during summer cooling.",
 "hp-strong2":"Main Advantages:",
 "hp-li3-title":"Energy Savings:",
-"hp-li3-desc":"Drastically reduced heating and cooling costs (up to 70% compared to conventional systems).",
+"hp-li3-desc":"Drastically reduced heating and cooling costs (up to 70%).",
 "hp-li4-title":"Multifunctionality:",
-"hp-li4-desc":"An integrated solution for year-round heating, cooling, and DHW preparation.",
+"hp-li4-desc":"Integrated year-round solution.",
 "hp-li5-title":"Eco-Friendly Sustainability:",
-"hp-li5-desc":"Zero local harmful gas emissions with full integration capabilities for photovoltaic systems.",
+"hp-li5-desc":"Zero local emissions with photovoltaic integration capabilities.",
 
 "vent-title":"🌬️ Ventilation & Air Conditioning",
-"vent-p1":"Engineering systems for ventilation and air conditioning are crucial for ensuring optimal indoor air quality, microclimatic stability, and energy efficiency across all types of buildings.",
+"vent-p1":"Engineering systems for ventilation and air conditioning featuring AUX, Midea, MDV, Toshiba, and Carrier ensure optimal indoor air quality and comfort.",
 "vent-strong1":"Core Components & Categories:",
 "vent-strong2":"Ventilation Systems:",
-"vent-li1-title":"Forced (Mechanical) Ventilation:",
-"vent-li1-desc":"Supply and exhaust air systems equipped with air handling units, heat recovery units (high-efficiency heat exchangers), and multi-stage filtration (G4, F7, HEPA classes).",
+"vent-li1-title":"Mechanical Ventilation:",
+"vent-li1-desc":"Supply and exhaust systems with heat recovery units.",
 "vent-li2-title":"Local & Industrial Ventilation:",
-"vent-li2-desc":"Effective extraction of pollutants, steam, and grease (professional kitchen hoods, exhaust systems in laboratories and industrial plants).",
+"vent-li2-desc":"Effective extraction of pollutants and steam.",
 "vent-li3-title":"Smoke & Fire Ventilation:",
-"vent-li3-desc":"Smoke and heat exhaust ventilation systems (SHEVS) and maintenance of protective positive pressure in evacuation stairwells.",
+"vent-li3-desc":"Smoke and heat exhaust ventilation systems (SHEVS).",
 "vent-strong3":"Air Conditioning Systems:",
 "vent-li4-title":"Split & Multi-Split Systems:",
-"vent-li4-desc":"Flexible solutions ideal for smaller apartments, offices, and individual rooms with high energy efficiency ratings.",
+"vent-li4-desc":"Flexible solutions for smaller apartments and offices.",
 "vent-li5-title":"VRF / VRV Systems:",
-"vent-li5-desc":"Centralized inverter systems with variable refrigerant flow, perfectly suited for office buildings, hotels, and larger residential developments.",
-"vent-li6-title":"Chillers & Heat Pumps (Air-to-Water / Water-to-Water):",
-"vent-li6-desc":"Central systems generating chilled and hot water to supply fan coil units and air handling units.",
+"vent-li5-desc":"Centralized inverter systems for commercial buildings and hotels.",
+"vent-li6-title":"Chillers & Heat Pumps:",
+"vent-li6-desc":"Central systems supplying chilled and hot water.",
 "vent-li7-title":"Ducted Air Conditioning:",
-"vent-li7-desc":"Integrated distribution of conditioned air through insulated ductwork with anemostats, grilles, and diffusers for uniform airflow and supreme indoor comfort.",
+"vent-li7-desc":"Integrated conditioned air distribution through insulated ductwork.",
 
 "plumb-title":"💧 Plumbing & Drainage",
-"plumb-p1":"Water supply and drainage systems constitute a complex hydraulic infrastructure designed for continuous delivery of safe sanitary water under pressure and the safe collection and treatment of wastewater and stormwater.",
+"plumb-p1":"Water supply and drainage systems constitute complex hydraulic infrastructure executed using certified materials from elite brands like Valsir for reliable and safe operation.",
 "plumb-strong1":"Core Systems & Installations:",
 "plumb-li1-title":"Internal Water Supply Network:",
-"plumb-li1-desc":"Design and execution of sanitary water supply and distribution systems utilizing proven, high-quality materials (PPR, multilayer pipes, galvanized and stainless steel) resistant to pressure and corrosion.",
+"plumb-li1-desc":"Design and execution using pressure- and corrosion-resistant materials.",
 "plumb-li2-title":"Drainage Systems:",
-"plumb-li2-desc":"Efficient collection and gravity- or force-driven removal of wastewater and stormwater using certified plastic pipe systems (PVC, acoustically insulated PP systems, and robust HDPE piping networks).",
+"plumb-li2-desc":"Efficient collection using acoustically insulated PP systems and HDPE networks (Valsir).",
 "plumb-li3-title":"Fire Hydrant Networks:",
-"plumb-li3-desc":"Execution of internal and external fire hydrant installations equipped with appropriate booster pump sets for reliable pressure and flow during emergencies.",
+"plumb-li3-desc":"Reliable fire protection installations with booster pump sets.",
 "plumb-li4-title":"Booster Stations & Pump Units:",
-"plumb-li4-desc":"Automated systems ensuring stable water pressure across all floors of a building, regardless of height and capacity.",
+"plumb-li4-desc":"Automated systems ensuring stable water pressure across all floors.",
 "plumb-strong2":"Execution Standards & Quality:",
-"plumb-li5":"Complete assembly of sanitary fittings, pressure pipelines, and installation shafts.",
-"plumb-li6":"Application of rigorous hydraulic pressure and leak-tightness testing prior to commissioning."
+"plumb-li5":"Complete assembly of sanitary fittings and pressure pipelines.",
+"plumb-li6":"Application of rigorous hydraulic pressure and leak-tightness testing."
 }
 };
 
@@ -537,7 +588,7 @@ const bpFns = {
 
 /* ПОДСТРАНИЦИ */
 const pages = {
-  about:         ['about', ['p','p1']],
+  about:         ['about', ['p','p1'], ['p','p2']],
   toplifikacija: ['topli', ['p','p1'], ['h','strong1'], ['l',1,4]],
   geothermal:    ['geo',   ['p','p1'], ['p','p2'], ['h','strong1'], ['l',1,3]],
   heatpumps:     ['hp',    ['p','p1'], ['h','strong1'], ['p','p2'], ['l',1,2], ['h','strong2'], ['l',3,5]],
@@ -574,6 +625,14 @@ function buildPages() {
     </div></div>`;
   }
   document.getElementById('subpages').innerHTML = html;
+}
+
+/* ДУПЛИРАЊЕ НА БРЕНДОВИТЕ ЗА БЕСКРАЈЕН СЛАЈДЕР */
+function initBrands() {
+  const track = document.getElementById('brands-track');
+  if (track) {
+    track.innerHTML += track.innerHTML; // Дуплирање содржина за бескраен јазол
+  }
 }
 
 /* ЈАЗИК */
@@ -614,7 +673,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu();
 /* РУТИРАЊЕ (#about, #toplifikacija, #geothermal ...) */
 function route() {
   let hash = decodeURIComponent(location.hash.slice(1));
-  if (hash === 'systems') hash = ''; // ако е кликнато Системи на насловна
+  if (hash === 'systems') hash = ''; 
   const view = pages[hash] ? hash : 'home';
   document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
   document.getElementById('view-' + view).classList.add('active-view');
@@ -641,6 +700,7 @@ document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c))
 
 /* СТАРТ */
 buildPages();
+initBrands();
 let startLang = 'mk';
 try { startLang = localStorage.getItem('velder_lang') || 'mk'; } catch (e) {}
 setLanguage(startLang);
