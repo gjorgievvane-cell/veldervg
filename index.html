@@ -177,13 +177,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 
 <main>
   <div id="view-home" class="view-section active-view">
-    <section class="hero" id="about">
-      <h1 class="hero-title" data-i18n="hero-title"></h1>
-      <p class="hero-subtitle" data-i18n="hero-subtitle"></p>
-      <a href="#contact" class="btn-cta" data-i18n="btn-cta"></a>
-    </section>
-
-    <section id="systems" class="systems-wrapper">
+    <section id="systems" class="systems-wrapper" style="padding-top: 50px;">
       <a class="system-card" href="#toplifikacija">
         <div class="card-header-flex"><span class="card-icon" aria-hidden="true">🔥</span><h3 data-i18n="sys1-title"></h3></div>
         <p data-i18n="sys1-desc"></p>
@@ -269,6 +263,9 @@ mk: {
 "cookie-text":"Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.",
 "cookie-btn":"Се согласувам",
 "page-title":"ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации",
+
+"about-title":"За Нас",
+"about-p1":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
 
 "topli-title":"🔥 Централно Топловодно Греење",
 "topli-p1":"Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).",
@@ -370,6 +367,9 @@ en: {
 "cookie-btn":"Accept",
 "page-title":"VELDER VG TRADING | Central Heating & Mechanical Installations",
 
+"about-title":"About Us",
+"about-p1":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems: central hydronic heating installations (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), heat recovery ventilation, and full plumbing networks for residential and commercial complexes.",
+
 "topli-title":"🔥 Central District Heating",
 "topli-p1":"Central district heating is one of the most widespread, safest, and efficient systems for heating residential, commercial, and industrial facilities. Its core operation is based on the circulation of a fluid (water) heated in a centralized source (boiler, heat pump, or municipal district heating plant) and distributed through a piping network to surface heating elements (underfloor, wall, or ceiling heating) or conventional emitters (radiators and fan coil units).",
 "topli-strong1":"Key Segments & Execution:",
@@ -460,6 +460,14 @@ const diffuser = (cx,cy) => Ci(cx,cy,10) + L(cx-10,cy,cx+10,cy) + L(cx,cy-10,cx,
 const compass = () => Ci(740,50,20) + L(722,50,758,50) + L(740,32,740,68);
 
 const bpFns = {
+  about(){
+    let s = R(150,80,500,420,'bp-draw');
+    [160,240,320,400].forEach(y => s += L(150,y,650,y,'bp-line-thin'));
+    s += L(300,80,300,500,'bp-line-thin') + L(500,80,500,500,'bp-line-thin');
+    s += Ci(400,290,60) + L(370,290,430,290) + L(400,260,400,320);
+    s += L(60,540,700,540) + compass();
+    return s;
+  },
   toplifikacija(){
     let s = R(150,60,340,480,'bp-draw');
     [180,300,420].forEach(y => s += L(150,y,490,y,'bp-line-thin'));
@@ -521,8 +529,9 @@ const bpFns = {
   }
 };
 
-/* ПОДСТРАНИЦИ: p = параграф, h = наслов, l = листа со наслов+опис (од-до), q = проста листа */
+/* ПОДСТРАНИЦИ */
 const pages = {
+  about:         ['about', ['p','p1']],
   toplifikacija: ['topli', ['p','p1'], ['h','strong1'], ['l',1,4]],
   geothermal:    ['geo',   ['p','p1'], ['p','p2'], ['h','strong1'], ['l',1,3]],
   heatpumps:     ['hp',    ['p','p1'], ['h','strong1'], ['p','p2'], ['l',1,2], ['h','strong2'], ['l',3,5]],
@@ -596,9 +605,10 @@ navLinks.addEventListener('click', e => { if (e.target.closest('a')) closeMenu()
 window.addEventListener('resize', () => { if (innerWidth > 768) closeMenu(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-/* РУТИРАЊЕ (#toplifikacija, #geothermal ... и сидра #about, #systems, #contact) */
+/* РУТИРАЊЕ (#about, #toplifikacija, #geothermal ...) */
 function route() {
-  const hash = decodeURIComponent(location.hash.slice(1));
+  let hash = decodeURIComponent(location.hash.slice(1));
+  if (hash === 'systems') hash = ''; // ако е кликнато Системи на насловна
   const view = pages[hash] ? hash : 'home';
   document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
   document.getElementById('view-' + view).classList.add('active-view');
@@ -611,7 +621,7 @@ window.addEventListener('hashchange', route);
 
 /* КОЛАЧИЊА */
 const cookieBanner = document.getElementById('cookie-banner');
-try { if (localStorage.getItem('velder_cookies_accepted') === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
+try { if (localStorage.getItem('velder_cookies_accepted'] === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
 document.getElementById('cookie-accept-btn').addEventListener('click', () => {
   try { localStorage.setItem('velder_cookies_accepted', 'true'); } catch (e) {}
   cookieBanner.classList.add('hidden');
