@@ -129,35 +129,39 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* МРЕЖНИ И ДИЈАГОНАЛНИ КАНАЛИ ЗА ЛОГОАТА СО ВИДЛИВА ФЛУИДНА ДИНАМИКА */
+/* ДВОЦЕВЕН СИСТЕМ (ЗМИИ СО ЛОГОА) - ДОВ ОД И ПОВРАТ */
 .about-brands-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
 
-.brand-stream{position:absolute;display:flex;gap:80px;align-items:center;white-space:nowrap;will-change:transform;opacity:.32}
+.brand-stream{position:absolute;display:flex;gap:70px;align-items:center;white-space:nowrap;will-change:transform;opacity:.32;padding:12px 0}
 .floating-brand{display:inline-flex;justify-content:center;align-items:center;padding:0 10px;filter:drop-shadow(0 0 12px rgba(0,210,255,0.5))}
-.floating-brand svg{height:36px;width:auto;fill:#fff}
+.floating-brand svg{height:34px;width:auto;fill:#fff}
 
-/* Позиционирање и анимации на струењето */
-.stream-1{top:12%;left:-50%;animation: flowHorizontal 22s linear infinite;border-bottom:1px dashed rgba(0,210,255,.2);padding:12px 0}
-.stream-2{top:38%;right:-50%;animation: flowHorizontalRev 26s linear infinite;border-top:1px dashed rgba(0,210,255,.2);padding:12px 0}
-.stream-3{top:68%;left:-50%;animation: flowHorizontal 24s linear infinite;border-bottom:1px dashed rgba(0,210,255,.2);padding:12px 0}
-.stream-diag-1{top:-20%;left:5%;animation: flowDiagonal 28s linear infinite;transform:rotate(30deg);transform-origin:left top}
-.stream-diag-2{bottom:-20%;right:5%;animation: flowDiagonalRev 30s linear infinite;transform:rotate(-30deg);transform-origin:right bottom}
+/* Хоризонтални змиски цевки (Довод -> Напред, Поврат <- Назад) */
+.stream-h1{top:15%;left:-50%;animation: flowForward 24s linear infinite;border-bottom:1px dashed rgba(0,210,255,.25)}
+.stream-h2{top:20%;right:-50%;animation: flowBackward 26s linear infinite;border-top:1px dashed rgba(0,210,255,.25)}
 
-@keyframes flowHorizontal{
+.stream-h3{top:55%;left:-50%;animation: flowForward 22s linear infinite;border-bottom:1px dashed rgba(0,210,255,.25)}
+.stream-h4{top:60%;right:-50%;animation: flowBackward 25s linear infinite;border-top:1px dashed rgba(0,210,255,.25)}
+
+/* Вертикални змиски цевки (Довод надвор, Поврат назад) */
+.stream-v1{left:18%;top:-50%;flex-direction:column;animation: flowVertDown 25s linear infinite;border-right:1px dashed rgba(0,210,255,.25);padding:0 12px}
+.stream-v2{right:18%;bottom:-50%;flex-direction:column;animation: flowVertUp 27s linear infinite;border-left:1px dashed rgba(0,210,255,.25);padding:0 12px}
+
+@keyframes flowForward{
   0%{transform:translateX(0)}
   100%{transform:translateX(50vw)}
 }
-@keyframes flowHorizontalRev{
+@keyframes flowBackward{
   0%{transform:translateX(0)}
-  100%{transform:translateX(-50vw)}
+  100%{transform:translateX(50vw)}
 }
-@keyframes flowDiagonal{
-  0%{transform:translate3d(0,0,0) rotate(30deg)}
-  100%{transform:translate3d(0,70vh,0) rotate(30deg)}
+@keyframes flowVertDown{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(50vh)}
 }
-@keyframes flowDiagonalRev{
-  0%{transform:translate3d(0,0,0) rotate(-30deg)}
-  100%{transform:translate3d(0,-70vh,0) rotate(-30deg)}
+@keyframes flowVertUp{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-50vh)}
 }
 
 @media (max-width:768px){.blueprint{opacity:.35}.brand-stream{opacity:.2}}
@@ -626,11 +630,12 @@ function buildPages() {
 
     let streamsHtml = '<div class="about-brands-bg" aria-hidden="true">';
     const configs = [
-      { cls: 'stream-1', list: [0, 1, 2, 3, 4, 5] },
-      { cls: 'stream-2', list: [6, 7, 8, 9, 0, 1] },
-      { cls: 'stream-3', list: [2, 4, 6, 8, 3, 5] },
-      { cls: 'stream-diag-1', list: [1, 3, 5, 7, 9, 2] },
-      { cls: 'stream-diag-2', list: [0, 3, 6, 9, 4, 7] }
+      { cls: 'stream-h1', list: [0, 1, 2, 3, 4, 5] },
+      { cls: 'stream-h2', list: [6, 7, 8, 9, 0, 1] },
+      { cls: 'stream-h3', list: [2, 4, 6, 8, 3, 5] },
+      { cls: 'stream-h4', list: [1, 3, 5, 7, 9, 2] },
+      { cls: 'stream-v1', list: [0, 2, 4, 6, 8] },
+      { cls: 'stream-v2', list: [1, 3, 5, 7, 9] }
     ];
 
     configs.forEach(cfg => {
