@@ -105,16 +105,16 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 /* BLUEPRINT BACKGROUND DRAWINGS */
 .view-section{position:relative}
 .page-container{position:relative;z-index:1}
-.blueprint{position:fixed;top:var(--hh);left:0;right:0;bottom:0;z-index:0;opacity:.14;pointer-events:none;overflow:hidden}
+.blueprint{position:fixed;top:var(--hh);left:0;right:0;bottom:0;z-index:0;opacity:.35;pointer-events:none;overflow:hidden}
 .blueprint svg{width:100%;height:100%;display:block}
-.bp-line{fill:none;stroke:var(--accent-blue);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.bp-line{fill:none;stroke:var(--accent-blue);stroke-width:2.4;vector-effect:non-scaling-stroke}
 .bp-line-thin{stroke-width:.8}
 .bp-dash{stroke-dasharray:7 7}
 .bp-draw{stroke-dasharray:2000;stroke-dashoffset:2000;animation:bpDraw 3.2s ease-out forwards}
 @keyframes bpDraw{to{stroke-dashoffset:0}}
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
-@media (max-width:768px){.blueprint{opacity:.11}}
+@media (max-width:768px){.blueprint{opacity:.3}}
 @media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}}
 
 /* LARGE SCREENS */
