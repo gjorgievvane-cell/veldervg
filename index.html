@@ -67,13 +67,29 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .back-nav{display:inline-flex;align-items:center;gap:8px;color:var(--accent-blue);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:30px;min-height:44px;transition:opacity .2s}
 .back-nav:hover{opacity:.8}
 .page-title{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:700;color:#fff;margin-bottom:30px;letter-spacing:-.015em;line-height:1.2;overflow-wrap:break-word}
-.page-text-content{color:var(--text-muted);font-size:clamp(1rem,1.5vw,1.08rem);line-height:1.8;font-weight:300;background:rgba(5,8,17,.75);padding:35px;border-radius:20px;border:1px solid var(--border-color);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+
+/* ТРАНСПАРЕНТНА ПОЗАДИНА СО СТАКЛЕН ЕФЕКТ И ДЛАБОЧИНА */
+.page-text-content{
+  color:#f1f5f9;
+  font-size:clamp(1rem,1.5vw,1.08rem);
+  line-height:1.8;
+  font-weight:300;
+  background:rgba(5,8,17,0.32);
+  padding:40px;
+  border-radius:24px;
+  border:1px solid rgba(0,210,255,0.18);
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+}
 .page-text-content p,.page-text-content h2{margin-bottom:20px}
-.page-text-content h2{font-size:1rem;font-weight:600;color:#fff}
+.page-text-content h2{font-size:1.1rem;font-weight:600;color:var(--accent-blue);letter-spacing:.02em}
 .page-text-content strong{color:#fff;font-weight:600}
 .page-text-content ul{margin-left:24px;margin-bottom:24px}
-.page-text-content li{margin-bottom:12px}
-.page-cta-box{margin-top:40px;padding:30px;background:var(--bg-card);border-radius:20px;border:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.page-text-content li{margin-bottom:12px;color:var(--text-muted)}
+.page-text-content li strong{color:#f8fafc}
+
+.page-cta-box{margin-top:40px;padding:30px;background:rgba(5,8,17,0.45);border-radius:20px;border:1px solid rgba(0,210,255,0.2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 15px 35px rgba(0,0,0,0.4)}
 .page-cta-box span{color:var(--text-muted);font-weight:300}
 
 /* CONTACT */
@@ -114,19 +130,19 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ИНЖЕНЕРСКИ ПРЕЦИЗНИ ВЕРТИКАЛНИ ЛИНИИ НА БРЕНДОВИ (ПОЗАДИНА ЗА ЗА НАС) */
+/* ИНЖЕНЕРСКИ ПРЕЦИЗНИ ВЕРТИКАЛНИ ЛИНИИ НА БРЕНДОВИ (ПОЗАДИНА) */
 .about-brands-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
-.brand-column{position:absolute;top:0;bottom:0;width:120px;display:flex;flex-direction:column;align-items:center;overflow:hidden;opacity:.15;border-left:1px dashed rgba(0,210,255,.15);border-right:1px dashed rgba(0,210,255,.15)}
-.brand-track{display:flex;flex-direction:column;gap:90px;position:absolute;width:100%;animation:flowColumn linear infinite;will-change:transform}
-.floating-brand{display:flex;justify-content:center;align-items:center;padding:0 10px;width:100%;filter:drop-shadow(0 0 6px rgba(0,210,255,.25))}
-.floating-brand svg{height:36px;width:auto;fill:#fff;transform:translateZ(0)}
+.brand-column{position:absolute;top:0;bottom:0;width:120px;display:flex;flex-direction:column;align-items:center;overflow:hidden;opacity:.22;border-left:1px dashed rgba(0,210,255,.12);border-right:1px dashed rgba(0,210,255,.12)}
+.brand-track{display:flex;flex-direction:column;gap:110px;position:absolute;width:100%;animation:flowColumn linear infinite;will-change:transform;transform:translate3d(0,0,0)}
+.floating-brand{display:flex;justify-content:center;align-items:center;padding:0 10px;width:100%;filter:drop-shadow(0 0 8px rgba(0,210,255,0.35))}
+.floating-brand svg{height:38px;width:auto;fill:#fff;transform:translateZ(0)}
 
 @keyframes flowColumn{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-50%)}
+  0%{transform:translate3d(0,0,0)}
+  100%{transform:translate3d(0,-50%,0)}
 }
 
-@media (max-width:768px){.blueprint{opacity:.3}}
+@media (max-width:768px){.blueprint{opacity:.3}.brand-column{opacity:.16}}
 @media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.brand-track{animation:none}}
 
 /* LARGE SCREENS */
@@ -150,7 +166,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   .system-card h3{font-size:1.3rem}
   .system-card p{font-size:.98rem}
   .page-container{padding:24px 18px 80px}
-  .page-text-content{padding:22px}
+  .page-text-content{padding:24px}
   .page-text-content ul{margin-left:20px}
   .page-cta-box{flex-direction:column;align-items:stretch;text-align:center}
   .contact-section{padding:60px 18px 70px}
@@ -590,27 +606,21 @@ function buildPages() {
       }
     }
 
-    // Инженерски прецизни вертикални ленти со логоа во подстраницата „За нас“
-    let floatingBrandsHtml = '';
-    if (id === 'about') {
-      floatingBrandsHtml = '<div class="about-brands-bg" aria-hidden="true">';
-      // Распоред во 4 вертикални колони (лева и десна страна за да не сметаат на текстот во средина)
-      const columnPositions = [5, 20, 75, 90]; 
-      columnPositions.forEach((leftVal, colIdx) => {
-        // Земаме по неколку брендови за секоја колона (дуплирани за бесконечен беспрекорен циклус)
-        let colBrands = [brandSvgs[colIdx % brandSvgs.length], brandSvgs[(colIdx + 3) % brandSvgs.length], brandSvgs[(colIdx + 6) % brandSvgs.length]];
-        let trackContent = '';
-        // Дуплираме јамка за мазно кружење без сечење
-        for(let rep = 0; rep < 2; rep++) {
-          colBrands.forEach(svgCode => {
-            trackContent += `<div class="floating-brand">${svgCode}</div>`;
-          });
-        }
-        const animDuration = 24 + (colIdx * 4);
-        floatingBrandsHtml += `<div class="brand-column" style="left:${leftVal}%;"><div class="brand-track" style="animation-duration:${animDuration}s;">${trackContent}</div></div>`;
-      });
-      floatingBrandsHtml += '</div>';
-    }
+    // Инженерски вертикални ленти со логоа во позадина за сите страници за максимална длабочина
+    let floatingBrandsHtml = '<div class="about-brands-bg" aria-hidden="true">';
+    const columnPositions = [4, 18, 82, 94]; 
+    columnPositions.forEach((leftVal, colIdx) => {
+      let colBrands = [brandSvgs[colIdx % brandSvgs.length], brandSvgs[(colIdx + 2) % brandSvgs.length], brandSvgs[(colIdx + 5) % brandSvgs.length], brandSvgs[(colIdx + 8) % brandSvgs.length]];
+      let trackContent = '';
+      for(let rep = 0; rep < 2; rep++) {
+        colBrands.forEach(svgCode => {
+          trackContent += `<div class="floating-brand">${svgCode}</div>`;
+        });
+      }
+      const animDuration = 28 + (colIdx * 5);
+      floatingBrandsHtml += `<div class="brand-column" style="left:${leftVal}%;"><div class="brand-track" style="animation-duration:${animDuration}s;">${trackContent}</div></div>`;
+    });
+    floatingBrandsHtml += '</div>';
 
     html += `<div id="view-${id}" class="view-section">
       <div class="blueprint" aria-hidden="true"><svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">${bpFns[id]()}</svg></div>
