@@ -68,19 +68,19 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .back-nav:hover{opacity:.8}
 .page-title{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:700;color:#fff;margin-bottom:30px;letter-spacing:-.015em;line-height:1.2;overflow-wrap:break-word}
 
-/* ТРАНСПАРЕНТНА ПОЗАДИНА СО СТАКЛЕН ЕФЕКТ И ДЛАБОЧИНА */
+/* ВИСОКО ТРАНСПАРЕНТНА ПОЗАДИНА СО СТАКЛЕН ЕФЕКТ ЗА СЛОБОДЕН ПРИКАЗ НА ПОЗАДИНСКАТА ИНСТАЛАЦИЈА */
 .page-text-content{
   color:#f1f5f9;
   font-size:clamp(1rem,1.5vw,1.08rem);
   line-height:1.8;
   font-weight:300;
-  background:rgba(5,8,17,0.32);
+  background:rgba(5,8,17,0.18);
   padding:40px;
   border-radius:24px;
-  border:1px solid rgba(0,210,255,0.18);
-  -webkit-backdrop-filter:blur(8px);
-  backdrop-filter:blur(8px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  border:1px solid rgba(0,210,255,0.22);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 .page-text-content p,.page-text-content h2{margin-bottom:20px}
 .page-text-content h2{font-size:1.1rem;font-weight:600;color:var(--accent-blue);letter-spacing:.02em}
@@ -89,7 +89,7 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .page-text-content li{margin-bottom:12px;color:var(--text-muted)}
 .page-text-content li strong{color:#f8fafc}
 
-.page-cta-box{margin-top:40px;padding:30px;background:rgba(5,8,17,0.45);border-radius:20px;border:1px solid rgba(0,210,255,0.2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 15px 35px rgba(0,0,0,0.4)}
+.page-cta-box{margin-top:40px;padding:30px;background:rgba(5,8,17,0.35);border-radius:20px;border:1px solid rgba(0,210,255,0.25);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 15px 35px rgba(0,0,0,0.4)}
 .page-cta-box span{color:var(--text-muted);font-weight:300}
 
 /* CONTACT */
@@ -118,9 +118,9 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .btn-cookie:hover{background:var(--accent-blue);color:#050811}
 footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.75rem}
 
-/* BLUEPRINT BACKGROUND DRAWINGS */
+/* BLUEPRINT BACKGROUND DRAWINGS СO PARALLAX ЕФЕКТ */
 .view-section{position:relative}
-.blueprint{position:fixed;top:var(--hh);left:0;right:0;bottom:0;z-index:0;opacity:.35;pointer-events:none;overflow:hidden}
+.blueprint{position:fixed;top:var(--hh);left:0;right:0;bottom:0;z-index:0;opacity:.4;pointer-events:none;overflow:hidden;transition:transform 0.1s ease-out}
 .blueprint svg{width:100%;height:100%;display:block}
 .bp-line{fill:none;stroke:var(--accent-blue);stroke-width:2.4;vector-effect:non-scaling-stroke}
 .bp-line-thin{stroke-width:.8}
@@ -130,11 +130,11 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ИНЖЕНЕРСКИ ПРЕЦИЗНИ ВЕРТИКАЛНИ ЛИНИИ НА БРЕНДОВИ (ПОЗАДИНА) */
-.about-brands-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
-.brand-column{position:absolute;top:0;bottom:0;width:120px;display:flex;flex-direction:column;align-items:center;overflow:hidden;opacity:.22;border-left:1px dashed rgba(0,210,255,.12);border-right:1px dashed rgba(0,210,255,.12)}
+/* ИНЖЕНЕРСКИ ВЕРТИКАЛНИ ЛИНИИ НА БРЕНДОВИ СО ПАРАЛАКС ДВИЖЕЊЕ */
+.about-brands-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1;transition:transform 0.12s ease-out}
+.brand-column{position:absolute;top:0;bottom:0;width:120px;display:flex;flex-direction:column;align-items:center;overflow:hidden;opacity:.28;border-left:1px dashed rgba(0,210,255,.15);border-right:1px dashed rgba(0,210,255,.15)}
 .brand-track{display:flex;flex-direction:column;gap:110px;position:absolute;width:100%;animation:flowColumn linear infinite;will-change:transform;transform:translate3d(0,0,0)}
-.floating-brand{display:flex;justify-content:center;align-items:center;padding:0 10px;width:100%;filter:drop-shadow(0 0 8px rgba(0,210,255,0.35))}
+.floating-brand{display:flex;justify-content:center;align-items:center;padding:0 10px;width:100%;filter:drop-shadow(0 0 10px rgba(0,210,255,0.45))}
 .floating-brand svg{height:38px;width:auto;fill:#fff;transform:translateZ(0)}
 
 @keyframes flowColumn{
@@ -142,7 +142,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   100%{transform:translate3d(0,-50%,0)}
 }
 
-@media (max-width:768px){.blueprint{opacity:.3}.brand-column{opacity:.16}}
+@media (max-width:768px){.blueprint{opacity:.35}.brand-column{opacity:.2}}
 @media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.brand-track{animation:none}}
 
 /* LARGE SCREENS */
@@ -606,7 +606,6 @@ function buildPages() {
       }
     }
 
-    // Инженерски вертикални ленти со логоа во позадина за сите страници за максимална длабочина
     let floatingBrandsHtml = '<div class="about-brands-bg" aria-hidden="true">';
     const columnPositions = [4, 18, 82, 94]; 
     columnPositions.forEach((leftVal, colIdx) => {
@@ -681,6 +680,18 @@ function route() {
   else window.scrollTo({ top: 0, behavior: 'auto' });
 }
 window.addEventListener('hashchange', route);
+
+/* ПАРАЛАКС ДВИЖЕЊЕ - КАКО ОДЕЊЕ НИЗ ИНСТАЛАЦИЈАТА */
+document.addEventListener('mousemove', (e) => {
+  const xVal = (e.clientX / window.innerWidth - 0.5) * 20;
+  const yVal = (e.clientY / window.innerHeight - 0.5) * 20;
+  document.querySelectorAll('.blueprint').forEach(el => {
+    el.style.transform = `translate(${xVal * 0.6}px, ${yVal * 0.6}px)`;
+  });
+  document.querySelectorAll('.about-brands-bg').forEach(el => {
+    el.style.transform = `translate(${-xVal}px, ${-yVal}px)`;
+  });
+});
 
 const cookieBanner = document.getElementById('cookie-banner');
 try { if (localStorage.getItem('velder_cookies_accepted') === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
