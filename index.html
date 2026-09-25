@@ -62,34 +62,28 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .system-card h3{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;color:#fff}
 .system-card p{font-size:1.02rem;color:var(--text-muted);line-height:1.6;margin-bottom:26px;font-weight:300}
 
-/* SUBPAGES */
-.page-container{max-width:860px;margin:0 auto;padding:40px 20px 100px;position:relative;z-index:2}
+/* SUBPAGES (Слободен распоред без квадрати) */
+.page-container{max-width:820px;margin:0 auto;padding:40px 20px 100px;position:relative;z-index:2}
 .back-nav{display:inline-flex;align-items:center;gap:8px;color:var(--accent-blue);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:30px;min-height:44px;transition:opacity .2s}
 .back-nav:hover{opacity:.8}
-.page-title{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:700;color:#fff;margin-bottom:30px;letter-spacing:-.015em;line-height:1.2;overflow-wrap:break-word}
+.page-title{font-size:clamp(1.8rem,4.2vw,3rem);font-weight:700;color:#fff;margin-bottom:35px;letter-spacing:-.015em;line-height:1.15;overflow-wrap:break-word}
 
 .page-text-content{
   color:#f1f5f9;
-  font-size:clamp(1rem,1.5vw,1.08rem);
-  line-height:1.8;
+  font-size:clamp(1.02rem,1.5vw,1.12rem);
+  line-height:1.85;
   font-weight:300;
-  background:rgba(5,8,17,0.18);
-  padding:40px;
-  border-radius:24px;
-  border:1px solid rgba(0,210,255,0.22);
-  -webkit-backdrop-filter:blur(6px);
-  backdrop-filter:blur(6px);
-  box-shadow:0 15px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
 }
-.page-text-content p,.page-text-content h2{margin-bottom:20px}
-.page-text-content h2{font-size:1.1rem;font-weight:600;color:var(--accent-blue);letter-spacing:.02em}
+.page-text-content p{margin-bottom:24px;color:#e2e8f0}
+.page-text-content h2{font-size:1.15rem;font-weight:600;color:var(--accent-blue);letter-spacing:.02em;margin-top:36px;margin-bottom:16px}
 .page-text-content strong{color:#fff;font-weight:600}
-.page-text-content ul{margin-left:24px;margin-bottom:24px}
-.page-text-content li{margin-bottom:12px;color:var(--text-muted)}
+.page-text-content ul{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:16px}
+.page-text-content li{position:relative;padding-left:22px;color:var(--text-muted)}
+.page-text-content li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--accent-blue);box-shadow:0 0 8px var(--accent-glow)}
 .page-text-content li strong{color:#f8fafc}
 
-.page-cta-box{margin-top:40px;padding:30px;background:rgba(5,8,17,0.35);border-radius:20px;border:1px solid rgba(0,210,255,0.25);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 15px 35px rgba(0,0,0,0.4)}
-.page-cta-box span{color:var(--text-muted);font-weight:300}
+.page-cta-box{margin-top:50px;padding-top:30px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.page-cta-box span{color:var(--text-muted);font-weight:300;font-size:1.02rem}
 
 /* CONTACT */
 .contact-section{padding:90px 20px 100px;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(0,210,255,.08) 0%,transparent 70%);border-top:1px solid var(--border-color)}
@@ -136,7 +130,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 @media (prefers-reduced-motion:reduce){.star-brand{transition:none}}
 
 /* LARGE SCREENS */
-@media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
+@media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:920px}}
 /* TABLET */
 @media (min-width:769px) and (max-width:1024px){.nav-container{padding:0 28px}.systems-wrapper,.page-container{max-width:720px}}
 /* PHONE */
@@ -156,8 +150,6 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   .system-card h3{font-size:1.3rem}
   .system-card p{font-size:.98rem}
   .page-container{padding:24px 18px 80px}
-  .page-text-content{padding:24px}
-  .page-text-content ul{margin-left:20px}
   .page-cta-box{flex-direction:column;align-items:stretch;text-align:center}
   .contact-section{padding:60px 18px 70px}
   .contact-divider{display:none}
@@ -514,7 +506,6 @@ function buildPages() {
       }
     }
 
-    /* САМО ЛОГОАТА ВО ПОЗАДИНАТА НА "ЗА НАС" (БЕЗ АВТОКАД ЛИНИИ) */
     let starsHtml = '';
     if (id === 'about') {
       starsHtml = '<div class="about-stars-bg" aria-hidden="true" id="teleport-container">';
@@ -591,7 +582,6 @@ document.addEventListener('mousemove', (e) => {
   });
 });
 
-/* НЕЗАВИСНИ ЦИКЛУСИ НА СЕКОЕ ЛОГО ПООДДЕЛНО */
 function initIndependentBrands() {
   const container = document.getElementById('teleport-container');
   if (!container) return;
