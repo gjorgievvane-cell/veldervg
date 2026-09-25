@@ -129,30 +129,24 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ТЕЛЕПОРТИРАЧКИ ПОЈАВУВАЊА НА РАЗЛИЧНИ МЕСТА */
+/* ЦЕЛОСНО НЕЗАВИСНИ АНИМАЦИИ ЗА СЕКОЕ ЛОГО ПООДДЕЛНО */
 .about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
 .star-brand{
   position:absolute;
   top:var(--randY);
   left:var(--randX);
-  animation: flashInPlace 5s ease-in-out var(--randDelay) infinite;
-  filter:drop-shadow(0 0 10px rgba(0,210,255,0.3));
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out, transform 1.8s ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(0,210,255,0.3));
+}
+.star-brand.active-brand {
+  opacity: var(--randOp);
+  transform: scale(1);
 }
 .star-brand svg{height:28px;width:auto;fill:#fff}
 
-@keyframes flashInPlace {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  20%, 75% {
-    opacity: var(--randOp);
-    transform: scale(1);
-  }
-}
-
 @media (max-width:768px){.blueprint{opacity:.35}}
-@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.star-brand{animation:none}}
+@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.star-brand{transition:none}}
 
 /* LARGE SCREENS */
 @media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
@@ -615,12 +609,12 @@ function buildPages() {
       }
     }
 
-    /* ДИНАМИЧНИ ТЕЛЕПОРТИРАЧКИ ПОЈАВУВАЊА НА РАЗЛИЧНИ МЕСТА ВО "ЗА НАС" */
+    /* ПОЕДИНЕЧНИ НЕЗАВИСНИ БРЕНДОВИ ВО ПОЗАДИНАТА НА "ЗА НАС" */
     let starsHtml = '';
     if (id === 'about') {
       starsHtml = '<div class="about-stars-bg" aria-hidden="true" id="teleport-container">';
       brandSvgs.forEach((svgContent, idx) => {
-        starsHtml += `<div class="star-brand" id="brand-item-${idx}" style="--randDelay: ${idx * 0.7}s; --randOp: 0.35;">${svgContent}</div>`;
+        starsHtml += `<div class="star-brand" id="brand-item-${idx}">${svgContent}</div>`;
       });
       starsHtml += '</div>';
     }
@@ -696,27 +690,44 @@ document.addEventListener('mousemove', (e) => {
   });
 });
 
-/* ТЕЛЕПОРТАЦИЈА НА СЕКОЕ НОВО ПОЈАВУВАЊЕ НА СЛУЧАЈНИ МЕСТА */
-function initTeleportingBrands() {
+/* НАПОЛНУВАЊЕ СО ЦЕЛОСНО АСИНХРОНИ, НЕЗАВИСНИ ЦИКЛУСИ НА СЕКОЕ ЛОГО ПООДДЕЛНО */
+function initIndependentBrands() {
   const container = document.getElementById('teleport-container');
   if (!container) return;
   const items = container.querySelectorAll('.star-brand');
   
   items.forEach(el => {
-    function randomizePosition() {
-      // Генерација на случајни координати ширум екранот (избегнувајќи ги крајните рабови за да не се сечат)
-      const randomX = Math.floor(Math.random() * 75) + 8; // од 8% до 83%
-      const randomY = Math.floor(Math.random() * 75) + 12; // од 12% до 87%
-      const randomOpacity = (Math.random() * 0.25 + 0.15).toFixed(2); // видливост меѓу 15% и 40%
+    function runBrandCycle() {
+      // 1. Постави случајна положба на екранот
+      const randomX = Math.floor(Math.random() * 75) + 8; // меѓу 8% и 83% ширина
+      const randomY = Math.floor(Math.random() * 75) + 12; // меѓу 12% и 87% висина
+      const randomOpacity = (Math.random() * 0.22 + 0.18).toFixed(2); // видливост меѓу 18% и 40%
       
       el.style.setProperty('--randX', randomX + '%');
       el.style.setProperty('--randY', randomY + '%');
       el.style.setProperty('--randOp', randomOpacity);
+      
+      // 2. Случајно времетраење на самото прикажување (на пр. помеѓу 3 и 6 секунди)
+      const visibleDuration = Math.floor(Math.random() * 3000) + 3000;
+      // Случајно времетраење на паузата пред следното појавување на друго место (на пр. помеѓу 1.5 и 4 секунди)
+      const hiddenDuration = Math.floor(Math.random() * 2500) + 1500;
+
+      // Засветување (меко појавување)
+      setTimeout(() => {
+        el.classList.add('active-brand');
+        
+        // Згаснување по истекот на активното време
+        setTimeout(() => {
+          el.classList.remove('active-brand');
+          
+          // По завршување на згаснувањето, пушти нов независен циклус
+          setTimeout(runBrandCycle, hiddenDuration);
+        }, visibleDuration);
+      }, 200);
     }
 
-    randomizePosition();
-    // Секогаш кога логот ќе заврши циклус на појавување/снемување (на секои 5 секунди), добива ново рандом место
-    setInterval(randomizePosition, 5000);
+    // Започни го секое лого со случајно одложено стартување за да немаат ист почеток
+    setTimeout(runBrandCycle, Math.random() * 2000);
   });
 }
 
@@ -733,7 +744,7 @@ const focusObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
 
 buildPages();
-initTeleportingBrands();
+initIndependentBrands();
 
 let startLang = 'mk';
 try { startLang = localStorage.getItem('velder_lang') || 'mk'; } catch (e) {}
