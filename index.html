@@ -129,43 +129,18 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ДВОЦЕВЕН СИСТЕМ (ЗМИИ СО ЛОГОА) - САМО ЗА ЗА НАС */
-.about-brands-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
+/* КОСМИЧКИ ЅВЕЗДИ-ЛОГОА ЗА "ЗА НАС" */
+.about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
+.star-brand{position:absolute;opacity:0;transform:scale(0.8);transition:opacity 0.6s ease, transform 0.6s ease;animation: starTwinkle 4s ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(0,210,255,0.4))}
+.star-brand svg{height:28px;width:auto;fill:#fff}
 
-.brand-stream{position:absolute;display:flex;gap:70px;align-items:center;white-space:nowrap;will-change:transform;opacity:.32;padding:12px 0}
-.floating-brand{display:inline-flex;justify-content:center;align-items:center;padding:0 10px;filter:drop-shadow(0 0 12px rgba(0,210,255,0.5))}
-.floating-brand svg{height:34px;width:auto;fill:#fff}
-
-/* Хоризонтални змиски цевки (Довод -> Напред, Поврат <- Назад) */
-.stream-h1{top:15%;left:-50%;animation: flowForward 24s linear infinite;border-bottom:1px dashed rgba(0,210,255,.25)}
-.stream-h2{top:20%;right:-50%;animation: flowBackward 26s linear infinite;border-top:1px dashed rgba(0,210,255,.25)}
-
-.stream-h3{top:55%;left:-50%;animation: flowForward 22s linear infinite;border-bottom:1px dashed rgba(0,210,255,.25)}
-.stream-h4{top:60%;right:-50%;animation: flowBackward 25s linear infinite;border-top:1px dashed rgba(0,210,255,.25)}
-
-/* Вертикални змиски цевки (Довод надвор, Поврат назад) */
-.stream-v1{left:18%;top:-50%;flex-direction:column;animation: flowVertDown 25s linear infinite;border-right:1px dashed rgba(0,210,255,.25);padding:0 12px}
-.stream-v2{right:18%;bottom:-50%;flex-direction:column;animation: flowVertUp 27s linear infinite;border-left:1px dashed rgba(0,210,255,.25);padding:0 12px}
-
-@keyframes flowForward{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(50vw)}
-}
-@keyframes flowBackward{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(50vw)}
-}
-@keyframes flowVertDown{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(50vh)}
-}
-@keyframes flowVertUp{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-50vh)}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.9); }
+  50% { opacity: 0.55; transform: scale(1.1); }
 }
 
-@media (max-width:768px){.blueprint{opacity:.35}.brand-stream{opacity:.2}}
-@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.brand-stream{animation:none}}
+@media (max-width:768px){.blueprint{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.star-brand{animation:none}}
 
 /* LARGE SCREENS */
 @media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
@@ -628,34 +603,33 @@ function buildPages() {
       }
     }
 
-    // Двоцевните змиски линии со логоа се генерираат ИСКЛУЧИВО за "about"
-    let streamsHtml = '';
+    // Ѕвездено небо од логоа се генерира ИСКЛУЧИВО за "about"
+    let starsHtml = '';
     if (id === 'about') {
-      streamsHtml = '<div class="about-brands-bg" aria-hidden="true">';
-      const configs = [
-        { cls: 'stream-h1', list: [0, 1, 2, 3, 4, 5] },
-        { cls: 'stream-h2', list: [6, 7, 8, 9, 0, 1] },
-        { cls: 'stream-h3', list: [2, 4, 6, 8, 3, 5] },
-        { cls: 'stream-h4', list: [1, 3, 5, 7, 9, 2] },
-        { cls: 'stream-v1', list: [0, 2, 4, 6, 8] },
-        { cls: 'stream-v2', list: [1, 3, 5, 7, 9] }
+      starsHtml = '<div class="about-stars-bg" aria-hidden="true">';
+      // Фиксни координати (проценти) и времиња на анимација за рамномерен распоред како ѕвезди
+      const starPositions = [
+        { top: '12%', left: '8%', delay: '0s', duration: '3.5s' },
+        { top: '22%', left: '78%', delay: '1.2s', duration: '4.8s' },
+        { top: '38%', left: '18%', delay: '2.4s', duration: '4.1s' },
+        { top: '45%', left: '85%', delay: '0.8s', duration: '5.2s' },
+        { top: '60%', left: '12%', delay: '1.9s', duration: '3.9s' },
+        { top: '72%', left: '80%', delay: '3.1s', duration: '4.5s' },
+        { top: '85%', left: '25%', delay: '0.4s', duration: '5.0s' },
+        { top: '28%', left: '48%', delay: '1.6s', duration: '3.8s' },
+        { top: '55%', left: '52%', delay: '2.8s', duration: '4.2s' },
+        { top: '82%', left: '70%', delay: '0.2s', duration: '4.6s' }
       ];
 
-      configs.forEach(cfg => {
-        let track = '';
-        for (let rep = 0; rep < 3; rep++) {
-          cfg.list.forEach(idx => {
-            track += `<div class="floating-brand">${brandSvgs[idx]}</div>`;
-          });
-        }
-        streamsHtml += `<div class="brand-stream ${cfg.cls}">${track}</div>`;
+      starPositions.forEach((pos, idx) => {
+        starsHtml += `<div class="star-brand" style="top: ${pos.top}; left: ${pos.left}; animation-delay: ${pos.delay}; animation-duration: ${pos.duration};">${brandSvgs[idx]}</div>`;
       });
-      streamsHtml += '</div>';
+      starsHtml += '</div>';
     }
 
     html += `<div id="view-${id}" class="view-section">
       <div class="blueprint" aria-hidden="true"><svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">${bpFns[id]()}</svg></div>
-      ${streamsHtml}
+      ${starsHtml}
       <div class="page-container">
       <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
@@ -719,9 +693,39 @@ document.addEventListener('mousemove', (e) => {
   document.querySelectorAll('.blueprint').forEach(el => {
     el.style.transform = `translate(${xVal * 0.5}px, ${yVal * 0.5}px)`;
   });
-  document.querySelectorAll('.about-brands-bg').forEach(el => {
-    el.style.transform = `translate(${-xVal * 0.8}px, ${-yVal * 0.8}px)`;
+  document.querySelectorAll('.about-stars-bg').forEach(el => {
+    el.style.transform = `translate(${-xVal * 0.3}px, ${-yVal * 0.3}px)`;
   });
+});
+
+// Динамично прикажување/скривање на логоата според скролањето во "За Нас"
+window.addEventListener('scroll', () => {
+  const aboutView = document.getElementById('view-about');
+  if (!aboutView || !aboutView.classList.contains('active-view')) return;
+  
+  const rect = aboutView.getBoundingClientRect();
+  const stars = aboutView.querySelectorAll('.star-brand');
+  
+  // Ако секцијата е во видливото поле на екранот
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    // Пресметуваме колку длабоко е скролано низ секцијата (од 0 до 1)
+    const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+    
+    stars.forEach((star, i) => {
+      // Секоја ѕвезда се појавува и снемува во различен опсег на скролање за природен ефект
+      const threshold = (i * 0.08) + 0.1;
+      const distance = Math.abs(progress - threshold);
+      
+      if (distance < 0.35) {
+        // Колку е поблиску до прагот, толку е повидлива (ефект на појавување и снемување)
+        const opacityFactor = 1 - (distance / 0.35);
+        star.style.opacity = (opacityFactor * 0.6).toFixed(2);
+        star.style.transform = `scale(${0.8 + (opacityFactor * 0.3)})`;
+      } else {
+        star.style.opacity = '0.05';
+      }
+    });
+  }
 });
 
 const cookieBanner = document.getElementById('cookie-banner');
