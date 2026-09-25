@@ -114,19 +114,20 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ЛЕБДЕЧКИ ЛОГОА НА БРЕНДОВИ КАКО ПОЗАДИНА ЗА ЗА НАС */
+/* ИНЖЕНЕРСКИ ПРЕЦИЗНИ ВЕРТИКАЛНИ ЛИНИИ НА БРЕНДОВИ (ПОЗАДИНА ЗА ЗА НАС) */
 .about-brands-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
-.floating-brand{position:absolute;opacity:.12;display:flex;flex-direction:column;align-items:center;animation:floatBrand 22s linear infinite;filter:drop-shadow(0 0 8px rgba(0,210,255,.2))}
-.floating-brand svg{height:45px;width:auto;fill:#fff}
-@keyframes floatBrand{
-  0%{transform:translateY(105vh) rotate(0deg);opacity:0}
-  10%{opacity:.15}
-  90%{opacity:.15}
-  100%{transform:translateY(-15vh) rotate(5deg);opacity:0}
+.brand-column{position:absolute;top:0;bottom:0;width:120px;display:flex;flex-direction:column;align-items:center;overflow:hidden;opacity:.15;border-left:1px dashed rgba(0,210,255,.15);border-right:1px dashed rgba(0,210,255,.15)}
+.brand-track{display:flex;flex-direction:column;gap:90px;position:absolute;width:100%;animation:flowColumn linear infinite;will-change:transform}
+.floating-brand{display:flex;justify-content:center;align-items:center;padding:0 10px;width:100%;filter:drop-shadow(0 0 6px rgba(0,210,255,.25))}
+.floating-brand svg{height:36px;width:auto;fill:#fff;transform:translateZ(0)}
+
+@keyframes flowColumn{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-50%)}
 }
 
 @media (max-width:768px){.blueprint{opacity:.3}}
-@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.floating-brand{animation:none;display:none}}
+@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.brand-track{animation:none}}
 
 /* LARGE SCREENS */
 @media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
@@ -547,7 +548,7 @@ const bpFns = {
   }
 };
 
-/* SVG ЛОГОА ЗА СИТЕ БРЕНДОВИ (ВКЛУЧУВАЈЌИ ГО И COMAP) */
+/* SVG ЛОГОА ЗА СИТЕ 10 БРЕНДОВИ */
 const brandSvgs = [
   `<svg viewBox="0 0 160 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="27">Vaillant</text></svg>`,
   `<svg viewBox="0 0 180 50"><text x="5" y="34" font-family="Arial" font-weight="800" font-size="20">IMI Hydronics</text></svg>`,
@@ -589,15 +590,24 @@ function buildPages() {
       }
     }
 
-    // Лебдечки логоа ексклузивно во подстраницата „За нас“ (about)
+    // Инженерски прецизни вертикални ленти со логоа во подстраницата „За нас“
     let floatingBrandsHtml = '';
     if (id === 'about') {
       floatingBrandsHtml = '<div class="about-brands-bg" aria-hidden="true">';
-      brandSvgs.forEach((svgCode, idx) => {
-        const leftPos = (idx * 9.5) + 3;
-        const animDelay = (idx * 2.2) * -1;
-        const animDur = 18 + (idx % 6) * 3;
-        floatingBrandsHtml += `<div class="floating-brand" style="left:${leftPos}%; animation-duration:${animDur}s; animation-delay:${animDelay}s;">${svgCode}</div>`;
+      // Распоред во 4 вертикални колони (лева и десна страна за да не сметаат на текстот во средина)
+      const columnPositions = [5, 20, 75, 90]; 
+      columnPositions.forEach((leftVal, colIdx) => {
+        // Земаме по неколку брендови за секоја колона (дуплирани за бесконечен беспрекорен циклус)
+        let colBrands = [brandSvgs[colIdx % brandSvgs.length], brandSvgs[(colIdx + 3) % brandSvgs.length], brandSvgs[(colIdx + 6) % brandSvgs.length]];
+        let trackContent = '';
+        // Дуплираме јамка за мазно кружење без сечење
+        for(let rep = 0; rep < 2; rep++) {
+          colBrands.forEach(svgCode => {
+            trackContent += `<div class="floating-brand">${svgCode}</div>`;
+          });
+        }
+        const animDuration = 24 + (colIdx * 4);
+        floatingBrandsHtml += `<div class="brand-column" style="left:${leftVal}%;"><div class="brand-track" style="animation-duration:${animDuration}s;">${trackContent}</div></div>`;
       });
       floatingBrandsHtml += '</div>';
     }
