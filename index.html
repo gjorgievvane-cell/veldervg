@@ -102,6 +102,21 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .btn-cookie:hover{background:var(--accent-blue);color:#050811}
 footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.75rem}
 
+/* BLUEPRINT BACKGROUND DRAWINGS */
+.view-section{position:relative}
+.page-container{position:relative;z-index:1}
+.blueprint{position:fixed;top:var(--hh);left:0;right:0;bottom:0;z-index:0;opacity:.14;pointer-events:none;overflow:hidden}
+.blueprint svg{width:100%;height:100%;display:block}
+.bp-line{fill:none;stroke:var(--accent-blue);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.bp-line-thin{stroke-width:.8}
+.bp-dash{stroke-dasharray:7 7}
+.bp-draw{stroke-dasharray:2000;stroke-dashoffset:2000;animation:bpDraw 3.2s ease-out forwards}
+@keyframes bpDraw{to{stroke-dashoffset:0}}
+.bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
+@keyframes bpFlow{to{stroke-dashoffset:-40}}
+@media (max-width:768px){.blueprint{opacity:.11}}
+@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}}
+
 /* LARGE SCREENS */
 @media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
 /* TABLET */
@@ -431,6 +446,81 @@ en: {
 }
 };
 
+/* ЦРТЕЖИ (CAD-стил, во позадина на секоја подстраница) */
+const L = (x1,y1,x2,y2,c='') => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="bp-line ${c}"/>`;
+const R = (x,y,w,h,c='') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" class="bp-line ${c}"/>`;
+const Ci = (cx,cy,r,c='') => `<circle cx="${cx}" cy="${cy}" r="${r}" class="bp-line ${c}"/>`;
+const Pa = (d,c='') => `<path d="${d}" class="bp-line ${c}"/>`;
+const zig = (x,y,w,n,amp,c='') => {
+  let pts = [], step = w / n;
+  for (let i = 0; i <= n; i++) pts.push(`${x + i * step},${y + (i % 2 ? amp : -amp)}`);
+  return `<polyline points="${pts.join(' ')}" class="bp-line ${c}"/>`;
+};
+const diffuser = (cx,cy) => Ci(cx,cy,10) + L(cx-10,cy,cx+10,cy) + L(cx,cy-10,cx,cy+10);
+const compass = () => Ci(740,50,20) + L(722,50,758,50) + L(740,32,740,68);
+
+const bpFns = {
+  toplifikacija(){
+    let s = R(150,60,340,480,'bp-draw');
+    [180,300,420].forEach(y => s += L(150,y,490,y,'bp-line-thin'));
+    s += L(270,60,270,540,'bp-line-thin') + L(370,60,370,540,'bp-line-thin');
+    s += R(500,450,110,80,'bp-draw') + Ci(525,475,11) + Ci(560,475,11) + Ci(545,510,9);
+    s += L(520,450,520,90,'bp-flow bp-dash') + L(536,450,536,90,'bp-flow bp-dash');
+    [150,270,390,510].forEach(y => {
+      s += L(520,y,180,y,'bp-line-thin') + L(536,y+10,200,y+10,'bp-line-thin');
+      s += zig(190,y-6,50,4,6) + zig(300,y-6,50,4,6) + zig(400,y-6,50,4,6);
+    });
+    s += L(60,540,700,540) + compass();
+    return s;
+  },
+  geothermal(){
+    let s = L(40,260,760,260);
+    s += R(460,100,220,160,'bp-draw') + zig(480,240,180,8,6);
+    s += R(430,190,50,50,'bp-draw') + Ci(455,215,14);
+    s += L(455,240,455,270) + L(455,270,520,270) + L(520,270,520,240);
+    [520,600].forEach(x => {
+      s += L(x,270,x,560,'bp-flow bp-dash') + L(x+30,270,x+30,560,'bp-flow bp-dash');
+      s += Pa(`M${x},560 Q${x+15},580 ${x+30},560`);
+      [340,420,500].forEach(y => { s += Ci(x,y,3) + Ci(x+30,y,3); });
+    });
+    s += compass();
+    return s;
+  },
+  heatpumps(){
+    let s = L(300,40,300,560,'bp-draw');
+    s += R(140,420,110,70,'bp-draw') + Ci(195,455,26) + L(175,435,215,475) + L(215,435,175,475);
+    s += L(60,560,300,560);
+    s += R(330,430,80,50,'bp-draw');
+    s += L(250,450,300,450,'bp-flow bp-dash') + L(250,465,300,465,'bp-flow bp-dash');
+    s += L(370,430,370,260,'bp-flow bp-dash') + L(390,430,390,260,'bp-flow bp-dash');
+    s += zig(420,500,260,10,6) + zig(420,230,260,10,6);
+    s += L(300,340,760,340,'bp-line-thin') + compass();
+    return s;
+  },
+  ventilation(){
+    let s = R(80,80,140,90,'bp-draw') + Ci(120,125,18) + Ci(180,125,18);
+    s += L(220,125,680,125,'bp-draw');
+    [320,460,600].forEach(x => { s += L(x,125,x,260,'bp-flow bp-dash') + diffuser(x,270); });
+    [320,600].forEach(x => { s += L(x,300,x,420,'bp-flow bp-dash') + diffuser(x,430); });
+    s += L(80,300,680,300,'bp-line-thin') + L(80,460,680,460,'bp-line-thin');
+    s += L(60,560,720,560) + compass();
+    return s;
+  },
+  plumbing(){
+    let s = R(180,60,420,480,'bp-draw');
+    [180,300,420].forEach(y => s += L(180,y,600,y,'bp-line-thin'));
+    s += L(560,60,560,500,'bp-flow bp-dash') + L(600,60,600,500,'bp-flow bp-dash');
+    [150,270,390].forEach(y => {
+      s += L(560,y,260,y,'bp-line-thin') + L(600,y+10,300,y+10,'bp-line-thin');
+      s += R(230,y-6,30,18) + Pa(`M230,${y-6} q15,-14 30,0`) + R(280,y+4,26,10);
+    });
+    s += R(520,500,90,50,'bp-draw') + Ci(565,525,14);
+    s += Ci(110,520,16) + R(102,494,16,20);
+    s += L(60,540,700,540) + compass();
+    return s;
+  }
+};
+
 /* ПОДСТРАНИЦИ: p = параграф, h = наслов, l = листа со наслов+опис (од-до), q = проста листа */
 const pages = {
   toplifikacija: ['topli', ['p','p1'], ['h','strong1'], ['l',1,4]],
@@ -458,7 +548,9 @@ function buildPages() {
         body += '</ul>';
       }
     }
-    html += `<div id="view-${id}" class="view-section"><div class="page-container">
+    html += `<div id="view-${id}" class="view-section">
+      <div class="blueprint" aria-hidden="true"><svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">${bpFns[id]()}</svg></div>
+      <div class="page-container">
       <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
       <div class="page-text-content">${body}</div>
