@@ -177,7 +177,13 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 
 <main>
   <div id="view-home" class="view-section active-view">
-    <section id="systems" class="systems-wrapper" style="padding-top: 50px;">
+    <section class="hero">
+      <h1 class="hero-title" data-i18n="hero-title"></h1>
+      <p class="hero-subtitle" data-i18n="hero-subtitle"></p>
+      <a href="#contact" class="btn-cta" data-i18n="btn-cta"></a>
+    </section>
+
+    <section id="systems" class="systems-wrapper">
       <a class="system-card" href="#toplifikacija">
         <div class="card-header-flex"><span class="card-icon" aria-hidden="true">🔥</span><h3 data-i18n="sys1-title"></h3></div>
         <p data-i18n="sys1-desc"></p>
@@ -621,7 +627,7 @@ window.addEventListener('hashchange', route);
 
 /* КОЛАЧИЊА */
 const cookieBanner = document.getElementById('cookie-banner');
-try { if (localStorage.getItem('velder_cookies_accepted'] === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
+try { if (localStorage.getItem('velder_cookies_accepted') === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
 document.getElementById('cookie-accept-btn').addEventListener('click', () => {
   try { localStorage.setItem('velder_cookies_accepted', 'true'); } catch (e) {}
   cookieBanner.classList.add('hidden');
