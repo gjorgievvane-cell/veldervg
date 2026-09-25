@@ -129,13 +129,34 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ЦЕЛОСНО РАНДОМ ЅВЕЗДИ-ЛОГОА ЗА "ЗА НАС" */
+/* ЦЕЛОСНО НЕЗАВИСНИ РАНДОМ ЅВЕЗДИ-ЛОГОА ЗА "ЗА НАС" */
 .about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
-.star-brand{position:absolute;opacity:0.1;transform:scale(0.85);transition:opacity 0.8s ease, transform 0.8s ease;filter:drop-shadow(0 0 8px rgba(0,210,255,0.4))}
+.star-brand{
+  position:absolute;
+  opacity:var(--op-min);
+  transform:scale(var(--sc));
+  animation: trueRandomPulse var(--dur) ease-in-out var(--del) infinite alternate;
+  filter:drop-shadow(0 0 10px rgba(0,210,255,0.3));
+}
 .star-brand svg{height:28px;width:auto;fill:#fff}
 
+@keyframes trueRandomPulse {
+  0% {
+    opacity: var(--op-min);
+    transform: scale(calc(var(--sc) * 0.95));
+  }
+  50% {
+    opacity: var(--op-max);
+    transform: scale(calc(var(--sc) * 1.08));
+  }
+  100% {
+    opacity: var(--op-min);
+    transform: scale(calc(var(--sc) * 0.95));
+  }
+}
+
 @media (max-width:768px){.blueprint{opacity:.35}}
-@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}}
+@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}.star-brand{animation:none}}
 
 /* LARGE SCREENS */
 @media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
@@ -463,7 +484,7 @@ en: {
 "plumb-li1-title":"Internal Water Supply Network:",
 "plumb-li1-desc":"Design and execution using pressure- and corrosion-resistant materials.",
 "plumb-li2-title":"Drainage Systems:",
-"plumb-li2-desc":"Efficient collection using acoustically insulated PP systems and HDPE networks (Valsir).",
+"plumb-li2-desc":"Effective collection using acoustically insulated PP systems and HDPE networks (Valsir).",
 "plumb-li3-title":"Fire Hydrant Networks:",
 "plumb-li3-desc":"Reliable fire protection installations with booster pump sets.",
 "plumb-li4-title":"Booster Stations & Pump Units:",
@@ -598,26 +619,26 @@ function buildPages() {
       }
     }
 
-    // Сосема различни, разфрлани позиции, времетраења и независни коефициенти за рандом појавување
+    // Сосема различни позиции, времетраења (dur), задоцнувања (del) и интензитети за вистински рандом ефект
     let starsHtml = '';
     if (id === 'about') {
       starsHtml = '<div class="about-stars-bg" aria-hidden="true">';
       
       const distinctConfigs = [
-        { top: '6%',  left: '8%',  factor: 0.12, scale: 0.8 },
-        { top: '18%', left: '78%', factor: 0.35, scale: 1.1 },
-        { top: '28%', left: '25%', factor: 0.22, scale: 0.9 },
-        { top: '42%', left: '84%', factor: 0.55, scale: 1.0 },
-        { top: '52%', left: '12%', factor: 0.70, scale: 1.15 },
-        { top: '64%', left: '70%', factor: 0.45, scale: 0.85 },
-        { top: '75%', left: '28%', factor: 0.82, scale: 1.05 },
-        { top: '85%', left: '82%', factor: 0.28, scale: 0.95 },
-        { top: '92%', left: '46%', factor: 0.90, scale: 1.1 },
-        { top: '36%', left: '48%', factor: 0.60, scale: 0.9 }
+        { top: '7%',  left: '6%',  dur: '3.4s', del: '0.2s', opMin: '0.04', opMax: '0.35', sc: '0.8' },
+        { top: '15%', left: '82%', dur: '5.8s', del: '1.5s', opMin: '0.08', opMax: '0.50', sc: '1.1' },
+        { top: '24%', left: '20%', dur: '4.2s', del: '2.8s', opMin: '0.05', opMax: '0.40', sc: '0.9' },
+        { top: '38%', left: '88%', dur: '6.5s', del: '0.7s', opMin: '0.06', opMax: '0.45', sc: '1.0' },
+        { top: '48%', left: '10%', dur: '3.1s', del: '1.9s', opMin: '0.10', opMax: '0.60', sc: '1.15' },
+        { top: '60%', left: '75%', dur: '7.2s', del: '3.4s', opMin: '0.04', opMax: '0.30', sc: '0.85' },
+        { top: '72%', left: '24%', dur: '4.9s', del: '0.4s', opMin: '0.08', opMax: '0.55', sc: '1.05' },
+        { top: '82%', left: '80%', dur: '5.1s', del: '2.1s', opMin: '0.05', opMax: '0.35', sc: '0.95' },
+        { top: '90%', left: '42%', dur: '3.8s', del: '1.1s', opMin: '0.09', opMax: '0.50', sc: '1.1' },
+        { top: '32%', left: '52%', dur: '6.0s', del: '2.5s', opMin: '0.06', opMax: '0.40', sc: '0.9' }
       ];
 
       distinctConfigs.forEach((cfg, idx) => {
-        starsHtml += `<div class="star-brand" data-factor="${cfg.factor}" data-base-scale="${cfg.scale}" style="top: ${cfg.top}; left: ${cfg.left};">${brandSvgs[idx]}</div>`;
+        starsHtml += `<div class="star-brand" style="top: ${cfg.top}; left: ${cfg.left}; --dur: ${cfg.dur}; --del: ${cfg.del}; --op-min: ${cfg.opMin}; --op-max: ${cfg.opMax}; --sc: ${cfg.sc};">${brandSvgs[idx]}</div>`;
       });
       starsHtml += '</div>';
     }
@@ -691,36 +712,6 @@ document.addEventListener('mousemove', (e) => {
   document.querySelectorAll('.about-stars-bg').forEach(el => {
     el.style.transform = `translate(${-xVal * 0.3}px, ${-yVal * 0.3}px)`;
   });
-});
-
-/* ПОЛНОЦЕННО НЕЗАВИСНО РАНДОМ ПОЈАВУВАЊЕ ПРИ СКРОЛАЊЕ */
-window.addEventListener('scroll', () => {
-  const aboutView = document.getElementById('view-about');
-  if (!aboutView || !aboutView.classList.contains('active-view')) return;
-  
-  const rect = aboutView.getBoundingClientRect();
-  const stars = aboutView.querySelectorAll('.star-brand');
-  
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-    
-    stars.forEach(star => {
-      const factor = parseFloat(star.dataset.factor);
-      const baseScale = parseFloat(star.dataset.baseScale);
-      
-      // Секое лого си пресметува лична дистанца од својот случаен праг
-      const distance = Math.abs(progress - factor);
-      
-      if (distance < 0.28) {
-        const intensity = 1 - (distance / 0.28);
-        star.style.opacity = (0.05 + (intensity * 0.65)).toFixed(2);
-        star.style.transform = `scale(${baseScale + (intensity * 0.2)})`;
-      } else {
-        star.style.opacity = '0.05';
-        star.style.transform = `scale(${baseScale})`;
-      }
-    });
-  }
 });
 
 const cookieBanner = document.getElementById('cookie-banner');
