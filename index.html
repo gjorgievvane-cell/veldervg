@@ -58,14 +58,15 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .brands-title-wrap{text-align:center;margin-bottom:30px;padding:0 20px}
 .brands-title{font-size:clamp(.8rem,1.5vw,.95rem);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
 .brands-slider{display:flex;width:100%;overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
-.brands-track{display:flex;gap:24px;width:max-content;animation:scrollBrands 35s linear infinite}
+.brands-track{display:flex;gap:24px;width:max-content;animation:scrollBrands 40s linear infinite}
 .brands-track:hover{animation-play-state:paused}
 @keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-.brand-card{flex:none;background:var(--bg-card);border:1px solid var(--border-color);border-radius:18px;padding:20px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:180px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:all .3s}
+.brand-card{flex:none;background:var(--bg-card);border:1px solid var(--border-color);border-radius:18px;padding:18px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:170px;height:110px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:all .3s}
 .brand-card:hover{border-color:var(--accent-blue);box-shadow:0 0 20px var(--accent-glow);transform:translateY(-3px)}
-.brand-name{font-size:1.15rem;font-weight:800;letter-spacing:-.01em;color:#fff;margin-bottom:4px}
-.brand-desc{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+.brand-logo-svg{height:36px;width:auto;margin-bottom:8px;fill:#fff;opacity:.85;transition:opacity .3s}
+.brand-card:hover .brand-logo-svg{opacity:1}
+.brand-desc{font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;font-weight:500;text-align:center}
 
 /* SYSTEM CARDS */
 .systems-wrapper{max-width:820px;margin:0 auto;padding:60px 20px 100px;display:flex;flex-direction:column;gap:50px}
@@ -197,23 +198,68 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
       <a href="#contact" class="btn-cta" data-i18n="btn-cta"></a>
     </section>
 
-    <!-- СЛАЈДЕР / СЕКЦИЈА ЗА СВЕТСКИ БРЕНДОВИ -->
+    <!-- СЛАЈДЕР СО ВЕКТОРСКИ ЛОГОА НА БРЕНДОВИТЕ -->
     <section class="brands-section">
       <div class="brands-title-wrap">
         <h2 class="brands-title" data-i18n="brands-heading"></h2>
       </div>
       <div class="brands-slider" aria-label="Партнерски брендови">
         <div class="brands-track" id="brands-track">
-          <!-- Брзо дуплирање преку скрипта за бескрајна анимација -->
-          <div class="brand-card"><span class="brand-name">Vaillant</span><span class="brand-desc" data-i18n="brand-heating"></span></div>
-          <div class="brand-card"><span class="brand-name">IMI Hydronics</span><span class="brand-desc" data-i18n="brand-valves"></span></div>
-          <div class="brand-card"><span class="brand-name">Valsir</span><span class="brand-desc" data-i18n="brand-plumbing"></span></div>
-          <div class="brand-card"><span class="brand-name">AUX</span><span class="brand-desc" data-i18n="brand-ac"></span></div>
-          <div class="brand-card"><span class="brand-name">Midea</span><span class="brand-desc" data-i18n="brand-ac"></span></div>
-          <div class="brand-card"><span class="brand-name">MDV</span><span class="brand-desc" data-i18n="brand-ac"></span></div>
-          <div class="brand-card"><span class="brand-name">Toshiba</span><span class="brand-desc" data-i18n="brand-hvac"></span></div>
-          <div class="brand-card"><span class="brand-name">Carrier</span><span class="brand-desc" data-i18n="brand-chiller"></span></div>
-          <div class="brand-card"><span class="brand-name">Herz</span><span class="brand-desc" data-i18n="brand-valves"></span></div>
+          
+          <!-- VAILLANT -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 160 50" aria-hidden="true"><text x="5" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="27" letter-spacing="-1">Vaillant</text></svg>
+            <span class="brand-desc" data-i18n="brand-heating"></span>
+          </div>
+
+          <!-- IMI HYDRONICS -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 180 50" aria-hidden="true"><text x="5" y="34" font-family="Arial, sans-serif" font-weight="800" font-size="20">IMI Hydronics</text></svg>
+            <span class="brand-desc" data-i18n="brand-valves"></span>
+          </div>
+
+          <!-- VALSIR -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 150 50" aria-hidden="true"><text x="5" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#00d2ff">VALSIR</text></svg>
+            <span class="brand-desc" data-i18n="brand-plumbing"></span>
+          </div>
+
+          <!-- AUX -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 130 50" aria-hidden="true"><text x="12" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="30" letter-spacing="2">AUX</text></svg>
+            <span class="brand-desc" data-i18n="brand-ac"></span>
+          </div>
+
+          <!-- MIDEA -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 150 50" aria-hidden="true"><text x="5" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="26">Midea</text></svg>
+            <span class="brand-desc" data-i18n="brand-ac"></span>
+          </div>
+
+          <!-- MDV -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 120 50" aria-hidden="true"><text x="10" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="30" fill="#00d2ff">MDV</text></svg>
+            <span class="brand-desc" data-i18n="brand-ac"></span>
+          </div>
+
+          <!-- TOSHIBA -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 170 50" aria-hidden="true"><text x="5" y="35" font-family="Arial, sans-serif" font-weight="800" font-size="25">TOSHIBA</text></svg>
+            <span class="brand-desc" data-i18n="brand-hvac"></span>
+          </div>
+
+          <!-- CARRIER -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 160 50" aria-hidden="true"><text x="5" y="35" font-family="Arial, sans-serif" font-weight="900" font-size="26" font-style="italic">Carrier</text></svg>
+            <span class="brand-desc" data-i18n="brand-chiller"></span>
+          </div>
+
+          <!-- HERZ -->
+          <div class="brand-card">
+            <svg class="brand-logo-svg" viewBox="0 0 130 50" aria-hidden="true"><text x="15" y="36" font-family="Arial, sans-serif" font-weight="900" font-size="30" letter-spacing="3">HERZ</text></svg>
+            <span class="brand-desc" data-i18n="brand-valves"></span>
+          </div>
+
         </div>
       </div>
     </section>
@@ -266,7 +312,6 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
     </section>
   </div>
 
-  <!-- Подстраниците се генерираат од скриптата -->
   <div id="subpages"></div>
 </main>
 
@@ -503,7 +548,6 @@ en: {
 }
 };
 
-/* ЦРТЕЖИ (CAD-стил, во позадина на секоја подстраница) */
 const L = (x1,y1,x2,y2,c='') => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="bp-line ${c}"/>`;
 const R = (x,y,w,h,c='') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" class="bp-line ${c}"/>`;
 const Ci = (cx,cy,r,c='') => `<circle cx="${cx}" cy="${cy}" r="${r}" class="bp-line ${c}"/>`;
@@ -586,7 +630,6 @@ const bpFns = {
   }
 };
 
-/* ПОДСТРАНИЦИ */
 const pages = {
   about:         ['about', ['p','p1'], ['p','p2']],
   toplifikacija: ['topli', ['p','p1'], ['h','strong1'], ['l',1,4]],
@@ -627,15 +670,13 @@ function buildPages() {
   document.getElementById('subpages').innerHTML = html;
 }
 
-/* ДУПЛИРАЊЕ НА БРЕНДОВИТЕ ЗА БЕСКРАЈЕН СЛАЈДЕР */
 function initBrands() {
   const track = document.getElementById('brands-track');
   if (track) {
-    track.innerHTML += track.innerHTML; // Дуплирање содржина за бескраен јазол
+    track.innerHTML += track.innerHTML; // Дуплирање за бескрајна движечка анимација
   }
 }
 
-/* ЈАЗИК */
 function setLanguage(lang, save) {
   if (!i18n[lang]) lang = 'mk';
   document.documentElement.lang = lang === 'mk' ? 'mk' : 'en';
@@ -653,7 +694,6 @@ function setLanguage(lang, save) {
   if (save) { try { localStorage.setItem('velder_lang', lang); } catch (e) {} }
 }
 
-/* МЕНИ */
 const menuBtn = document.getElementById('menu-btn');
 const navLinks = document.getElementById('nav-links');
 function closeMenu() {
@@ -670,7 +710,6 @@ navLinks.addEventListener('click', e => { if (e.target.closest('a')) closeMenu()
 window.addEventListener('resize', () => { if (innerWidth > 768) closeMenu(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-/* РУТИРАЊЕ (#about, #toplifikacija, #geothermal ...) */
 function route() {
   let hash = decodeURIComponent(location.hash.slice(1));
   if (hash === 'systems') hash = ''; 
@@ -684,7 +723,6 @@ function route() {
 }
 window.addEventListener('hashchange', route);
 
-/* КОЛАЧИЊА */
 const cookieBanner = document.getElementById('cookie-banner');
 try { if (localStorage.getItem('velder_cookies_accepted') === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
 document.getElementById('cookie-accept-btn').addEventListener('click', () => {
@@ -692,13 +730,11 @@ document.getElementById('cookie-accept-btn').addEventListener('click', () => {
   cookieBanner.classList.add('hidden');
 });
 
-/* ИСКРА НА КАРТИЧКИТЕ */
 const focusObserver = new IntersectionObserver(entries => {
   entries.forEach(en => en.target.classList.toggle('in-focus', en.isIntersecting));
 }, { rootMargin: '-30% 0px -30% 0px', threshold: 0.2 });
 document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
 
-/* СТАРТ */
 buildPages();
 initBrands();
 let startLang = 'mk';
