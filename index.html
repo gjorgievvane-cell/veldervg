@@ -129,7 +129,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 .bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
 @keyframes bpFlow{to{stroke-dashoffset:-40}}
 
-/* ДВОЦЕВЕН СИСТЕМ (ЗМИИ СО ЛОГОА) - ДОВ ОД И ПОВРАТ */
+/* ДВОЦЕВЕН СИСТЕМ (ЗМИИ СО ЛОГОА) - САМО ЗА ЗА НАС */
 .about-brands-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
 
 .brand-stream{position:absolute;display:flex;gap:70px;align-items:center;white-space:nowrap;will-change:transform;opacity:.32;padding:12px 0}
@@ -628,26 +628,30 @@ function buildPages() {
       }
     }
 
-    let streamsHtml = '<div class="about-brands-bg" aria-hidden="true">';
-    const configs = [
-      { cls: 'stream-h1', list: [0, 1, 2, 3, 4, 5] },
-      { cls: 'stream-h2', list: [6, 7, 8, 9, 0, 1] },
-      { cls: 'stream-h3', list: [2, 4, 6, 8, 3, 5] },
-      { cls: 'stream-h4', list: [1, 3, 5, 7, 9, 2] },
-      { cls: 'stream-v1', list: [0, 2, 4, 6, 8] },
-      { cls: 'stream-v2', list: [1, 3, 5, 7, 9] }
-    ];
+    // Двоцевните змиски линии со логоа се генерираат ИСКЛУЧИВО за "about"
+    let streamsHtml = '';
+    if (id === 'about') {
+      streamsHtml = '<div class="about-brands-bg" aria-hidden="true">';
+      const configs = [
+        { cls: 'stream-h1', list: [0, 1, 2, 3, 4, 5] },
+        { cls: 'stream-h2', list: [6, 7, 8, 9, 0, 1] },
+        { cls: 'stream-h3', list: [2, 4, 6, 8, 3, 5] },
+        { cls: 'stream-h4', list: [1, 3, 5, 7, 9, 2] },
+        { cls: 'stream-v1', list: [0, 2, 4, 6, 8] },
+        { cls: 'stream-v2', list: [1, 3, 5, 7, 9] }
+      ];
 
-    configs.forEach(cfg => {
-      let track = '';
-      for (let rep = 0; rep < 3; rep++) {
-        cfg.list.forEach(idx => {
-          track += `<div class="floating-brand">${brandSvgs[idx]}</div>`;
-        });
-      }
-      streamsHtml += `<div class="brand-stream ${cfg.cls}">${track}</div>`;
-    });
-    streamsHtml += '</div>';
+      configs.forEach(cfg => {
+        let track = '';
+        for (let rep = 0; rep < 3; rep++) {
+          cfg.list.forEach(idx => {
+            track += `<div class="floating-brand">${brandSvgs[idx]}</div>`;
+          });
+        }
+        streamsHtml += `<div class="brand-stream ${cfg.cls}">${track}</div>`;
+      });
+      streamsHtml += '</div>';
+    }
 
     html += `<div id="view-${id}" class="view-section">
       <div class="blueprint" aria-hidden="true"><svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">${bpFns[id]()}</svg></div>
