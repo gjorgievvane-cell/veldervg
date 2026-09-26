@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050811">
 <meta name="color-scheme" content="dark">
-<meta name="description" content="Централно топловодно греење, геотермални и воздух-вода топлински пумпи, климатизација, вентилација и ВиК инсталации во Скопје.">
+<meta name="description" content="Централно топловодно греење, геотермални и воздух-вода топлински пумпи, климатизација, вентилација и ВиК инсталации во Скопје со опрема од светски брендови како Vaillant, IMI Hydronics, Comap, Valsir, Toshiba, Carrier и Herz.">
 <meta property="og:title" content="ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации">
-<meta property="og:description" content="Професионални HVAC & машински инсталации за модерни објекти.">
+<meta property="og:description" content="Професионални HVAC & машински инсталации изведени со светски признати брендови.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230072ff'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EW%3C/text%3E%3C/svg%3E">
 <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
@@ -43,7 +43,7 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .menu-btn.open span:last-child{transform:translateY(-4px) rotate(-45deg)}
 
 /* VIEWS */
-.view-section{display:none;min-height:100vh;min-height:100svh;padding-top:calc(var(--hh) + 32px)}
+.view-section{display:none;min-height:100vh;min-height:100svh;padding-top:calc(var(--hh) + 32px);position:relative}
 .view-section.active-view{display:block}
 
 /* HERO */
@@ -62,44 +62,28 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .system-card h3{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;color:#fff}
 .system-card p{font-size:1.02rem;color:var(--text-muted);line-height:1.6;margin-bottom:26px;font-weight:300}
 
-/* SUBPAGES */
-.page-container{max-width:860px;margin:0 auto;padding:40px 20px 100px}
+/* SUBPAGES (Слободен распоред без квадрати) */
+.page-container{max-width:820px;margin:0 auto;padding:40px 20px 100px;position:relative;z-index:2}
 .back-nav{display:inline-flex;align-items:center;gap:8px;color:var(--accent-blue);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:30px;min-height:44px;transition:opacity .2s}
 .back-nav:hover{opacity:.8}
-.page-title{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:700;color:#fff;margin-bottom:30px;letter-spacing:-.015em;line-height:1.2;overflow-wrap:break-word}
-.page-text-content{color:var(--text-muted);font-size:clamp(1rem,1.5vw,1.08rem);line-height:1.8;font-weight:300}
-.page-text-content p,.page-text-content h2{margin-bottom:20px}
-.page-text-content h2{font-size:1rem;font-weight:600;color:#fff}
+.page-title{font-size:clamp(1.8rem,4.2vw,3rem);font-weight:700;color:#fff;margin-bottom:35px;letter-spacing:-.015em;line-height:1.15;overflow-wrap:break-word}
+
+.page-text-content{
+  color:#f1f5f9;
+  font-size:clamp(1.02rem,1.5vw,1.12rem);
+  line-height:1.85;
+  font-weight:300;
+}
+.page-text-content p{margin-bottom:24px;color:#e2e8f0}
+.page-text-content h2{font-size:1.15rem;font-weight:600;color:var(--accent-blue);letter-spacing:.02em;margin-top:36px;margin-bottom:16px}
 .page-text-content strong{color:#fff;font-weight:600}
-.page-text-content ul{margin-left:24px;margin-bottom:24px}
-.page-text-content li{margin-bottom:12px}
-.page-cta-box{margin-top:60px;padding-top:30px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-.page-cta-box span{color:var(--text-muted);font-weight:300}
+.page-text-content ul{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:16px}
+.page-text-content li{position:relative;padding-left:22px;color:var(--text-muted)}
+.page-text-content li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--accent-blue);box-shadow:0 0 8px var(--accent-glow)}
+.page-text-content li strong{color:#f8fafc}
 
-/* GALLERY */
-.gallery-section{margin-top:48px}
-.gallery-heading{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:18px;letter-spacing:-.005em}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-.gallery-item{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid var(--border-color);background:var(--bg-card);cursor:pointer;padding:0;display:block;width:100%}
-.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-.gallery-item:hover img{transform:scale(1.06)}
-.gallery-item.pdf-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-muted);font-size:.72rem;text-align:center;padding:10px}
-.gallery-item.pdf-tile .pdf-icon{font-size:1.8rem}
-.gallery-caption-mini{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;font-size:.68rem;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.gallery-empty{color:var(--text-muted);font-size:.92rem;font-weight:300;padding:22px;border:1px dashed var(--border-color);border-radius:14px;text-align:center}
-
-#lightbox{position:fixed;inset:0;z-index:3000;background:rgba(3,5,10,.94);display:none;align-items:center;justify-content:center;padding:calc(16px + var(--safe-top)) 16px calc(16px + var(--safe-bottom))}
-#lightbox.open{display:flex}
-.lightbox-inner{max-width:min(94vw,1100px);max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:12px}
-.lightbox-inner img{max-width:100%;max-height:74vh;border-radius:10px;object-fit:contain}
-.lightbox-inner iframe{width:min(90vw,900px);height:70vh;border:0;border-radius:10px;background:#fff}
-.lightbox-caption{color:var(--text-muted);font-size:.88rem;text-align:center;max-width:90vw}
-.lightbox-btn{position:fixed;background:rgba(255,255,255,.1);border:1px solid var(--border-color);color:#fff;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.lightbox-btn:hover{background:rgba(255,255,255,.22)}
-#lightbox-close{top:calc(12px + var(--safe-top));right:12px}
-#lightbox-prev{left:12px;top:50%;transform:translateY(-50%)}
-#lightbox-next{right:12px;top:50%;transform:translateY(-50%)}
-@media (max-width:600px){#lightbox-prev,#lightbox-next{width:38px;height:38px}}
+.page-cta-box{margin-top:50px;padding-top:30px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.page-cta-box span{color:var(--text-muted);font-weight:300;font-size:1.02rem}
 
 /* CONTACT */
 .contact-section{padding:90px 20px 100px;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(0,210,255,.08) 0%,transparent 70%);border-top:1px solid var(--border-color)}
@@ -127,25 +111,26 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .btn-cookie:hover{background:var(--accent-blue);color:#050811}
 footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.75rem}
 
-/* BLUEPRINT BACKGROUND DRAWINGS */
-.view-section{position:relative}
-.page-container{position:relative;z-index:1}
-.blueprint{position:fixed;top:var(--hh);left:0;right:0;bottom:0;z-index:0;opacity:.35;pointer-events:none;overflow:hidden}
-.blueprint svg{width:100%;height:100%;display:block}
-.bp-line{fill:none;stroke:var(--accent-blue);stroke-width:2.4;vector-effect:non-scaling-stroke}
-.bp-line-thin{stroke-width:.8}
-.bp-dash{stroke-dasharray:7 7}
-.bp-draw{stroke-dasharray:2000;stroke-dashoffset:2000;animation:bpDraw 3.2s ease-out forwards}
-@keyframes bpDraw{to{stroke-dashoffset:0}}
-.bp-flow{stroke-dasharray:9 11;animation:bpFlow 2.4s linear infinite}
-.bp-red{stroke:#ff5c5c}
-.bp-blue{stroke:#38bdf8}
-@keyframes bpFlow{to{stroke-dashoffset:-40}}
-@media (max-width:768px){.blueprint{opacity:.3}}
-@media (prefers-reduced-motion:reduce){.bp-draw{animation:none;stroke-dashoffset:0}.bp-flow{animation:none}}
+/* ЦЕЛОСНО НЕЗАВИСНИ АНИМАЦИИ ЗА СЕКОЕ ЛОГО ПООДДЕЛНО ВО "ЗА НАС" */
+.about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
+.star-brand{
+  position:absolute;
+  top:var(--randY);
+  left:var(--randX);
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out, transform 1.8s ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(0,210,255,0.3));
+}
+.star-brand.active-brand {
+  opacity: var(--randOp);
+  transform: scale(1);
+}
+.star-brand svg{height:28px;width:auto;fill:#fff}
+
+@media (prefers-reduced-motion:reduce){.star-brand{transition:none}}
 
 /* LARGE SCREENS */
-@media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:960px}}
+@media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:920px}}
 /* TABLET */
 @media (min-width:769px) and (max-width:1024px){.nav-container{padding:0 28px}.systems-wrapper,.page-container{max-width:720px}}
 /* PHONE */
@@ -165,7 +150,6 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   .system-card h3{font-size:1.3rem}
   .system-card p{font-size:.98rem}
   .page-container{padding:24px 18px 80px}
-  .page-text-content ul{margin-left:20px}
   .page-cta-box{flex-direction:column;align-items:stretch;text-align:center}
   .contact-section{padding:60px 18px 70px}
   .contact-divider{display:none}
@@ -204,7 +188,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 
 <main>
   <div id="view-home" class="view-section active-view">
-    <section class="hero" id="about">
+    <section class="hero">
       <h1 class="hero-title" data-i18n="hero-title"></h1>
       <p class="hero-subtitle" data-i18n="hero-subtitle"></p>
       <a href="#contact" class="btn-cta" data-i18n="btn-cta"></a>
@@ -258,7 +242,6 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
     </section>
   </div>
 
-  <!-- Подстраниците се генерираат од скриптата -->
   <div id="subpages"></div>
 </main>
 
@@ -269,33 +252,23 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 
 <footer><p data-i18n="footer"></p></footer>
 
-<div id="lightbox" role="dialog" aria-modal="true">
-  <button type="button" class="lightbox-btn" id="lightbox-prev" aria-label="Previous">&larr;</button>
-  <div class="lightbox-inner">
-    <div id="lightbox-inner"></div>
-    <p class="lightbox-caption" id="lightbox-caption"></p>
-  </div>
-  <button type="button" class="lightbox-btn" id="lightbox-next" aria-label="Next">&rarr;</button>
-  <button type="button" class="lightbox-btn" id="lightbox-close" aria-label="Close">&times;</button>
-</div>
-
 <script>
 const i18n = {
 mk: {
 "nav-about":"За Нас","nav-systems":"Системи","nav-contact":"Контакт",
 "hero-title":"Професионални HVAC & Машински Инсталации за Модерни Објекти",
-"hero-subtitle":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
+"hero-subtitle":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи со опрема и материјали од светски признати производители и брендови (Vaillant, IMI Hydronics, Comap, Valsir, AUX, Midea, MDV, Toshiba, Carrier, Herz): од централно топловодно греење и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, климатизација и вентилација, до комплетни ВиК мрежи.",
 "btn-cta":"Побарај Понуда & Консултација","btn-details":"Повеќе",
 "sys1-title":"Централно Топловодно Греење",
 "sys1-desc":"Изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје.",
 "sys2-title":"Геотермални Системи",
-"sys2-desc":"Еколошки решенија Земја-Вода и Вода-Вода. Користење на стабилната подземна температура за греење и ладење.",
+"sys2-desc":"Еколошки решенија Земја-Вода и Вода-Вода со опрема од светски брендови за максимална сезонска ефикасност.",
 "sys3-title":"Топлински Пумпи (Воздух-Вода)",
-"sys3-desc":"Современи инвертер системи за високо-ефикасно ладење и греење на големи станбени и деловни површини.",
+"sys3-desc":"Современи инвертер системи за високо-ефикасно ладење и греење со водечки светски производители.",
 "sys4-title":"Вентилација & Климатизација",
-"sys4-desc":"Професионални системи за вентилација со рекуперација на топлина (HRV/ERV), централна климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и воздуховодни канали за оптимална микроклима.",
+"sys4-desc":"Професионални системи за вентилација со рекуперација (HRV/ERV) и климатизација (VRV/VRF, чилери) со врвна опрема.",
 "sys5-title":"Водовод & Канализација",
-"sys5-desc":"Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради.",
+"sys5-desc":"Комплетна изведба на водоводни и канализациони мрежи за нови колективни станбени и деловни згради користејќи проверени материјали.",
 "contact-title":"Подготвени за соработка на вашиот следен проект?",
 "contact-desc":"За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.",
 "val-location":"Скопје, Македонија","phone-num":"070 374 959",
@@ -303,100 +276,103 @@ mk: {
 "company-name":"ВЕЛДЕР ВГ ТРЕЈДИНГ","company-full":"ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ",
 "footer":"© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.",
 "back-home":"Назад кон почеток","page-cta-text":"Заинтересирани сте за понуда?",
-"gallery-title":"Изведени Проекти","gallery-empty":"Наскоро фотографии, шеми и цртежи од изведени проекти.","gallery-pdf":"Отвори документ",
 "cookie-text":"Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.",
 "cookie-btn":"Се согласувам",
 "page-title":"ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации",
 
+"about-title":"За Нас",
+"about-p1":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи со опрема и материјали од светски признати производители и брендови, како Vaillant, IMI Hydronics, Comap (Aalberts Hydronic), Valsir, AUX, Midea, MDV, Toshiba, Carrier и Herz.",
+"about-p2":"Нашата специјалност ги опфаќа сите фази: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и фенкоилерско) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, современа климатизација (сплит/мулти-сплит, VRV/VRF и чилер/фенкоилер системи) и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
+
 "topli-title":"🔥 Централно Топловодно Греење",
-"topli-p1":"Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Неговата основна функција се базира на циркулација на флуид (вода) кој се загрева во централен извор на топлина (котел, топлинска пумпа или градска топлинска централа) и се дистрибуира низ цевоводна мрежа до површинските грејни тела (подно, ѕидно или таванско греење) или конвенционалните емитери (радијатори и фенкоилери).",
+"topli-p1":"Централното топловодно греење е еден од најзастапените, најбезбедните и поефикасните системи за загревање на станбени, деловни и индустриски објекти. Користиме врвна опрема од реномирани брендови како Vaillant, Herz, Comap и IMI Hydronics за прецизна хидраулична рамнотежа и контрола.",
 "topli-strong1":"Клучни Сегменти & Изведба:",
 "topli-li1-title":"Приклучни Подстаници (ЕСМ Дистрибуција):",
-"topli-li1-desc":"Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи на топлина, автоматски диференцијални регулатори на притисок и проток, микропроцесорска регулација водена според надворешна температура и фреквентно контролирани циркулациони пумпи.",
+"topli-li1-desc":"Изведба на примарен и секундарен круг со високоефикасни компактни плочести изменувачи, автоматски диференцијални регулатори и опрема од светски производители.",
 "topli-li2-title":"Површински Грејни Системи:",
-"topli-li2-desc":"Нискотемпературно подно, ѕидно и таванско греење изведено со висококвалитетни PEX-Al-PEX и PE-RT цевки, кои овозможуваат максимален термален комфор, рамномерна распределба на температурата и висока енергетска ефикасност.",
+"topli-li2-desc":"Нискотемпературно подно, ѕидно и таванско греење изведено со материјали од сертифицирани европски брендови.",
 "topli-li3-title":"Радијаторско Греење:",
-"topli-li3-desc":"Двоцевни дистрибутивни мрежи со термостатски вентили на радијаторите за прецизна поединечна зонска контрола на секоја просторија.",
+"topli-li3-desc":"Двоцевни дистрибутивни мрежи со термостатски вентили за прецизна поединечна зонска контрола.",
 "topli-li4-title":"Фенкоилерски Системи:",
-"topli-li4-desc":"Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата во модерни станбени и деловни објекти.",
+"topli-li4-desc":"Двоцевни и четирицевни фенкоилерски инсталации за брза и динамична регулација на микроклимата.",
 
 "geo-title":"🌍 Геотермални Системи",
-"geo-p1":"Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода (ТСВ). Нивната главна предност е искористувањето на стабилната температура на земјиштето или подземните води, која на одредена длабочина останува речиси константна во текот на целата година (помеѓу 10°C и 12°C на длабочина над 10–15 метри).",
-"geo-p2":"Овие системи работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода), користејќи го термодинамичкиот циклус за пренос на топлинска енергија со минимална потрошувачка на електрична енергија (за погон на компресорот и циркулационите пумпи).",
+"geo-p1":"Геотермалните системи претставуваат еден од најефикасните и најеколошките начини за греење, ладење и подготовка на топла санитарна вода, со користење на најсовремени топлински пумпи од водечки светски брендови.",
+"geo-p2":"Системите работат на принципот на геотермални топлински пумпи (вода-вода или земја-вода) со врвни перформанси (COP) и минимална потрошувачка.",
 "geo-strong1":"Клучни Изведбени Решенија:",
-"geo-li1-title":"Системи „Земја-Вода“ (Вертикални сонди / Хоризонтални колектори):",
-"geo-li1-desc":"Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи кои ја апсорбираат геотермалната енергија од земјиштето преку гликолен раствор.",
-"geo-li2-title":"Системи „Вода-Вода“ (Бунарски системи):",
-"geo-li2-desc":"Искористување на бунарска вода како директен и извонредно богат извор на енергија, со врвни перформанси (COP) и висока сезонска ефикасност.",
+"geo-li1-title":"Системи „Земја-Вода“:",
+"geo-li1-desc":"Инсталација на длабоки геотермални сонди или хоризонтални колекторски мрежи.",
+"geo-li2-title":"Системи „Вода-Вода“:",
+"geo-li2-desc":"Искористување на бунарска вода како директен извор на енергија со висока сезонска ефикасност.",
 "geo-li3-title":"Интегрирано Греење, Ладење & ТСВ:",
-"geo-li3-desc":"Флексибилни решенија со можност за слободно ладење (free-cooling) кое дополнително ги намалува трошоците за експлоатација во летниот период.",
+"geo-li3-desc":"Флексибилни решенија со можност за слободно ладење (free-cooling).",
 
 "hp-title":"⚡ Топлински Пумпи (Воздух-Вода)",
-"hp-p1":"Топлинските пумпи воздух-вода се еден од најзастапените и најекономичните системи за греење, ладење и подготовка на топла санитарна вода (ТСВ). Тие не произведуваат топлина со согорување на гориво, туку ја пренесуваат енергијата од надворешниот воздух во објектот, постигнувајќи висока ефикасност дури и при ниски зимски температури.",
+"hp-p1":"Топлинските пумпи воздух-вода од брендови како Toshiba, Vaillant, Midea и Carrier се економични системи за греење, ладење и подготовка на топла вода кои обезбедуваат високи перформанси и при ниски надворешни температури.",
 "hp-strong1":"Принцип на Работа & Ефикасност:",
-"hp-p2":"Системот работи на проверен термодинамички циклус со ладилен флуид и инвертерски компресор:",
+"hp-p2":"Системот работи на проверен термодинамички циклус со инвертерски компресори:",
 "hp-li1-title":"COP (Коефициент на ефикасност при греење):",
-"hp-li1-desc":"Го покажува односот помеѓу вложената електрична и добиената топлинска енергија. Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе, за 1 kWh потрошена струја пумпата испорачува повеќекратно поголема количина топлинска енергија.",
+"hp-li1-desc":"Со високи сезонски перформанси кои достигнуваат до 5.0 и повеќе.",
 "hp-li2-title":"EER / SEER:",
 "hp-li2-desc":"Индикатори за висока енергетска ефикасност при ладење во летниот период.",
 "hp-strong2":"Главни Предности:",
 "hp-li3-title":"Енергетска Заштеда:",
-"hp-li3-desc":"Драстично намалени трошоци за греење и ладење (до 70% во споредба со конвенционалните системи).",
+"hp-li3-desc":"Драстично намалени трошоци за греење и ладење (до 70%).",
 "hp-li4-title":"Мултифункционалност:",
-"hp-li4-desc":"Интегрирано решение за греење, ладење и подготовка на ТСВ во текот на целата година.",
+"hp-li4-desc":"Интегрирано решение во текот на целата година.",
 "hp-li5-title":"Еколошка Одржливост:",
-"hp-li5-desc":"Работа без локални емисии на штетни гасови и со можност за целосна интеграција со фотоволтаични системи.",
+"hp-li5-desc":"Работа без локални емисии на штетни гасови.",
 
 "vent-title":"🌬️ Вентилација & Климатизација",
-"vent-p1":"Инженерските системи за вентилација и климатизација се клучни за обезбедување оптимален квалитет на воздухот, микроклиматска стабилност и енергетска ефикасност во сите типови објекти.",
+"vent-p1":"Инженерските системи за вентилација и климатизација со брендови како AUX, Midea, MDV, Toshiba и Carrier обезбедуваат врвен квалитет на воздухот и микроклиматска стабилност.",
 "vent-strong1":"Основни Компоненти & Категории:",
 "vent-strong2":"Вентилациски Системи:",
-"vent-li1-title":"Принудна (механичка) вентилација:",
-"vent-li1-desc":"Системи за довод и одвод на воздух со клима-комори, рекуператори за враќање на топлината (високоефикасни топлински изменувачи) и повеќестепена филтрација (класи G4, F7, HEPA).",
+"vent-li1-title":"Принудна механичка вентилација:",
+"vent-li1-desc":"Системи за довод и одвод со рекуператори за враќање на топлината.",
 "vent-li2-title":"Локална и индустриска вентилација:",
-"vent-li2-desc":"Ефективно одведување на загадувачи, пареа и маснотии (професионални кујнски аспиратори, одводни системи во лаборатории и индустриски погони).",
+"vent-li2-desc":"Ефективно одведување на загадувачи и маснотии.",
 "vent-li3-title":"Противпожарна вентилација:",
-"vent-li3-desc":"Системи за одведување чад и топлина (SHEVS) и одржување на заштитен натпритисок во евакуациони скалишни простори.",
+"vent-li3-desc":"Системи за одведување чад и топлина (SHEVS).",
 "vent-strong3":"Системи за Климатизација:",
 "vent-li4-title":"Сплит и мулти-сплит системи:",
-"vent-li4-desc":"Флексибилни решенија идеални за помали станови, канцеларии и поединечни простории со висока енергетска класа.",
+"vent-li4-desc":"Флексибилни решенија за помали станови и канцеларии.",
 "vent-li5-title":"VRF / VRV системи:",
-"vent-li5-desc":"Централизирани инвертерски системи со варијабилен проток на разладно средство, совршено погодни за деловни згради, хотели и поголеми резиденцијални објекти.",
-"vent-li6-title":"Чилери и топлински пумпи (Воздух-Вода / Вода-Вода):",
-"vent-li6-desc":"Централни системи со подготовка на ладна и топла вода за напојување на фенкоилери и клима-комори.",
+"vent-li5-desc":"Централизирани инвертерски системи за деловни згради и хотели.",
+"vent-li6-title":"Чилери и топлински пумпи:",
+"vent-li6-desc":"Централни системи со подготовка на ладна и топла вода.",
 "vent-li7-title":"Канална климатизација:",
-"vent-li7-desc":"Интегрирана дистрибуција на климатизираниот воздух преку изолирани канали со анемостати, решетки и дифузори за рамномерно струење и врвен комфор во просторот.",
+"vent-li7-desc":"Интегрирана дистрибуција на климатизираниот воздух.",
 
 "plumb-title":"💧 Водовод & Канализација (ВиК)",
-"plumb-p1":"Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура дизајнирана за континуирано снабдување со санитарно исправна вода под притисок и безбедно одведување и третман на отпадните и атмосферските води.",
+"plumb-p1":"Водоводниот и канализацискиот систем претставува комплексна хидраулична инфраструктура изведена со сертифицирани материјали од врвни брендови како Valsir за сигурна и долготрајна експлоатација.",
 "plumb-strong1":"Основни Системи & Инсталации:",
 "plumb-li1-title":"Внатрешна водоводна мрежа:",
-"plumb-li1-desc":"Проектирање и изведба на системи за довод и дистрибуција на санитарна вода со користење проверени и квалитетни материјали (PPR, повеќеслојни цевки, поцинкувани и иноксни материјали) отпорни на притисок и корозија.",
+"plumb-li1-desc":"Проектирање и изведба со квалитетни материјали отпорни на притисок и корозија.",
 "plumb-li2-title":"Канализациони системи:",
-"plumb-li2-desc":"Ефикасно собирање и гравитационо или принудно одведување на фекални и атмосферски води со примена на сертифицирани пластични цевни системи (PVC, акустично изолирани PP системи и робусни HDPE цевни мрежи).",
+"plumb-li2-desc":"Ефективно одведување со примена на акустично изолирани PP системи и HDPE мрежи (Valsir).",
 "plumb-li3-title":"Хидрантски противпожарни мрежи:",
-"plumb-li3-desc":"Изведба на внатрешни и надворешни противпожарни хидрантски инсталации со соодветни хидрофорни агрегати за сигурен притисок и проток во случај на вонредни ситуации.",
+"plumb-li3-desc":"Сигурна противпожарна заштита со соодветни хидрофорни агрегати.",
 "plumb-li4-title":"Хидрофорни постројки и пумпни станици:",
-"plumb-li4-desc":"Автоматизирани системи за одржување стабилен притисок на водата во сите катови на објектот, без разлика на висината и капацитетот.",
+"plumb-li4-desc":"Автоматизирани системи за стабилен притисок во сите катови.",
 "plumb-strong2":"Изведбени Стандарди & Квалитет:",
-"plumb-li5":"Комплетна монтажа на санитарна арматура, потисни цевоводи и монтажни шахти.",
-"plumb-li6":"Примена на строги хидраулични испитувања за притисок и непропустливост пред пуштање во експлоатација."
+"plumb-li5":"Комплетна монтажа на санитарна арматура и потисни цевоводи.",
+"plumb-li6":"Примена на строги хидраулични испитувања за притисок и непропустливост."
 },
 en: {
 "nav-about":"About Us","nav-systems":"Systems","nav-contact":"Contact",
 "hero-title":"Professional HVAC & Mechanical Building Installations",
-"hero-subtitle":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems: central hydronic heating installations (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), heat recovery ventilation, and full plumbing networks for residential and commercial complexes.",
+"hero-subtitle":"Backed by long-standing engineering expertise, we deliver end-to-end execution of mechanical systems using equipment and materials from world-renowned manufacturers and brands (Vaillant, IMI Hydronics, Comap, Valsir, AUX, Midea, MDV, Toshiba, Carrier, Herz): central heating and ESM Skopje substations, geothermal and inverter heat pumps, air conditioning and ventilation, and full plumbing networks.",
 "btn-cta":"Request Quote & Consultation","btn-details":"More",
 "sys1-title":"Central District Heating",
-"sys1-desc":"Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil systems) and connection substations for ESM Heat Distribution Skopje.",
+"sys1-desc":"Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje.",
 "sys2-title":"Geothermal Systems",
-"sys2-desc":"Eco-friendly Ground-to-Water and Water-to-Water solutions utilizing stable ground temperatures for heating and cooling.",
+"sys2-desc":"Eco-friendly Ground-to-Water and Water-to-Water solutions using world-class equipment for maximum seasonal efficiency.",
 "sys3-title":"Heat Pumps (Air-to-Water)",
-"sys3-desc":"Modern inverter systems for high-efficiency cooling and heating in residential and commercial premises.",
+"sys3-desc":"Modern inverter systems for high-efficiency cooling and heating featuring leading global manufacturers.",
 "sys4-title":"Ventilation & Air Conditioning",
-"sys4-desc":"Professional heat recovery ventilation systems (HRV/ERV), central air conditioning (split/multi-split, VRV/VRF, and chiller/fan coil systems), and ducting for optimal indoor air quality.",
+"sys4-desc":"Professional heat recovery ventilation systems (HRV/ERV) and air conditioning (VRV/VRF, chillers) with top-tier equipment.",
 "sys5-title":"Plumbing & Drainage",
-"sys5-desc":"Full execution of water supply networks and drainage systems for multi-story residential and commercial complexes.",
+"sys5-desc":"Full execution of water supply networks and drainage systems for residential and commercial complexes using certified materials.",
 "contact-title":"Ready to collaborate on your next project?",
 "contact-desc":"For consultation, engineering design, or complete execution of mechanical installations, reach out to our engineering team.",
 "val-location":"Skopje, Macedonia","phone-num":"+389 70 374 959",
@@ -404,273 +380,106 @@ en: {
 "company-name":"VELDER VG TRADING","company-full":"VELDER VG TRADING LLC",
 "footer":"© 2026 VELDER VG TRADING LLC. All rights reserved.",
 "back-home":"Back to Home","page-cta-text":"Interested in a quote?",
-"gallery-title":"Completed Projects","gallery-empty":"Photos, schemes and drawings from completed projects coming soon.","gallery-pdf":"Open document",
 "cookie-text":"This website uses minimal technical cookies to enhance user experience and language preference.",
 "cookie-btn":"Accept",
 "page-title":"VELDER VG TRADING | Central Heating & Mechanical Installations",
 
+"about-title":"About Us",
+"about-p1":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems using equipment and materials from world-renowned manufacturers and brands, such as Vaillant, IMI Hydronics, Comap (Aalberts Hydronic), Valsir, AUX, Midea, MDV, Toshiba, Carrier, and Herz.",
+"about-p2":"Our scope covers all phases: from central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil units) and ESM Heat Distribution Skopje substations, geothermal & inverter heat pumps, modern air conditioning (split/multi-split, VRV/VRF, and chillers) and heat recovery ventilation, to full plumbing networks for residential and commercial complexes.",
+
 "topli-title":"🔥 Central District Heating",
-"topli-p1":"Central district heating is one of the most widespread, safest, and efficient systems for heating residential, commercial, and industrial facilities. Its core operation is based on the circulation of a fluid (water) heated in a centralized source (boiler, heat pump, or municipal district heating plant) and distributed through a piping network to surface heating elements (underfloor, wall, or ceiling heating) or conventional emitters (radiators and fan coil units).",
+"topli-p1":"Central district heating is one of the safest and most efficient heating systems. We use premium equipment from renowned brands such as Vaillant, Herz, Comap, and IMI Hydronics to ensure precise hydraulic balancing and control.",
 "topli-strong1":"Key Segments & Execution:",
 "topli-li1-title":"Connection Substations (ESM Distribution):",
-"topli-li1-desc":"Execution of primary and secondary loops featuring high-efficiency compact plate heat exchangers, automatic differential pressure and flow regulators, outdoor-temperature-compensated microprocessor control, and frequency-controlled circulation pumps.",
+"topli-li1-desc":"Primary and secondary loops featuring compact plate heat exchangers, automatic differential pressure regulators, and top-tier equipment.",
 "topli-li2-title":"Surface Heating Systems:",
-"topli-li2-desc":"Low-temperature underfloor, wall, and ceiling heating executed with high-quality PEX-Al-PEX and PE-RT pipes, ensuring maximum thermal comfort, even temperature distribution, and high energy efficiency.",
+"topli-li2-desc":"Low-temperature underfloor, wall, and ceiling heating executed with certified European brand materials.",
 "topli-li3-title":"Radiator Heating:",
-"topli-li3-desc":"Two-pipe distribution networks equipped with thermostatic radiator valves for precise individual zone control in every room.",
+"topli-li3-desc":"Two-pipe distribution networks with thermostatic radiator valves for individual zone control.",
 "topli-li4-title":"Fan Coil Unit Systems:",
-"topli-li4-desc":"Two-pipe and four-pipe fan coil installations for fast and dynamic microclimate regulation in modern residential and commercial spaces.",
+"topli-li4-desc":"Two-pipe and four-pipe fan coil installations for dynamic microclimate regulation.",
 
 "geo-title":"🌍 Geothermal Systems",
-"geo-p1":"Geothermal systems represent one of the most efficient and eco-friendly solutions for heating, cooling, and domestic hot water (DHW) preparation. Their primary advantage lies in utilizing the stable temperature of the ground or groundwater, which remains nearly constant year-round at specific depths (between 10°C and 12°C at depths exceeding 10–15 meters).",
-"geo-p2":"These systems operate on the thermodynamic cycle of geothermal heat pumps (water-to-water or ground-to-water), transferring thermal energy with minimal electricity consumption (powering the compressor and circulation pumps).",
+"geo-p1":"Geothermal systems represent highly efficient solutions for heating, cooling, and DHW preparation, utilizing advanced heat pumps from leading global brands.",
+"geo-p2":"These systems operate via geothermal heat pumps (water-to-water or ground-to-water) with exceptional COP performance and minimal power consumption.",
 "geo-strong1":"Key Execution Solutions:",
-"geo-li1-title":"Ground-to-Water Systems (Vertical Probes / Horizontal Collectors):",
-"geo-li1-desc":"Installation of deep geothermal probes or horizontal collector networks that absorb geothermal energy from the ground via a glycol solution.",
-"geo-li2-title":"Water-to-Water Systems (Well Systems):",
-"geo-li2-desc":"Utilization of well water as a direct and exceptionally rich energy source, offering top-tier performance (COP) and high seasonal efficiency.",
+"geo-li1-title":"Ground-to-Water Systems:",
+"geo-li1-desc":"Installation of deep geothermal probes or horizontal collector networks.",
+"geo-li2-title":"Water-to-Water Systems:",
+"geo-li2-desc":"Utilization of well water as a direct, high-efficiency energy source.",
 "geo-li3-title":"Integrated Heating, Cooling & DHW:",
-"geo-li3-desc":"Flexible solutions featuring free-cooling capabilities that further reduce operational costs during the summer season.",
+"geo-li3-desc":"Flexible solutions featuring free-cooling capabilities.",
 
 "hp-title":"⚡ Heat Pumps (Air-to-Water)",
-"hp-p1":"Air-to-water heat pumps are among the most prevalent and economical systems for heating, cooling, and domestic hot water (DHW) preparation. They do not produce heat by burning fuel; instead, they transfer thermal energy from outside air into the building, achieving high efficiency even at low winter temperatures.",
+"hp-p1":"Air-to-water heat pumps from brands like Toshiba, Vaillant, Midea, and Carrier offer economical heating, cooling, and DHW preparation, achieving high efficiency even at low ambient temperatures.",
 "hp-strong1":"Operating Principle & Efficiency:",
-"hp-p2":"The system operates on a proven thermodynamic cycle utilizing a refrigerant and an inverter compressor:",
-"hp-li1-title":"COP (Coefficient of Performance for Heating):",
-"hp-li1-desc":"Indicates the ratio between electrical energy input and thermal energy output. With high seasonal performance reaching up to 5.0 and above, for every 1 kWh of electricity consumed, the pump delivers a multiplied quantity of heat energy.",
+"hp-p2":"Operating on a proven thermodynamic cycle with inverter compressors:",
+"hp-li1-title":"COP (Coefficient of Performance):",
+"hp-li1-desc":"High seasonal performance reaching up to 5.0 and above.",
 "hp-li2-title":"EER / SEER:",
-"hp-li2-desc":"Indicators of high energy efficiency during cooling in the summer period.",
+"hp-li2-desc":"High energy efficiency indicators during summer cooling.",
 "hp-strong2":"Main Advantages:",
 "hp-li3-title":"Energy Savings:",
-"hp-li3-desc":"Drastically reduced heating and cooling costs (up to 70% compared to conventional systems).",
+"hp-li3-desc":"Drastically reduced heating and cooling costs (up to 70%).",
 "hp-li4-title":"Multifunctionality:",
-"hp-li4-desc":"An integrated solution for year-round heating, cooling, and DHW preparation.",
+"hp-li4-desc":"Integrated year-round solution.",
 "hp-li5-title":"Eco-Friendly Sustainability:",
-"hp-li5-desc":"Zero local harmful gas emissions with full integration capabilities for photovoltaic systems.",
+"hp-li5-desc":"Zero local emissions with photovoltaic integration capabilities.",
 
 "vent-title":"🌬️ Ventilation & Air Conditioning",
-"vent-p1":"Engineering systems for ventilation and air conditioning are crucial for ensuring optimal indoor air quality, microclimatic stability, and energy efficiency across all types of buildings.",
+"vent-p1":"Engineering systems for ventilation and air conditioning featuring AUX, Midea, MDV, Toshiba, and Carrier ensure optimal indoor air quality and comfort.",
 "vent-strong1":"Core Components & Categories:",
 "vent-strong2":"Ventilation Systems:",
-"vent-li1-title":"Forced (Mechanical) Ventilation:",
-"vent-li1-desc":"Supply and exhaust air systems equipped with air handling units, heat recovery units (high-efficiency heat exchangers), and multi-stage filtration (G4, F7, HEPA classes).",
+"vent-li1-title":"Mechanical Ventilation:",
+"vent-li1-desc":"Supply and exhaust systems with heat recovery units.",
 "vent-li2-title":"Local & Industrial Ventilation:",
-"vent-li2-desc":"Effective extraction of pollutants, steam, and grease (professional kitchen hoods, exhaust systems in laboratories and industrial plants).",
+"vent-li2-desc":"Effective extraction of pollutants and steam.",
 "vent-li3-title":"Smoke & Fire Ventilation:",
-"vent-li3-desc":"Smoke and heat exhaust ventilation systems (SHEVS) and maintenance of protective positive pressure in evacuation stairwells.",
+"vent-li3-desc":"Smoke and heat exhaust ventilation systems (SHEVS).",
 "vent-strong3":"Air Conditioning Systems:",
 "vent-li4-title":"Split & Multi-Split Systems:",
-"vent-li4-desc":"Flexible solutions ideal for smaller apartments, offices, and individual rooms with high energy efficiency ratings.",
+"vent-li4-desc":"Flexible solutions for smaller apartments and offices.",
 "vent-li5-title":"VRF / VRV Systems:",
-"vent-li5-desc":"Centralized inverter systems with variable refrigerant flow, perfectly suited for office buildings, hotels, and larger residential developments.",
-"vent-li6-title":"Chillers & Heat Pumps (Air-to-Water / Water-to-Water):",
-"vent-li6-desc":"Central systems generating chilled and hot water to supply fan coil units and air handling units.",
+"vent-li5-desc":"Centralized inverter systems for commercial buildings and hotels.",
+"vent-li6-title":"Chillers & Heat Pumps:",
+"vent-li6-desc":"Central systems supplying chilled and hot water.",
 "vent-li7-title":"Ducted Air Conditioning:",
-"vent-li7-desc":"Integrated distribution of conditioned air through insulated ductwork with anemostats, grilles, and diffusers for uniform airflow and supreme indoor comfort.",
+"vent-li7-desc":"Integrated conditioned air distribution through insulated ductwork.",
 
 "plumb-title":"💧 Plumbing & Drainage",
-"plumb-p1":"Water supply and drainage systems constitute a complex hydraulic infrastructure designed for continuous delivery of safe sanitary water under pressure and the safe collection and treatment of wastewater and stormwater.",
+"plumb-p1":"Water supply and drainage systems constitute complex hydraulic infrastructure executed using certified materials from elite brands like Valsir for reliable and safe operation.",
 "plumb-strong1":"Core Systems & Installations:",
 "plumb-li1-title":"Internal Water Supply Network:",
-"plumb-li1-desc":"Design and execution of sanitary water supply and distribution systems utilizing proven, high-quality materials (PPR, multilayer pipes, galvanized and stainless steel) resistant to pressure and corrosion.",
+"plumb-li1-desc":"Design and execution using pressure- and corrosion-resistant materials.",
 "plumb-li2-title":"Drainage Systems:",
-"plumb-li2-desc":"Efficient collection and gravity- or force-driven removal of wastewater and stormwater using certified plastic pipe systems (PVC, acoustically insulated PP systems, and robust HDPE piping networks).",
+"plumb-li2-desc":"Effective collection using acoustically insulated PP systems and HDPE networks (Valsir).",
 "plumb-li3-title":"Fire Hydrant Networks:",
-"plumb-li3-desc":"Execution of internal and external fire hydrant installations equipped with appropriate booster pump sets for reliable pressure and flow during emergencies.",
+"plumb-li3-desc":"Reliable fire protection installations with booster pump sets.",
 "plumb-li4-title":"Booster Stations & Pump Units:",
-"plumb-li4-desc":"Automated systems ensuring stable water pressure across all floors of a building, regardless of height and capacity.",
+"plumb-li4-desc":"Automated systems ensuring stable water pressure across all floors.",
 "plumb-strong2":"Execution Standards & Quality:",
-"plumb-li5":"Complete assembly of sanitary fittings, pressure pipelines, and installation shafts.",
-"plumb-li6":"Application of rigorous hydraulic pressure and leak-tightness testing prior to commissioning."
+"plumb-li5":"Complete assembly of sanitary fittings and pressure pipelines.",
+"plumb-li6":"Application of rigorous hydraulic pressure and leak-tightness testing."
 }
 };
 
-/* ЦРТЕЖИ (CAD-стил, во позадина на секоја подстраница) */
-const L = (x1,y1,x2,y2,c='') => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="bp-line ${c}"/>`;
-const R = (x,y,w,h,c='') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" class="bp-line ${c}"/>`;
-const Ci = (cx,cy,r,c='') => `<circle cx="${cx}" cy="${cy}" r="${r}" class="bp-line ${c}"/>`;
-const Pa = (d,c='') => `<path d="${d}" class="bp-line ${c}"/>`;
-const zig = (x,y,w,n,amp,c='') => {
-  let pts = [], step = w / n;
-  for (let i = 0; i <= n; i++) pts.push(`${x + i * step},${y + (i % 2 ? amp : -amp)}`);
-  return `<polyline points="${pts.join(' ')}" class="bp-line ${c}"/>`;
-};
-const diffuser = (cx,cy) => Ci(cx,cy,10) + L(cx-10,cy,cx+10,cy) + L(cx,cy-10,cx,cy+10);
-const compass = () => Ci(740,50,20) + L(722,50,758,50) + L(740,32,740,68);
-const radiator = (x,y,w=40,h=16,c='') => {
-  let s = R(x,y,w,h,c);
-  const fins = 5, step = w / fins;
-  for (let i = 1; i < fins; i++) { const fx = x + step * i; s += L(fx,y,fx,y+h,'bp-line-thin'); }
-  return s;
-};
-const heatExchanger = (x,y,w=60,h=80,c='bp-draw') => {
-  let s = R(x,y,w,h,c);
-  const n = 6, step = h / (n + 1);
-  for (let i = 1; i <= n; i++) { const ly = y + step * i; s += L(x+5,ly,x+w-5,ly-10,'bp-line-thin'); }
-  return s;
-};
-const fanBlades = (cx,cy,r=24) => {
-  let s = Ci(cx,cy,r);
-  for (let a = 0; a < 360; a += 60) {
-    const rad = a * Math.PI / 180;
-    s += L(cx,cy,cx+r*.85*Math.cos(rad),cy+r*.85*Math.sin(rad),'bp-line-thin');
-  }
-  return s + Ci(cx,cy,4);
-};
-const louvers = (x,y,w,n) => {
-  let s = '', step = w / n;
-  for (let i = 0; i <= n; i++) { const lx = x + step * i; s += L(lx,y,lx,y+8,'bp-line-thin'); }
-  return s;
-};
-const fanCoilUnit = (x,y,w=90,h=34) => {
-  let s = R(x,y,w,h,'bp-draw');
-  const n = 6, gap = w / (n + 1);
-  for (let i = 1; i <= n; i++) { const lx = x + gap * i; s += L(lx,y+6,lx-6,y+h-6,'bp-line-thin'); }
-  s += Ci(x+w-14,y+h/2,9) + L(x+w-21,y+h/2,x+w-7,y+h/2,'bp-line-thin') + L(x+w-14,y+h/2-7,x+w-14,y+h/2+7,'bp-line-thin');
-  return s;
-};
+/* SVG ЛОГОА ЗА СИТЕ 10 БРЕНДОВИ */
+const brandSvgs = [
+  `<svg viewBox="0 0 160 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="27">Vaillant</text></svg>`,
+  `<svg viewBox="0 0 180 50"><text x="5" y="34" font-family="Arial" font-weight="800" font-size="20">IMI Hydronics</text></svg>`,
+  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26" fill="#00d2ff">COMAP</text></svg>`,
+  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="28" fill="#00d2ff">VALSIR</text></svg>`,
+  `<svg viewBox="0 0 130 50"><text x="12" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="2">AUX</text></svg>`,
+  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26">Midea</text></svg>`,
+  `<svg viewBox="0 0 120 50"><text x="10" y="36" font-family="Arial" font-weight="900" font-size="30" fill="#00d2ff">MDV</text></svg>`,
+  `<svg viewBox="0 0 170 50"><text x="5" y="35" font-family="Arial" font-weight="800" font-size="25">TOSHIBA</text></svg>`,
+  `<svg viewBox="0 0 160 50"><text x="5" y="35" font-family="Arial" font-weight="900" font-size="26" font-style="italic">Carrier</text></svg>`,
+  `<svg viewBox="0 0 130 50"><text x="15" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="3">HERZ</text></svg>`
+];
 
-const bpFns = {
-  toplifikacija(){
-    let s = R(150,60,340,480,'bp-draw');
-    [180,300,420].forEach(y => s += L(150,y,490,y,'bp-line-thin'));
-    s += L(270,60,270,540,'bp-line-thin') + L(370,60,370,540,'bp-line-thin');
-    s += heatExchanger(500,450,110,80) + Ci(525,475,11) + Ci(560,475,11) + Ci(545,510,9);
-    s += L(520,450,520,90,'bp-red') + L(536,450,536,90,'bp-blue');
-    [150,270,390,510].forEach(y => {
-      s += L(520,y,180,y,'bp-line-thin') + L(536,y+10,200,y+10,'bp-line-thin');
-      s += radiator(170,y-8,40,16) + radiator(280,y-8,40,16) + radiator(380,y-8,40,16);
-    });
-    s += L(60,540,700,540) + compass();
-    return s;
-  },
-  geothermal(){
-    let s = L(40,260,760,260);
-    s += R(460,100,220,160,'bp-draw') + zig(480,240,180,8,6);
-    s += R(430,190,50,50,'bp-draw') + Ci(455,215,14);
-    s += L(455,240,455,270) + L(455,270,520,270) + L(520,270,520,240);
-    [520,600].forEach(x => {
-      s += L(x,270,x,560,'bp-red') + L(x+30,270,x+30,560,'bp-blue');
-      s += Pa(`M${x},560 Q${x+15},580 ${x+30},560`);
-      [340,420,500].forEach(y => { s += Ci(x,y,3) + Ci(x+30,y,3); });
-    });
-    s += compass();
-    return s;
-  },
-  heatpumps(){
-    let s = L(300,40,300,560,'bp-draw');
-    s += R(140,420,110,70,'bp-draw') + fanBlades(195,455,24) + louvers(150,478,90,8);
-    s += L(60,560,300,560);
-    s += R(330,430,80,50,'bp-draw');
-    s += L(250,450,300,450,'bp-blue') + L(250,465,300,465,'bp-red');
-    s += L(370,430,370,260,'bp-blue') + L(390,430,390,260,'bp-red');
-    s += zig(420,500,260,10,6) + fanCoilUnit(420,205,180,34);
-    s += L(300,340,760,340,'bp-line-thin') + compass();
-    return s;
-  },
-  ventilation(){
-    let s = R(80,80,140,90,'bp-draw') + Ci(120,125,18) + Ci(180,125,18);
-    s += L(220,125,680,125,'bp-draw');
-    [320,460,600].forEach(x => { s += L(x,125,x,260) + diffuser(x,270); });
-    [320,600].forEach(x => { s += L(x,300,x,420) + diffuser(x,430); });
-    s += L(80,300,680,300,'bp-line-thin') + L(80,460,680,460,'bp-line-thin');
-    s += L(60,560,720,560) + compass();
-    return s;
-  },
-  plumbing(){
-    let s = R(180,60,420,480,'bp-draw');
-    [180,300,420].forEach(y => s += L(180,y,600,y,'bp-line-thin'));
-    s += L(560,60,560,500,'bp-blue') + L(600,60,600,500,'bp-red');
-    [150,270,390].forEach(y => {
-      s += L(560,y,260,y,'bp-line-thin') + L(600,y+10,300,y+10,'bp-line-thin');
-      s += R(230,y-6,30,18) + Pa(`M230,${y-6} q15,-14 30,0`) + R(280,y+4,26,10);
-    });
-    s += R(520,500,90,50,'bp-draw') + Ci(565,525,14);
-    s += Ci(110,520,16) + R(102,494,16,20);
-    s += L(60,540,700,540) + compass();
-    return s;
-  }
-};
-
-/* ГАЛЕРИЈА (слики, шеми, цртежи по подстраница) */
-/* За да додадеш нова ставка: прикачи ја датотеката во images/<id>/ на GitHub,
-   потоа додади еден ред тука: {file:'име-на-датотека.jpg', caption:{mk:'...',en:'...'}} за слика,
-   или {file:'документ.pdf', type:'pdf', caption:{mk:'...',en:'...'}} за PDF шема/цртеж. */
-const gallery = {
-  toplifikacija: [],
-  geothermal: [],
-  heatpumps: [],
-  ventilation: [],
-  plumbing: []
-};
-
-function galleryItemsHtml(id) {
-  const items = gallery[id] || [];
-  if (!items.length) {
-    return `<div class="gallery-empty" data-i18n="gallery-empty"></div>`;
-  }
-  return `<div class="gallery-grid">` + items.map((it, i) => {
-    const src = `images/${id}/${it.file}`;
-    if (it.type === 'pdf') {
-      return `<button type="button" class="gallery-item pdf-tile" data-id="${id}" data-index="${i}" aria-label="PDF">
-        <span class="pdf-icon" aria-hidden="true">📄</span><span data-i18n-caption>${it.file}</span></button>`;
-    }
-    return `<button type="button" class="gallery-item" data-id="${id}" data-index="${i}" aria-label="${it.file}">
-      <img src="${src}" alt="" loading="lazy" onerror="this.closest('.gallery-item').style.display='none'">
-    </button>`;
-  }).join('') + `</div>`;
-}
-
-let lbState = { id: null, index: 0 };
-function openLightbox(id, index) {
-  lbState = { id, index };
-  renderLightbox();
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function navLightbox(dir) {
-  const items = gallery[lbState.id] || [];
-  if (!items.length) return;
-  lbState.index = (lbState.index + dir + items.length) % items.length;
-  renderLightbox();
-}
-function renderLightbox() {
-  const items = gallery[lbState.id] || [];
-  const it = items[lbState.index];
-  if (!it) return;
-  const lang = document.documentElement.lang === 'en' ? 'en' : 'mk';
-  const cap = (it.caption && it.caption[lang]) || '';
-  const src = `images/${lbState.id}/${it.file}`;
-  const inner = document.getElementById('lightbox-inner');
-  inner.innerHTML = it.type === 'pdf'
-    ? `<iframe src="${src}" title="${it.file}"></iframe>`
-    : `<img src="${src}" alt="">`;
-  document.getElementById('lightbox-caption').textContent = cap;
-  const multi = items.length > 1;
-  document.getElementById('lightbox-prev').style.display = multi ? 'flex' : 'none';
-  document.getElementById('lightbox-next').style.display = multi ? 'flex' : 'none';
-}
-document.addEventListener('click', e => {
-  const item = e.target.closest('.gallery-item');
-  if (item) { openLightbox(item.dataset.id, Number(item.dataset.index)); return; }
-  if (e.target.closest('#lightbox-close')) closeLightbox();
-  if (e.target.closest('#lightbox-prev')) navLightbox(-1);
-  if (e.target.closest('#lightbox-next')) navLightbox(1);
-  if (e.target.id === 'lightbox') closeLightbox();
-});
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') navLightbox(-1);
-  if (e.key === 'ArrowRight') navLightbox(1);
-});
-
-/* ПОДСТРАНИЦИ: p = параграф, h = наслов, l = листа со наслов+опис (од-до), q = проста листа */
 const pages = {
+  about:         ['about', ['p','p1'], ['p','p2']],
   toplifikacija: ['topli', ['p','p1'], ['h','strong1'], ['l',1,4]],
   geothermal:    ['geo',   ['p','p1'], ['p','p2'], ['h','strong1'], ['l',1,3]],
   heatpumps:     ['hp',    ['p','p1'], ['h','strong1'], ['p','p2'], ['l',1,2], ['h','strong2'], ['l',3,5]],
@@ -696,16 +505,22 @@ function buildPages() {
         body += '</ul>';
       }
     }
+
+    let starsHtml = '';
+    if (id === 'about') {
+      starsHtml = '<div class="about-stars-bg" aria-hidden="true" id="teleport-container">';
+      brandSvgs.forEach((svgContent, idx) => {
+        starsHtml += `<div class="star-brand" id="brand-item-${idx}">${svgContent}</div>`;
+      });
+      starsHtml += '</div>';
+    }
+
     html += `<div id="view-${id}" class="view-section">
-      <div class="blueprint" aria-hidden="true"><svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">${bpFns[id]()}</svg></div>
+      ${starsHtml}
       <div class="page-container">
       <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
       <div class="page-text-content">${body}</div>
-      <div class="gallery-section">
-        <h2 class="gallery-heading" data-i18n="gallery-title"></h2>
-        ${galleryItemsHtml(id)}
-      </div>
       <div class="page-cta-box"><span data-i18n="page-cta-text"></span>
         <a href="#contact" class="btn-cta" data-i18n="modal-cta"></a></div>
     </div></div>`;
@@ -713,7 +528,6 @@ function buildPages() {
   document.getElementById('subpages').innerHTML = html;
 }
 
-/* ЈАЗИК */
 function setLanguage(lang, save) {
   if (!i18n[lang]) lang = 'mk';
   document.documentElement.lang = lang === 'mk' ? 'mk' : 'en';
@@ -731,7 +545,6 @@ function setLanguage(lang, save) {
   if (save) { try { localStorage.setItem('velder_lang', lang); } catch (e) {} }
 }
 
-/* МЕНИ */
 const menuBtn = document.getElementById('menu-btn');
 const navLinks = document.getElementById('nav-links');
 function closeMenu() {
@@ -748,9 +561,9 @@ navLinks.addEventListener('click', e => { if (e.target.closest('a')) closeMenu()
 window.addEventListener('resize', () => { if (innerWidth > 768) closeMenu(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-/* РУТИРАЊЕ (#toplifikacija, #geothermal ... и сидра #about, #systems, #contact) */
 function route() {
-  const hash = decodeURIComponent(location.hash.slice(1));
+  let hash = decodeURIComponent(location.hash.slice(1));
+  if (hash === 'systems') hash = ''; 
   const view = pages[hash] ? hash : 'home';
   document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
   document.getElementById('view-' + view).classList.add('active-view');
@@ -761,7 +574,44 @@ function route() {
 }
 window.addEventListener('hashchange', route);
 
-/* КОЛАЧИЊА */
+document.addEventListener('mousemove', (e) => {
+  const xVal = (e.clientX / window.innerWidth - 0.5) * 15;
+  const yVal = (e.clientY / window.innerHeight - 0.5) * 15;
+  document.querySelectorAll('.about-stars-bg').forEach(el => {
+    el.style.transform = `translate(${-xVal * 0.3}px, ${-yVal * 0.3}px)`;
+  });
+});
+
+function initIndependentBrands() {
+  const container = document.getElementById('teleport-container');
+  if (!container) return;
+  const items = container.querySelectorAll('.star-brand');
+  
+  items.forEach(el => {
+    function runBrandCycle() {
+      const randomX = Math.floor(Math.random() * 75) + 8;
+      const randomY = Math.floor(Math.random() * 75) + 12;
+      const randomOpacity = (Math.random() * 0.22 + 0.18).toFixed(2);
+      
+      el.style.setProperty('--randX', randomX + '%');
+      el.style.setProperty('--randY', randomY + '%');
+      el.style.setProperty('--randOp', randomOpacity);
+      
+      const visibleDuration = Math.floor(Math.random() * 3000) + 3000;
+      const hiddenDuration = Math.floor(Math.random() * 2500) + 1500;
+
+      setTimeout(() => {
+        el.classList.add('active-brand');
+        setTimeout(() => {
+          el.classList.remove('active-brand');
+          setTimeout(runBrandCycle, hiddenDuration);
+        }, visibleDuration);
+      }, 200);
+    }
+    setTimeout(runBrandCycle, Math.random() * 2000);
+  });
+}
+
 const cookieBanner = document.getElementById('cookie-banner');
 try { if (localStorage.getItem('velder_cookies_accepted') === 'true') cookieBanner.classList.add('hidden'); } catch (e) {}
 document.getElementById('cookie-accept-btn').addEventListener('click', () => {
@@ -769,14 +619,14 @@ document.getElementById('cookie-accept-btn').addEventListener('click', () => {
   cookieBanner.classList.add('hidden');
 });
 
-/* ИСКРА НА КАРТИЧКИТЕ */
 const focusObserver = new IntersectionObserver(entries => {
   entries.forEach(en => en.target.classList.toggle('in-focus', en.isIntersecting));
 }, { rootMargin: '-30% 0px -30% 0px', threshold: 0.2 });
 document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
 
-/* СТАРТ */
 buildPages();
+initIndependentBrands();
+
 let startLang = 'mk';
 try { startLang = localStorage.getItem('velder_lang') || 'mk'; } catch (e) {}
 setLanguage(startLang);
