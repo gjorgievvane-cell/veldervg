@@ -53,7 +53,7 @@ header{background:rgba(5,8,17,.85);-webkit-backdrop-filter:blur(20px);backdrop-f
 .btn-cta{display:inline-block;background:linear-gradient(135deg,#00d2ff 0%,#0072ff 100%);color:#fff;padding:13px 30px;min-height:44px;border-radius:980px;text-decoration:none;font-weight:600;font-size:.9rem;text-align:center;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,210,255,.3);border:none;cursor:pointer}
 .btn-cta:hover{transform:scale(1.03);box-shadow:0 6px 28px rgba(0,210,255,.5)}
 
-/* SYSTEM CARDS GRID (App-like layout) */
+/* SYSTEM CARDS GRID */
 .systems-wrapper{max-width:960px;margin:0 auto;padding:50px 20px 100px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
 .system-card{display:flex;flex-direction:column;justify-content:space-between;color:inherit;text-decoration:none;background:var(--bg-card);border:1px solid var(--border-color);border-radius:24px;padding:32px;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);opacity:.4;transform:scale(.98);transition:all .5s cubic-bezier(.16,1,.3,1);box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .system-card.in-focus,.system-card:hover,.system-card:focus-visible{opacity:1;transform:translateY(-4px) scale(1);border-color:var(--accent-blue);box-shadow:0 0 35px var(--accent-glow),0 20px 40px rgba(0,0,0,.6)}
@@ -64,11 +64,14 @@ header{background:rgba(5,8,17,.85);-webkit-backdrop-filter:blur(20px);backdrop-f
 .system-card .btn-cta{width:100%;padding:10px 20px;font-size:.85rem;box-shadow:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
 .system-card:hover .btn-cta{background:linear-gradient(135deg,#00d2ff 0%,#0072ff 100%);border-color:transparent;box-shadow:0 4px 15px rgba(0,210,255,.3)}
 
-/* SUBPAGES */
+/* SUBPAGES & IMAGES */
 .page-container{max-width:820px;margin:0 auto;padding:40px 20px 100px;position:relative;z-index:2}
 .back-nav{display:inline-flex;align-items:center;gap:8px;color:var(--accent-blue);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:30px;min-height:44px;transition:opacity .2s}
 .back-nav:hover{opacity:.8}
-.page-title{font-size:clamp(1.8rem,4.2vw,2.8rem);font-weight:700;color:#fff;margin-bottom:30px;letter-spacing:-.015em;line-height:1.15}
+.page-title{font-size:clamp(1.8rem,4.2vw,2.8rem);font-weight:700;color:#fff;margin-bottom:24px;letter-spacing:-.015em;line-height:1.15}
+
+/* ФОТОГРАФИЈА ВО ПОДСТРАНИЦИТЕ */
+.page-featured-img{width:100%;height:320px;object-fit:cover;border-radius:20px;margin-bottom:36px;border:1px solid var(--border-color);box-shadow:0 15px 35px rgba(0,0,0,.5)}
 
 .page-text-content{color:#f1f5f9;font-size:clamp(1rem,1.4vw,1.1rem);line-height:1.8;font-weight:300}
 .page-text-content p{margin-bottom:22px;color:#cbd5e1}
@@ -108,20 +111,10 @@ header{background:rgba(5,8,17,.85);-webkit-backdrop-filter:blur(20px);backdrop-f
 .btn-cookie:hover{background:var(--accent-blue);color:#050811}
 footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.75rem}
 
-/* APP-STYLE BRAND ANIMATION ЗА "ЗА НАС" */
+/* ABOUT ANIMATION BACKGROUND */
 .about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
-.star-brand{
-  position:absolute;
-  top:var(--randY);
-  left:var(--randX);
-  opacity: 0;
-  transition: opacity 1.8s ease-in-out, transform 1.8s ease-in-out;
-  filter: drop-shadow(0 0 12px rgba(0,210,255,0.4));
-}
-.star-brand.active-brand {
-  opacity: var(--randOp);
-  transform: scale(1);
-}
+.star-brand{position:absolute;top:var(--randY);left:var(--randX);opacity:0;transition:opacity 1.8s ease-in-out, transform 1.8s ease-in-out;filter:drop-shadow(0 0 12px rgba(0,210,255,0.4))}
+.star-brand.active-brand{opacity:var(--randOp);transform:scale(1)}
 .star-brand svg{height:32px;width:auto;fill:#fff}
 
 @media (prefers-reduced-motion:reduce){.star-brand{transition:none}}
@@ -140,6 +133,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   .systems-wrapper{padding:30px 16px 70px;grid-template-columns:1fr;gap:20px}
   .system-card{padding:24px 20px;border-radius:20px;opacity:.7}
   .page-container{padding:24px 18px 80px}
+  .page-featured-img{height:220px}
   .page-cta-box{flex-direction:column;align-items:stretch;text-align:center}
   .contact-section{padding:60px 18px 70px}
   .contact-divider{display:none}
@@ -497,6 +491,17 @@ const brandSvgs = [
   `<svg viewBox="0 0 130 50"><text x="15" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="3">HERZ</text></svg>`
 ];
 
+/* Соодветни висококвалитетни фотографии за секоја подстраница */
+const pageImages = {
+  about: "https://images.unsplash.com/photo-1541888946425-d0fbb18f1f33?auto=format&fit=crop&w=1200&q=80",
+  toplifikacija: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
+  geothermal: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
+  heatpumps: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
+  solar: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80",
+  ventilation: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+  plumbing: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80"
+};
+
 const pages = {
   about:         ['about', ['p','p1'], ['p','p2']],
   toplifikacija: ['topli', ['p','p1'], ['h','strong1'], ['l',1,4]],
@@ -535,11 +540,14 @@ function buildPages() {
       starsHtml += '</div>';
     }
 
+    const imgUrl = pageImages[id] || pageImages['about'];
+
     html += `<div id="view-${id}" class="view-section">
       ${starsHtml}
       <div class="page-container">
       <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
+      <img src="${imgUrl}" alt="Mechanical installation" class="page-featured-img" loading="lazy">
       <div class="page-text-content">${body}</div>
       <div class="page-cta-box"><span data-i18n="page-cta-text"></span>
         <a href="#contact" class="btn-cta" data-i18n="modal-cta"></a></div>
