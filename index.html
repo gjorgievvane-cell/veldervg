@@ -6,10 +6,14 @@
 <meta name="theme-color" content="#050811">
 <meta name="color-scheme" content="dark">
 <meta name="description" content="Централно топловодно греење, геотермални и воздух-вода топлински пумпи, климатизација, вентилација, соларни системи, фотоволтаици и ВиК инсталации во Скопје со опрема од светски брендови.">
+<meta property="og:title" content="ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации">
+<meta property="og:description" content="Професионални HVAC & машински инсталации изведени со светски признати брендови.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230072ff'/%3E%3Ctext x='32' y='45' font-size='38' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EW%3C/text%3E%3C/svg%3E">
 <title>ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации</title>
 <style>
 :root{
-  --bg-dark:#050811;--bg-card:rgba(15,23,42,.75);--accent-blue:#00d2ff;--accent-glow:rgba(0,210,255,.35);
+  --bg-dark:#050811;--bg-card:rgba(15,23,42,.65);--accent-blue:#00d2ff;--accent-glow:rgba(0,210,255,.45);
   --text-main:#f8fafc;--text-muted:#94a3b8;--border-color:rgba(255,255,255,.08);--nav-height:56px;
   --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);
   --hh:calc(var(--nav-height) + var(--safe-top));
@@ -19,10 +23,10 @@ html{scroll-behavior:smooth;background:var(--bg-dark);color:var(--text-main);-we
 body{overflow-x:hidden;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);-webkit-tap-highlight-color:transparent}
 a,button{touch-action:manipulation}
 :focus-visible{outline:2px solid var(--accent-blue);outline-offset:3px;border-radius:6px}
-[id]{scroll-margin-top:calc(var(--hh) + 20px)}
+[id]{scroll-margin-top:calc(var(--hh) + 16px)}
 
 /* NAV */
-header{background:rgba(5,8,17,.85);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:fixed;width:100%;top:0;left:0;z-index:1000;border-bottom:1px solid var(--border-color);height:var(--hh);padding-top:var(--safe-top)}
+header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:fixed;width:100%;top:0;left:0;z-index:1000;border-bottom:1px solid var(--border-color);height:var(--hh);padding-top:var(--safe-top)}
 .nav-container{max-width:1024px;height:100%;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 22px;gap:12px}
 .logo-box{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
 .logo-icon{flex:none;width:32px;height:32px;background:linear-gradient(135deg,#00d2ff,#0055ff);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;color:#fff;box-shadow:0 0 14px var(--accent-glow)}
@@ -38,40 +42,51 @@ header{background:rgba(5,8,17,.85);-webkit-backdrop-filter:blur(20px);backdrop-f
 .menu-btn.open span:first-child{transform:translateY(4px) rotate(45deg)}
 .menu-btn.open span:last-child{transform:translateY(-4px) rotate(-45deg)}
 
+/* VIEWS */
+.view-section{display:none;min-height:100vh;min-height:100svh;padding-top:calc(var(--hh) + 32px);position:relative}
+.view-section.active-view{display:block}
+
 /* HERO */
-.hero{min-height:85vh;min-height:85svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;background:radial-gradient(circle at 50% 30%,rgba(0,210,255,.12) 0%,transparent 65%)}
-.hero-title{font-size:clamp(2rem,4.8vw,3.4rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;max-width:880px;margin-bottom:24px;background:linear-gradient(180deg,#fff 0%,#94a3b8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero-subtitle{font-size:clamp(1rem,1.7vw,1.18rem);color:var(--text-muted);max-width:820px;margin-bottom:40px;font-weight:300;line-height:1.75}
+.hero{min-height:80vh;min-height:80svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 20px 70px;background:radial-gradient(circle at 50% 30%,rgba(0,210,255,.1) 0%,transparent 65%)}
+.hero-title{font-size:clamp(1.9rem,4.6vw,3.2rem);font-weight:700;line-height:1.15;letter-spacing:-.015em;max-width:860px;margin-bottom:24px;background:linear-gradient(180deg,#fff 0%,#94a3b8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;overflow-wrap:break-word}
+.hero-subtitle{font-size:clamp(.95rem,1.6vw,1.15rem);color:var(--text-muted);max-width:880px;margin-bottom:40px;font-weight:300;line-height:1.7}
 .btn-cta{display:inline-block;background:linear-gradient(135deg,#00d2ff 0%,#0072ff 100%);color:#fff;padding:13px 30px;min-height:44px;border-radius:980px;text-decoration:none;font-weight:600;font-size:.9rem;text-align:center;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,210,255,.3);border:none;cursor:pointer}
 .btn-cta:hover{transform:scale(1.03);box-shadow:0 6px 28px rgba(0,210,255,.5)}
 
-/* SECTIONS (СКРОЛАЊЕ ЕДНО ПОД ДРУГО) */
-.content-section{max-width:860px;margin:0 auto;padding:70px 20px;border-bottom:1px solid var(--border-color)}
-.section-header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
-.section-icon{font-size:2.2rem;line-height:1;background:rgba(0,210,255,0.1);padding:14px;border-radius:18px;border:1px solid rgba(0,210,255,0.2)}
-.section-title{font-size:clamp(1.7vw, 3.5vw, 2.4rem);font-weight:700;color:#fff;letter-spacing:-.015em}
+/* SYSTEM CARDS */
+.systems-wrapper{max-width:820px;margin:0 auto;padding:60px 20px 100px;display:flex;flex-direction:column;gap:50px}
+.system-card{display:block;color:inherit;text-decoration:none;background:var(--bg-card);border:1px solid var(--border-color);border-radius:24px;padding:42px;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);opacity:.35;transform:scale(.96);transition:all .6s cubic-bezier(.16,1,.3,1);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.system-card.in-focus,.system-card:focus-visible{opacity:1;transform:scale(1);border-color:var(--accent-blue);box-shadow:0 0 35px var(--accent-glow),0 20px 40px rgba(0,0,0,.6)}
+.card-header-flex{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.card-icon{font-size:2.2rem;line-height:1}
+.system-card h3{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;color:#fff}
+.system-card p{font-size:1.02rem;color:var(--text-muted);line-height:1.6;margin-bottom:26px;font-weight:300}
 
-/* СЛИКА ВО СЕКОЈА СЕКЦИЈА */
-.section-img{width:100%;height:340px;object-fit:cover;border-radius:20px;margin-bottom:30px;border:1px solid var(--border-color);box-shadow:0 15px 35px rgba(0,0,0,.5)}
+/* SUBPAGES */
+.page-container{max-width:820px;margin:0 auto;padding:40px 20px 100px;position:relative;z-index:2}
+.back-nav{display:inline-flex;align-items:center;gap:8px;color:var(--accent-blue);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:30px;min-height:44px;transition:opacity .2s}
+.back-nav:hover{opacity:.8}
+.page-title{font-size:clamp(1.8rem,4.2vw,3rem);font-weight:700;color:#fff;margin-bottom:35px;letter-spacing:-.015em;line-height:1.15;overflow-wrap:break-word}
 
-.section-body{color:#cbd5e1;font-size:clamp(1rem,1.4vw,1.08rem);line-height:1.8;font-weight:300}
-.section-body p{margin-bottom:20px}
-.section-body h3{font-size:1.15rem;font-weight:600;color:var(--accent-blue);letter-spacing:.02em;margin-top:30px;margin-bottom:14px}
-.section-body strong{color:#fff;font-weight:600}
-.section-body ul{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:12px}
-.section-body li{position:relative;padding:14px 16px 14px 38px;background:var(--bg-card);border-radius:14px;border:1px solid var(--border-color);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
-.section-body li::before{content:"";position:absolute;left:16px;top:20px;width:6px;height:6px;border-radius:50%;background:var(--accent-blue);box-shadow:0 0 8px var(--accent-glow)}
-.section-body li strong{color:#f8fafc;display:block;margin-bottom:4px}
+.page-text-content{
+  color:#f1f5f9;
+  font-size:clamp(1.02rem,1.5vw,1.12rem);
+  line-height:1.85;
+  font-weight:300;
+}
+.page-text-content p{margin-bottom:24px;color:#e2e8f0}
+.page-text-content h2{font-size:1.15rem;font-weight:600;color:var(--accent-blue);letter-spacing:.02em;margin-top:36px;margin-bottom:16px}
+.page-text-content strong{color:#fff;font-weight:600}
+.page-text-content ul{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:16px}
+.page-text-content li{position:relative;padding-left:22px;color:var(--text-muted)}
+.page-text-content li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--accent-blue);box-shadow:0 0 8px var(--accent-glow)}
+.page-text-content li strong{color:#f8fafc}
 
-/* ABOUT SECTION & BRANDS BG */
-.about-box{position:relative;background:var(--bg-card);border:1px solid var(--border-color);border-radius:24px;padding:40px;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.5);margin-bottom:40px}
-.about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
-.star-brand{position:absolute;top:var(--randY);left:var(--randX);opacity:0;transition:opacity 1.8s ease-in-out, transform 1.8s ease-in-out;filter:drop-shadow(0 0 12px rgba(0,210,255,0.4))}
-.star-brand.active-brand{opacity:var(--randOp);transform:scale(1)}
-.star-brand svg{height:30px;width:auto;fill:#fff}
+.page-cta-box{margin-top:50px;padding-top:30px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.page-cta-box span{color:var(--text-muted);font-weight:300;font-size:1.02rem}
 
 /* CONTACT */
-.contact-section{padding:90px 20px 100px;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(0,210,255,.08) 0%,transparent 70%)}
+.contact-section{padding:90px 20px 100px;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(0,210,255,.08) 0%,transparent 70%);border-top:1px solid var(--border-color)}
 .contact-container{max-width:760px;margin:0 auto}
 .contact-company{font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-blue);margin-bottom:10px}
 .contact-headline{font-size:clamp(1.4rem,3.2vw,1.9rem);font-weight:700;letter-spacing:-.01em;color:#fff;margin-bottom:12px;line-height:1.25}
@@ -88,14 +103,37 @@ header{background:rgba(5,8,17,.85);-webkit-backdrop-filter:blur(20px);backdrop-f
 .whatsapp{background:rgba(37,211,102,.12);color:#52ea8a;border:1px solid rgba(37,211,102,.3)}
 .whatsapp:hover{background:#25d366;color:#fff;box-shadow:0 0 20px rgba(37,211,102,.4);transform:translateY(-2px)}
 
-/* COOKIE & FOOTER */
-#cookie-banner{position:fixed;bottom:calc(16px + var(--safe-bottom));left:16px;right:16px;max-width:680px;margin:0 auto;background:rgba(15,23,42,.92);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);padding:16px 22px;border-radius:16px;z-index:2000;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:transform .4s,opacity .4s}
+/* COOKIE */
+#cookie-banner{position:fixed;bottom:calc(16px + var(--safe-bottom));left:16px;right:16px;max-width:680px;margin:0 auto;background:rgba(15,23,42,.9);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);padding:16px 22px;border-radius:16px;z-index:2000;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:transform .4s,opacity .4s}
 #cookie-banner.hidden{transform:translateY(140%);opacity:0;pointer-events:none;visibility:hidden}
 .cookie-text{font-size:.82rem;color:var(--text-muted);line-height:1.5;font-weight:300}
 .btn-cookie{background:rgba(255,255,255,.15);color:#fff;border:none;padding:10px 20px;min-height:40px;border-radius:980px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
 .btn-cookie:hover{background:var(--accent-blue);color:#050811}
 footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.75rem}
 
+/* ЦЕЛОСНО НЕЗАВИСНИ АНИМАЦИИ ЗА СЕКОЕ ЛОГО ПООДДЕЛНО ВО "ЗА НАС" */
+.about-stars-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1}
+.star-brand{
+  position:absolute;
+  top:var(--randY);
+  left:var(--randX);
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out, transform 1.8s ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(0,210,255,0.3));
+}
+.star-brand.active-brand {
+  opacity: var(--randOp);
+  transform: scale(1);
+}
+.star-brand svg{height:28px;width:auto;fill:#fff}
+
+@media (prefers-reduced-motion:reduce){.star-brand{transition:none}}
+
+/* LARGE SCREENS */
+@media (min-width:1600px){html{font-size:112.5%}.nav-container{max-width:1200px}.systems-wrapper{max-width:920px}.page-container{max-width:920px}}
+/* TABLET */
+@media (min-width:769px) and (max-width:1024px){.nav-container{padding:0 28px}.systems-wrapper,.page-container{max-width:720px}}
+/* PHONE */
 @media (max-width:768px){
   .nav-container{padding:0 12px 0 18px}
   .lang-switch{margin-left:auto}
@@ -104,11 +142,15 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   .nav-links.open{transform:none;visibility:visible}
   .nav-links a{display:block;padding:16px 0;font-size:1.05rem;border-bottom:1px solid var(--border-color)}
   .nav-links li:last-child a{border-bottom:0}
-  .hero{padding:100px 18px 60px}
+  .hero{padding:90px 18px 56px}
   .btn-cta{width:100%}
-  .content-section{padding:50px 16px}
-  .section-img{height:220px}
-  .about-box{padding:24px 20px}
+  .systems-wrapper{padding:30px 16px 70px;gap:26px}
+  .system-card{padding:26px 22px;border-radius:20px}
+  .card-icon{font-size:1.8rem}
+  .system-card h3{font-size:1.3rem}
+  .system-card p{font-size:.98rem}
+  .page-container{padding:24px 18px 80px}
+  .page-cta-box{flex-direction:column;align-items:stretch;text-align:center}
   .contact-section{padding:60px 18px 70px}
   .contact-divider{display:none}
   .contact-details-grid{flex-direction:column;gap:6px}
@@ -116,6 +158,11 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   .btn-social{width:100%}
   #cookie-banner{flex-direction:column;align-items:stretch;text-align:center;gap:12px}
 }
+@media (max-width:360px){.logo-text{font-size:.82rem}.logo-box{gap:8px}.lang-btn{padding:4px 8px}}
+@media (max-height:480px) and (orientation:landscape){.hero{min-height:auto;padding-top:80px}}
+@media (hover:none){.system-card{opacity:.7;transform:none}.system-card.in-focus{opacity:1}.btn-cta:hover{transform:none}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){header{background:rgba(5,8,17,.97)}#cookie-banner{background:rgba(15,23,42,.98)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body id="top">
@@ -128,12 +175,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
     </a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about" data-i18n="nav-about"></a></li>
-      <li><a href="#toplifikacija" data-i18n="sys1-title"></a></li>
-      <li><a href="#geothermal" data-i18n="sys2-title"></a></li>
-      <li><a href="#heatpumps" data-i18n="sys3-title"></a></li>
-      <li><a href="#solar" data-i18n="sys6-title"></a></li>
-      <li><a href="#ventilation" data-i18n="sys4-title"></a></li>
-      <li><a href="#plumbing" data-i18n="sys5-title"></a></li>
+      <li><a href="#systems" data-i18n="nav-systems"></a></li>
       <li><a href="#contact" data-i18n="nav-contact"></a></li>
     </ul>
     <div class="lang-switch" role="group" aria-label="Јазик / Language">
@@ -145,194 +187,67 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero">
-    <h1 class="hero-title" data-i18n="hero-title"></h1>
-    <p class="hero-subtitle" data-i18n="hero-subtitle"></p>
-    <a href="#contact" class="btn-cta" data-i18n="btn-cta"></a>
-  </section>
+  <div id="view-home" class="view-section active-view">
+    <section class="hero">
+      <h1 class="hero-title" data-i18n="hero-title"></h1>
+      <p class="hero-subtitle" data-i18n="hero-subtitle"></p>
+      <a href="#contact" class="btn-cta" data-i18n="btn-cta"></a>
+    </section>
 
-  <!-- 1. ЗА НАС -->
-  <section id="about" class="content-section">
-    <div class="about-box">
-      <div class="about-stars-bg" aria-hidden="true" id="teleport-container">
-        <!-- Брендови во позадина -->
-        <div class="star-brand" id="brand-item-0"><svg viewBox="0 0 160 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="27">Vaillant</text></svg></div>
-        <div class="star-brand" id="brand-item-1"><svg viewBox="0 0 180 50"><text x="5" y="34" font-family="Arial" font-weight="800" font-size="20">IMI Hydronics</text></svg></div>
-        <div class="star-brand" id="brand-item-2"><svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26" fill="#00d2ff">COMAP</text></svg></div>
-        <div class="star-brand" id="brand-item-3"><svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="28" fill="#00d2ff">VALSIR</text></svg></div>
-        <div class="star-brand" id="brand-item-4"><svg viewBox="0 0 130 50"><text x="12" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="2">AUX</text></svg></div>
-        <div class="star-brand" id="brand-item-5"><svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26">Midea</text></svg></div>
-        <div class="star-brand" id="brand-item-6"><svg viewBox="0 0 120 50"><text x="10" y="36" font-family="Arial" font-weight="900" font-size="30" fill="#00d2ff">MDV</text></svg></div>
-        <div class="star-brand" id="brand-item-7"><svg viewBox="0 0 170 50"><text x="5" y="35" font-family="Arial" font-weight="800" font-size="25">TOSHIBA</text></svg></div>
-        <div class="star-brand" id="brand-item-8"><svg viewBox="0 0 160 50"><text x="5" y="35" font-family="Arial" font-weight="900" font-size="26" font-style="italic">Carrier</text></svg></div>
-        <div class="star-brand" id="brand-item-9"><svg viewBox="0 0 130 50"><text x="15" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="3">HERZ</text></svg></div>
-      </div>
-      <div style="position:relative;z-index:2;">
-        <div class="section-header">
-          <span class="section-icon" aria-hidden="true">🏢</span>
-          <h2 class="section-title" data-i18n="about-title"></h2>
+    <section id="systems" class="systems-wrapper">
+      <a class="system-card" href="#toplifikacija">
+        <div class="card-header-flex"><span class="card-icon" aria-hidden="true">🔥</span><h3 data-i18n="sys1-title"></h3></div>
+        <p data-i18n="sys1-desc"></p>
+        <span class="btn-cta" data-i18n="btn-details"></span>
+      </a>
+      <a class="system-card" href="#geothermal">
+        <div class="card-header-flex"><span class="card-icon" aria-hidden="true">🌍</span><h3 data-i18n="sys2-title"></h3></div>
+        <p data-i18n="sys2-desc"></p>
+        <span class="btn-cta" data-i18n="btn-details"></span>
+      </a>
+      <a class="system-card" href="#heatpumps">
+        <div class="card-header-flex"><span class="card-icon" aria-hidden="true">⚡</span><h3 data-i18n="sys3-title"></h3></div>
+        <p data-i18n="sys3-desc"></p>
+        <span class="btn-cta" data-i18n="btn-details"></span>
+      </a>
+      <a class="system-card" href="#solar">
+        <div class="card-header-flex"><span class="card-icon" aria-hidden="true">☀️</span><h3 data-i18n="sys6-title"></h3></div>
+        <p data-i18n="sys6-desc"></p>
+        <span class="btn-cta" data-i18n="btn-details"></span>
+      </a>
+      <a class="system-card" href="#ventilation">
+        <div class="card-header-flex"><span class="card-icon" aria-hidden="true">🌬️</span><h3 data-i18n="sys4-title"></h3></div>
+        <p data-i18n="sys4-desc"></p>
+        <span class="btn-cta" data-i18n="btn-details"></span>
+      </a>
+      <a class="system-card" href="#plumbing">
+        <div class="card-header-flex"><span class="card-icon" aria-hidden="true">💧</span><h3 data-i18n="sys5-title"></h3></div>
+        <p data-i18n="sys5-desc"></p>
+        <span class="btn-cta" data-i18n="btn-details"></span>
+      </a>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="contact-container">
+        <p class="contact-company" data-i18n="company-full"></p>
+        <h2 class="contact-headline" data-i18n="contact-title"></h2>
+        <p class="contact-lead" data-i18n="contact-desc"></p>
+        <div class="contact-details-grid">
+          <a href="tel:+38970374959" class="contact-link" data-i18n="phone-num"></a>
+          <span class="contact-divider"></span>
+          <a href="mailto:veldervg@icloud.com" class="contact-link">veldervg@icloud.com</a>
+          <span class="contact-divider"></span>
+          <span class="contact-loc" data-i18n="val-location"></span>
         </div>
-        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f1f33?auto=format&fit=crop&w=1200&q=80" alt="Engineering Team" class="section-img" loading="lazy">
-        <div class="section-body">
-          <p data-i18n="about-p1"></p>
-          <p data-i18n="about-p2"></p>
+        <div class="social-btns">
+          <a href="viber://chat?number=%2B38970374959" class="btn-social viber">💬 Viber</a>
+          <a href="https://wa.me/38970374959" class="btn-social whatsapp" target="_blank" rel="noopener">🟢 WhatsApp</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- 2. ЦЕНТРАЛНО ТОПЛОВОДНО ГРЕЕЊЕ -->
-  <section id="toplifikacija" class="content-section">
-    <div class="section-header">
-      <span class="section-icon" aria-hidden="true">🔥</span>
-      <h2 class="section-title" data-i18n="topli-title"></h2>
-    </div>
-    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80" alt="Central Heating" class="section-img" loading="lazy">
-    <div class="section-body">
-      <p data-i18n="topli-p1"></p>
-      <h3 data-i18n="topli-strong1"></h3>
-      <ul>
-        <li><strong data-i18n="topli-li1-title"></strong> <span data-i18n="topli-li1-desc"></span></li>
-        <li><strong data-i18n="topli-li2-title"></strong> <span data-i18n="topli-li2-desc"></span></li>
-        <li><strong data-i18n="topli-li3-title"></strong> <span data-i18n="topli-li3-desc"></span></li>
-        <li><strong data-i18n="topli-li4-title"></strong> <span data-i18n="topli-li4-desc"></span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 3. ГЕОТЕРМАЛНИ СИСТЕМИ -->
-  <section id="geothermal" class="content-section">
-    <div class="section-header">
-      <span class="section-icon" aria-hidden="true">🌍</span>
-      <h2 class="section-title" data-i18n="geo-title"></h2>
-    </div>
-    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="Geothermal Energy" class="section-img" loading="lazy">
-    <div class="section-body">
-      <p data-i18n="geo-p1"></p>
-      <p data-i18n="geo-p2"></p>
-      <h3 data-i18n="geo-strong1"></h3>
-      <ul>
-        <li><strong data-i18n="geo-li1-title"></strong> <span data-i18n="geo-li1-desc"></span></li>
-        <li><strong data-i18n="geo-li2-title"></strong> <span data-i18n="geo-li2-desc"></span></li>
-        <li><strong data-i18n="geo-li3-title"></strong> <span data-i18n="geo-li3-desc"></span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 4. ТОПЛИНСКИ ПУМПИ -->
-  <section id="heatpumps" class="content-section">
-    <div class="section-header">
-      <span class="section-icon" aria-hidden="true">⚡</span>
-      <h2 class="section-title" data-i18n="hp-title"></h2>
-    </div>
-    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80" alt="Heat Pumps" class="section-img" loading="lazy">
-    <div class="section-body">
-      <p data-i18n="hp-p1"></p>
-      <h3 data-i18n="hp-strong1"></h3>
-      <p data-i18n="hp-p2"></p>
-      <ul>
-        <li><strong data-i18n="hp-li1-title"></strong> <span data-i18n="hp-li1-desc"></span></li>
-        <li><strong data-i18n="hp-li2-title"></strong> <span data-i18n="hp-li2-desc"></span></li>
-      </ul>
-      <h3 data-i18n="hp-strong2"></h3>
-      <ul>
-        <li><strong data-i18n="hp-li3-title"></strong> <span data-i18n="hp-li3-desc"></span></li>
-        <li><strong data-i18n="hp-li4-title"></strong> <span data-i18n="hp-li4-desc"></span></li>
-        <li><strong data-i18n="hp-li5-title"></strong> <span data-i18n="hp-li5-desc"></span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 5. СОЛАРНИ СИСТЕМИ & ФОТОВОЛТАИЦИ -->
-  <section id="solar" class="content-section">
-    <div class="section-header">
-      <span class="section-icon" aria-hidden="true">☀️️</span>
-      <h2 class="section-title" data-i18n="solar-title"></h2>
-    </div>
-    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80" alt="Solar & PV Systems" class="section-img" loading="lazy">
-    <div class="section-body">
-      <p data-i18n="solar-p1"></p>
-      <p data-i18n="solar-p2"></p>
-      <h3 data-i18n="solar-strong1"></h3>
-      <ul>
-        <li><strong data-i18n="solar-li1-title"></strong> <span data-i18n="solar-li1-desc"></span></li>
-        <li><strong data-i18n="solar-li2-title"></strong> <span data-i18n="solar-li2-desc"></span></li>
-        <li><strong data-i18n="solar-li3-title"></strong> <span data-i18n="solar-li3-desc"></span></li>
-        <li><strong data-i18n="solar-li4-title"></strong> <span data-i18n="solar-li4-desc"></span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 6. ВЕНТИЛАЦИЈА & КЛИМАТИЗАЦИЈА -->
-  <section id="ventilation" class="content-section">
-    <div class="section-header">
-      <span class="section-icon" aria-hidden="true">🌬️</span>
-      <h2 class="section-title" data-i18n="vent-title"></h2>
-    </div>
-    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80" alt="Ventilation & HVAC" class="section-img" loading="lazy">
-    <div class="section-body">
-      <p data-i18n="vent-p1"></p>
-      <h3 data-i18n="vent-strong1"></h3>
-      <h3 data-i18n="vent-strong2"></h3>
-      <ul>
-        <li><strong data-i18n="vent-li1-title"></strong> <span data-i18n="vent-li1-desc"></span></li>
-        <li><strong data-i18n="vent-li2-title"></strong> <span data-i18n="vent-li2-desc"></span></li>
-        <li><strong data-i18n="vent-li3-title"></strong> <span data-i18n="vent-li3-desc"></span></li>
-      </ul>
-      <h3 data-i18n="vent-strong3"></h3>
-      <ul>
-        <li><strong data-i18n="vent-li4-title"></strong> <span data-i18n="vent-li4-desc"></span></li>
-        <li><strong data-i18n="vent-li5-title"></strong> <span data-i18n="vent-li5-desc"></span></li>
-        <li><strong data-i18n="vent-li6-title"></strong> <span data-i18n="vent-li6-desc"></span></li>
-        <li><strong data-i18n="vent-li7-title"></strong> <span data-i18n="vent-li7-desc"></span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 7. ВОДОВОД И КАНАЛИЗАЦИЈА (ВИК) -->
-  <section id="plumbing" class="content-section">
-    <div class="section-header">
-      <span class="section-icon" aria-hidden="true">💧</span>
-      <h2 class="section-title" data-i18n="plumb-title"></h2>
-    </div>
-    <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1200&q=80" alt="Plumbing & Drainage" class="section-img" loading="lazy">
-    <div class="section-body">
-      <p data-i18n="plumb-p1"></p>
-      <h3 data-i18n="plumb-strong1"></h3>
-      <ul>
-        <li><strong data-i18n="plumb-li1-title"></strong> <span data-i18n="plumb-li1-desc"></span></li>
-        <li><strong data-i18n="plumb-li2-title"></strong> <span data-i18n="plumb-li2-desc"></span></li>
-        <li><strong data-i18n="plumb-li3-title"></strong> <span data-i18n="plumb-li3-desc"></span></li>
-        <li><strong data-i18n="plumb-li4-title"></strong> <span data-i18n="plumb-li4-desc"></span></li>
-      </ul>
-      <h3 data-i18n="plumb-strong2"></h3>
-      <ul>
-        <li data-i18n="plumb-li5"></li>
-        <li data-i18n="plumb-li6"></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- КОНТАКТ -->
-  <section id="contact" class="contact-section">
-    <div class="contact-container">
-      <p class="contact-company" data-i18n="company-full"></p>
-      <h2 class="contact-headline" data-i18n="contact-title"></h2>
-      <p class="contact-lead" data-i18n="contact-desc"></p>
-      <div class="contact-details-grid">
-        <a href="tel:+38970374959" class="contact-link" data-i18n="phone-num"></a>
-        <span class="contact-divider"></span>
-        <a href="mailto:veldervg@icloud.com" class="contact-link">veldervg@icloud.com</a>
-        <span class="contact-divider"></span>
-        <span class="contact-loc" data-i18n="val-location"></span>
-      </div>
-      <div class="social-btns">
-        <a href="viber://chat?number=%2B38970374959" class="btn-social viber">💬 Viber</a>
-        <a href="https://wa.me/38970374959" class="btn-social whatsapp" target="_blank" rel="noopener">🟢 WhatsApp</a>
-      </div>
-    </div>
-  </section>
+  <div id="subpages"></div>
 </main>
 
 <div id="cookie-banner" role="dialog" aria-live="polite">
@@ -364,8 +279,10 @@ mk: {
 "contact-title":"Подготвени за соработка на вашиот следен проект?",
 "contact-desc":"За консултации, проектирање или комплетна изведба на машински инсталации, стапете во контакт со нашиот инженерски тим.",
 "val-location":"Скопје, Македонија","phone-num":"070 374 959",
+"modal-cta":"Побарај Понуда за Овој Систем",
 "company-name":"ВЕЛДЕР ВГ ТРЕЈДИНГ","company-full":"ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ",
 "footer":"© 2026 ВЕЛДЕР ВГ ТРЕЈДИНГ ДООЕЛ. Сите права се задржани.",
+"back-home":"Назад кон почеток","page-cta-text":"Заинтересирани сте за понуда?",
 "cookie-text":"Оваа веб-страница користи минимални технички колачиња за подобрување на корисничкото искуство и избор на јазик.",
 "cookie-btn":"Се согласувам",
 "page-title":"ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации",
@@ -467,16 +384,24 @@ en: {
 "hero-subtitle":"Backed by long-standing engineering expertise, we deliver end-to-end execution of mechanical systems using equipment and materials from world-renowned manufacturers and brands (Vaillant, IMI Hydronics, Comap, Valsir, AUX, Midea, MDV, Toshiba, Carrier, Herz): central heating and ESM Skopje substations, geothermal and inverter heat pumps, solar and photovoltaic systems, air conditioning and ventilation, and full plumbing networks.",
 "btn-cta":"Request Quote & Consultation","btn-details":"More",
 "sys1-title":"Central District Heating",
+"sys1-desc":"Installation of central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil units) and connection substations for ESM Heat Distribution Skopje.",
 "sys2-title":"Geothermal Systems",
-"sys3-title":"Heat Pumps",
-"sys6-title":"Solar & Photovoltaics",
-"sys4-title":"Ventilation & AC",
-"sys5-title":"Plumbing",
+"sys2-desc":"Eco-friendly Ground-to-Water and Water-to-Water solutions using world-class equipment for maximum seasonal efficiency.",
+"sys3-title":"Heat Pumps (Air-to-Water)",
+"sys3-desc":"Modern inverter systems for high-efficiency cooling and heating featuring leading global manufacturers.",
+"sys6-title":"Solar Systems & Photovoltaics",
+"sys6-desc":"Domestic hot water systems, heating support, photovoltaic panels, and hybrid PVT solutions for maximum energy savings.",
+"sys4-title":"Ventilation & Air Conditioning",
+"sys4-desc":"Professional heat recovery ventilation systems (HRV/ERV) and air conditioning (VRV/VRF, chillers) with top-tier equipment.",
+"sys5-title":"Plumbing & Drainage",
+"sys5-desc":"Full execution of water supply networks and drainage systems for residential and commercial complexes using certified materials.",
 "contact-title":"Ready to collaborate on your next project?",
 "contact-desc":"For consultation, engineering design, or complete execution of mechanical installations, reach out to our engineering team.",
 "val-location":"Skopje, Macedonia","phone-num":"+389 70 374 959",
+"modal-cta":"Request Proposal for This System",
 "company-name":"VELDER VG TRADING","company-full":"VELDER VG TRADING LLC",
 "footer":"© 2026 VELDER VG TRADING LLC. All rights reserved.",
+"back-home":"Back to Home","page-cta-text":"Interested in a quote?",
 "cookie-text":"This website uses minimal technical cookies to enhance user experience and language preference.",
 "cookie-btn":"Accept",
 "page-title":"VELDER VG TRADING | Central Heating & Mechanical Installations",
@@ -574,6 +499,71 @@ en: {
 }
 };
 
+/* SVG ЛОГОА ЗА СИТЕ 10 БРЕНДОВИ */
+const brandSvgs = [
+  `<svg viewBox="0 0 160 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="27">Vaillant</text></svg>`,
+  `<svg viewBox="0 0 180 50"><text x="5" y="34" font-family="Arial" font-weight="800" font-size="20">IMI Hydronics</text></svg>`,
+  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26" fill="#00d2ff">COMAP</text></svg>`,
+  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="28" fill="#00d2ff">VALSIR</text></svg>`,
+  `<svg viewBox="0 0 130 50"><text x="12" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="2">AUX</text></svg>`,
+  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26">Midea</text></svg>`,
+  `<svg viewBox="0 0 120 50"><text x="10" y="36" font-family="Arial" font-weight="900" font-size="30" fill="#00d2ff">MDV</text></svg>`,
+  `<svg viewBox="0 0 170 50"><text x="5" y="35" font-family="Arial" font-weight="800" font-size="25">TOSHIBA</text></svg>`,
+  `<svg viewBox="0 0 160 50"><text x="5" y="35" font-family="Arial" font-weight="900" font-size="26" font-style="italic">Carrier</text></svg>`,
+  `<svg viewBox="0 0 130 50"><text x="15" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="3">HERZ</text></svg>`
+];
+
+const pages = {
+  about:         ['about', ['p','p1'], ['p','p2']],
+  toplifikacija: ['topli', ['p','p1'], ['h','strong1'], ['l',1,4]],
+  geothermal:    ['geo',   ['p','p1'], ['p','p2'], ['h','strong1'], ['l',1,3]],
+  heatpumps:     ['hp',    ['p','p1'], ['h','strong1'], ['p','p2'], ['l',1,2], ['h','strong2'], ['l',3,5]],
+  solar:         ['solar', ['p','p1'], ['p','p2'], ['h','strong1'], ['l',1,4]],
+  ventilation:   ['vent',  ['p','p1'], ['h','strong1'], ['h','strong2'], ['l',1,3], ['h','strong3'], ['l',4,7]],
+  plumbing:      ['plumb', ['p','p1'], ['h','strong1'], ['l',1,4], ['h','strong2'], ['q',5,6]]
+};
+
+function buildPages() {
+  const t = (tag, key, cls) => `<${tag}${cls ? ' class="' + cls + '"' : ''} data-i18n="${key}"></${tag}>`;
+  let html = '';
+  for (const [id, [pre, ...blocks]] of Object.entries(pages)) {
+    let body = '';
+    for (const [type, a, b] of blocks) {
+      if (type === 'p') body += t('p', `${pre}-${a}`);
+      else if (type === 'h') body += t('h2', `${pre}-${a}`);
+      else {
+        body += '<ul>';
+        for (let n = a; n <= b; n++) {
+          body += type === 'l'
+            ? `<li><strong data-i18n="${pre}-li${n}-title"></strong> <span data-i18n="${pre}-li${n}-desc"></span></li>`
+            : `<li data-i18n="${pre}-li${n}"></li>`;
+        }
+        body += '</ul>';
+      }
+    }
+
+    let starsHtml = '';
+    if (id === 'about') {
+      starsHtml = '<div class="about-stars-bg" aria-hidden="true" id="teleport-container">';
+      brandSvgs.forEach((svgContent, idx) => {
+        starsHtml += `<div class="star-brand" id="brand-item-${idx}">${svgContent}</div>`;
+      });
+      starsHtml += '</div>';
+    }
+
+    html += `<div id="view-${id}" class="view-section">
+      ${starsHtml}
+      <div class="page-container">
+      <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
+      ${t('h1', pre + '-title', 'page-title')}
+      <div class="page-text-content">${body}</div>
+      <div class="page-cta-box"><span data-i18n="page-cta-text"></span>
+        <a href="#contact" class="btn-cta" data-i18n="modal-cta"></a></div>
+    </div></div>`;
+  }
+  document.getElementById('subpages').innerHTML = html;
+}
+
 function setLanguage(lang, save) {
   if (!i18n[lang]) lang = 'mk';
   document.documentElement.lang = lang === 'mk' ? 'mk' : 'en';
@@ -607,7 +597,27 @@ navLinks.addEventListener('click', e => { if (e.target.closest('a')) closeMenu()
 window.addEventListener('resize', () => { if (innerWidth > 768) closeMenu(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-/* Анимација на брендовите во позадина во секцијата За Нас */
+function route() {
+  let hash = decodeURIComponent(location.hash.slice(1));
+  if (hash === 'systems') hash = ''; 
+  const view = pages[hash] ? hash : 'home';
+  document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
+  document.getElementById('view-' + view).classList.add('active-view');
+  closeMenu();
+  const target = view === 'home' && hash && document.getElementById(hash);
+  if (target) target.scrollIntoView({ behavior: 'smooth' });
+  else window.scrollTo({ top: 0, behavior: 'auto' });
+}
+window.addEventListener('hashchange', route);
+
+document.addEventListener('mousemove', (e) => {
+  const xVal = (e.clientX / window.innerWidth - 0.5) * 15;
+  const yVal = (e.clientY / window.innerHeight - 0.5) * 15;
+  document.querySelectorAll('.about-stars-bg').forEach(el => {
+    el.style.transform = `translate(${-xVal * 0.3}px, ${-yVal * 0.3}px)`;
+  });
+});
+
 function initIndependentBrands() {
   const container = document.getElementById('teleport-container');
   if (!container) return;
@@ -645,6 +655,12 @@ document.getElementById('cookie-accept-btn').addEventListener('click', () => {
   cookieBanner.classList.add('hidden');
 });
 
+const focusObserver = new IntersectionObserver(entries => {
+  entries.forEach(en => en.target.classList.toggle('in-focus', en.isIntersecting));
+}, { rootMargin: '-30% 0px -30% 0px', threshold: 0.2 });
+document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
+
+buildPages();
 initIndependentBrands();
 
 let startLang = 'mk';
@@ -652,6 +668,7 @@ try { startLang = localStorage.getItem('velder_lang') || 'mk'; } catch (e) {}
 setLanguage(startLang);
 document.getElementById('btn-mk').addEventListener('click', () => setLanguage('mk', true));
 document.getElementById('btn-en').addEventListener('click', () => setLanguage('en', true));
+route();
 </script>
 </body>
 </html>
