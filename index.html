@@ -569,13 +569,14 @@ const pages = {
 
 /* СЛИКИ ЗА СЕКОЈА ПОДСТРАНИЦА (датотеките се поставуваат во images/ папка покрај index.html) */
 const pageImages = {
-  toplifikacija: { hero: 'images/topli-1.jpg', gallery: ['images/topli-2.jpg','images/topli-3.jpg','images/topli-4.jpg'] },
-  geothermal:    { hero: 'images/geo-1.jpg',   gallery: ['images/geo-2.jpg'] },
-  heatpumps:     { hero: 'images/hp-1.jpg',    gallery: [] },
-  solar:         { hero: 'images/solar-1.jpg', gallery: ['images/solar-2.jpg','images/solar-3.jpg'] },
-  ventilation:   { hero: 'images/vent-1.jpg',  gallery: ['images/vent-2.jpg'] },
-  plumbing:      { hero: 'images/plumb-1.jpg', gallery: ['images/plumb-2.jpg'] }
+  toplifikacija: { hero: 'topli-1.jpg', gallery: ['topli-2.jpg','topli-3.jpg','topli-4.jpg'] },
+  geothermal:    { hero: 'geo-1.jpg',   gallery: ['geo-2.jpg'] },
+  heatpumps:     { hero: 'hp-1.jpg',    gallery: [] },
+  solar:         { hero: 'solar-1.jpg', gallery: ['solar-2.jpg','solar-3.jpg'] },
+  ventilation:   { hero: 'vent-1.jpg',  gallery: ['vent-2.jpg'] },
+  plumbing:      { hero: 'plumb-1.jpg', gallery: ['plumb-2.jpg'] }
 };
+
 
 function buildPages() {
   const t = (tag, key, cls) => `<${tag}${cls ? ' class="' + cls + '"' : ''} data-i18n="${key}"></${tag}>`;
