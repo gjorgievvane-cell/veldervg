@@ -760,13 +760,7 @@ document.getElementById('cookie-accept-btn').addEventListener('click', () => {
   try { localStorage.setItem('velder_cookies_accepted', 'true'); } catch (e) {}
   cookieBanner.classList.add('hidden');
 });
-
-const focusObserver = new IntersectionObserver(entries => {
-  entries.forEach(en => en.target.classList.toggle('in-focus', en.isIntersecting));
-}, { rootMargin: '-30% 0px -30% 0px', threshold: 0.2 });
-document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
-
-/* ФЛУИД SCROLL-REVEAL ЕФЕКТ (слично на apple.com) за подстраниците */
+лично на apple.com) за подстраниците */
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(en => {
     if (en.isIntersecting) {
@@ -778,6 +772,18 @@ const revealObserver = new IntersectionObserver(entries => {
 function observeReveals() {
   document.querySelectorAll('.reveal').forEach((el, i) => {
     el.style.transitionDelay = Math.min(i % 6, 5) * 70 + 'ms';
+    revealObserver.observe(el);
+  });
+}
+function observeReveals() {
+  let imgIndex = 0;
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    if (el.matches('.page-hero-img, .page-gallery img')) {
+      el.style.transitionDelay = (imgIndex % 4) * 220 + 'ms';
+      imgIndex++;
+    } else {
+      el.style.transitionDelay = Math.min(i % 6, 5) * 70 + 'ms';
+    }
     revealObserver.observe(el);
   });
 }
