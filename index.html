@@ -572,9 +572,10 @@ const pageImages = {
   geothermal:    { hero: 'geo-1.jpg',   gallery: ['geo-2.jpg'] },
   heatpumps:     { hero: 'hp-1.jpg',    gallery: ['vent-1.jpg','vent-2.jpg'] },
   solar:         { hero: 'solar-1.jpg', gallery: ['solar-2.jpg','solar-3.jpg'] },
-  ventilation:   { hero: 'vent-3.jpg',  gallery: [] },
+  ventilation:   { hero: { mk: 'vent-3.jpg', en: 'vent-4.jpg' }, gallery: [] },
   plumbing:      { hero: 'plumb-1.jpg', gallery: ['plumb-2.jpg'] }
 };
+
 
 function buildPages() {
   const t = (tag, key, cls) => `<${tag}${cls ? ' class="' + cls + '"' : ''} data-i18n="${key}"></${tag}>`;
