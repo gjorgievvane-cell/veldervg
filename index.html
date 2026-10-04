@@ -56,8 +56,8 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 
 /* SYSTEM CARDS */
 .systems-wrapper{max-width:820px;margin:0 auto;padding:60px 20px 100px;display:flex;flex-direction:column;gap:50px}
-.system-card{display:block;color:inherit;text-decoration:none;background:var(--bg-card);border:1px solid var(--border-color);border-radius:24px;padding:42px;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);opacity:.35;transform:scale(.96);transition:all .6s cubic-bezier(.16,1,.3,1);box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.system-card.in-focus,.system-card:focus-visible{opacity:1;transform:scale(1);border-color:var(--accent-blue);box-shadow:0 0 35px var(--accent-glow),0 20px 40px rgba(0,0,0,.6)}
+.system-card{display:block;color:inherit;text-decoration:none;background:var(--bg-card);border:1px solid rgba(0,210,255,calc(.08 + .92*var(--f,0)));border-radius:24px;padding:42px;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 calc(35px*var(--f,0)) rgba(0,210,255,calc(.45*var(--f,0))),0 calc(10px + 10px*var(--f,0)) calc(30px + 10px*var(--f,0)) rgba(0,0,0,.5)}
+.system-card:focus-visible{border-color:var(--accent-blue)}
 .card-header-flex{display:flex;align-items:center;gap:16px;margin-bottom:16px}
 .card-icon{font-size:2.2rem;line-height:1}
 .system-card h3{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;color:#fff}
@@ -88,32 +88,21 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 
 /* PAGE IMAGES — наредени една под друга, поголема резолуција на приказ */
 .page-hero-img{width:100%;max-height:640px;object-fit:contain;background:rgba(255,255,255,.03);border-radius:22px;margin:40px 0;border:1px solid var(--border-color);box-shadow:0 20px 50px rgba(0,0,0,.5);display:block}
-.page-gallery{display:flex;flex-direction:column;gap:30px;margin:40px 0}
+.page-gallery{display:flex;flex-direction:column;gap:56px;margin:40px 0}
 .page-gallery img{width:100%;max-height:600px;object-fit:contain;background:rgba(255,255,255,.03);border-radius:18px;border:1px solid var(--border-color);box-shadow:0 10px 26px rgba(0,0,0,.4);display:block}
-.page-gallery img:hover{transform:scale(1.012)}
 
 /* SCROLL REVEAL (Apple-style fluid feel) */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);will-change:opacity,transform}
 .reveal.in-view{opacity:1;transform:none}
 
-/* НЕОН-ЕФЕКТ НА РАМКИТЕ НА СЛИКИТЕ ПРИ СКРОЛ (слично на system-card.in-focus) — слика "расте" и рамката светнува */
-.page-hero-img.reveal,.page-gallery img.reveal{
-  opacity:0;
-  transform:translateY(70px) scale(.68);
-  border-color:rgba(255,255,255,.08);
-  box-shadow:0 20px 50px rgba(0,0,0,.5);
-  transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1),border-color 1.15s ease,box-shadow 1.15s ease;
-  will-change:opacity,transform,box-shadow;
+/* SCROLL-ВРЗАН "APPLE" ЗУМ: елементот во центарот на екранот се приближува кон корисникот,
+   претходниот се враќа назад во позадина. Вредностите ги поставува JS (transform/opacity/--f) во секој кадар. */
+.fx{will-change:transform,opacity;transform-origin:50% 50%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.page-hero-img.fx,.page-gallery img.fx{
+  border-color:rgba(0,210,255,calc(.08 + .92*var(--f,0)));
+  box-shadow:0 0 calc(42px*var(--f,0)) rgba(0,210,255,calc(.45*var(--f,0))),0 calc(20px + 8px*var(--f,0)) calc(50px + 10px*var(--f,0)) rgba(0,0,0,.55);
 }
-.page-hero-img.reveal.in-view,.page-gallery img.reveal.in-view{
-  opacity:1;
-  transform:none;
-  border-color:var(--accent-blue);
-  box-shadow:0 0 42px var(--accent-glow),0 28px 60px rgba(0,0,0,.6);
-}
-.page-gallery img.reveal.in-view:hover{transform:scale(1.012)}
-@media (hover:none){.page-gallery img:hover{transform:none}.page-gallery img.reveal.in-view:hover{transform:none}}
-@media (prefers-reduced-motion:reduce){.page-hero-img.reveal,.page-gallery img.reveal{transition:none}}
+@media (prefers-reduced-motion:reduce){.fx{transform:none!important;opacity:1!important;--f:.6}}
 
 /* CONTACT */
 .contact-section{padding:90px 20px 100px;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(0,210,255,.08) 0%,transparent 70%);border-top:1px solid var(--border-color)}
@@ -191,7 +180,7 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
 }
 @media (max-width:360px){.logo-text{font-size:.82rem}.logo-box{gap:8px}.lang-btn{padding:4px 8px}}
 @media (max-height:480px) and (orientation:landscape){.hero{min-height:auto;padding-top:80px}}
-@media (hover:none){.system-card{opacity:.7;transform:none}.system-card.in-focus{opacity:1}.btn-cta:hover{transform:none}}
+@media (hover:none){.btn-cta:hover{transform:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){header{background:rgba(5,8,17,.97)}#cookie-banner{background:rgba(15,23,42,.98)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
@@ -602,14 +591,14 @@ function buildPages() {
     let imgHtml = '';
     if (imgs) {
       if (typeof imgs.hero === 'object') {
-        imgHtml += `<img class="page-hero-img reveal" src="${imgs.hero.mk}" data-src-mk="${imgs.hero.mk}" data-src-en="${imgs.hero.en}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
+        imgHtml += `<img class="page-hero-img" src="${imgs.hero.mk}" data-src-mk="${imgs.hero.mk}" data-src-en="${imgs.hero.en}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
       } else {
-        imgHtml += `<img class="page-hero-img reveal" src="${imgs.hero}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
+        imgHtml += `<img class="page-hero-img" src="${imgs.hero}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
       }
       if (imgs.gallery.length) {
         imgHtml += '<div class="page-gallery">';
         imgs.gallery.forEach((src) => {
-          imgHtml += `<img class="reveal" src="${src}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
+          imgHtml += `<img src="${src}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
         });
         imgHtml += '</div>';
       }
@@ -719,6 +708,7 @@ function route() {
     requestAnimationFrame(() => next.classList.add('view-in'));
   }
   if (anchorTarget) anchorTarget.scrollIntoView({ behavior: 'smooth' });
+  fxReset();
 }
 window.addEventListener('hashchange', route);
 
@@ -767,12 +757,7 @@ document.getElementById('cookie-accept-btn').addEventListener('click', () => {
   cookieBanner.classList.add('hidden');
 });
 
-const focusObserver = new IntersectionObserver(entries => {
-  entries.forEach(en => en.target.classList.toggle('in-focus', en.isIntersecting));
-}, { rootMargin: '-30% 0px -30% 0px', threshold: 0.2 });
-document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
-
-/* ФЛУИД SCROLL-REVEAL ЕФЕКТ (слично на apple.com) за подстраниците */
+/* ФЛУИД SCROLL-REVEAL за текстуалните блокови на подстраниците */
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(en => {
     if (en.isIntersecting) {
@@ -782,20 +767,88 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
 function observeReveals() {
-  let imgIndex = 0;
   document.querySelectorAll('.reveal').forEach((el, i) => {
-    if (el.matches('.page-hero-img, .page-gallery img')) {
-      /* сликите добиваат поголем, посебен застој за да не "светнуваат" сите истовремено */
-      el.style.transitionDelay = (imgIndex % 4) * 220 + 'ms';
-      imgIndex++;
-    } else {
-      el.style.transitionDelay = Math.min(i % 6, 5) * 70 + 'ms';
-    }
+    el.style.transitionDelay = Math.min(i % 6, 5) * 70 + 'ms';
     revealObserver.observe(el);
   });
 }
 
+/* ===== SCROLL-ВРЗАНА ТРАНЗИЦИЈА (apple.com стил) =====
+   x = растојание на центарот на елементот од центарот на екранот (во висини на екранот):
+   x > 0  → елементот допрва доаѓа од долу: мал и проѕирен, "се приближува" кон екранот додека не стигне во центар
+   x = 0  → скала 1, полна јасност, неонска рамка
+   x < 0  → елементот заминува нагоре: лесно се намалува и затемнува (се враќа назад во позадина)
+   Бидејќи сè е функција од позицијата на скролот, ефектот е совршено реверзибилен (скрол надолу и нагоре). */
+const reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const FX = {
+  hero: { sIn:0,   sOut:.14, span:1.0,  oInMin:1,   oInStart:0,   oInSpan:1,   oOutMin:0,   oOutStart:.02, oOutSpan:.75, fSpan:.5 },
+  card: { sIn:.16, sOut:.09, span:.8,   oInMin:.25, oInStart:.08, oInSpan:.6,  oOutMin:.3,  oOutStart:.08, oOutSpan:.6,  fSpan:.4 },
+  img:  { sIn:.30, sOut:.14, span:.9,   oInMin:0,   oInStart:.05, oInSpan:.75, oOutMin:.15, oOutStart:.1,  oOutSpan:.6,  fSpan:.5 }
+};
+const fxItems = [];
+const clamp01 = x => Math.min(1, Math.max(0, x));
+const smooth = x => x * x * (3 - 2 * x);
+const lerp = (a, b, k) => a + (b - a) * k;
+let fxRaf = 0, fxUntil = 0;
+
+function registerFx() {
+  [['.hero','hero'],['.system-card','card'],['.page-hero-img','img'],['.page-gallery img','img']].forEach(([sel, kind]) => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.classList.add('fx');
+      fxItems.push({ el, p: FX[kind], v: null });
+    });
+  });
+}
+function fxSchedule() { if (!fxRaf && !reduceMotion) fxRaf = requestAnimationFrame(fxFrame); }
+function fxHold(ms) { fxUntil = Math.max(fxUntil, performance.now() + ms); fxSchedule(); }
+function fxReset() { fxItems.forEach(it => { it.v = null; }); fxHold(1100); }
+
+function fxFrame() {
+  fxRaf = 0;
+  const vh = innerHeight || 1, mid = vh / 2;
+  let busy = false;
+  const jobs = [];
+  /* 1) читање (без mixing со запишување → нема layout thrash) */
+  for (const it of fxItems) {
+    const el = it.el;
+    if (!el.getClientRects().length) { it.v = null; continue; } /* скриена подстраница */
+    const r = el.getBoundingClientRect();
+    const x = ((r.top + r.bottom) / 2 - mid) / vh;
+    if (it.v !== null && (r.bottom < -vh || r.top > 2 * vh)) { it.v = x; continue; } /* далеку надвор од екранот */
+    if (it.v === null) it.v = x;
+    else {
+      it.v += (x - it.v) * 0.24; /* благо "инерцијално" измазнување на точките од тркалцето */
+      if (Math.abs(x - it.v) > 0.0004) busy = true; else it.v = x;
+    }
+    jobs.push(it);
+  }
+  /* 2) запишување */
+  for (const it of jobs) {
+    const p = it.p, x = it.v;
+    let s, o;
+    if (x >= 0) {
+      s = 1 - p.sIn * smooth(clamp01(x / p.span));
+      o = lerp(1, p.oInMin, smooth(clamp01((x - p.oInStart) / p.oInSpan)));
+    } else {
+      const a = -x;
+      s = 1 - p.sOut * smooth(clamp01(a / p.span));
+      o = lerp(1, p.oOutMin, smooth(clamp01((a - p.oOutStart) / p.oOutSpan)));
+    }
+    const f = 1 - smooth(clamp01(Math.abs(x) / p.fSpan));
+    const st = it.el.style;
+    st.transform = 'scale(' + s.toFixed(4) + ')';
+    st.opacity = o.toFixed(3);
+    st.setProperty('--f', f.toFixed(3));
+  }
+  if (busy || performance.now() < fxUntil) fxSchedule();
+}
+addEventListener('scroll', fxSchedule, { passive: true });
+addEventListener('resize', () => fxHold(300));
+addEventListener('load', () => fxHold(900));
+document.addEventListener('load', fxSchedule, true); /* ленивите слики ја менуваат висината кога ќе се вчитаат */
+
 buildPages();
+registerFx();
 initIndependentBrands();
 observeReveals();
 
