@@ -85,6 +85,19 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .page-cta-box{margin-top:50px;padding-top:30px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
 .page-cta-box span{color:var(--text-muted);font-weight:300;font-size:1.02rem}
 
+/* PAGE IMAGES */
+.page-hero-img{width:100%;max-height:480px;object-fit:cover;border-radius:22px;margin-bottom:40px;border:1px solid var(--border-color);box-shadow:0 20px 50px rgba(0,0,0,.5);display:block}
+.page-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:40px 0}
+.page-gallery img{width:100%;height:230px;object-fit:cover;border-radius:16px;border:1px solid var(--border-color);box-shadow:0 10px 26px rgba(0,0,0,.4);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.page-gallery img:hover{transform:scale(1.025)}
+
+/* SCROLL REVEAL (Apple-style fluid feel) */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);will-change:opacity,transform}
+.reveal.in-view{opacity:1;transform:none}
+.view-section.active-view{animation:viewFadeIn .7s cubic-bezier(.16,1,.3,1)}
+@keyframes viewFadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (hover:none){.page-gallery img:hover{transform:none}}
+
 /* CONTACT */
 .contact-section{padding:90px 20px 100px;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(0,210,255,.08) 0%,transparent 70%);border-top:1px solid var(--border-color)}
 .contact-container{max-width:760px;margin:0 auto}
@@ -125,7 +138,8 @@ footer{text-align:center;padding:24px 20px calc(24px + var(--safe-bottom));borde
   opacity: var(--randOp);
   transform: scale(1);
 }
-.star-brand svg{height:28px;width:auto;fill:#fff}
+.star-brand svg{height:30px;width:auto}
+.star-brand svg text,.star-brand svg circle,.star-brand svg rect,.star-brand svg path{opacity:.92}
 
 @media (prefers-reduced-motion:reduce){.star-brand{transition:none}}
 
@@ -288,7 +302,7 @@ mk: {
 "page-title":"ВЕЛДЕР ВГ ТРЕЈДИНГ | Централно Греење & Машински Инсталации",
 
 "about-title":"За Нас",
-"about-p1":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи со опрема и материјали од светски признати производители и брендови, како Vaillant, IMI Hydronics, Comap (Aalberts Hydronic), Valsir, AUX, Midea, MDV, Toshiba, Carrier и Herz.",
+"about-p1":"Со долгогодишно инженерско искуство, обезбедуваме комплетна изведба и оптимизација на машински системи со опрема и материјали од светски признати производители и брендови, како Vaillant, IMI Hydronics, Comap, Valsir, Flamco, Peštan, Valdom, AUX, Midea, MDV, Toshiba, Carrier и други реномирани брендови.",
 "about-p2":"Нашата специјалност ги опфаќа сите фази: од изведба на централно топловодно греење (радијаторско, подно, ѕидно, таванско и со вентилоконвектори) и приклучни подстаници на ЕСМ Дистрибуција на топлина Скопје, геотермални и инвертер топлински пумпи, соларни и хибридни фотоволтаични системи, современа климатизација и рекуперативна вентилација, до комплетни ВиК мрежи за колективни станбени и деловни објекти.",
 
 "topli-title":"🔥 Централно Топловодно Греење",
@@ -376,7 +390,14 @@ mk: {
 "plumb-li4-desc":"Автоматизирани системи за стабилен притисок во сите катови.",
 "plumb-strong2":"Изведбени Стандарди & Квалитет:",
 "plumb-li5":"Комплетна монтажа на санитарна арматура и потисни цевоводи.",
-"plumb-li6":"Примена на строги хидраулични испитувања за притисок и непропустливост."
+"plumb-li6":"Примена на строги хидраулични испитувања за притисок и непропустливост.",
+
+"topli-img-alt":"Изведена инсталација за централно топловодно греење",
+"geo-img-alt":"Шема на геотермален систем за греење и ладење",
+"hp-img-alt":"Машинска просторија со топлинска пумпа воздух-вода",
+"solar-img-alt":"Соларен систем со колектори и фотоволтаични панели",
+"vent-img-alt":"Систем за вентилација и климатизација во објект",
+"plumb-img-alt":"Водоводна и канализациона инсталација"
 },
 en: {
 "nav-about":"About Us","nav-systems":"Systems","nav-contact":"Contact",
@@ -407,7 +428,7 @@ en: {
 "page-title":"VELDER VG TRADING | Central Heating & Mechanical Installations",
 
 "about-title":"About Us",
-"about-p1":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems using equipment and materials from world-renowned manufacturers and brands, such as Vaillant, IMI Hydronics, Comap (Aalberts Hydronic), Valsir, AUX, Midea, MDV, Toshiba, Carrier, and Herz.",
+"about-p1":"Backed by long-standing engineering expertise, we deliver end-to-end execution and optimization of mechanical systems using equipment and materials from world-renowned manufacturers and brands, such as Vaillant, IMI Hydronics, Comap, Valsir, Flamco, Peštan, Valdom, AUX, Midea, MDV, Toshiba, Carrier, and other renowned brands.",
 "about-p2":"Our scope covers all phases: from central hydronic heating (radiator, underfloor, wall, ceiling, and fan coil units) and ESM Heat Distribution Skopje substations, geothermal & inverter heat pumps, solar & hybrid photovoltaic systems, modern air conditioning and heat recovery ventilation, to full plumbing networks for residential and commercial complexes.",
 
 "topli-title":"🔥 Central District Heating",
@@ -495,22 +516,45 @@ en: {
 "plumb-li4-desc":"Automated systems ensuring stable water pressure across all floors.",
 "plumb-strong2":"Execution Standards & Quality:",
 "plumb-li5":"Complete assembly of sanitary fittings and pressure pipelines.",
-"plumb-li6":"Application of rigorous hydraulic pressure and leak-tightness testing."
+"plumb-li6":"Application of rigorous hydraulic pressure and leak-tightness testing.",
+
+"topli-img-alt":"Installed central district heating system",
+"geo-img-alt":"Diagram of a geothermal heating and cooling system",
+"hp-img-alt":"Plant room with an air-to-water heat pump unit",
+"solar-img-alt":"Solar system with collectors and photovoltaic panels",
+"vent-img-alt":"Ventilation and air conditioning system in a building",
+"plumb-img-alt":"Water supply and drainage installation"
 }
 };
 
-/* SVG ЛОГОА ЗА СИТЕ 10 БРЕНДОВИ */
+/* СТИЛИЗИРАНИ ЛОГОА (боја + типографија блиски до реалните брендови) ЗА 13 БРЕНДОВИ */
 const brandSvgs = [
-  `<svg viewBox="0 0 160 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="27">Vaillant</text></svg>`,
-  `<svg viewBox="0 0 180 50"><text x="5" y="34" font-family="Arial" font-weight="800" font-size="20">IMI Hydronics</text></svg>`,
-  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26" fill="#00d2ff">COMAP</text></svg>`,
-  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="28" fill="#00d2ff">VALSIR</text></svg>`,
-  `<svg viewBox="0 0 130 50"><text x="12" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="2">AUX</text></svg>`,
-  `<svg viewBox="0 0 150 50"><text x="5" y="36" font-family="Arial" font-weight="900" font-size="26">Midea</text></svg>`,
-  `<svg viewBox="0 0 120 50"><text x="10" y="36" font-family="Arial" font-weight="900" font-size="30" fill="#00d2ff">MDV</text></svg>`,
-  `<svg viewBox="0 0 170 50"><text x="5" y="35" font-family="Arial" font-weight="800" font-size="25">TOSHIBA</text></svg>`,
-  `<svg viewBox="0 0 160 50"><text x="5" y="35" font-family="Arial" font-weight="900" font-size="26" font-style="italic">Carrier</text></svg>`,
-  `<svg viewBox="0 0 130 50"><text x="15" y="36" font-family="Arial" font-weight="900" font-size="30" letter-spacing="3">HERZ</text></svg>`
+  // Vaillant — red wordmark
+  `<svg viewBox="0 0 170 50"><text x="4" y="35" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="27" letter-spacing="-.5" fill="#e2001a">Vaillant</text></svg>`,
+  // IMI Hydronics — navy bold IMI + thin label
+  `<svg viewBox="0 0 190 50"><text x="4" y="30" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="26" fill="#0a2d6e">IMI</text><text x="4" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="500" font-size="12" letter-spacing="1" fill="#6b8cc7">HYDRONICS</text></svg>`,
+  // Comap — blue lowercase + orange dot accent
+  `<svg viewBox="0 0 150 50"><text x="4" y="34" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="27" fill="#0054a6">comap</text><circle cx="138" cy="15" r="5" fill="#f39200"/></svg>`,
+  // Valsir — blue uppercase, orange underline
+  `<svg viewBox="0 0 150 50"><text x="4" y="32" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="25" fill="#005ca9">VALSIR</text><rect x="4" y="38" width="60" height="4" fill="#f7941d"/></svg>`,
+  // AUX — red bold
+  `<svg viewBox="0 0 110 50"><text x="6" y="35" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="30" letter-spacing="1" fill="#e2001a">AUX</text></svg>`,
+  // Midea — blue lowercase + swirl
+  `<svg viewBox="0 0 150 50"><circle cx="15" cy="22" r="11" fill="none" stroke="#004c97" stroke-width="3"/><path d="M8 22c0-5 5-8 10-5" fill="none" stroke="#f7941d" stroke-width="3" stroke-linecap="round"/><text x="32" y="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="24" fill="#004c97">Midea</text></svg>`,
+  // MDV — two-tone
+  `<svg viewBox="0 0 120 50"><text x="6" y="34" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="28" fill="#004c97">MD</text><text x="62" y="34" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="28" fill="#e2001a">V</text></svg>`,
+  // Toshiba — classic red wordmark
+  `<svg viewBox="0 0 190 50"><text x="4" y="34" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="25" letter-spacing="1" fill="#e2001a">TOSHIBA</text></svg>`,
+  // Carrier — red italic + ring (evokes globe mark)
+  `<svg viewBox="0 0 170 50"><circle cx="14" cy="22" r="11" fill="none" stroke="#d2001c" stroke-width="2.5"/><text x="32" y="33" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-style="italic" font-size="27" fill="#d2001c">Carrier</text></svg>`,
+  // Herz — orange/red bold
+  `<svg viewBox="0 0 130 50"><text x="6" y="35" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="29" letter-spacing="1" fill="#f15a24">HERZ</text></svg>`,
+  // Flamco — blue lowercase wordmark
+  `<svg viewBox="0 0 160 50"><text x="4" y="34" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="27" fill="#0071b9">flamco</text></svg>`,
+  // Peštan — green uppercase
+  `<svg viewBox="0 0 150 50"><text x="4" y="34" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="25" letter-spacing=".5" fill="#2e9e3f">PEŠTAN</text></svg>`,
+  // Valdom — teal/blue uppercase
+  `<svg viewBox="0 0 150 50"><text x="4" y="34" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="25" letter-spacing=".5" fill="#0096a0">VALDOM</text></svg>`
 ];
 
 const pages = {
@@ -523,16 +567,26 @@ const pages = {
   plumbing:      ['plumb', ['p','p1'], ['h','strong1'], ['l',1,4], ['h','strong2'], ['q',5,6]]
 };
 
+/* СЛИКИ ЗА СЕКОЈА ПОДСТРАНИЦА (датотеките се поставуваат во images/ папка покрај index.html) */
+const pageImages = {
+  toplifikacija: { hero: 'images/topli-1.jpg', gallery: ['images/topli-2.jpg','images/topli-3.jpg','images/topli-4.jpg'] },
+  geothermal:    { hero: 'images/geo-1.jpg',   gallery: ['images/geo-2.jpg'] },
+  heatpumps:     { hero: 'images/hp-1.jpg',    gallery: [] },
+  solar:         { hero: 'images/solar-1.jpg', gallery: ['images/solar-2.jpg','images/solar-3.jpg'] },
+  ventilation:   { hero: 'images/vent-1.jpg',  gallery: ['images/vent-2.jpg'] },
+  plumbing:      { hero: 'images/plumb-1.jpg', gallery: ['images/plumb-2.jpg'] }
+};
+
 function buildPages() {
   const t = (tag, key, cls) => `<${tag}${cls ? ' class="' + cls + '"' : ''} data-i18n="${key}"></${tag}>`;
   let html = '';
   for (const [id, [pre, ...blocks]] of Object.entries(pages)) {
     let body = '';
     for (const [type, a, b] of blocks) {
-      if (type === 'p') body += t('p', `${pre}-${a}`);
-      else if (type === 'h') body += t('h2', `${pre}-${a}`);
+      if (type === 'p') body += t('p', `${pre}-${a}`, 'reveal');
+      else if (type === 'h') body += t('h2', `${pre}-${a}`, 'reveal');
       else {
-        body += '<ul>';
+        body += '<ul class="reveal">';
         for (let n = a; n <= b; n++) {
           body += type === 'l'
             ? `<li><strong data-i18n="${pre}-li${n}-title"></strong> <span data-i18n="${pre}-li${n}-desc"></span></li>`
@@ -551,11 +605,25 @@ function buildPages() {
       starsHtml += '</div>';
     }
 
+    let imgHtml = '';
+    const imgs = pageImages[id];
+    if (imgs) {
+      imgHtml += `<img class="page-hero-img reveal" src="${imgs.hero}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
+      if (imgs.gallery.length) {
+        imgHtml += '<div class="page-gallery">';
+        imgs.gallery.forEach((src, i) => {
+          imgHtml += `<img class="reveal" src="${src}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
+        });
+        imgHtml += '</div>';
+      }
+    }
+
     html += `<div id="view-${id}" class="view-section">
       ${starsHtml}
       <div class="page-container">
       <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
+      ${imgHtml}
       <div class="page-text-content">${body}</div>
       <div class="page-cta-box"><span data-i18n="page-cta-text"></span>
         <a href="#contact" class="btn-cta" data-i18n="modal-cta"></a></div>
@@ -570,6 +638,10 @@ function setLanguage(lang, save) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const v = i18n[lang][el.dataset.i18n];
     if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const v = i18n[lang][el.dataset.i18nAlt];
+    if (v !== undefined) el.setAttribute('alt', v);
   });
   document.title = i18n[lang]['page-title'];
   ['mk', 'en'].forEach(l => {
@@ -660,8 +732,25 @@ const focusObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '-30% 0px -30% 0px', threshold: 0.2 });
 document.querySelectorAll('.system-card').forEach(c => focusObserver.observe(c));
 
+/* ФЛУИД SCROLL-REVEAL ЕФЕКТ (слично на apple.com) за подстраниците */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.classList.add('in-view');
+      revealObserver.unobserve(en.target);
+    }
+  });
+}, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+function observeReveals() {
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = Math.min(i % 6, 5) * 70 + 'ms';
+    revealObserver.observe(el);
+  });
+}
+
 buildPages();
 initIndependentBrands();
+observeReveals();
 
 let startLang = 'mk';
 try { startLang = localStorage.getItem('velder_lang') || 'mk'; } catch (e) {}
