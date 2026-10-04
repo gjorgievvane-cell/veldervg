@@ -42,10 +42,9 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .menu-btn.open span:first-child{transform:translateY(4px) rotate(45deg)}
 .menu-btn.open span:last-child{transform:translateY(-4px) rotate(-45deg)}
 
-/* VIEWS — флуид scroll-like транзиција (Apple-style) при смена на подстраница */
-.view-section{display:none;min-height:100vh;min-height:100svh;padding-top:calc(var(--hh) + 32px);position:relative;opacity:0;transform:translateY(46px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+/* VIEWS */
+.view-section{display:none;min-height:100vh;min-height:100svh;padding-top:calc(var(--hh) + 32px);position:relative}
 .view-section.active-view{display:block}
-.view-section.active-view.view-in{opacity:1;transform:none}
 
 /* HERO */
 .hero{min-height:80vh;min-height:80svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 20px 70px;background:radial-gradient(circle at 50% 30%,rgba(0,210,255,.1) 0%,transparent 65%)}
@@ -87,14 +86,16 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .page-cta-box span{color:var(--text-muted);font-weight:300;font-size:1.02rem}
 
 /* PAGE IMAGES */
-.page-hero-img{width:100%;max-height:520px;object-fit:contain;background:rgba(255,255,255,.03);border-radius:22px;margin:40px 0;border:1px solid var(--border-color);box-shadow:0 20px 50px rgba(0,0,0,.5);display:block}
-.page-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:40px 0}
-.page-gallery img{width:100%;height:260px;object-fit:contain;background:rgba(255,255,255,.03);border-radius:16px;border:1px solid var(--border-color);box-shadow:0 10px 26px rgba(0,0,0,.4);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.page-hero-img{width:100%;max-height:480px;object-fit:cover;border-radius:22px;margin-bottom:40px;border:1px solid var(--border-color);box-shadow:0 20px 50px rgba(0,0,0,.5);display:block}
+.page-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:40px 0}
+.page-gallery img{width:100%;height:230px;object-fit:cover;border-radius:16px;border:1px solid var(--border-color);box-shadow:0 10px 26px rgba(0,0,0,.4);transition:transform .6s cubic-bezier(.16,1,.3,1)}
 .page-gallery img:hover{transform:scale(1.025)}
 
 /* SCROLL REVEAL (Apple-style fluid feel) */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);will-change:opacity,transform}
 .reveal.in-view{opacity:1;transform:none}
+.view-section.active-view{animation:viewFadeIn .7s cubic-bezier(.16,1,.3,1)}
+@keyframes viewFadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @media (hover:none){.page-gallery img:hover{transform:none}}
 
 /* CONTACT */
@@ -566,36 +567,22 @@ const pages = {
   plumbing:      ['plumb', ['p','p1'], ['h','strong1'], ['l',1,4], ['h','strong2'], ['q',5,6]]
 };
 
-/* СЛИКИ ЗА СЕКОЈА ПОДСТРАНИЦА (датотеките се поставуваат покрај index.html) */
+/* СЛИКИ ЗА СЕКОЈА ПОДСТРАНИЦА (датотеките се поставуваат во images/ папка покрај index.html) */
 const pageImages = {
-  toplifikacija: { hero: 'topli-1.jpg', gallery: ['topli-2.jpg','topli-3.jpg','topli-4.jpg'] },
-  geothermal:    { hero: 'geo-1.jpg',   gallery: ['geo-2.jpg'] },
-  heatpumps:     { hero: 'hp-1.jpg',    gallery: ['vent-1.jpg','vent-2.jpg'] },
-  solar:         { hero: 'solar-1.jpg', gallery: ['solar-2.jpg','solar-3.jpg'] },
-  ventilation:   { hero: { mk: 'vent-3.jpg', en: 'vent-4.jpg' }, gallery: [] },
-  plumbing:      { hero: 'plumb-1.jpg', gallery: ['plumb-2.jpg',plumb-3.jpg'] }
+  toplifikacija: { hero: 'images/topli-1.jpg', gallery: ['images/topli-2.jpg','images/topli-3.jpg','images/topli-4.jpg'] },
+  geothermal:    { hero: 'images/geo-1.jpg',   gallery: ['images/geo-2.jpg'] },
+  heatpumps:     { hero: 'images/hp-1.jpg',    gallery: [] },
+  solar:         { hero: 'images/solar-1.jpg', gallery: ['images/solar-2.jpg','images/solar-3.jpg'] },
+  ventilation:   { hero: 'images/vent-1.jpg',  gallery: ['images/vent-2.jpg'] },
+  plumbing:      { hero: 'images/plumb-1.jpg', gallery: ['images/plumb-2.jpg'] }
 };
-
 
 function buildPages() {
   const t = (tag, key, cls) => `<${tag}${cls ? ' class="' + cls + '"' : ''} data-i18n="${key}"></${tag}>`;
   let html = '';
   for (const [id, [pre, ...blocks]] of Object.entries(pages)) {
-    const imgs = pageImages[id];
-    let imgHtml = '';
-    if (imgs) {
-      imgHtml += `<img class="page-hero-img reveal" src="${imgs.hero}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
-      if (imgs.gallery.length) {
-        imgHtml += '<div class="page-gallery">';
-        imgs.gallery.forEach((src) => {
-          imgHtml += `<img class="reveal" src="${src}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
-        });
-        imgHtml += '</div>';
-      }
-    }
-
     let body = '';
-    blocks.forEach(([type, a, b], idx) => {
+    for (const [type, a, b] of blocks) {
       if (type === 'p') body += t('p', `${pre}-${a}`, 'reveal');
       else if (type === 'h') body += t('h2', `${pre}-${a}`, 'reveal');
       else {
@@ -607,10 +594,7 @@ function buildPages() {
         }
         body += '</ul>';
       }
-      /* сликите се вметнуваат по првиот блок (вовед-пасус), т.е. некаде во средината на текстот */
-      if (idx === 0 && imgHtml) { body += imgHtml; imgHtml = ''; }
-    });
-    if (imgHtml) body += imgHtml; // fallback ако нема блокови
+    }
 
     let starsHtml = '';
     if (id === 'about') {
@@ -621,11 +605,25 @@ function buildPages() {
       starsHtml += '</div>';
     }
 
+    let imgHtml = '';
+    const imgs = pageImages[id];
+    if (imgs) {
+      imgHtml += `<img class="page-hero-img reveal" src="${imgs.hero}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
+      if (imgs.gallery.length) {
+        imgHtml += '<div class="page-gallery">';
+        imgs.gallery.forEach((src, i) => {
+          imgHtml += `<img class="reveal" src="${src}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
+        });
+        imgHtml += '</div>';
+      }
+    }
+
     html += `<div id="view-${id}" class="view-section">
       ${starsHtml}
       <div class="page-container">
       <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
+      ${imgHtml}
       <div class="page-text-content">${body}</div>
       <div class="page-cta-box"><span data-i18n="page-cta-text"></span>
         <a href="#contact" class="btn-cta" data-i18n="modal-cta"></a></div>
@@ -673,27 +671,14 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu();
 
 function route() {
   let hash = decodeURIComponent(location.hash.slice(1));
-  if (hash === 'systems') hash = '';
+  if (hash === 'systems') hash = ''; 
   const view = pages[hash] ? hash : 'home';
-  const next = document.getElementById('view-' + view);
-  const current = document.querySelector('.view-section.active-view');
+  document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
+  document.getElementById('view-' + view).classList.add('active-view');
   closeMenu();
-  const anchorTarget = view === 'home' && hash && document.getElementById(hash);
-
-  if (current !== next) {
-    /* флуид crossfade + слајд транзиција меѓу подстраниците, слично на apple.com */
-    if (current) {
-      current.classList.remove('view-in');
-      setTimeout(() => current.classList.remove('active-view'), 520);
-    }
-    next.classList.add('active-view');
-    void next.offsetHeight; /* reflow за да тргне транзицијата од почетна состојба */
-    if (!anchorTarget) window.scrollTo({ top: 0, behavior: 'auto' });
-    requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add('view-in')));
-  } else if (!next.classList.contains('view-in')) {
-    requestAnimationFrame(() => next.classList.add('view-in'));
-  }
-  if (anchorTarget) anchorTarget.scrollIntoView({ behavior: 'smooth' });
+  const target = view === 'home' && hash && document.getElementById(hash);
+  if (target) target.scrollIntoView({ behavior: 'smooth' });
+  else window.scrollTo({ top: 0, behavior: 'auto' });
 }
 window.addEventListener('hashchange', route);
 
