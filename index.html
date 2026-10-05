@@ -87,9 +87,16 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .page-cta-box span{color:var(--text-muted);font-weight:300;font-size:1.02rem}
 
 /* PAGE IMAGES — наредени една под друга, поголема резолуција на приказ */
-.page-hero-img{width:100%;max-height:640px;object-fit:contain;background:rgba(255,255,255,.03);border-radius:22px;margin:40px 0;border:1px solid var(--border-color);box-shadow:0 20px 50px rgba(0,0,0,.5);display:block}
+.media-card{margin:40px 0;border-radius:22px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid rgba(0,210,255,calc(.08 + .92*var(--f,0)));box-shadow:0 0 calc(42px*var(--f,0)) rgba(0,210,255,calc(.45*var(--f,0))),0 calc(20px + 8px*var(--f,0)) calc(50px + 10px*var(--f,0)) rgba(0,0,0,.55)}
+.media-card img{display:block;width:100%;max-height:640px;object-fit:contain}
+.media-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px 18px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--border-color);background:rgba(5,8,17,.6)}
+.mc-title{font-size:1.05rem;font-weight:600;letter-spacing:-.005em;color:#fff}
+.mc-more{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 22px;border-radius:980px;background:linear-gradient(135deg,#00d2ff 0%,#0072ff 100%);color:#fff;text-decoration:none;font-weight:600;font-size:.85rem;box-shadow:0 4px 16px rgba(0,210,255,.28);transition:transform .3s,box-shadow .3s}
+.mc-more::after{content:"\2192";transition:transform .3s}
+.mc-more:hover{transform:scale(1.03);box-shadow:0 6px 24px rgba(0,210,255,.5)}
+.mc-more:hover::after{transform:translateX(3px)}
 .page-gallery{display:flex;flex-direction:column;gap:56px;margin:40px 0}
-.page-gallery img{width:100%;max-height:600px;object-fit:contain;background:rgba(255,255,255,.03);border-radius:18px;border:1px solid var(--border-color);box-shadow:0 10px 26px rgba(0,0,0,.4);display:block}
+.page-gallery .media-card{margin:0}
 
 /* SCROLL REVEAL (Apple-style fluid feel) */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);will-change:opacity,transform}
@@ -98,10 +105,6 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 /* SCROLL-ВРЗАН "APPLE" ЗУМ: елементот во центарот на екранот се приближува кон корисникот,
    претходниот се враќа назад во позадина. Вредностите ги поставува JS (transform/opacity/--f) во секој кадар. */
 .fx{will-change:transform,opacity;transform-origin:50% 50%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.page-hero-img.fx,.page-gallery img.fx{
-  border-color:rgba(0,210,255,calc(.08 + .92*var(--f,0)));
-  box-shadow:0 0 calc(42px*var(--f,0)) rgba(0,210,255,calc(.45*var(--f,0))),0 calc(20px + 8px*var(--f,0)) calc(50px + 10px*var(--f,0)) rgba(0,0,0,.55);
-}
 @media (prefers-reduced-motion:reduce){.fx{transform:none!important;opacity:1!important;--f:.6}}
 
 /* CONTACT */
@@ -575,33 +578,468 @@ const pages = {
 
 /* СЛИКИ ЗА СЕКОЈА ПОДСТРАНИЦА (датотеките се поставуваат покрај index.html) */
 const pageImages = {
-  toplifikacija: { hero: 'topli-1.jpg', gallery: ['topli-2.jpg','topli-3.jpg','topli-4.jpg'] },
-  geothermal:    { hero: 'geo-1.jpg',   gallery: ['geo-2.jpg'] },
-  heatpumps:     { hero: 'hp-1.jpg',    gallery: ['vent-1.jpg','vent-2.jpg'] },
-  solar:         { hero: 'solar-1.jpg', gallery: ['solar-2.jpg','solar-3.jpg'] },
-  ventilation:   { hero:  'vent-3.jpg', gallery: ['vent-4.jpg','vent-5.jpg','vent-6.jpg'] },
-  plumbing:      { hero: 'plumb-1.jpg', gallery: ['plumb-2.jpg','plumb-3.jpg'] }
+  toplifikacija: { hero: ['podno-greenje.jpg','podno'], gallery: [['zidno-greenje.jpg','zidno'],['tavansko-greenje.jpg','tavansko'],['podstanica.jpg','podstanica'],['radijator.jpg','radijatori'],['ventilokonvektor.jpg','ventilokonvektori']] },
+  geothermal:    { hero: ['geotermalno-zemja-voda.jpg','zemja_voda'], gallery: [['geotermalno-voda-voda.jpg','voda_voda']] },
+  heatpumps:     { hero: ['toplinska-pumpa-vozduh-voda.jpg','hp_vozduh'], gallery: [['inverter-klima.jpg','inverter'],['multi-split.jpg','split']] },
+  solar:         { hero: ['solar-kolektori.jpg','solar_kolektori'], gallery: [['fotovoltaici.jpg','fotovoltaici'],['solarna-shema.jpg','solar_shema']] },
+  ventilation:   { hero: ['mehanicka-ventilacija.jpg','mehanicka'], gallery: [['rooftop-edinici.jpg','rooftop'],['ventilaciski-kanali.jpg','kanali'],['difuzori-klapni.jpg','difuzori']] },
+  plumbing:      { hero: ['sanitarna-montaza.jpg','sanitarna'], gallery: [['wc-vgradno-kazance.jpg','wc'],['podni-slivnici.jpg','slivnik']] }
 };
+
+/* ДЕТАЛНИ ПОДСТРАНИЦИ (резиме) ЗА СЕКОЈА СЛИКА: [наслов/натпис, вовед, [4 особености]] за МК и EN.
+   Темите што не се користат во pageImages (cel_godina, pvt, rekuperacija, kanalna, vrf, vodovod, kanalizacija, hidrofor)
+   се резерва: за нова слика само додајте ја во pageImages со соодветниот клуч. */
+const DETAILS = {
+  podno: {
+    mk: ["Систем за подно греење",
+      "Подното греење ја пренесува топлината преку цевки вградени во подот, па целата површина станува благ и рамномерен грејник. Работи со ниска температура на водата, затоа е одличен партнер на топлинските пумпи и на приклучните подстаници.",
+      ["Рамномерна топлина по целата просторија и пријатно топол под.",
+       "Ниска температура на водата (типично околу 30–40 °C), што значи помала потрошувачка и висока ефикасност со топлинска пумпа.",
+       "Нема видливи радијатори, па ѕидовите остануваат слободни за уредување.",
+       "Зонска регулација со собни термостати и разделници за секој круг посебно."]],
+    en: ["Underfloor Heating System",
+      "Underfloor heating delivers warmth through pipes embedded in the floor, turning the whole surface into a gentle, even radiator. It runs on low water temperatures, which makes it an excellent match for heat pumps and district heating substations.",
+      ["Even warmth across the whole room and a pleasantly warm floor.",
+       "Low water temperature (typically around 30–40 °C) means lower consumption and high efficiency with a heat pump.",
+       "No visible radiators, so walls stay free for furnishing.",
+       "Zone control with room thermostats and manifolds for each circuit."]]
+  },
+  podstanica: {
+    mk: ["Приклучна подстаница",
+      "Приклучната подстаница е врската меѓу топлификационата мрежа и инсталацијата во објектот. Преку плочест изменувач ја пренесува топлината од примарниот во секундарниот круг, без мешање на двете води.",
+      ["Компактни плочести изменувачи за ефикасен пренос на топлина.",
+       "Автоматски диференцијални регулатори за стабилен проток и притисок.",
+       "Мерење и регулација на потрошувачката според техничките услови на дистрибутерот.",
+       "Одвоен секундарен круг што ја штити внатрешната инсталација."]],
+    en: ["Connection Substation",
+      "The connection substation links the district heating network to the building installation. A plate heat exchanger transfers heat from the primary to the secondary circuit without the two water flows ever mixing.",
+      ["Compact plate heat exchangers for efficient heat transfer.",
+       "Automatic differential pressure regulators for stable flow and pressure.",
+       "Metering and control of consumption according to the distributor's technical requirements.",
+       "A separate secondary circuit that protects the building's own installation."]]
+  },
+  radijatori: {
+    mk: ["Радијаторско греење",
+      "Радијаторското греење е едно од најраспространетите решенија: топла вода циркулира низ радијатори поставени во просториите. Погодно е и за нови објекти и за реконструкции, со брз одзив.",
+      ["Брзо загревање на просторијата и лесна регулација.",
+       "Термостатски вентили за посебна контрола во секоја просторија.",
+       "Двоцевна мрежа за правилна хидраулична распределба и рамнотежа.",
+       "Се комбинира со подстаници, котли и топлински пумпи, при соодветно димензионирање."]],
+    en: ["Radiator Heating",
+      "Radiator heating is one of the most widespread solutions: hot water circulates through radiators placed in each room. It suits both new builds and renovations, with a fast response.",
+      ["Quick room warm-up and easy control.",
+       "Thermostatic valves for individual control in every room.",
+       "Two-pipe network for correct hydraulic distribution and balance.",
+       "Works with substations, boilers and heat pumps when properly sized."]]
+  },
+  ventilokonvektori: {
+    mk: ["Вентилоконвектори (Fan Coil)",
+      "Вентилоконвекторот со вентилатор го пренесува воздухот преку топол или студен регистар, па истиот уред греје зимата и лади лете.",
+      ["Греење и ладење со еден систем.",
+       "Брза и динамична регулација на температурата.",
+       "Двоцевни и четирицевни варијанти за различни потреби.",
+       "Погодни за канцеларии, хотели и станови."]],
+    en: ["Fan Coil Units",
+      "A fan coil unit blows air across a hot or chilled coil, so the same unit heats in winter and cools in summer.",
+      ["Heating and cooling with a single system.",
+       "Fast and dynamic temperature control.",
+       "Two-pipe and four-pipe variants for different needs.",
+       "Suitable for offices, hotels and apartments."]]
+  },
+  zemja_voda: {
+    mk: ["Геотермален систем Земја-Вода",
+      "Системот Земја-Вода ја користи стабилната температура на земјата преку вертикални сонди или хоризонтални колектори, а топлинската пумпа ја подига на ниво потребно за греење.",
+      ["Стабилна температура на изворот во текот на целата година.",
+       "Висока сезонска ефикасност (COP).",
+       "Вертикални сонди (мала површина) или хоризонтален колектор (повеќе земјиште).",
+       "Можност за пасивно ладење (free-cooling) во лето."]],
+    en: ["Ground-to-Water Geothermal System",
+      "A ground-to-water system uses the stable temperature of the earth through vertical probes or horizontal collectors, and the heat pump lifts it to the level needed for heating.",
+      ["Stable source temperature throughout the year.",
+       "High seasonal efficiency (COP).",
+       "Vertical probes (small footprint) or a horizontal collector (more land needed).",
+       "Option of passive cooling (free-cooling) in summer."]]
+  },
+  voda_voda: {
+    mk: ["Геотермален систем Вода-Вода",
+      "Системот Вода-Вода ја црпи енергијата од подземна вода од бунар, која има стабилна температура, и по користењето ја враќа во земјата.",
+      ["Многу висока ефикасност поради стабилниот извор.",
+       "Потребен е бунар со доволен капацитет и добар квалитет на водата.",
+       "Потребни се соодветни дозволи според важечките прописи.",
+       "Греење, ладење и топла вода од една постројка."]],
+    en: ["Water-to-Water Geothermal System",
+      "A water-to-water system draws energy from groundwater from a well, which has a stable temperature, and returns it to the ground after use.",
+      ["Very high efficiency thanks to the stable source.",
+       "Requires a well with sufficient capacity and good water quality.",
+       "Appropriate permits are needed under the applicable regulations.",
+       "Heating, cooling and hot water from a single plant."]]
+  },
+  hp_vozduh: {
+    mk: ["Топлинска пумпа воздух-вода",
+      "Топлинската пумпа воздух-вода ја зема топлината од надворешниот воздух и ја пренесува во водата за греење, ладење и санитарна топла вода.",
+      ["Греење, ладење и топла вода со еден уред.",
+       "Инвертерски компресор што ја прилагодува моќноста на потребата.",
+       "Работи и при ниски надворешни температури.",
+       "Едноставна монтажа, без бушење и земјени работи."]],
+    en: ["Air-to-Water Heat Pump",
+      "An air-to-water heat pump takes heat from outdoor air and transfers it into water for heating, cooling and domestic hot water.",
+      ["Heating, cooling and hot water with one unit.",
+       "Inverter compressor that matches output to demand.",
+       "Works even at low outdoor temperatures.",
+       "Simple installation, with no drilling or groundwork."]]
+  },
+  inverter: {
+    mk: ["Инвертер климатизација",
+      "Инвертерските клима-уреди ја менуваат брзината на компресорот според потребата, па одржуваат постојана температура со помала потрошувачка и ниска бучава.",
+      ["Постојана и стабилна температура без чести вклучувања.",
+       "Ниска потрошувачка на електрична енергија.",
+       "Тивка работа.",
+       "Можност за греење во преодните и зимските месеци."]],
+    en: ["Inverter Air Conditioning",
+      "Inverter air conditioners vary the compressor speed to match demand, keeping a constant temperature with lower consumption and low noise.",
+      ["Constant, stable temperature without frequent on/off cycling.",
+       "Low electricity consumption.",
+       "Quiet operation.",
+       "Ability to heat in the shoulder and winter months."]]
+  },
+  cel_godina: {
+    mk: ["Комфор во текот на целата година",
+      "Топлинската пумпа ги обединува греењето, ладењето и подготовката на санитарна топла вода во еден систем, за комфор во сите сезони.",
+      ["Еден систем наместо повеќе посебни уреди.",
+       "Можност за поврзување со фотоволтаици.",
+       "Помалку одржување и една точка за сервис.",
+       "Без локални емисии на штетни гасови."]],
+    en: ["Year-Round Comfort",
+      "A heat pump combines heating, cooling and domestic hot water preparation in a single system, for comfort in every season.",
+      ["One system instead of several separate appliances.",
+       "Can be combined with photovoltaics.",
+       "Less maintenance and a single service point.",
+       "No local emissions of harmful gases."]]
+  },
+  solar_kolektori: {
+    mk: ["Соларни колектори за топла вода",
+      "Соларните термички колектори ја претвораат сончевата енергија во топлина за санитарна топла вода и за поддршка на греењето.",
+      ["Помала потрошувачка на енергија за топла вода.",
+       "Акумулација на топлината во бојлер или пуфер резервоар.",
+       "Поддршка на греењето во преодните месеци.",
+       "Хибридно поврзување со топлинска пумпа."]],
+    en: ["Solar Collectors for Hot Water",
+      "Solar thermal collectors turn sunlight into heat for domestic hot water and heating support.",
+      ["Lower energy consumption for hot water.",
+       "Heat stored in a boiler or buffer tank.",
+       "Heating support during the shoulder months.",
+       "Hybrid connection with a heat pump."]]
+  },
+  fotovoltaici: {
+    mk: ["Фотоволтаични панели",
+      "Фотоволтаичните панели произведуваат електрична енергија од сонцето за сопствена потрошувачка: за пумпи, вентилација и целиот објект.",
+      ["Сопствено производство на струја и помали сметки.",
+       "Одличен пар на топлинската пумпа.",
+       "Долг век на траење и мало одржување.",
+       "Можност за проширување и за складирање во батерии."]],
+    en: ["Photovoltaic Panels",
+      "Photovoltaic panels generate electricity from sunlight for self-consumption: for pumps, ventilation and the whole building.",
+      ["Own electricity generation and lower bills.",
+       "An excellent partner for a heat pump.",
+       "Long service life and low maintenance.",
+       "Room for expansion and battery storage."]]
+  },
+  pvt: {
+    mk: ["Хибридни ПВТ панели",
+      "ПВТ панелот истовремено произведува електрична и топлинска енергија од иста површина, па се добива повеќе енергија на помал простор.",
+      ["Струја и топлина од една иста површина.",
+       "Помалку заземен простор на покривот.",
+       "Ладењето на ќелиите ја подобрува електричната ефикасност.",
+       "Најдобро работи заедно со топлинска пумпа."]],
+    en: ["Hybrid PVT Panels",
+      "A PVT panel generates electricity and heat from the same surface at once, giving more energy from less space.",
+      ["Electricity and heat from a single surface.",
+       "Less roof area needed.",
+       "Cooling the cells improves electrical efficiency.",
+       "Works best together with a heat pump."]]
+  },
+  rekuperacija: {
+    mk: ["Рекуперативна вентилација (HRV/ERV)",
+      "Системот довлекува свеж воздух и одведува искористен, а рекуператорот ја враќа топлината, па се добива чист воздух без големи загуби на енергија.",
+      ["Постојан свеж воздух без отворање прозорци.",
+       "Враќање на значителен дел од топлината од одведениот воздух.",
+       "Помалку влага, мувла и загадувачи во просторот.",
+       "Филтрирање на надворешниот воздух (прашина, полен)."]],
+    en: ["Heat Recovery Ventilation (HRV/ERV)",
+      "The system brings in fresh air and extracts stale air, while the heat recovery unit returns the heat, delivering clean air without large energy losses.",
+      ["Constant fresh air without opening windows.",
+       "Recovers a significant share of heat from the extracted air.",
+       "Less moisture, mould and pollutants indoors.",
+       "Filtering of outdoor air (dust, pollen)."]]
+  },
+  kanalna: {
+    mk: ["Канална климатизација",
+      "Каналната климатизација го дистрибуира климатизираниот воздух преку изолирани канали скриени во таванот, со решетки или дифузори во просториите.",
+      ["Речиси невидлива: се гледаат само дифузорите.",
+       "Рамномерна температура во повеќе простории.",
+       "Една внатрешна единица за цел стан или објект.",
+       "Тивка работа."]],
+    en: ["Ducted Air Conditioning",
+      "Ducted air conditioning distributes conditioned air through insulated ducts hidden in the ceiling, with grilles or diffusers in each room.",
+      ["Almost invisible: only the diffusers show.",
+       "Even temperature across several rooms.",
+       "A single indoor unit for a whole apartment or building.",
+       "Quiet operation."]]
+  },
+  vrf: {
+    mk: ["VRF / VRV системи",
+      "VRF/VRV е централизиран инвертерски систем со една надворешна и повеќе внатрешни единици, со променлив проток на ладилен медиум.",
+      ["Независно управување по простории.",
+       "Висока ефикасност и при делумно оптоварување.",
+       "Погоден за хотели, канцеларии и поголеми објекти.",
+       "Една надворешна единица, па е потребно помалку простор."]],
+    en: ["VRF / VRV Systems",
+      "VRF/VRV is a centralised inverter system with one outdoor unit and several indoor units, using a variable refrigerant flow.",
+      ["Independent control for each room.",
+       "High efficiency even at partial load.",
+       "Suited to hotels, offices and larger buildings.",
+       "A single outdoor unit, so less space is needed."]]
+  },
+  split: {
+    mk: ["Сплит и мулти-сплит системи",
+      "Сплит системот има една внатрешна и една надворешна единица, а мулти-сплит поврзува повеќе внатрешни единици на една надворешна.",
+      ["Флексибилно решение за станови и канцеларии.",
+       "Една надворешна единица за повеќе простории.",
+       "Инвертерска технологија за ладење и греење.",
+       "Брза и едноставна монтажа."]],
+    en: ["Split and Multi-Split Systems",
+      "A split system has one indoor and one outdoor unit, while a multi-split connects several indoor units to a single outdoor unit.",
+      ["A flexible solution for apartments and offices.",
+       "One outdoor unit serving several rooms.",
+       "Inverter technology for cooling and heating.",
+       "Quick and simple installation."]]
+  },
+  vodovod: {
+    mk: ["Внатрешна водоводна мрежа",
+      "Внатрешната водоводна мрежа ја доведува ладната и топлата вода до сите потрошувачи во објектот, со материјали отпорни на притисок и корозија.",
+      ["Квалитетни сертифицирани цевки и фитинзи.",
+       "Изолација против кондензација и топлински загуби.",
+       "Испитување на притисок и непропустливост.",
+       "Правилно димензионирање за стабилен проток."]],
+    en: ["Internal Water Supply Network",
+      "The internal water supply network delivers cold and hot water to every outlet in the building, using materials resistant to pressure and corrosion.",
+      ["Quality certified pipes and fittings.",
+       "Insulation against condensation and heat loss.",
+       "Pressure and leak-tightness testing.",
+       "Correct sizing for stable flow."]]
+  },
+  kanalizacija: {
+    mk: ["Канализациони системи",
+      "Канализацијата ја одведува отпадната вода од објектот. Се изведува со акустично изолирани PP системи и HDPE мрежи.",
+      ["Тивка работа и намалена бучава во ѕидовите.",
+       "Отпорност на хемикалии и температура.",
+       "Правилен пад и вентилација на вертикалите.",
+       "Долготрајност и водонепропустливост."]],
+    en: ["Drainage Systems",
+      "Drainage carries wastewater out of the building. It is built with acoustically insulated PP systems and HDPE networks.",
+      ["Quiet operation and reduced noise in walls.",
+       "Resistance to chemicals and temperature.",
+       "Correct gradient and venting of stacks.",
+       "Durability and watertightness."]]
+  },
+  hidrofor: {
+    mk: ["Хидрофорни постројки и хидранти",
+      "Хидрофорот одржува стабилен притисок на водата на сите катови, а хидрантската мрежа обезбедува противпожарна заштита.",
+      ["Автоматска работа со зададен притисок.",
+       "Стабилна вода и на највисоките катови.",
+       "Резервни пумпи за поголема сигурност.",
+       "Посебни агрегати за противпожарната хидрантска мрежа."]],
+    en: ["Booster Stations and Hydrants",
+      "A booster station keeps water pressure stable on every floor, while the hydrant network provides fire protection.",
+      ["Automatic operation at a set pressure.",
+       "Steady water supply even on the top floors.",
+       "Standby pumps for extra reliability.",
+       "Dedicated pump sets for the fire hydrant network."]]
+  }
+};
+/* ДОПОЛНИТЕЛНИ ТЕМИ */
+Object.assign(DETAILS, {
+  tavansko: {
+    mk: ["Таванско греење",
+      "Таванското греење вградува цевки во таванот, од каде топлината се шири како зрачење кон просторијата. Работи со ниска температура на водата, а истиот систем може да се користи и за ладење во лето.",
+      ["Рамномерна зрачна топлина од горе, без видливи грејни тела.",
+       "Брза реакција, бидејќи таванот акумулира помалку топлина од подот.",
+       "Слободен под: можност за секаков вид подлога и распоред на мебел.",
+       "Можност за ладење во лето, со контрола на кондензацијата."]],
+    en: ["Ceiling Heating",
+      "Ceiling heating embeds pipes in the ceiling, from where heat radiates down into the room. It runs on low water temperatures, and the same system can also be used for cooling in summer.",
+      ["Even radiant warmth from above, with no visible heaters.",
+       "Quick response, since a ceiling stores less heat than a floor.",
+       "A free floor: any floor finish and furniture layout is possible.",
+       "Option of summer cooling, with condensation control."]]
+  },
+  mehanicka: {
+    mk: ["Принудна механичка вентилација",
+      "Вентилаторите и мрежата од канали довлекуваат свеж воздух и одведуваат искористен воздух во големи простори како хали, канцеларии и магацини.",
+      ["Контролиран проток на воздух во секоја зона.",
+       "Квалитет на воздухот според пропишаните норми за вентилација.",
+       "Канали од поцинкуван лим со изолација за помали загуби.",
+       "Можност за надградба со рекуператор за враќање на топлината."]],
+    en: ["Mechanical Ventilation",
+      "Fans and a duct network bring in fresh air and extract stale air in large spaces such as halls, offices and warehouses.",
+      ["Controlled airflow in every zone.",
+       "Air quality in line with the prescribed ventilation standards.",
+       "Insulated galvanised ducts for lower losses.",
+       "Can be upgraded with a heat recovery unit."]]
+  },
+  rooftop: {
+    mk: ["Покривни климатизациони единици (Rooftop)",
+      "Rooftop единиците се компактни машини поставени на покривот и поврзани со канали што го носат климатизираниот воздух во објектот. Погодни се за хали, продавници и деловни објекти.",
+      ["Не заземаат простор во внатрешноста на објектот.",
+       "Една единица опслужува поголем простор преку каналска мрежа.",
+       "Лесен пристап за сервис од покривот.",
+       "Можност за довод на свеж воздух, зависно од моделот."]],
+    en: ["Rooftop Air Conditioning Units",
+      "Rooftop units are compact machines installed on the roof and connected to ducts that carry conditioned air into the building. They suit halls, shops and commercial buildings.",
+      ["They take up no space inside the building.",
+       "One unit serves a large area through a duct network.",
+       "Easy servicing access from the roof.",
+       "Fresh-air intake is possible, depending on the model."]]
+  },
+  kanali: {
+    mk: ["Монтажа на вентилациски канали",
+      "Вентилациските канали од поцинкуван лим, со или без топлинска изолација, се изведуваат според проект и се закачуваат на таванот или на носечката конструкција.",
+      ["Димензионирање според потребниот проток на воздух.",
+       "Топлинска изолација против загуби и кондензација.",
+       "Добра заптивеност на спојките за помали загуби на воздух.",
+       "Носачи со вибро-изолација за тивка работа."]],
+    en: ["Ventilation Duct Installation",
+      "Galvanised sheet-metal ducts, with or without thermal insulation, are installed according to the design and hung from the ceiling or the supporting structure.",
+      ["Sized for the required airflow.",
+       "Thermal insulation against losses and condensation.",
+       "Well-sealed joints for lower air leakage.",
+       "Hangers with vibration isolation for quiet operation."]]
+  },
+  difuzori: {
+    mk: ["Дифузори, клапни и контрола",
+      "Дифузорите го распределуваат воздухот во просторијата, а клапните го регулираат протокот или служат за противпожарна заштита. Редовната контрола обезбедува сигурна работа.",
+      ["Рамномерна дистрибуција на воздухот без промаја.",
+       "Регулациони и противпожарни клапни во каналската мрежа.",
+       "Редовна проверка и чистење на дифузори, канали и филтри.",
+       "Мерење и балансирање на протокот при пуштање во работа."]],
+    en: ["Diffusers, Dampers and Inspection",
+      "Diffusers distribute air in the room, while dampers regulate the flow or provide fire protection. Regular inspection ensures reliable operation.",
+      ["Even air distribution without draughts.",
+       "Control and fire dampers within the duct network.",
+       "Regular inspection and cleaning of diffusers, ducts and filters.",
+       "Airflow measurement and balancing at commissioning."]]
+  },
+  solar_shema: {
+    mk: ["Шема на соларен систем за топла вода",
+      "Колекторите на покривот ја загреваат течноста што циркулира преку пумпна група до соларен бојлер. Регулаторот ја вклучува пумпата кога колекторот е потопол од бојлерот.",
+      ["Пумпна група со вентили, мерач на проток и сигурносен вентил.",
+       "Експанзионен сад што ги презема промените на притисокот.",
+       "Бојлер со два серпентини: долниот за солар, горниот за дополнителен извор (котел).",
+       "Сензори и регулатор за автоматска и безбедна работа."]],
+    en: ["Solar Hot Water System Diagram",
+      "Rooftop collectors heat the fluid that circulates through a pump station to a solar cylinder. The controller runs the pump when the collector is warmer than the cylinder.",
+      ["Pump station with valves, flow meter and safety valve.",
+       "Expansion vessel absorbing pressure changes.",
+       "Cylinder with two coils: the lower for solar, the upper for a backup source (boiler).",
+       "Sensors and a controller for automatic, safe operation."]]
+  },
+  sanitarna: {
+    mk: ["Монтажа на санитарна арматура",
+      "Тушевите, мијалниците, батериите и санитарните елементи се монтираат по завршената цевна мрежа, со точни мерки, заптивање и тестирање.",
+      ["Прецизно позиционирање и израмнување.",
+       "Квалитетни приклучоци и заптивки против протекување.",
+       "Проба на функционалност и непропустливост по монтажата.",
+       "Решение прилагодено на изгледот и функцијата на бањата."]],
+    en: ["Sanitary Fittings Installation",
+      "Showers, washbasins, taps and sanitary ware are fitted once the pipework is complete, with precise measurements, sealing and testing.",
+      ["Precise positioning and levelling.",
+       "Quality connections and seals to prevent leaks.",
+       "Function and leak-tightness test after installation.",
+       "A solution tailored to the look and use of the bathroom."]]
+  },
+  wc: {
+    mk: ["Вградно WC казанче (ѕидна монтажа)",
+      "Вградниот систем се состои од носечка челична рамка и скриено казанче во ѕидот, на кое се закачува висечка WC-шолја. Остануваат видливи само тастерот и шолјата.",
+      ["Чист изглед и полесно чистење на подот.",
+       "Двојно копче за испирање, со можност за заштеда на вода.",
+       "Висината на шолјата се прилагодува при монтажата.",
+       "Подлошки за звучна изолација и пристап за сервис преку тастерот."]],
+    en: ["Concealed WC Cistern (Wall-Hung)",
+      "A concealed system consists of a load-bearing steel frame and a cistern hidden in the wall, with a wall-hung toilet bowl fixed to it. Only the flush plate and the bowl stay visible.",
+      ["A clean look and easier floor cleaning.",
+       "Dual-flush button, allowing water savings.",
+       "Bowl height can be adjusted during installation.",
+       "Acoustic pads and service access through the flush plate."]]
+  },
+  slivnik: {
+    mk: ["Подни сливници",
+      "Подниот сливник ја одведува водата од туш-кабини и мокри простории. Современите скриени сливници имаат капак со плочка што се слева со подот.",
+      ["Правилен пад на подот кон сливникот за брзо одведување.",
+       "Сифон што спречува непријатни мириси.",
+       "Хидроизолација околу сливникот против протекување.",
+       "Лесно чистење и пристап за одржување."]],
+    en: ["Floor Drains",
+      "A floor drain carries water away from showers and wet rooms. Modern concealed drains have a tile-insert cover that blends into the floor.",
+      ["Correct floor slope towards the drain for fast run-off.",
+       "A trap that prevents unpleasant odours.",
+       "Waterproofing around the drain to prevent leaks.",
+       "Easy cleaning and maintenance access."]]
+  }
+});
+/* ЅИДНО ГРЕЕЊЕ */
+Object.assign(DETAILS, {
+  zidno: {
+    mk: ["Ѕидно греење",
+      "Ѕидното греење ги вградува цевките во ѕидот, под малтерот, па целиот ѕид станува мазна зрачна површина. Работи со ниска температура на водата и добро се комбинира со подното греење.",
+      ["Пријатна зрачна топлина по целата висина на просторијата.",
+       "Ниска температура на водата, што е погодно за топлински пумпи.",
+       "Нема видливи грејни тела, па просторијата останува слободна.",
+       "Положбата на цевките се планира однапред за да се избегне дупчење при закачување на слики и мебел."]],
+    en: ["Wall Heating",
+      "Wall heating embeds pipes in the wall, under the plaster, so the whole wall becomes a smooth radiant surface. It runs on low water temperatures and combines well with underfloor heating.",
+      ["Pleasant radiant warmth over the full height of the room.",
+       "Low water temperature, which suits heat pumps.",
+       "No visible heaters, so the room stays uncluttered.",
+       "Pipe positions are planned in advance to avoid drilling when hanging pictures and furniture."]]
+  }
+});
+const DT_EXTRA = {
+  mk: { "dt-feat-label": "Особености", "back-prev": "Назад" },
+  en: { "dt-feat-label": "Key features", "back-prev": "Back" }
+};
+['mk', 'en'].forEach(l => Object.assign(i18n[l], DT_EXTRA[l]));
+
+/* Генерирање на подстраниците: секоја слика → по една подстраница #detail-<клуч> */
+const DETAIL_PARENT = {};
+Object.entries(pageImages).forEach(([parent, im]) => {
+  [im.hero, ...im.gallery].forEach(([src, d]) => { DETAIL_PARENT[d] = { parent, src }; });
+});
+Object.entries(DETAILS).forEach(([d, o]) => {
+  if (!DETAIL_PARENT[d]) return;
+  const pre = 'dt-' + d;
+  pages['detail-' + d] = [pre, ['p','p1'], ['h','feat'], ['q',1,4]];
+  pageImages['detail-' + d] = { hero: [DETAIL_PARENT[d].src, null], gallery: [] };
+  ['mk', 'en'].forEach(l => {
+    const [title, intro, bullets] = o[l];
+    i18n[l][pre + '-title'] = title;
+    i18n[l][pre + '-p1'] = intro;
+    i18n[l][pre + '-feat'] = DT_EXTRA[l]['dt-feat-label'];
+    bullets.forEach((b, i) => { i18n[l][pre + '-li' + (i + 1)] = b; });
+  });
+});
+
 
 function buildPages() {
   const t = (tag, key, cls) => `<${tag}${cls ? ' class="' + cls + '"' : ''} data-i18n="${key}"></${tag}>`;
   let html = '';
   for (const [id, [pre, ...blocks]] of Object.entries(pages)) {
     const imgs = pageImages[id];
+    const fig = ([src, d]) => `<figure class="media-card"><img src="${src}" alt="" data-i18n-alt="${d ? 'dt-' + d + '-title' : pre + '-title'}" loading="lazy">` +
+      (d ? `<figcaption><span class="mc-title" data-i18n="dt-${d}-title"></span><a class="mc-more" href="#detail-${d}" data-i18n="btn-details"></a></figcaption>` : '') + `</figure>`;
     let imgHtml = '';
     if (imgs) {
-      if (typeof imgs.hero === 'object') {
-        imgHtml += `<img class="page-hero-img" src="${imgs.hero.mk}" data-src-mk="${imgs.hero.mk}" data-src-en="${imgs.hero.en}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
-      } else {
-        imgHtml += `<img class="page-hero-img" src="${imgs.hero}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
-      }
-      if (imgs.gallery.length) {
-        imgHtml += '<div class="page-gallery">';
-        imgs.gallery.forEach((src) => {
-          imgHtml += `<img src="${src}" alt="" data-i18n-alt="${pre}-img-alt" loading="lazy">`;
-        });
-        imgHtml += '</div>';
-      }
+      imgHtml += fig(imgs.hero);
+      if (imgs.gallery.length) imgHtml += '<div class="page-gallery">' + imgs.gallery.map(fig).join('') + '</div>';
     }
 
     let body = '';
@@ -634,7 +1072,7 @@ function buildPages() {
     html += `<div id="view-${id}" class="view-section">
       ${starsHtml}
       <div class="page-container">
-      <a class="back-nav" href="#systems">&larr; <span data-i18n="back-home"></span></a>
+      <a class="back-nav" href="${id.startsWith('detail-') ? '#' + DETAIL_PARENT[id.slice(7)].parent : '#systems'}">&larr; <span data-i18n="${id.startsWith('detail-') ? 'back-prev' : 'back-home'}"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
       <div class="page-text-content">${body}</div>
       <div class="page-cta-box"><span data-i18n="page-cta-text"></span>
@@ -792,7 +1230,7 @@ const lerp = (a, b, k) => a + (b - a) * k;
 let fxRaf = 0, fxUntil = 0;
 
 function registerFx() {
-  [['.hero','hero'],['.system-card','card'],['.page-hero-img','img'],['.page-gallery img','img']].forEach(([sel, kind]) => {
+  [['.hero','hero'],['.system-card','card'],['.media-card','img']].forEach(([sel, kind]) => {
     document.querySelectorAll(sel).forEach(el => {
       el.classList.add('fx');
       fxItems.push({ el, p: FX[kind], v: null });
