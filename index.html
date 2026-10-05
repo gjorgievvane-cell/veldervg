@@ -56,7 +56,7 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 
 /* SYSTEM CARDS */
 .systems-wrapper{max-width:820px;margin:0 auto;padding:60px 20px 100px;display:flex;flex-direction:column;gap:50px}
-.system-card{display:block;color:inherit;text-decoration:none;background:var(--bg-card);border:1px solid rgba(0,210,255,calc(.08 + .92*var(--f,0)));border-radius:24px;padding:42px;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 calc(35px*var(--f,0)) rgba(0,210,255,calc(.45*var(--f,0))),0 calc(10px + 10px*var(--f,0)) calc(30px + 10px*var(--f,0)) rgba(0,0,0,.5)}
+.system-card{position:relative;display:block;color:inherit;text-decoration:none;background:rgba(15,23,42,.82);border:1px solid var(--border-color);border-radius:24px;padding:42px;box-shadow:0 14px 36px rgba(0,0,0,.5)}
 .system-card:focus-visible{border-color:var(--accent-blue)}
 .card-header-flex{display:flex;align-items:center;gap:16px;margin-bottom:16px}
 .card-icon{font-size:2.2rem;line-height:1}
@@ -87,9 +87,10 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .page-cta-box span{color:var(--text-muted);font-weight:300;font-size:1.02rem}
 
 /* PAGE IMAGES — наредени една под друга, поголема резолуција на приказ */
-.media-card{margin:40px 0;border-radius:22px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid rgba(0,210,255,calc(.08 + .92*var(--f,0)));box-shadow:0 0 calc(42px*var(--f,0)) rgba(0,210,255,calc(.45*var(--f,0))),0 calc(20px + 8px*var(--f,0)) calc(50px + 10px*var(--f,0)) rgba(0,0,0,.55)}
-.media-card img{display:block;width:100%;max-height:640px;object-fit:contain}
-.media-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px 18px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--border-color);background:rgba(5,8,17,.6)}
+.media-card{position:relative;margin:40px 0;border-radius:22px;background:rgba(255,255,255,.03);border:1px solid var(--border-color);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.media-card img{display:block;width:100%;max-height:640px;object-fit:contain;border-radius:21px 21px 0 0}
+.media-card img:last-child{border-radius:21px}
+.media-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px 18px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--border-color);background:rgba(5,8,17,.6);border-radius:0 0 21px 21px}
 .mc-title{font-size:1.05rem;font-weight:600;letter-spacing:-.005em;color:#fff}
 .mc-more{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 22px;border-radius:980px;background:linear-gradient(135deg,#00d2ff 0%,#0072ff 100%);color:#fff;text-decoration:none;font-weight:600;font-size:.85rem;box-shadow:0 4px 16px rgba(0,210,255,.28);transition:transform .3s,box-shadow .3s}
 .mc-more::after{content:"\2192";transition:transform .3s}
@@ -104,8 +105,25 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 
 /* SCROLL-ВРЗАН "APPLE" ЗУМ: елементот во центарот на екранот се приближува кон корисникот,
    претходниот се враќа назад во позадина. Вредностите ги поставува JS (transform/opacity/--f) во секој кадар. */
-.fx{will-change:transform,opacity;transform-origin:50% 50%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-@media (prefers-reduced-motion:reduce){.fx{transform:none!important;opacity:1!important;--f:.6}}
+.fx{will-change:transform,opacity;transform-origin:50% 50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;--s-in:.8;--s-out:.94;--o-min:.12;--f:0}
+.system-card.fx{--s-in:.9;--s-out:.96;--o-min:.25}
+.hero.fx{--s-in:1;--s-out:1;--o-min:0}
+/* неонска рамка + сјај: посебен слој чија провидност (opacity) се менува → мазно, без повторно исцртување */
+.system-card.fx::after,.media-card.fx::after{content:"";position:absolute;inset:-1px;border-radius:inherit;border:1px solid var(--accent-blue);box-shadow:0 0 42px var(--accent-glow);pointer-events:none;opacity:var(--f,0)}
+@keyframes fx-view{
+  0%{opacity:var(--o-min);transform:scale(var(--s-in))}
+  40%,60%{opacity:1;transform:scale(1)}
+  100%{opacity:var(--o-min);transform:scale(var(--s-out))}
+}
+@keyframes fx-glow{0%,30%{opacity:0}42%,58%{opacity:1}70%,100%{opacity:0}}
+@keyframes fx-hero{from{opacity:1}to{opacity:0}}
+/* Природни CSS scroll-driven анимации (Chrome/Edge/Safari): работат на графичката картичка, затоа се целосно флуидни */
+@supports (animation-timeline:view()){
+  .fx{view-timeline:--fx block;animation:fx-view cubic-bezier(.45,.05,.35,1) both;animation-timeline:--fx;animation-range:cover 0% cover 100%}
+  .system-card.fx::after,.media-card.fx::after{animation:fx-glow linear both;animation-timeline:--fx;animation-range:cover 0% cover 100%}
+  .hero.fx{view-timeline:none;animation:fx-hero linear both;animation-timeline:view();animation-range:exit 0% exit 80%}
+}
+@media (prefers-reduced-motion:reduce){.fx,.fx::after{animation:none!important}.fx{transform:none!important;opacity:1!important}.fx::after{opacity:0!important}}
 
 /* CONTACT */
 .contact-section{padding:90px 20px 100px;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(0,210,255,.08) 0%,transparent 70%);border-top:1px solid var(--border-color)}
@@ -578,7 +596,7 @@ const pages = {
 
 /* СЛИКИ ЗА СЕКОЈА ПОДСТРАНИЦА (датотеките се поставуваат покрај index.html) */
 const pageImages = {
-  toplifikacija: { hero: ['podno-greenje.jpg','podno'], gallery: [['zidno-greenje.jpg','zidno'],['tavansko-greenje.jpg','tavansko'],['podstanica.jpg','podstanica'],['radijator.jpg','radijatori'],['ventilokonvektor.jpg','ventilokonvektori']] },
+  toplifikacija: { hero: ['radijator.jpg','radijatori'], gallery: [['podno-greenje.jpg','podno'],['zidno-greenje.jpg','zidno'],['tavansko-greenje.jpg','tavansko'],['ventilokonvektor.jpg','ventilokonvektori'],['podstanica.jpg','podstanica']] },
   geothermal:    { hero: ['geotermalno-zemja-voda.jpg','zemja_voda'], gallery: [['geotermalno-voda-voda.jpg','voda_voda']] },
   heatpumps:     { hero: ['toplinska-pumpa-vozduh-voda.jpg','hp_vozduh'], gallery: [['inverter-klima.jpg','inverter'],['multi-split.jpg','split']] },
   solar:         { hero: ['solar-kolektori.jpg','solar_kolektori'], gallery: [['fotovoltaici.jpg','fotovoltaici'],['solarna-shema.jpg','solar_shema']] },
@@ -1212,16 +1230,19 @@ function observeReveals() {
 }
 
 /* ===== SCROLL-ВРЗАНА ТРАНЗИЦИЈА (apple.com стил) =====
-   x = растојание на центарот на елементот од центарот на екранот (во висини на екранот):
-   x > 0  → елементот допрва доаѓа од долу: мал и проѕирен, "се приближува" кон екранот додека не стигне во центар
-   x = 0  → скала 1, полна јасност, неонска рамка
-   x < 0  → елементот заминува нагоре: останува на иста големина и само избледува (fade) во однос на центарот
-   Бидејќи сè е функција од позицијата на скролот, ефектот е совршено реверзибилен (скрол надолу и нагоре). */
+   Секој елемент (слика, картичка) има напредок 0→1 додека минува низ екранот:
+   0%   → допрва се појавува од долу: помал и избледен
+   40–60% → во центарот на екранот: полна големина, полна јасност, неонска рамка
+   100% → излегува нагоре: лесно помал и избледен (fade) во однос на центарот
+   Сè е функција од позицијата на скролот, па работи подеднакво и надолу и нагоре. */
 const reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
+/* Ако прелистувачот ги поддржува CSS scroll-driven анимациите, ефектот го прави CSS (најмазно).
+   Овој JS е само резервна верзија (на пр. Firefox) со истата крива. */
+const nativeFx = !!(window.CSS && CSS.supports && CSS.supports('animation-timeline', 'view()'));
 const FX = {
-  hero: { sIn:0,   sOut:0, span:1,   oInMin:1,   oInStart:0,   oInSpan:1,   oOutMin:0,   oOutStart:.05, oOutSpan:.7,  fSpan:.5  },
-  card: { sIn:.07, sOut:0, span:.55, oInMin:.25, oInStart:.05, oInSpan:.5,  oOutMin:.25, oOutStart:.05, oOutSpan:.5,  fSpan:.35 },
-  img:  { sIn:.12, sOut:0, span:.55, oInMin:.12, oInStart:.05, oInSpan:.55, oOutMin:.12, oOutStart:.05, oOutSpan:.55, fSpan:.4  }
+  hero: { sIn: 1,   sOut: 1,   oMin: 0,    hero: true },
+  card: { sIn: .9,  sOut: .96, oMin: .25 },
+  img:  { sIn: .8,  sOut: .94, oMin: .12 }
 };
 const fxItems = [];
 const clamp01 = x => Math.min(1, Math.max(0, x));
@@ -1233,48 +1254,48 @@ function registerFx() {
   [['.hero','hero'],['.system-card','card'],['.media-card','img']].forEach(([sel, kind]) => {
     document.querySelectorAll(sel).forEach(el => {
       el.classList.add('fx');
-      fxItems.push({ el, p: FX[kind], v: null });
+      fxItems.push({ el, p: FX[kind] });
     });
   });
 }
-function fxSchedule() { if (!fxRaf && !reduceMotion) fxRaf = requestAnimationFrame(fxFrame); }
+function fxSchedule() { if (!fxRaf && !reduceMotion && !nativeFx) fxRaf = requestAnimationFrame(fxFrame); }
 function fxHold(ms) { fxUntil = Math.max(fxUntil, performance.now() + ms); fxSchedule(); }
-function fxReset() { fxItems.forEach(it => { it.v = null; }); fxHold(1100); }
+function fxReset() { fxHold(1100); }
+
+/* истите клучни точки како во CSS: 0% мало/проѕирно → 40–60% полна големина → 100% избледено */
+function fxCurve(p, k) {
+  let s, o;
+  if (p <= .4)      { const e = smooth(clamp01(p / .4));            s = lerp(k.sIn, 1, e); o = lerp(k.oMin, 1, e); }
+  else if (p <= .6) { s = 1; o = 1; }
+  else              { const e = smooth(clamp01((p - .6) / .4));     s = lerp(1, k.sOut, e); o = lerp(1, k.oMin, e); }
+  const g = smooth(clamp01((p - .30) / .12)) * (1 - smooth(clamp01((p - .58) / .12)));
+  return [s, o, g];
+}
 
 function fxFrame() {
   fxRaf = 0;
-  const vh = innerHeight || 1, mid = vh / 2;
-  let busy = false;
+  const vh = innerHeight || 1;
   const jobs = [];
-  /* 1) читање (без mixing со запишување → нема layout thrash) */
   for (const it of fxItems) {
     const el = it.el;
-    if (!el.getClientRects().length) { it.v = null; continue; } /* скриена подстраница */
+    if (!el.getClientRects().length) continue;               /* скриена подстраница */
     const r = el.getBoundingClientRect();
-    const x = ((r.top + r.bottom) / 2 - mid) / vh;
-    if (it.v !== null && (r.bottom < -vh || r.top > 2 * vh)) { it.v = x; continue; } /* далеку надвор од екранот */
-    it.v = x; /* директна врска со скролот (без доцнење) → "потешко", контролирано чувство */
-    jobs.push(it);
+    const h = el.offsetHeight || r.height;
+    const cy = (r.top + r.bottom) / 2;                       /* центарот не се менува со scale */
+    if (it.p.hero) { jobs.push([el, 1, 1 - smooth(clamp01((90 - (cy - h / 2)) / (h * .8))), 0]); continue; }
+    const top = cy - h / 2;
+    const prog = (vh - top) / (vh + h);                       /* 0 = допира долу, 1 = целосно излегол горе */
+    if (prog < -.2 || prog > 1.2) continue;
+    const c = fxCurve(clamp01(prog), it.p);
+    jobs.push([el, c[0], c[1], c[2]]);
   }
-  /* 2) запишување */
-  for (const it of jobs) {
-    const p = it.p, x = it.v;
-    let s, o;
-    if (x >= 0) {
-      s = 1 - p.sIn * smooth(clamp01(x / p.span));
-      o = lerp(1, p.oInMin, smooth(clamp01((x - p.oInStart) / p.oInSpan)));
-    } else {
-      const a = -x;
-      s = 1 - p.sOut * smooth(clamp01(a / p.span));
-      o = lerp(1, p.oOutMin, smooth(clamp01((a - p.oOutStart) / p.oOutSpan)));
-    }
-    const f = 1 - smooth(clamp01(Math.abs(x) / p.fSpan));
-    const st = it.el.style;
+  for (const [el, s, o, g] of jobs) {
+    const st = el.style;
     st.transform = 'scale(' + s.toFixed(4) + ')';
     st.opacity = o.toFixed(3);
-    st.setProperty('--f', f.toFixed(3));
+    st.setProperty('--f', g.toFixed(3));
   }
-  if (busy || performance.now() < fxUntil) fxSchedule();
+  if (performance.now() < fxUntil) fxSchedule();
 }
 addEventListener('scroll', fxSchedule, { passive: true });
 addEventListener('resize', () => fxHold(300));
