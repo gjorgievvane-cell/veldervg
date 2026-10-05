@@ -433,6 +433,8 @@ mk: {
 "plumb-li8-desc":"Носечка рамка и скриено казанче во ѕидот за висечка WC-шолја.",
 "plumb-li9-title":"Подни сливници:",
 "plumb-li9-desc":"Одведување на водата од туш-кабини и мокри простории, со правилен пад и хидроизолација.",
+"plumb-li10-title":"Комплетна ВиК инсталација:",
+"plumb-li10-desc":"Усогласени мрежи за довод на вода, одвод на отпадна вода и вентилација на вертикалите.",
 "plumb-strong2":"Изведбени стандарди и квалитет:",
 "plumb-li5":"Монтажа на потисни цевоводи и приклучоци според проектот.",
 "plumb-li6":"Испитување на притисок и непропустливост пред пуштање во употреба.",
@@ -577,6 +579,8 @@ en: {
 "plumb-li8-desc":"A load-bearing frame and a cistern hidden in the wall for a wall-hung toilet.",
 "plumb-li9-title":"Floor Drains:",
 "plumb-li9-desc":"Carrying water away from showers and wet rooms, with correct slope and waterproofing.",
+"plumb-li10-title":"Complete Plumbing Installation:",
+"plumb-li10-desc":"Coordinated networks for water supply, wastewater drainage and stack ventilation.",
 "plumb-strong2":"Execution Standards and Quality:",
 "plumb-li5":"Installation of pressure pipelines and connections according to the design.",
 "plumb-li6":"Pressure and leak-tightness testing before commissioning.",
@@ -627,7 +631,7 @@ const pages = {
   heatpumps:     ['hp',    ['p','p1'], ['h','strong1'], ['p','p2'], ['l',1,2], ['h','strong2'], ['l',3,5]],
   solar:         ['solar', ['p','p1'], ['p','p2'], ['h','strong1'], ['l',1,5]],
   ventilation:   ['vent',  ['p','p1'], ['h','strong1'], ['l',[1,8,9,10]], ['h','strong2'], ['l',[2,3]], ['h','strong3'], ['l',4,7]],
-  plumbing:      ['plumb', ['p','p1'], ['h','strong1'], ['l',[7,8,9,1,2,3,4]], ['h','strong2'], ['q',5,6]]
+  plumbing:      ['plumb', ['p','p1'], ['h','strong1'], ['l',[10,7,8,9,1,2,3,4]], ['h','strong2'], ['q',5,6]]
 };
 
 /* СЛИКИ ЗА СЕКОЈА ПОДСТРАНИЦА (датотеките се поставуваат покрај index.html) */
@@ -637,7 +641,7 @@ const pageImages = {
   heatpumps:     { hero: ['toplinska-pumpa-vozduh-voda.jpg','hp_vozduh'], gallery: [['inverter-klima.jpg','inverter'],['multi-split.jpg','split']] },
   solar:         { hero: ['solar-kolektori.jpg','solar_kolektori'], gallery: [['fotovoltaici.jpg','fotovoltaici'],['solarna-shema.jpg','solar_shema']] },
   ventilation:   { hero: ['mehanicka-ventilacija.jpg','mehanicka'], gallery: [['rooftop-edinici.jpg','rooftop'],['ventilaciski-kanali.jpg','kanali'],['difuzori-klapni.jpg','difuzori']] },
-  plumbing:      { hero: ['sanitarna-montaza.jpg','sanitarna'], gallery: [['wc-vgradno-kazance.jpg','wc'],['podni-slivnici.jpg','slivnik']] }
+  plumbing:      { hero: ['vik-shema.jpg','vik_shema'], gallery: [['sanitarna-montaza.jpg','sanitarna'],['wc-vgradno-kazance.jpg','wc'],['podni-slivnici.jpg','slivnik']] }
 };
 
 /* ДЕТАЛНИ ПОДСТРАНИЦИ (резиме) ЗА СЕКОЈА СЛИКА: [наслов/натпис, вовед, [4 особености]] за МК и EN.
@@ -1055,6 +1059,23 @@ Object.assign(DETAILS, {
        "Low water temperature, which suits heat pumps.",
        "No visible heaters, so the room stays uncluttered.",
        "Pipe positions are planned in advance to avoid drilling when hanging pictures and furniture."]]
+  }
+});
+/* ШЕМА НА ВиК */
+Object.assign(DETAILS, {
+  vik_shema: {
+    mk: ["Шема на водоводна и канализациона инсталација",
+      "Шемата ги прикажува трите поврзани мрежи во објектот: довод на ладна и топла вода, одвод на отпадна вода и вентилација на вертикалите. Секоја мрежа се изведува според проект и според распоредот на санитарните уреди по катови.",
+      ["Довод на ладна и топла вода до сите санитарни уреди и потрошувачи.",
+       "Одвод на отпадната вода преку вертикали и хоризонтални водови со правилен пад.",
+       "Вентилација на вертикалите над кров за правилна работа на сифоните.",
+       "Усогласен распоред на мрежите по катови, со пристап за одржување."]],
+    en: ["Water Supply and Drainage Installation Layout",
+      "The diagram shows the three connected networks in a building: cold and hot water supply, wastewater drainage and stack ventilation. Each network is installed according to the design and the layout of sanitary fixtures on each floor.",
+      ["Cold and hot water supplied to all fixtures and outlets.",
+       "Wastewater carried away through stacks and horizontal runs with correct slope.",
+       "Stack ventilation above the roof for correct trap operation.",
+       "Coordinated layout of the networks on each floor, with maintenance access."]]
   }
 });
 const DT_EXTRA = {
