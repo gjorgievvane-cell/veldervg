@@ -1092,8 +1092,8 @@ function buildPages() {
       <a class="back-nav" href="${id.startsWith('detail-') ? '#' + DETAIL_PARENT[id.slice(7)].parent : '#systems'}">&larr; <span data-i18n="${id.startsWith('detail-') ? 'back-prev' : 'back-home'}"></span></a>
       ${t('h1', pre + '-title', 'page-title')}
       <div class="page-text-content">${body}</div>
-      ${id === 'about' ? '' : `<div class="page-cta-box"><span data-i18n="page-cta-text"></span>
-        <a href="#contact" class="btn-cta" data-i18n="modal-cta"></a></div>`}
+      ${id.startsWith('detail-') ? `<div class="page-cta-box"><span data-i18n="page-cta-text"></span>
+        <a href="#contact" class="btn-cta" data-i18n="modal-cta"></a></div>` : ''}
     </div></div>`;
   }
   document.getElementById('subpages').innerHTML = html;
