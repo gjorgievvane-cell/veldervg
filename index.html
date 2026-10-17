@@ -96,6 +96,7 @@ header{background:rgba(5,8,17,.8);-webkit-backdrop-filter:blur(20px);backdrop-fi
 .mc-more:hover{background:var(--btn-hover)}
 .mc-more:hover::after{transform:translateX(3px)}
 .ref-link{display:block;border-radius:inherit}
+.page-text-content p.ref-meta{font-size:.95rem;color:var(--text-muted);margin-top:-8px}
 .page-text-content h3.ref-name{font-size:1.2rem;font-weight:600;color:#fff;margin:48px 0 10px}
 .page-gallery{display:flex;flex-direction:column;gap:56px;margin:40px 0}
 .page-gallery .media-card{margin:0}
@@ -315,12 +316,14 @@ mk: {
 "about-p4":"Вашиот објект заслужува изведба со која ќе бидете спокојни во годините што доаѓаат.",
 "ref-title":"Референци",
 "ref-intro":"Дел од објектите во кои ги изведовме инсталациите.",
-"ref1-title":"Објект во Аеродром, Скопје",
+"ref1-title":"Објект Аеродром, Скопје",
 "ref1-desc":"Изведба на систем за топловодно греење.",
-"ref2-title":"Станбена зграда, Скопје",
+"ref2-title":"Објект Автокоманда, Скопје",
 "ref2-desc":"Изведба на топловодно радијаторско греење со вентили Comap Auto-Sar за автоматска регулација на протокот низ системот.",
+"ref1-meta":"Инвеститор: Бауер БГ ДООЕЛ  ·  Изведувач: Велдер ВГ Трејдинг",
+"ref2-meta":"Инвеститор: Бауер БГ ДООЕЛ  ·  Изведувач: Велдер ВГ Трејдинг",
 "ref1-img-alt":"Објект во изградба во Аеродром, Скопје",
-"ref2-img-alt":"Референтен проект: станбена зграда во Скопје со вентили Auto-Sar",
+"ref2-img-alt":"Референтен проект: станбена зграда Автокоманда, Скопје, со вентили Auto-Sar",
 
 "topli-title":"Централно топловодно греење",
 "topli-p1":"Централното топловодно греење е еден од најраспространетите и најсигурните системи за греење на станбени, деловни и индустриски објекти. Опремата за прецизно хидраулично балансирање и регулација овозможува ефикасно и економично користење.",
@@ -472,12 +475,14 @@ en: {
 "about-p4":"Your building deserves an installation that gives you peace of mind for the years ahead.",
 "ref-title":"References",
 "ref-intro":"A selection of buildings where we carried out the installations.",
-"ref1-title":"Building in Aerodrom, Skopje",
+"ref1-title":"Aerodrom Building, Skopje",
 "ref1-desc":"Installation of a hot-water heating system.",
-"ref2-title":"Residential building, Skopje",
+"ref2-title":"Avtokomanda Building, Skopje",
 "ref2-desc":"Installation of hot-water radiator heating with Comap Auto-Sar valves for automatic flow control throughout the system.",
+"ref1-meta":"Investor: BAUER BG LLC  ·  Installing company: VELDER VG Trading",
+"ref2-meta":"Investor: BAUER BG LLC  ·  Installing company: VELDER VG Trading",
 "ref1-img-alt":"Building under construction in Aerodrom, Skopje",
-"ref2-img-alt":"Reference project: residential building in Skopje with Auto-Sar valves",
+"ref2-img-alt":"Reference project: residential building Avtokomanda, Skopje, with Auto-Sar valves",
 
 "topli-title":"Central Hot-Water Heating",
 "topli-p1":"Central hot-water heating is one of the most widespread and reliable heating systems for residential, commercial and industrial buildings. Equipment for precise hydraulic balancing and control enables efficient and economical operation.",
@@ -1081,7 +1086,7 @@ const REFS = [
 function refsHtml() {
   let h = '<h2 class="reveal" data-i18n="ref-title"></h2><p class="reveal" data-i18n="ref-intro"></p>';
   REFS.forEach(r => {
-    h += `<h3 class="ref-name reveal" data-i18n="${r.k}-title"></h3><p class="reveal" data-i18n="${r.k}-desc"></p><div class="page-gallery">`;
+    h += `<h3 class="ref-name reveal" data-i18n="${r.k}-title"></h3><p class="reveal" data-i18n="${r.k}-desc"></p><p class="ref-meta reveal" data-i18n="${r.k}-meta"></p><div class="page-gallery">`;
     r.imgs.forEach(([mk, en]) => {
       const lang = en ? ` data-src-mk="${mk}" data-src-en="${en}"` : '';
       h += `<figure class="media-card"><a class="ref-link" href="${mk}" target="_blank" rel="noopener"><img src="${mk}"${lang} alt="" data-i18n-alt="${r.k}-img-alt" loading="lazy"></a></figure>`;
